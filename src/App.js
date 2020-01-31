@@ -12,57 +12,62 @@ height:100%;
 
 const Nav = styled.nav`
 width:100%;
-height:13rem;
+height:auto;
 display:flex;
 background-color:${Theme.colors.greyLight};
 `;
 
-const Ul = styled.ul`
-list-style-type:none;
-display:flex;
+const MenuItems = styled.div`
+display: flex;
+flex-direction: row;
 width:100%;
 align-items:center;
 margin:0;
 padding:0;
 overflow:hidden;
-@media screen and (max-width: 600px) {
-    float: none;
-    width: 100%;
-  
+
+@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  flex-direction: column;
 }
 
-`;
-
-const Li = styled.li`
-margin-left:2rem;
-color:black;
-text-align:center;
-padding: 2rem 2rem;
-text-decoration:none;
 `;
 
 const A = styled.a`
 font-weight:500;
 text-align:center;
 color:#1a1a1a;
-padding: 1.4rem 1.6rem;
+margin-right: 2rem;
 font-size:2.3rem;
 text-decoration:none;
 
+@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  margin-top: 1rem;
+  margin-right: 0;
+}
 `;
 
-const LiAccount = styled.li`
-text-align:center;
-padding: 5rem 10rem;
-font-size:2rem;
+const AccountA = styled.a`
+margin-left: auto;
+margin-right: 2rem;
+font-weight:500;
+color:#1a1a1a;
+font-size:2.3rem;
 text-decoration:none;
-display:block;
 
+@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1rem;
+}
 `;
-
 
 const StyledLogo = styled.div`
+float:left;
 margin-left:3rem;
+
+@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  margin-left: 0;
+}
 `;
 
 const Footer = styled.footer`
@@ -101,16 +106,14 @@ class App extends React.Component {
 
       <StyledApp>
         <Nav>
-
-          <Ul>
+          <MenuItems>
             <StyledLogo><img src={Logo} alt="website logo" /></StyledLogo>
-            <Li><A className="active" href="#home">Home</A></Li>
-            <Li><A href="">Solutions</A></Li>
-            <Li><A href="">About</A></Li>
-          </Ul>
-            <LiAccount><A href="">Account</A></LiAccount>
-           
-            
+            <A className="active" href="#home">Home</A>
+            <A href="">Solutions</A>
+            <A href="">About</A>
+            <AccountA href="">Account</AccountA>
+          </MenuItems>
+         
         </Nav>
 
         <Footer>
