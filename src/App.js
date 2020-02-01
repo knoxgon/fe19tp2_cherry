@@ -14,6 +14,7 @@ const Nav = styled.nav`
 width:100%;
 height:auto;
 display:flex;
+align-items:center;
 background-color:${Theme.colors.greyLight};
 `;
 
@@ -56,8 +57,8 @@ text-decoration:none;
 
 @media screen and (max-width: ${Theme.screenSize.xsmall}) {
   margin-left: 0;
-  margin-right: 0;
-  margin-top: 1rem;
+  margin-right:0;
+  margin-top: 0;
 }
 `;
 
@@ -88,9 +89,15 @@ font-size:1.8rem;
 `;
 
 const Menu = styled(FontAwesomeIcon)`
-margin-top:4.5rem;
-margin-right:3rem;
+display:none;
+margin-top:0;
+margin-left:4rem;
+margin-right:4rem;
 font-size:3.5rem;
+@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  display:block;
+}
+
 `;
 
 
@@ -106,14 +113,16 @@ class App extends React.Component {
 
       <StyledApp>
         <Nav>
+        <StyledLogo><img src={Logo} alt="website logo" /></StyledLogo>
           <MenuItems>
-            <StyledLogo><img src={Logo} alt="website logo" /></StyledLogo>
-            <A className="active" href="#home">Home</A>
+            
+            <A href="">Home</A>
             <A href="">Solutions</A>
             <A href="">About</A>
-            <AccountA href="">Account</AccountA>
+
           </MenuItems>
-         
+          <AccountA href="">Account</AccountA>
+          <i><Menu icon={IconesSolid.faBars} /></i>
         </Nav>
 
         <Footer>
