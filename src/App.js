@@ -32,9 +32,6 @@ font-size:1.8rem;
 
 class App extends React.Component {
 
-  menuBtn = () => {
-    
-  }
   render() {
     return (
 
