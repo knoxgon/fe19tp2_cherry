@@ -16,12 +16,12 @@ class App extends React.Component {
   render() {
     return (
 
-
       <StyledApp>
-       
-  {<Header/>}
-  
-  {<Footer/>}
+
+        {<Header />}
+
+        {<Footer />}
+        
       </StyledApp>
     );
   }
