@@ -1,27 +1,28 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from "./header";
-import Footer from "./footer";
+import Header from "./Header/header";
+import Footer from "./Footer/footer";
+
+import {BrowserRouter as Router } from 'react-router-dom'
+import Routes from './routes';
 
 
 const StyledApp = styled.div`
-width:100%;
-height:100%;
+  width:100%;
+  height:100%;
 `;
 
 
 class App extends React.Component {
-
   render() {
     return (
-
-      <StyledApp>
-
-        <Header />
-
-        <Footer />
-        
-      </StyledApp>
+      <Router>
+        <StyledApp>
+          <Header />
+          <Routes></Routes>
+          <Footer />        
+        </StyledApp>
+      </Router>
     );
   }
 }
