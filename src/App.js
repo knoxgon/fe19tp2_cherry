@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Theme from "./config/theme";
 import Header from "./header";
 import Footer from "./footer";
 
@@ -18,9 +17,9 @@ class App extends React.Component {
 
       <StyledApp>
 
-        {<Header />}
+        <Header />
 
-        {<Footer />}
+        <Footer />
         
       </StyledApp>
     );
