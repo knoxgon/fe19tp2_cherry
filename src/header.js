@@ -4,6 +4,7 @@ import Logo from "./assets/logo_transparent.png";
 import Theme from "./config/theme";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 const Nav = styled.nav`
 width:100%;
@@ -15,7 +16,6 @@ background-color:${Theme.colors.greyLight};
 @media screen and (max-width: ${Theme.screenSize.xsmall}) {
   justify-content:space-between;
 }
-
 `;
 
 const MenuItems = styled.div`
@@ -108,6 +108,8 @@ font-size:3.5rem;
 
 class Header extends React.Component {
 
+  
+
   mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
 
   listnerMobileSize = (event) => {
@@ -123,7 +125,7 @@ class Header extends React.Component {
       isMobile: this.mediaQuery.matches
     }
   }
-
+  
   componentDidMount() {
     this.mediaQuery.addListener(this.listnerMobileSize);
   }
@@ -132,6 +134,7 @@ class Header extends React.Component {
     this.mediaQuery.removeListener(this.listnerMobileSize);
   }
 
+  
   menuBtnClick() {
     this.setState({
       showMenu: !this.state.showMenu,
@@ -164,7 +167,7 @@ class Header extends React.Component {
 
         {this.renderMenu()}
 
-        <AccountA href="">Account</AccountA>
+        <AccountA>Account</AccountA>
         <i><Menu onClick={() => this.menuBtnClick()} icon={IconesSolid.faBars} /></i>
       </Nav>
 
