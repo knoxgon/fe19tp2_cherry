@@ -45,7 +45,10 @@ const A = styled.p`
 
   & a {
     font-size:2.3rem;
+    text-decoration:none;
+    color:black;
   }
+
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 1rem;
@@ -67,6 +70,7 @@ const AccountA = styled.p`
 
   & a {
     text-decoration:none;
+    color:black;
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
