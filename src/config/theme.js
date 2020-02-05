@@ -1,6 +1,7 @@
 const Theme = {
     colors: {
-        greyLight:'#e6e6e6'
+        greyLight:'#e6e6e6',
+        beige:'#f3f3d3'
     },
 
     screenSize: {

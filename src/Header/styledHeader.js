@@ -8,7 +8,8 @@ const Nav = styled.nav`
   height:auto;
   display:flex;
   align-items:center;
-  background-color:${Theme.colors.greyLight};
+  background-color:${Theme.colors.beige};
+  border-bottom: 0.02rem solid #dddddd;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     justify-content:space-between;
@@ -20,7 +21,7 @@ const MenuItems = styled.div`
   flex-direction: row;
   width:100%;
   align-items:center;
-  margin:0;
+  margin-left:6rem;
   padding:0;
   overflow:hidden;
 
@@ -28,11 +29,12 @@ const MenuItems = styled.div`
     flex-direction:column;
     background-color:grey;
     position: absolute;
-    background-color:${Theme.colors.greyLight};
+    background-color:${Theme.colors.beige};
     right: 0;
     width:15rem;
-    margin-top:13.3rem;
-    padding:2rem 0 1rem 0;
+    margin-top:15.2rem;
+    padding:0rem 0 1rem 0;
+    border-top: 0.02rem solid #dddddd;
     z-index: 1;
   }
 `;
@@ -45,7 +47,13 @@ const A = styled.p`
 
   & a {
     font-size:2.3rem;
+    text-decoration:none;
+    color:black;
+    &:hover {
+      text-decoration:underline #bebebe;
+    }
   }
+
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 1rem;
@@ -67,6 +75,10 @@ const AccountA = styled.p`
 
   & a {
     text-decoration:none;
+    color:black;
+    &:hover {
+      text-decoration:underline #bebebe;
+    }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
@@ -92,12 +104,15 @@ const Menu = styled(FontAwesomeIcon)`
   margin-right:4rem;
   font-size:3.5rem;
 
-
-
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display:block;
     
   }
+`;
+
+const StyledImgLogo = styled.img`
+
+width: 14rem;
 `;
 
 export {
@@ -106,5 +121,6 @@ export {
   A,
   AccountA,
   StyledLogo,
-  Menu
+  Menu,
+  StyledImgLogo
 }
