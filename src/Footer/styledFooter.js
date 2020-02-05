@@ -11,7 +11,7 @@ const StyledFooter = styled.footer`
   bottom:0;
   text-align:center;
   height:5rem;
-  background-color:${Theme.colors.greyLight};
+  background-color:${Theme.colors.beige};
 `;
 
 const P = styled.p`

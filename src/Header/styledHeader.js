@@ -8,7 +8,7 @@ const Nav = styled.nav`
   height:auto;
   display:flex;
   align-items:center;
-  background-color:${Theme.colors.greyLight};
+  background-color:${Theme.colors.beige};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     justify-content:space-between;
@@ -47,6 +47,9 @@ const A = styled.p`
     font-size:2.3rem;
     text-decoration:none;
     color:black;
+    &:hover {
+      text-decoration:underline #bebebe;
+    }
   }
 
 
@@ -71,6 +74,9 @@ const AccountA = styled.p`
   & a {
     text-decoration:none;
     color:black;
+    &:hover {
+      text-decoration:underline #bebebe;
+    }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
