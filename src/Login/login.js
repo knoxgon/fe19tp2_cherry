@@ -21,7 +21,7 @@ class Login extends React.Component {
     const { email, password } = e.target.elements;
       fireapp.auth().signInWithEmailAndPassword(email.value, password.value)
       .then(success => {
-        this.props.history.push("/");
+        this.props.history.push("/account");
       })
       .catch(fail => {
         this.setState({feedback: fail.message});
