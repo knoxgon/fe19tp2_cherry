@@ -9,6 +9,7 @@ const Nav = styled.nav`
   display:flex;
   align-items:center;
   background-color:${Theme.colors.beige};
+  border-bottom: 0.02rem solid #dddddd;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     justify-content:space-between;
