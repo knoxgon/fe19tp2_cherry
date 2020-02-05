@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton } from './styledLogin';
+import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea } from './styledLogin';
 import fireapp from '../config/firebase'
 
 class Login extends React.Component {
@@ -17,13 +17,15 @@ class Login extends React.Component {
 
   handleLogin = (e) => {
     e.preventDefault();
+    
     const { email, password } = e.target.elements;
-    try {
-      fireapp.auth().signInWithEmailAndPassword(email.value, password.value);
-      this.props.history.push("/");
-    } catch (error) {
-      alert(error);
-    }
+      fireapp.auth().signInWithEmailAndPassword(email.value, password.value)
+      .then(success => {
+        this.props.history.push("/");
+      })
+      .catch(fail => {
+        this.setState({feedback: fail.message});
+      });
 
   }
 
@@ -48,6 +50,7 @@ class Login extends React.Component {
           <UsernameInput placeholder="Password" name="password" type="password" onChange={this.onChangePasswordHandler.bind(this)}></UsernameInput>
         </InputArea>
         <LoginButton type="submit">Login</LoginButton>
+        {this.state.feedback ? <ErrorArea >{this.state.feedback}</ErrorArea> : null}
       </LoginArea>
     );
   }
