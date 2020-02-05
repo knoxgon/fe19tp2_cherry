@@ -1,4 +1,4 @@
-import * as abc from "firebase/app";
+import * as firebase from "firebase/app";
 import 'firebase/auth';
 
 const fireconf = {
@@ -12,6 +12,6 @@ const fireconf = {
   measurementId: "G-7EYPWPKBM5"
 };
 
-abc.initializeApp(fireconf)
+firebase.initializeApp(fireconf)
 
-export default abc
+export default firebase
