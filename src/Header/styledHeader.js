@@ -20,7 +20,7 @@ const MenuItems = styled.div`
   flex-direction: row;
   width:100%;
   align-items:center;
-  margin:0;
+  margin-left:6rem;
   padding:0;
   overflow:hidden;
 
