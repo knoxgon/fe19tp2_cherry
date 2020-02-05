@@ -8,10 +8,11 @@ import {
   A,
   AccountA,
   StyledLogo,
-  Menu
+  Menu,
+  StyledImgLogo
 } from './styledHeader';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
 
@@ -62,7 +63,7 @@ class Header extends React.Component {
     return (
 
       <Nav>
-        <StyledLogo><img src={Logo} alt="website logo" /></StyledLogo>
+        <StyledLogo><StyledImgLogo src={Logo} alt="website logo" /></StyledLogo>
 
         {this.renderMenu()}
 
