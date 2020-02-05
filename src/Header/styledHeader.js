@@ -96,12 +96,15 @@ const Menu = styled(FontAwesomeIcon)`
   margin-right:4rem;
   font-size:3.5rem;
 
-
-
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display:block;
     
   }
+`;
+
+const StyledImgLogo = styled.img`
+
+width: 14rem;
 `;
 
 export {
@@ -110,5 +113,6 @@ export {
   A,
   AccountA,
   StyledLogo,
-  Menu
+  Menu,
+  StyledImgLogo
 }
