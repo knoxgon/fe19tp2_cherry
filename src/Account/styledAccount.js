@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Theme from "../config/theme";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wrapper = styled.div`
