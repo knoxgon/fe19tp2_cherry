@@ -12,7 +12,7 @@ import {
   StyledImgLogo
 } from './styledHeader';
 
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
 

@@ -118,11 +118,11 @@ export {
     StyledAddUser,
     UserFunctionDiv,
     StyledP,
-    StyledGraph, 
+    StyledGraph,
     StyledLogout,
     LogoutDiv,
     StyledApiIcon,
     StyledPtag,
     BorderUnderline
-    
+
 }
