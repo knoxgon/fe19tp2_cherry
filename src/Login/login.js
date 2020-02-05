@@ -1,6 +1,6 @@
 import React from 'react';
 import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea } from './styledLogin';
-import {fireapp} from '../config/firebase'
+import fireapp from '../config/firebase'
 
 class Login extends React.Component {
   constructor(props) {

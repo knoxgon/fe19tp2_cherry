@@ -6,7 +6,7 @@ import PrivateRoute from './__route/private';
 import Account from './Account/account';
 import Login from './Login/login';
 import { Route, Switch } from 'react-router-dom'
-import {fireapp} from './config/firebase'
+import fireapp from './config/firebase'
 
 const StyledApp = styled.div`
 
