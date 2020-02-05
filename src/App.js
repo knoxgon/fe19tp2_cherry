@@ -6,7 +6,7 @@ import PrivateRoute from './__route/private';
 import Account from './Account/account';
 import Login from './Login/login';
 import { Route, Switch } from 'react-router-dom'
-import fireapp from './config/firebase'
+import {fireapp} from './config/firebase'
 
 const StyledApp = styled.div`
 
@@ -25,9 +25,7 @@ class App extends React.Component {
       authenticated: false,
       currentUser: null
     }
-  }
-  
-  componentWillMount() {
+
     fireapp.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
@@ -44,7 +42,7 @@ class App extends React.Component {
       }
     });
   }
-
+  
   render() {
     return (
       <StyledApp>
