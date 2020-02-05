@@ -6,7 +6,7 @@ import ApiIcon from '../Images/API-icon.png'
 
 
 import {
-  Wrapper, 
+  Wrapper,
   SparbankenImg,
   Styleddiv,
   StyledH2,
@@ -17,8 +17,9 @@ import {
   StyledLogout,
   LogoutDiv,
   StyledApiIcon,
-  StyledPtag
-  
+  StyledPtag,
+  BorderUnderline
+
 } from './styledAccount';
 
 
@@ -28,34 +29,33 @@ class Account extends React.Component {
   render() {
     return (
       <Wrapper>
-            
-         <Styleddiv>
-         <SparbankenImg src ={SparbankenLogo}/>
-         <StyledH2>Fredrik Åhlberg</StyledH2>
-          
-         
-           </Styleddiv>
 
-      <UserFunctionDiv>
-        <StyledAddUser src = {AddUser} />
-        <StyledP>Add user</StyledP>
-      </UserFunctionDiv>
+        <Styleddiv>
+          <SparbankenImg src={SparbankenLogo} />
+          <StyledH2>Fredrik Åhlberg</StyledH2>
+        </Styleddiv>
 
-      <UserFunctionDiv>
-      <i><StyledGraph icon={IconesSolid.faChartBar}/></i>
-      <StyledP>Generate graph</StyledP>
-      </UserFunctionDiv>
+        <BorderUnderline></BorderUnderline>
 
-      <UserFunctionDiv>
-      <i><StyledApiIcon src = {ApiIcon}/></i>
-      <StyledPtag>Get data</ StyledPtag>
-      </UserFunctionDiv>
+        <UserFunctionDiv>
+          <StyledAddUser src={AddUser} />
+          <StyledP>Add user</StyledP>
+        </UserFunctionDiv>
 
+        <UserFunctionDiv>
+          <i><StyledGraph icon={IconesSolid.faChartBar} /></i>
+          <StyledP>Generate graph</StyledP>
+        </UserFunctionDiv>
 
-      <LogoutDiv>
-      <i><StyledLogout icon={IconesSolid.faSignOutAlt}/></i>
-      <StyledP>Sign out</StyledP>
-      </LogoutDiv>
+        <UserFunctionDiv>
+          <i><StyledApiIcon src={ApiIcon} /></i>
+          <StyledPtag>Get data</ StyledPtag>
+        </UserFunctionDiv>
+
+        <LogoutDiv>
+          <i><StyledLogout icon={IconesSolid.faSignOutAlt} /></i>
+          <StyledP>Sign out</StyledP>
+        </LogoutDiv>
 
       </Wrapper>
     );

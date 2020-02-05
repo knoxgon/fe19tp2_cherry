@@ -11,6 +11,7 @@ const StyledFooter = styled.footer`
   bottom:0;
   text-align:center;
   height:5rem;
+  border-top: 0.02rem solid #dddddd;
   background-color:${Theme.colors.beige};
 `;
 

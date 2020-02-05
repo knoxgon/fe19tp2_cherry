@@ -3,9 +3,8 @@ import Theme from "../config/theme";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wrapper = styled.div`
-
-width:100%;
-height:100%;
+display:flex;
+flex-direction:column;
 
 
 `;
@@ -15,13 +14,12 @@ margin: 3rem 1rem 3rem 1rem;
 justify-content:center;
 width:9rem;
 height:auto;
+border-right: 0.02rem solid #dddddd;
 `;
 
 const Styleddiv = styled.div`
-margin-bottom:5rem;
 display:flex;
 align-items:center;
-
 
 `;
 
@@ -103,6 +101,13 @@ margin-block-end: 0em;
 margin-left:1.3rem;
 `;
 
+const BorderUnderline = styled.div`
+
+margin: 3rem 4rem 3rem 4rem;
+height:0.1rem;
+background-color:#dddddd;
+`;
+
 
 
 export {
@@ -117,6 +122,7 @@ export {
     StyledLogout,
     LogoutDiv,
     StyledApiIcon,
-    StyledPtag
+    StyledPtag,
+    BorderUnderline
     
 }

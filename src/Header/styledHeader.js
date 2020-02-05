@@ -29,11 +29,12 @@ const MenuItems = styled.div`
     flex-direction:column;
     background-color:grey;
     position: absolute;
-    background-color:${Theme.colors.greyLight};
+    background-color:${Theme.colors.beige};
     right: 0;
     width:15rem;
-    margin-top:13.3rem;
-    padding:2rem 0 1rem 0;
+    margin-top:15.2rem;
+    padding:0rem 0 1rem 0;
+    border-top: 0.02rem solid #dddddd;
     z-index: 1;
   }
 `;
