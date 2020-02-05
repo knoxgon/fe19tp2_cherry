@@ -67,6 +67,19 @@ const LoginButton = styled.button`
   }
 `;
 
+const ErrorArea = styled.div`
+  margin: 0 auto;
+  margin-top: 5rem;
+  text-align: center;
+  width: auto;
+  height: 3rem;
+  color: red;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  font-weight: 600;
+`;
+
 export {
   LoginArea,
   LoginLogo,
@@ -74,4 +87,5 @@ export {
   InputImage,
   UsernameInput,
   LoginButton,
+  ErrorArea
 }
