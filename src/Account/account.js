@@ -26,6 +26,10 @@ import {
 
 class Account extends React.Component {
 
+  logutBtn() {
+    this.props.history.push("/login");
+  }
+
   render() {
     return (
       <Wrapper>
@@ -53,7 +57,7 @@ class Account extends React.Component {
         </UserFunctionDiv>
 
         <LogoutDiv>
-          <i><StyledLogout icon={IconesSolid.faSignOutAlt} /></i>
+          <i><StyledLogout onClick={() => this.logutBtn()} icon={IconesSolid.faSignOutAlt} /></i>
           <StyledP>Sign out</StyledP>
         </LogoutDiv>
 
