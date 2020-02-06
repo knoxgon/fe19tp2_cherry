@@ -7,6 +7,7 @@ import Account from './Account/account';
 import Login from './Login/login';
 import { Route, Switch } from 'react-router-dom'
 import fireapp from './config/firebase'
+import User from "./user/user";
 
 const StyledApp = styled.div`
 
@@ -53,6 +54,7 @@ class App extends React.Component {
           <PrivateRoute exact path="/solutions" />
           <Route path="/login" component={Login} />
           <Route path="/about" />
+          <Route path="/user" component={User} />
         </Switch>
         <Footer />        
       </StyledApp>
