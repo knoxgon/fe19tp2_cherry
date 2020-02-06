@@ -27,7 +27,6 @@ import {
 class Account extends React.Component {
 
   logutBtn() {
-
     this.props.history.push("/login");
   }
 
