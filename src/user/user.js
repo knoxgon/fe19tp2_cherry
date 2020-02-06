@@ -1,6 +1,6 @@
+
 import React from 'react';
 import SparbankenLogo from "../Images/new-swedbank-transparent.png";
-import AddUser from "../Images/add-user.png";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import ApiIcon from '../Images/API-icon.png'
 
@@ -10,7 +10,6 @@ import {
   SparbankenImg,
   Styleddiv,
   StyledH2,
-  StyledAddUser,
   UserFunctionDiv,
   StyledP,
   StyledGraph,
@@ -20,11 +19,11 @@ import {
   StyledPtag,
   BorderUnderline
 
-} from './styledAccount';
+} from './styledUser';
 
 
 
-class Account extends React.Component {
+class User extends React.Component {
 
   logutBtn() {
     this.props.history.push("/login");
@@ -36,15 +35,11 @@ class Account extends React.Component {
 
         <Styleddiv>
           <SparbankenImg src={SparbankenLogo} />
-          <StyledH2>Fredrik Åhlberg</StyledH2>
+          <StyledH2>Ronja Nyström</StyledH2>
         </Styleddiv>
 
         <BorderUnderline></BorderUnderline>
 
-        <UserFunctionDiv>
-          <StyledAddUser src={AddUser} />
-          <StyledP>Add user</StyledP>
-        </UserFunctionDiv>
 
         <UserFunctionDiv>
           <i><StyledGraph icon={IconesSolid.faChartBar} /></i>
@@ -66,5 +61,4 @@ class Account extends React.Component {
   }
 }
 
-
-export default Account;
+export default User;
