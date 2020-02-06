@@ -102,7 +102,7 @@ margin-left:1.3rem;
 
 const BorderUnderline = styled.div`
 
-margin: 3rem 4rem 3rem 4rem;
+margin: 2rem 4rem 2rem 4rem;
 height:0.1rem;
 background-color:#dddddd;
 `;

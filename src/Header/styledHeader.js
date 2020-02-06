@@ -12,7 +12,9 @@ const Nav = styled.nav`
   border-bottom: 0.02rem solid #dddddd;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    justify-content:space-between;
+    justify-content:space-around;
+    height:11rem;
+
   }
 `;
 
@@ -32,9 +34,10 @@ const MenuItems = styled.div`
     background-color:${Theme.colors.beige};
     right: 0;
     width:15rem;
-    margin-top:15.2rem;
+    margin-top:13.5rem;
     padding:0rem 0 1rem 0;
     border-top: 0.02rem solid #dddddd;
+    box-shadow: -4px 6px 5px 0px rgba(0,0,0,0.05);
     z-index: 1;
   }
 `;
@@ -101,11 +104,13 @@ const Menu = styled(FontAwesomeIcon)`
   display:none;
   margin-top:-1.1rem;
   margin-left:4rem;
-  margin-right:4rem;
   font-size:3.5rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display:block;
+  font-size:3rem;
+  margin-right:2rem;
+    
     
   }
 `;
@@ -114,6 +119,7 @@ const StyledImgLogo = styled.img`
 
 width: 14rem;
 `;
+
 
 export {
   Nav,

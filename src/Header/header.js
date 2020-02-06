@@ -51,6 +51,7 @@ class Header extends React.Component {
     if ((this.state.isMobile && this.state.showMenu) || !this.state.isMobile) {
       return (
         <MenuItems>
+        
           <A><Link to="/">Home</Link></A>
           <A><Link to="/solutions">Solutions</Link></A>
           <A><Link to="/about">About</Link></A>
