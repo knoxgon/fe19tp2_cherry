@@ -1,6 +1,7 @@
-import firebase from 'firebase';
+import * as firebase from "firebase/app";
+import 'firebase/auth';
 
-const fireapp = firebase.initializeApp({
+const fireconf = {
   apiKey: "AIzaSyC-CcDm3mp0BiBY4HM3e4HBkl9POeFkpBA",
   authDomain: "fe19tp2cherry.firebaseapp.com",
   databaseURL: "https://fe19tp2cherry.firebaseio.com",
@@ -9,6 +10,8 @@ const fireapp = firebase.initializeApp({
   messagingSenderId: "73963246117",
   appId: "1:73963246117:web:637e5993475c5330b3e5cc",
   measurementId: "G-7EYPWPKBM5"
-});
+};
 
-export default fireapp;
+firebase.initializeApp(fireconf)
+
+export default firebase

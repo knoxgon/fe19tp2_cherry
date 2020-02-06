@@ -25,9 +25,7 @@ class App extends React.Component {
       authenticated: false,
       currentUser: null
     }
-  }
-  
-  componentWillMount() {
+
     fireapp.auth().onAuthStateChanged(user => {
       if (user) {
         this.setState({
@@ -44,7 +42,7 @@ class App extends React.Component {
       }
     });
   }
-
+  
   render() {
     return (
       <StyledApp>
