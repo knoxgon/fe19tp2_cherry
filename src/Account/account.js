@@ -2,7 +2,9 @@ import React from 'react';
 import SparbankenLogo from "../Images/new-swedbank-transparent.png";
 import AddUser from "../Images/add-user.png";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import ApiIcon from '../Images/API-icon.png'
+import ApiIcon from '../Images/API-icon.png';
+// import { faWhmcs } from '@fortawesome/free-brands-svg-icons'
+import SettingsMenu from '../SettingsMenu/settingsMenu';
 
 
 import {
@@ -18,7 +20,7 @@ import {
   LogoutDiv,
   StyledApiIcon,
   StyledPtag,
-  BorderUnderline
+  BorderUnderline,
 
 } from './styledAccount';
 
@@ -32,7 +34,8 @@ class Account extends React.Component {
 
         <Styleddiv>
           <SparbankenImg src={SparbankenLogo} />
-          <StyledH2>Fredrik Åhlberg</StyledH2>
+          <StyledH2>Fredrik Åhlberg</StyledH2> 
+          <SettingsMenu/>
         </Styleddiv>
 
         <BorderUnderline></BorderUnderline>

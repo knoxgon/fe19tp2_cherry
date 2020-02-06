@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+
 const Wrapper = styled.div`
 display:flex;
 flex-direction:column;
-
-
 `;
 
 const SparbankenImg = styled.img`
@@ -108,7 +107,6 @@ background-color:#dddddd;
 `;
 
 
-
 export {
     Wrapper,
     SparbankenImg,
@@ -122,6 +120,6 @@ export {
     LogoutDiv,
     StyledApiIcon,
     StyledPtag,
-    BorderUnderline
-
+    BorderUnderline,
+    
 }
