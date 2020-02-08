@@ -1,53 +1,41 @@
-import React from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea, LoginContainerArea } from './styledLogin';
+import React, { useState } from 'react';
+import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
 
 
-class Login extends React.Component {
-  constructor(props) {
-    super(props);
+const Login = (props) => {
+  const [creds, setCreds] = useState({ email: '', password: ''});
 
-    this.state = {
-      email: '',
-      password: '',
-    }
-  }
-
-  handleLogin = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    this.props.signin(this.state);
+    props.signin(creds);
   }
 
-  onChangeUsernameHandler = (e) => {
-    this.setState({email: e.target.value});
-  }
-  
-  onChangePasswordHandler = (e) => {
-    this.setState({password: e.target.value});
+  const onChangeInputHandler = (e) => {
+    const { name, value } = e.target;
+    setCreds({...creds, [name]: value });
   }
 
-  render() {
-    return(
-      this.props.uid ? <Redirect to='/account'/> :
+  return (
+    props.uid ? <Redirect to='/account'/> :
       <LoginContainerArea>
-        <LoginArea onSubmit={this.handleLogin}>
+        <LoginArea onSubmit={handleLogin}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
           <InputArea>
             <InputImage src={require('../../assets/login/user.svg')}></InputImage>
-            <UsernameInput placeholder="Email" name="email" type="email" onChange={this.onChangeUsernameHandler.bind(this)}></UsernameInput>
+            <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
           </InputArea>
           <InputArea>
             <InputImage src={require('../../assets/login/key.svg')}></InputImage>
-            <UsernameInput placeholder="Password" name="password" type="password" onChange={this.onChangePasswordHandler.bind(this)}></UsernameInput>
+            <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
           </InputArea>
           <LoginButton type="submit">Login</LoginButton>
-          {this.props.authError ? <ErrorArea >{this.props.authError}</ErrorArea> : null}
+          {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
         </LoginArea>
       </LoginContainerArea>
-    );
-  }
+  )
 }
 
 //authError is linked through auth reducer
