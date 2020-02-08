@@ -1,46 +1,51 @@
 import React from 'react';
 import SparbankenLogo from "../../assets/account/new-swedbank-transparent.png";
-import AddUser from "../../assets/account/add-user.png";
-import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import ApiIcon from '../../assets/account/API-icon.png'
+import IconAddUser from "../../assets/account/adduser.svg";
+import IconBarChart from '../../assets/account/barchart.svg';
+import IconApi from '../../assets/account/api.svg';
+import IconLogout from '../../assets/account/logout.svg';
 import { connect } from 'react-redux';
 import { signout } from '../../__redux/actions/authActions';
 
-import { Wrapper, SparbankenImg, Styleddiv, StyledH2, StyledAddUser, UserFunctionDiv, StyledP, StyledGraph, StyledLogout, LogoutDiv, StyledApiIcon, StyledPtag, BorderUnderline } from './styledAccount';
+import { Wrapper, FeatureWrapper, ClientCompanyLogo, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAccount';
 
 
-class Account extends React.Component {
-  logutBtn = () => {
-    this.props.signout();
+const Account = (props) => {
+  const logutBtn = () => {
+    props.signout();
   }
+  
+  return (
+    <Wrapper>
+      <ClientArea>
+        <ClientCompanyLogo src={SparbankenLogo} />
+        <ClientNameArea>Fredrik Åhlberg</ClientNameArea>
+      </ClientArea>
+      <BorderUnderline></BorderUnderline>
 
-  render() {
-    return (
-      <Wrapper>
-        <Styleddiv>
-          <SparbankenImg src={SparbankenLogo} />
-          <StyledH2>Fredrik Åhlberg</StyledH2>
-        </Styleddiv>
-        <BorderUnderline></BorderUnderline>
-        <UserFunctionDiv>
-          <StyledAddUser src={AddUser} />
-          <StyledP>Add user</StyledP>
-        </UserFunctionDiv>
-        <UserFunctionDiv>
-          <i><StyledGraph icon={IconesSolid.faChartBar} /></i>
-          <StyledP>Generate graph</StyledP>
-        </UserFunctionDiv>
-        <UserFunctionDiv>
-          <i><StyledApiIcon src={ApiIcon} /></i>
-          <StyledPtag>Get data</ StyledPtag>
-        </UserFunctionDiv>
-        <LogoutDiv>
-          <i><StyledLogout onClick={() => this.logutBtn()} icon={IconesSolid.faSignOutAlt} /></i>
-          <StyledP>Sign out</StyledP>
-        </LogoutDiv>
-      </Wrapper>
-    );
-  }
+      <FeatureWrapper>
+        <FeatureArea>
+          <FeatureImage src={IconAddUser} />
+          <FeatureDescription>Add user</FeatureDescription>
+        </FeatureArea>
+
+        <FeatureArea>
+          <FeatureImage src={IconBarChart} />
+          <FeatureDescription>Generate graph</FeatureDescription>
+        </FeatureArea>
+
+        <FeatureArea>
+          <FeatureImage src={IconApi} />
+          <FeatureDescription>Get data</ FeatureDescription>
+        </FeatureArea>
+        
+        <FeatureArea onClick={() => logutBtn()}>
+          <FeatureImage src={IconLogout} />
+          <FeatureDescription>Sign out</FeatureDescription>
+        </FeatureArea>
+      </FeatureWrapper>
+    </Wrapper>
+  );
 }
 
 const mapStateToProps = (state) => {
