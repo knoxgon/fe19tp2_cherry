@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from "../assets/logo_transparent.png";
-import Theme from "../config/theme";
+import Theme from "../__config/theme";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import {
   Nav,
@@ -13,6 +13,8 @@ import {
 } from './styledHeader';
 
 import { Link } from 'react-router-dom';
+
+import { connect } from 'react-redux';
 
 class Header extends React.Component {
 
@@ -76,5 +78,10 @@ class Header extends React.Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
 
-export default Header;
+  }
+}
+
+export default connect(mapStateToProps)(Header);
