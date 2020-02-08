@@ -1,8 +1,5 @@
 import React from 'react';
-import { 
-  StyledFooter,
-  P
-} from './styledFooter';
+import { StyledFooter, P } from './styledFooter';
 
 
 class Footer extends React.Component {

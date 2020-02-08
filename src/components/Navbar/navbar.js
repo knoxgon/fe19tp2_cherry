@@ -1,14 +1,12 @@
 import React from 'react';
-import Logo from "../assets/logo_transparent.png";
-import Theme from "../__config/theme";
+import Logo from "../../assets/logo_transparent.png";
+import Theme from "../../__config/theme";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo } from './styledNavbar';
 
 
 class Navbar extends React.Component {
-
   mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
 
   listnerMobileSize = (event) => {
@@ -61,14 +59,7 @@ class Navbar extends React.Component {
         <i><Menu onClick={() => this.menuBtnClick()} icon={IconesSolid.faBars} /></i>
       </Nav>
     );
-
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps)(Navbar);
+export default Navbar;

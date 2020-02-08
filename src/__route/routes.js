@@ -1,7 +1,7 @@
 import React from 'react';
 import PrivateRoute from './private';
-import Account from  '../Account/account'
-import Login from  '../Login/login'
+import Account from  '../components/Account/account'
+import Login from  '../components/Login/login'
 import { Route, Switch } from 'react-router-dom'
 import { connect } from 'react-redux';
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from "./Navbar/navbar";
-import Footer from "./Footer/footer";
+import Navbar from "./components/Navbar/navbar";
+import Footer from "./components/Footer/footer";
 import { firebase } from './__config/firebase'
 import Routes from './__route/routes';
 

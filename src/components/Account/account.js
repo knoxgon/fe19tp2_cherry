@@ -1,10 +1,10 @@
 import React from 'react';
-import SparbankenLogo from "../Images/new-swedbank-transparent.png";
-import AddUser from "../Images/add-user.png";
+import SparbankenLogo from "../../assets/account/new-swedbank-transparent.png";
+import AddUser from "../../assets/account/add-user.png";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import ApiIcon from '../Images/API-icon.png'
+import ApiIcon from '../../assets/account/API-icon.png'
 import { connect } from 'react-redux';
-import { signout } from '../__redux/actions/authActions';
+import { signout } from '../../__redux/actions/authActions';
 
 import { Wrapper, SparbankenImg, Styleddiv, StyledH2, StyledAddUser, UserFunctionDiv, StyledP, StyledGraph, StyledLogout, LogoutDiv, StyledApiIcon, StyledPtag, BorderUnderline } from './styledAccount';
 
