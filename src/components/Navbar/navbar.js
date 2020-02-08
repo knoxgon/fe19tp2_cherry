@@ -54,7 +54,7 @@ class Navbar extends React.Component {
     return (
       <Nav>
         <StyledLogo><StyledImgLogo src={Logo} alt="website logo" /></StyledLogo>
-        {this.renderMenu()}
+        { this.renderMenu() }
         <AccountA><Link to="/account">Account</Link></AccountA>
         <i><Menu onClick={() => this.menuBtnClick()} icon={IconesSolid.faBars} /></i>
       </Nav>
