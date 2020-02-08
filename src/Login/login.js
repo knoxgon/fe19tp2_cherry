@@ -2,6 +2,7 @@ import React from 'react';
 import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../__redux/actions/authActions';
+import { Redirect } from 'react-router-dom';
 
 class Login extends React.Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class Login extends React.Component {
 
   render() {
     return(
+      this.props.uid ? <Redirect to='/account'/>:
       <LoginArea onSubmit={this.handleLogin}>
         <LoginLogo src={require('../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
         <InputArea>
@@ -48,6 +50,7 @@ class Login extends React.Component {
 //authError is linked through auth reducer
 const mapStateToProps = (state) => {
   return {
+    uid: state.firebase.auth.uid,
     authError: state.auth.authError
   }
 }
