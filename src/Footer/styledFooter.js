@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Theme from "../config/theme";
+import Theme from "../__config/theme";
 
 
 const StyledFooter = styled.footer`

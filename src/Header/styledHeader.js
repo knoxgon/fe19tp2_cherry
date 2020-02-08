@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Theme from "../config/theme";
+import Theme from "../__config/theme";
 
 
 const Nav = styled.nav`
