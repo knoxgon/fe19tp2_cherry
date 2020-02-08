@@ -59,7 +59,7 @@ const InputImage = styled.img`
   }
 `;
 
-const UsernameInput = styled.input`
+const EmailInput = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
   background-color: white;
   border-radius: 0.5rem;
@@ -125,7 +125,7 @@ export {
   LoginLogo,
   InputArea,
   InputImage,
-  UsernameInput,
+  EmailInput,
   LoginButton,
   ErrorArea,
   LoginContainerArea

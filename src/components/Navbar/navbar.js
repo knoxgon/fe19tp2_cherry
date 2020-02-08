@@ -5,7 +5,6 @@ import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 import { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo } from './styledNavbar';
 
-
 class Navbar extends React.Component {
   mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
 

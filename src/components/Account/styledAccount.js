@@ -1,92 +1,81 @@
 import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Theme from "../../__config/theme";
 
 
 const Wrapper = styled.div`
+  margin-top: 4rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
   display: flex;
   flex-direction: column;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
 `;
 
-const SparbankenImg = styled.img`
-  margin: 3rem 1rem 3rem 1rem;
+const ClientCompanyLogo = styled.img`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+  margin-left: 2rem;
+
   justify-content: center;
   width: 9rem;
   height: auto;
-  border-right: 0.02rem solid #dddddd;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    margin-right: 2rem;
+  }
 `;
 
-const Styleddiv = styled.div`
+const ClientArea = styled.div`
   display: flex;
   align-items: center;
+  background-color: #efefef;
 `;
 
-const StyledH2 = styled.h2`
-  margin-left: 0rem;
-  font-size: 1.5rem;
+const ClientNameArea = styled.h2`
+  font-size: 1.75rem;
 `;
 
-const StyledAddUser = styled.img`
-  margin-left: 4rem;
-  width: 4rem;
-  
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const UserFunctionDiv = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const StyledP = styled.p`
-  font-size: 2rem;
-  font-weight: bold;
-  margin-block-start: 0rem;
-  margin-block-end: 0rem;
-  margin-left: 2rem;
-`;
-
-const StyledGraph = styled(FontAwesomeIcon)`
-  font-size: 3.5rem;
-  margin: 3rem 0rem 3rem 4.2rem;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-const StyledLogout = styled(FontAwesomeIcon)`
-  font-size: 3.5rem;
-  margin: 3rem 0rem 0rem 4.4rem;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-`;
-
-const LogoutDiv = styled.div`
-  display: flex;
-  text-align: center;
-  align-items: flex-end;
-  height: 28rem;
-`;
-
-
-const StyledApiIcon = styled.img`
-  margin-left: 3.5rem;
+const FeatureImage = styled.img`
   width: 5rem;
+  height: 5rem;
+`;
+
+const FeatureArea = styled.div`
+  display: inline-flex;
+  vertical-align: middle;
+  margin-bottom: 2rem;
+  width: 15.5rem;
+  cursor: pointer;
+
+  &:nth-last-child(3) {
+    width: 21.7rem;
+  }
+
+  &:nth-last-child(1) {
+    margin-top: 20rem;
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      margin-top: 0rem;
+    }
+  }
 
   &:hover {
     transform: scale(1.1);
   }
 `;
 
-const StyledPtag = styled.p`
+const FeatureDescription = styled.p`
   font-size: 2rem;
   font-weight: bold;
-  margin-block-start: 0rem;
-  margin-block-end: 0rem;
-  margin-left: 1.3rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
+  margin-left: 2rem;
 `;
 
 const BorderUnderline = styled.div`
@@ -95,19 +84,21 @@ const BorderUnderline = styled.div`
   background-color: #dddddd;
 `;
 
+const FeatureWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+`;
+
 
 export {
   Wrapper,
-  SparbankenImg,
-  Styleddiv,
-  StyledH2,
-  StyledAddUser,
-  UserFunctionDiv,
-  StyledP,
-  StyledGraph,
-  StyledLogout,
-  LogoutDiv,
-  StyledApiIcon,
-  StyledPtag,
-  BorderUnderline
+  ClientCompanyLogo,
+  ClientArea,
+  ClientNameArea,
+  FeatureImage,
+  FeatureArea,
+  FeatureDescription,
+  BorderUnderline,
+  FeatureWrapper
 }
