@@ -1,21 +1,12 @@
 import React from 'react';
-import Logo from "../assets/logo_transparent.png";
-import Theme from "../config/theme";
+import Logo from "../../assets/logo_transparent.png";
+import Theme from "../../__config/theme";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import {
-  Nav,
-  MenuItems,
-  A,
-  AccountA,
-  StyledLogo,
-  Menu,
-  StyledImgLogo
-} from './styledHeader';
-
 import { Link } from 'react-router-dom';
+import { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo } from './styledNavbar';
 
-class Header extends React.Component {
 
+class Navbar extends React.Component {
   mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
 
   listnerMobileSize = (event) => {
@@ -51,7 +42,6 @@ class Header extends React.Component {
     if ((this.state.isMobile && this.state.showMenu) || !this.state.isMobile) {
       return (
         <MenuItems>
-        
           <A><Link to="/">Home</Link></A>
           <A><Link to="/solutions">Solutions</Link></A>
           <A><Link to="/about">About</Link></A>
@@ -62,20 +52,14 @@ class Header extends React.Component {
 
   render() {
     return (
-
       <Nav>
         <StyledLogo><StyledImgLogo src={Logo} alt="website logo" /></StyledLogo>
-
-        {this.renderMenu()}
-
+        { this.renderMenu() }
         <AccountA><Link to="/account">Account</Link></AccountA>
         <i><Menu onClick={() => this.menuBtnClick()} icon={IconesSolid.faBars} /></i>
       </Nav>
-
     );
-
   }
 }
 
-
-export default Header;
+export default Navbar;
