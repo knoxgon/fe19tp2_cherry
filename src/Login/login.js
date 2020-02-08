@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea } from './styledLogin';
+import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea,LoginContainerArea } from './styledLogin';
 import fireapp from '../config/firebase'
 
 class Login extends React.Component {
@@ -39,6 +39,8 @@ class Login extends React.Component {
 
   render() {
     return(
+
+      <LoginContainerArea>
       <LoginArea onSubmit={this.handleLogin}>
         <LoginLogo src={require('../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
         <InputArea>
@@ -52,6 +54,7 @@ class Login extends React.Component {
         <LoginButton type="submit">Login</LoginButton>
         {this.state.feedback ? <ErrorArea >{this.state.feedback}</ErrorArea> : null}
       </LoginArea>
+      </LoginContainerArea>
     );
   }
 }
