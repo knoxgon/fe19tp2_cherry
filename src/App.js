@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from "./Header/header";
+import Navbar from "./Navbar/navbar";
 import Footer from "./Footer/footer";
 // import PrivateRoute from './__route/private';
 import Account from './Account/account';
@@ -47,7 +47,7 @@ class App extends React.Component {
   render() {
     return (
       <StyledApp>
-        <Header />
+        <Navbar />
         <Switch>
           <Route exact path="/" />
           <Route exact path="/account" component={Account} />
