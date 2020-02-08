@@ -10,13 +10,13 @@ import {
   StyledLogo,
   Menu,
   StyledImgLogo
-} from './styledHeader';
+} from './styledNavbar';
 
 import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 
-class Header extends React.Component {
+class Navbar extends React.Component {
 
   mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
 
@@ -84,4 +84,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(Navbar);
