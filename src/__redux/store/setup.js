@@ -11,6 +11,6 @@ export const store = createStore(rootReducer,
       thunk.withExtraArgument({
         getFirebase})
       ),
-      reactReduxFirebase(firebase)
+      reactReduxFirebase(firebase, { attachAuthIsReady: true })
     )
   );
