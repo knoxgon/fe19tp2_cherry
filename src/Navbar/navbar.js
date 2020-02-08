@@ -2,19 +2,10 @@ import React from 'react';
 import Logo from "../assets/logo_transparent.png";
 import Theme from "../__config/theme";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import {
-  Nav,
-  MenuItems,
-  A,
-  AccountA,
-  StyledLogo,
-  Menu,
-  StyledImgLogo
-} from './styledNavbar';
-
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
+import { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo } from './styledNavbar';
+
 
 class Navbar extends React.Component {
 
