@@ -3,31 +3,17 @@ import SparbankenLogo from "../Images/new-swedbank-transparent.png";
 import AddUser from "../Images/add-user.png";
 import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
 import ApiIcon from '../Images/API-icon.png'
+import { connect } from 'react-redux';
+import { signout } from '../__redux/actions/authActions';
 
-
-import {
-  Wrapper,
-  SparbankenImg,
-  Styleddiv,
-  StyledH2,
-  StyledAddUser,
-  UserFunctionDiv,
-  StyledP,
-  StyledGraph,
-  StyledLogout,
-  LogoutDiv,
-  StyledApiIcon,
-  StyledPtag,
-  BorderUnderline
-
-} from './styledAccount';
+import { Wrapper, SparbankenImg, Styleddiv, StyledH2, StyledAddUser, UserFunctionDiv, StyledP, StyledGraph, StyledLogout, LogoutDiv, StyledApiIcon, StyledPtag, BorderUnderline } from './styledAccount';
 
 
 
 class Account extends React.Component {
 
-  logutBtn() {
-    this.props.history.push("/login");
+  logutBtn = () => {
+    this.props.signout();
   }
 
   render() {
@@ -66,5 +52,10 @@ class Account extends React.Component {
   }
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signout: () => dispatch(signout())
+  }
+}
 
-export default Account;
+export default connect(null, mapDispatchToProps)(Account);
