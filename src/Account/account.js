@@ -9,9 +9,7 @@ import { signout } from '../__redux/actions/authActions';
 import { Wrapper, SparbankenImg, Styleddiv, StyledH2, StyledAddUser, UserFunctionDiv, StyledP, StyledGraph, StyledLogout, LogoutDiv, StyledApiIcon, StyledPtag, BorderUnderline } from './styledAccount';
 
 
-
 class Account extends React.Component {
-
   logutBtn = () => {
     this.props.signout();
   }
