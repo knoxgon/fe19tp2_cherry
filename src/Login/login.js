@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoginArea, LoginLogo, InputArea, InputImage, UsernameInput, LoginButton, ErrorArea } from './styledLogin';
-import fireapp from '../config/firebase'
+import { connect } from 'react-redux';
+import { signin } from '../__redux/actions/authActions';
 
 class Login extends React.Component {
   constructor(props) {
@@ -9,24 +10,12 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
-
-      feedback: '',
-      loading: false
     }
   }
 
   handleLogin = (e) => {
     e.preventDefault();
-    
-    const { email, password } = e.target.elements;
-      fireapp.auth().signInWithEmailAndPassword(email.value, password.value)
-      .then(success => {
-        this.props.history.push("/account");
-      })
-      .catch(fail => {
-        this.setState({feedback: fail.message});
-      });
-
+    this.props.signin(this.state);
   }
 
   onChangeUsernameHandler = (e) => {
@@ -50,10 +39,24 @@ class Login extends React.Component {
           <UsernameInput placeholder="Password" name="password" type="password" onChange={this.onChangePasswordHandler.bind(this)}></UsernameInput>
         </InputArea>
         <LoginButton type="submit">Login</LoginButton>
-        {this.state.feedback ? <ErrorArea >{this.state.feedback}</ErrorArea> : null}
+        {this.props.authError ? <ErrorArea >{this.props.authError}</ErrorArea> : null}
       </LoginArea>
     );
   }
 }
 
-export default Login;
+//authError is linked through auth reducer
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signin: (credentials) => dispatch(signin(credentials))
+  }
+}
+
+//First parameter is state, second dispatch
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
