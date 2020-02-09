@@ -3,7 +3,7 @@ import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_OUT } from "./types"
 
 
 export const signin = (credentials) => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
       .then(() => {
@@ -21,7 +21,7 @@ export const signin = (credentials) => {
 }
 
 export const signout = () => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();
     firebase.auth().signOut()
       .then(() => {

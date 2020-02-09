@@ -24,7 +24,7 @@ const ClientCompanyLogo = styled.img`
 
   justify-content: center;
   width: 9rem;
-  height: auto;
+  max-height:100%;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-right: 2rem;
@@ -35,6 +35,7 @@ const ClientArea = styled.div`
   display: flex;
   align-items: center;
   background-color: #efefef;
+  height: 10rem;
 `;
 
 const ClientNameArea = styled.h2`

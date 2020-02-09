@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from "./components/Navbar/navbar";
 import Footer from "./components/Footer/footer";
-import { firebase } from './__config/firebase'
 import Routes from './__route/routes';
 
 const StyledApp = styled.div`
@@ -10,42 +9,14 @@ const StyledApp = styled.div`
   height:100%;
 `;
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    
-    this.state = {
-      loading: false,
-      authenticated: false,
-      currentUser: null
-    }
-
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.setState({
-          authenticated: true,
-          currentUser: user,
-          loading: false
-        });
-      } else {
-        this.setState({
-          authenticated: false,
-          currentUser: null,
-          loading: false
-        });
-      }
-    });
-  }
-  
-  render() {
-    return (
-      <StyledApp>
-        <Navbar />
-        <Routes></Routes>
-        <Footer />        
-      </StyledApp>
-    );
-  }
+const App = () => {
+  return (
+    <StyledApp>
+      <Navbar />
+      <Routes />
+      <Footer />
+    </StyledApp>
+  );
 }
 
 export default App;
