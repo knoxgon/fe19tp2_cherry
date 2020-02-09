@@ -14,8 +14,8 @@ class Navbar extends React.Component {
     })
   }
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       showMenu: false,
       isMobile: this.mediaQuery.matches
