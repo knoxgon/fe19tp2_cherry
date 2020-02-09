@@ -43,6 +43,12 @@ const ClientNameArea = styled.h2`
 `;
 
 const FeatureImage = styled.img`
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   width: 5rem;
   height: 5rem;
 `;
@@ -56,6 +62,10 @@ const FeatureArea = styled.div`
 
   &:nth-last-child(3) {
     width: 21.7rem;
+  }
+
+  &:nth-last-child(4) {
+    width: 17.6rem;
   }
 
   &:nth-last-child(1) {
@@ -72,6 +82,12 @@ const FeatureArea = styled.div`
 `;
 
 const FeatureDescription = styled.p`
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   font-size: 2rem;
   font-weight: bold;
   margin-block-start: 1rem;
@@ -85,12 +101,26 @@ const BorderUnderline = styled.div`
   background-color: #dddddd;
 `;
 
+const MainArea = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 const FeatureWrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 5rem;
+  border: 1px solid;
 `;
 
+const FeatureContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+  margin-left: 5rem;
+  width: 50rem;
+  border: 1px solid;
+`;
 
 export {
   Wrapper,
@@ -101,5 +131,7 @@ export {
   FeatureArea,
   FeatureDescription,
   BorderUnderline,
-  FeatureWrapper
+  FeatureWrapper,
+  MainArea,
+  FeatureContainer
 }
