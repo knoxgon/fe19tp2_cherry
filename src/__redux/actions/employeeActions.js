@@ -1,4 +1,5 @@
 import { ADD_EMPLOYEE_FAILURE, ADD_EMPLOYEE_SUCCESS } from "./types";
+import { firebaseEmployeeCreationInstance } from '../../__config/firebase';
 
 export const addEmployee = (info) => {
   return (dispatch, getState, { getFirestore, getFirebase }) => {
@@ -6,7 +7,7 @@ export const addEmployee = (info) => {
     const firestore = getFirestore();
     const user_uid = firebase.auth().currentUser.uid;
 
-    firebase.auth().createUserWithEmailAndPassword(info.email, info.password)
+    firebaseEmployeeCreationInstance.auth().createUserWithEmailAndPassword(info.email, info.password)
       .then(() => {
         const newEmployee = {
           firstname: info.firstname,
