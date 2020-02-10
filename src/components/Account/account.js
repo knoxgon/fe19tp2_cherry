@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import IconAddUser from "../../assets/account/adduser.svg";
+import IconListUsers from "../../assets/account/listusers.svg";
 import IconBarChart from '../../assets/account/barchart.svg';
 import IconApi from '../../assets/account/api.svg';
 import IconLogout from '../../assets/account/logout.svg';
 import { connect } from 'react-redux';
 import { signout } from '../../__redux/actions/authActions';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import { Wrapper, FeatureWrapper, ClientCompanyLogo, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAccount';
+import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAccount';
 import { getInfo } from '../../__redux/actions/userInfoActions';
+import AddClient from '../AddClient/addClient';
+
 
 const Account = ({ userinfo, signout, info, userprofile }) => {
   const [img, setImg] = useState(null)
-  const [loaded, setLoaded] = useState(false)
+  const [stateAddUser, setStateAddUser] = useState(false)
+  const [stateDisplayUser, setStateDisplayUser] = useState(false)
 
   const logutBtn = () => {
     signout()
@@ -20,14 +22,21 @@ const Account = ({ userinfo, signout, info, userprofile }) => {
   useEffect(() => {
     info();
     setImg(userinfo);
-    setLoaded(true);
     return () => {
       setImg(null)
     }
   }, [userinfo, signout, info, userprofile])
-  
+
+  const toggleStateAddUser = () => {
+    setStateDisplayUser(false)
+    setStateAddUser(!stateAddUser)
+  }
+  const toggleStateDisplayUser = () => {
+    setStateAddUser(false)
+    setStateDisplayUser(!stateDisplayUser)
+  }
+
   return (
-    loaded ? 
     <Wrapper>
       <ClientArea>
         <ClientCompanyLogo src={img} />
@@ -35,28 +44,40 @@ const Account = ({ userinfo, signout, info, userprofile }) => {
       </ClientArea>
       <BorderUnderline></BorderUnderline>
 
-      <FeatureWrapper>
-        <FeatureArea>
-          <FeatureImage src={IconAddUser} />
-          <FeatureDescription>Add user</FeatureDescription>
-        </FeatureArea>
+      <MainArea>
+        <FeatureWrapper>
+          <FeatureArea onClick={toggleStateAddUser}>
+            <FeatureImage src={IconAddUser} />
+            <FeatureDescription>Add user</FeatureDescription>
+          </FeatureArea>
 
-        <FeatureArea>
-          <FeatureImage src={IconBarChart} />
-          <FeatureDescription>Generate graph</FeatureDescription>
-        </FeatureArea>
+          <FeatureArea onClick={toggleStateDisplayUser}>
+            <FeatureImage src={IconListUsers} />
+            <FeatureDescription>Show users</FeatureDescription>
+          </FeatureArea>
 
-        <FeatureArea>
-          <FeatureImage src={IconApi} />
-          <FeatureDescription>Get data</ FeatureDescription>
-        </FeatureArea>
-        
-        <FeatureArea onClick={() => logutBtn()}>
-          <FeatureImage src={IconLogout} />
-          <FeatureDescription>Sign out</FeatureDescription>
-        </FeatureArea>
-      </FeatureWrapper>
-    </Wrapper> : null
+          <FeatureArea>
+            <FeatureImage src={IconBarChart} />
+            <FeatureDescription>Generate graph</FeatureDescription>
+          </FeatureArea>
+
+          <FeatureArea>
+            <FeatureImage src={IconApi} />
+            <FeatureDescription>Get data</ FeatureDescription>
+          </FeatureArea>
+          
+          <FeatureArea onClick={() => logutBtn()}>
+            <FeatureImage src={IconLogout} />
+            <FeatureDescription>Sign out</FeatureDescription>
+          </FeatureArea>
+        </FeatureWrapper>
+
+        <FeatureContainer>
+          {stateAddUser ? <AddClient></AddClient> : null}
+        </FeatureContainer>
+      </MainArea>
+
+    </Wrapper>
   );
 }
 
@@ -75,9 +96,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([
-    { collection: 'clients' }
-  ])
-)(Account);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Account);
