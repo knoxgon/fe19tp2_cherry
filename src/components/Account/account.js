@@ -8,8 +8,7 @@ import { connect } from 'react-redux';
 import { signout } from '../../__redux/actions/authActions';
 import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAccount';
 import { getInfo } from '../../__redux/actions/userInfoActions';
-import AddClient from '../AddClient/addClient';
-
+import AddEmployee from '../../components/AddEmployee/addEmployee';
 
 const Account = ({ userinfo, signout, info, userprofile }) => {
   const [img, setImg] = useState(null)
@@ -73,7 +72,7 @@ const Account = ({ userinfo, signout, info, userprofile }) => {
         </FeatureWrapper>
 
         <FeatureContainer>
-          {stateAddUser ? <AddClient></AddClient> : null}
+          {stateAddUser ? <AddEmployee></AddEmployee> : null}
         </FeatureContainer>
       </MainArea>
 
