@@ -16,6 +16,10 @@ const fireconf = {
 
 firebase.initializeApp(fireconf)
 
+var firebaseEmployeeCreationInstance = firebase.initializeApp(fireconf, "CreateEmployee");
+
+
 export {
-  firebase
+  firebase,
+  firebaseEmployeeCreationInstance
 }
