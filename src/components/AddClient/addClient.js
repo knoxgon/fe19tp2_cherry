@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addClient } from '../../__redux/actions/clientActions';
+import { EmployeeForm } from '../AddClient/styledAddClient';
 
 const AddClient = (props) => {
   const [info, setInfo] = useState({ email: '', password: '', firstname: '', lastname: '', role: '', company: '', plan: '', period: '', logo: '' })
