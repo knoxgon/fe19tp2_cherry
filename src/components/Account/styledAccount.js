@@ -11,8 +11,8 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
     
   }
 `;
@@ -82,6 +82,7 @@ const FeatureArea = styled.div`
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       margin-top: 0rem;
       flex-direction: column;
+      
     }
   }
 
@@ -128,7 +129,11 @@ const FeatureWrapper = styled.div`
   display: flex;
   flex-direction: column;
   /* margin-top: 5rem; */
-  border: 1px solid;
+  // border: 1px solid;'
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    width: 10rem;
+  }
 `;
 
 const FeatureContainer = styled.div`
@@ -137,12 +142,11 @@ const FeatureContainer = styled.div`
   margin-top: 5rem;
   margin-left: 5rem;
   width: 50rem;
-  border: 1px solid;
+  // border: 1px solid;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
     padding: 0;
-    max-width: 89vw;
     padding-bottom: 10rem;
     margin-bottom: 7.5rem;
   }
