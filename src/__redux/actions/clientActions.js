@@ -13,11 +13,13 @@ export const addClient = (info) => {
             firstname: info.firstname,
             lastname: info.lastname,
             role: info.role,
+            logo: info.logo,
             company: info.company,
             subscription: {
               plan: info.plan,
               period: info.period
-            }
+            },
+            users: []
           })
       }).then(() => {
         dispatch({

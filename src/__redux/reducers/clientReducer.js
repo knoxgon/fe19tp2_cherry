@@ -5,7 +5,7 @@ const initialState = {
   feedback: null
 }
 
-export const clientReduder = (state = initialState, action) => {
+export const clientReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_CLIENT_SUCCESS:
       return {
