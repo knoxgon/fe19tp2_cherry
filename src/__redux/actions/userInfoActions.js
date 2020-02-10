@@ -8,11 +8,14 @@ export const getInfo = () => {
     const userid = firebase.auth().currentUser.uid;
     firestore.collection('clients').doc(userid).get()
       .then((res) => {
-        const logo = res.data().logo;
+        const { logo, role } = res.data();
         firebase.storage().ref(logo).getDownloadURL().then((imgurl) => {
           dispatch({
             type: USER_INFO_FETCH_SUCCESS,
-            payload: imgurl
+            payload: {
+              imgurl: imgurl,
+              role: role
+            }
           })
         })
       })
