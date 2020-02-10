@@ -8,7 +8,7 @@ export const getInfo = () => {
     const userid = firebase.auth().currentUser.uid;
     firestore.collection('clients').doc(userid).get()
       .then((res) => {
-        const logo = res.data().logo_location;
+        const logo = res.data().logo;
         firebase.storage().ref(logo).getDownloadURL().then((imgurl) => {
           dispatch({
             type: USER_INFO_FETCH_SUCCESS,
