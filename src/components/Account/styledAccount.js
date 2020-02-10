@@ -12,8 +12,9 @@ const Wrapper = styled.div`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 2rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+    
   }
 `;
 
@@ -52,6 +53,13 @@ const FeatureImage = styled.img`
   user-select: none;
   width: 5rem;
   height: 5rem;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    display: flex;
+    flex-direction: row;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
 `;
 
 const FeatureArea = styled.div`
@@ -74,6 +82,8 @@ const FeatureArea = styled.div`
 
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       margin-top: 0rem;
+      flex-direction: column;
+      
     }
   }
 
@@ -94,6 +104,10 @@ const FeatureDescription = styled.p`
   margin-block-start: 1rem;
   margin-block-end: 1rem;
   margin-left: 2rem;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    font-size: 1rem;
+  }
 `;
 
 const BorderUnderline = styled.div`
@@ -105,13 +119,22 @@ const BorderUnderline = styled.div`
 const MainArea = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    flex-direction: column;
+
+  }
 `;
 
 const FeatureWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 5rem;
-  border: 1px solid;
+  /* margin-top: 5rem; */
+  // border: 1px solid;'
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    width: 10rem;
+  }
 `;
 
 const FeatureContainer = styled.div`
@@ -120,7 +143,14 @@ const FeatureContainer = styled.div`
   margin-top: 5rem;
   margin-left: 5rem;
   width: 50rem;
-  border: 1px solid;
+  // border: 1px solid;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    margin: 0;
+    padding: 0;
+    padding-bottom: 10rem;
+    margin-bottom: 7.5rem;
+  }
 `;
 
 export {
