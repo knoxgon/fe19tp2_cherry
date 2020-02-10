@@ -13,6 +13,10 @@ const StyledFooter = styled.footer`
   height: 5rem;
   border-top: 0.02rem solid #dddddd;
   background-color: ${Theme.colors.beige};
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    display: none;
+  }
 `;
 
 const P = styled.p`
