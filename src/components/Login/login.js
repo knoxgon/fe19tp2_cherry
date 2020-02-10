@@ -19,7 +19,7 @@ const Login = (props) => {
   }
 
   return (
-    props.uid ? <Redirect to='/account'/> :
+    (props.uid && (props.userinfo.role === 'Admin' || props.userinfo.role === 'Employee')) ? <Redirect to='/account'/> :
       <LoginContainerArea>
         <LoginArea onSubmit={handleLogin}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
@@ -42,7 +42,8 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     uid: state.firebase.auth.uid,
-    authError: state.auth.authError
+    authError: state.auth.authError,
+    userinfo: state.userinfo.info
   }
 }
 
