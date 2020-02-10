@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Theme from "../../__config/theme";
+import Theme from "../../../__config/theme";
 
 
 const Wrapper = styled.div`

@@ -1,7 +1,10 @@
 import { USER_INFO_FETCH_SUCCESS, USER_INFO_FETCH_FAILURE } from "../actions/types";
 
 const initialState = {
-  info: null
+  info: {
+    logo: null,
+    role: null
+  }
 }
 
 export const userInfoReducer = (state = initialState, action) => {
@@ -9,7 +12,10 @@ export const userInfoReducer = (state = initialState, action) => {
     case USER_INFO_FETCH_SUCCESS:
       return {
         ...state,
-        info: action.payload
+        info: {
+          logo: action.payload.imgurl,
+          role: action.payload.role
+        }
       }
     case USER_INFO_FETCH_FAILURE:
       return {
