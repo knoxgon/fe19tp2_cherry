@@ -59,22 +59,34 @@ const FeatureImage = styled.img`
     flex-direction: row;
     width: 2.5rem;
     height: 2.5rem;
+    // margin-left: 2rem;
   }
 `;
 
 const FeatureArea = styled.div`
-  display: inline-flex;
+  // display: inline-flex;
   vertical-align: middle;
   margin-bottom: 2rem;
   width: 15.5rem;
   cursor: pointer;
 
+
   &:nth-last-child(3) {
     width: 21.7rem;
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      margin-left: 4rem;
+      width: 5rem;
+    }
   }
 
   &:nth-last-child(4) {
     width: 17.6rem;
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+
+      width: 5rem;
+    }
   }
 
   &:nth-last-child(1) {
@@ -82,14 +94,23 @@ const FeatureArea = styled.div`
 
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       margin-top: 0rem;
-      flex-direction: column;
-      
+      width: 5rem;
     }
   }
 
   &:hover {
     transform: scale(1.1);
   }
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 0rem;
+    width: 2rem;
+    margin-left: 5rem;
+  }
+
 `;
 
 const FeatureDescription = styled.p`
@@ -107,6 +128,7 @@ const FeatureDescription = styled.p`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     font-size: 1rem;
+    margin: 0;
   }
 `;
 
@@ -127,13 +149,18 @@ const MainArea = styled.div`
 `;
 
 const FeatureWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   /* margin-top: 5rem; */
-  // border: 1px solid;'
+  // border: 1px solid;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    width: 10rem;
+    // width: 10rem;
+    // flex-direction: row;
+    // justify-content: space-between;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 
@@ -150,6 +177,7 @@ const FeatureContainer = styled.div`
     padding: 0;
     padding-bottom: 10rem;
     margin-bottom: 7.5rem;
+    width: 100%;
   }
 `;
 

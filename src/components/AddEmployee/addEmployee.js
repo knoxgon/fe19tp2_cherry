@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addEmployee } from '../../__redux/actions/employeeActions';
-
+import { EmployeeForm } from '../AddEmployee/styledAddEmployee';
+ 
 const AddEmployee = (props) => {
   const [info, setInfo] = useState({ email: '', password: '', firstname: '', lastname: '' })
 
@@ -16,7 +17,7 @@ const AddEmployee = (props) => {
   }
 
   return (
-      <form onSubmit = { onEmployeeRegistration }>
+      <EmployeeForm onSubmit = { onEmployeeRegistration }>
         <input placeholder="Email" type="email" name="email" onChange={onInputChangeHandler} autoComplete="new-password"></input>
         <br/>
         <input placeholder="Password" type="password" name="password" onChange={onInputChangeHandler}></input>
@@ -28,7 +29,7 @@ const AddEmployee = (props) => {
         {props.feedback ? <div>Message: {props.feedback}</div> : null }
         <br/>
         <button type="submit">Add</button>
-      </form>
+      </EmployeeForm>
   );
 }
 
