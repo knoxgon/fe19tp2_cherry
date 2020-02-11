@@ -92,6 +92,7 @@ const FeatureArea = styled.div`
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       margin-top: 0rem;
       width: 10rem; 
+      margin-left: 5rem;
     }
   }
 
