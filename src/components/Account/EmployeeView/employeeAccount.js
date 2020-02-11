@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import IconBarChart from '../../../assets/account/barchart.svg';
 import IconApi from '../../../assets/account/api.svg';
 import IconLogout from '../../../assets/account/logout.svg';
 import { connect } from 'react-redux';
+import TemporaryCompanyLogo from '../../../assets/account/temporary-klarna-logo.png';
 import { signout } from '../../../__redux/actions/authActions';
 import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledEmployeeAccount';
-import { getInfo } from '../../../__redux/actions/userInfoActions';
+// import { getInfo } from '../../../__redux/actions/userInfoActions';
 
 
-const EmployeeAccount = ({ userinfo, signout, info, userprofile }) => {
-  const [logo, setLogo] = useState('')
+const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
+  // const [logo, setLogo] = useState('')
 
   const logutBtn = () => {
     signout()
   }
 
-  useEffect(() => {
-    info();
-    setLogo(userinfo.logo);
-    return () => {
-      setLogo('')
-    }
-  }, [info, userinfo.logo])
+  // useEffect(() => {
+  //   info();
+  //   setLogo(userinfo.logo);
+  //   return () => {
+  //     setLogo('')
+  //   }
+  // }, [info, userinfo.logo])
 
   return (
     <Wrapper>
       <ClientArea>
-        <ClientCompanyLogo src={logo} />
-        <ClientNameArea>{userprofile.firstname + ' ' + userprofile.lastname}</ClientNameArea>
+        <ClientCompanyLogo src={TemporaryCompanyLogo} />
+        <ClientNameArea>Mia Val</ClientNameArea>
       </ClientArea>
       <BorderUnderline></BorderUnderline>
 
@@ -57,20 +58,21 @@ const EmployeeAccount = ({ userinfo, signout, info, userprofile }) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth,
-    userprofile: state.firebase.profile,
-    userinfo: state.userinfo.info
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     auth: state.firebase.auth,
+//     userprofile: state.firebase.profile,
+//     userinfo: state.userinfo.info
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
+  console.log(dispatch)
   return {
-    info: () => dispatch(getInfo()),
+    // info: () => dispatch(getInfo()),
     signout: () => dispatch(signout())
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeeAccount);
+export default connect(null, mapDispatchToProps)(EmployeeAccount);
