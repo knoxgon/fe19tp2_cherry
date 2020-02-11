@@ -108,6 +108,7 @@ const FeatureArea = styled.div`
     justify-content: flex-start;
     margin-top: 0rem;
     width: 2rem;
+    margin-left: 5rem;
   }
 
 `;
