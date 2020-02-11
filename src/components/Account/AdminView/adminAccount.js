@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import IconAddUser from "../../../assets/account/adduser.svg";
 import IconListUsers from "../../../assets/account/listusers.svg";
 import IconLogout from '../../../assets/account/logout.svg';
+import TemporaryCompanyLogo from '../../../assets/account/temporary-klarna-logo.png';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
 import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAdminAccount';
-import { getInfo } from '../../../__redux/actions/userInfoActions';
+// import { getInfo } from '../../../__redux/actions/userInfoActions';
 import AddEmployee from '../../AddEmployee/addEmployee';
 
 
-const AdminAccount = ({ userinfo, signout, info, userprofile }) => {
-  const [logo, setLogo] = useState('')
+const AdminAccount = ({ /*userinfo*/ signout, /*info, userprofile*/ }) => {
+  // const [logo, setLogo] = useState('')
   const [stateAddUser, setStateAddUser] = useState(false)
   const [stateDisplayUser, setStateDisplayUser] = useState(false)
 
@@ -18,15 +19,14 @@ const AdminAccount = ({ userinfo, signout, info, userprofile }) => {
     signout()
   }
 
-  useEffect(() => {
-    info();
-    setLogo(userinfo.logo);
-    console.log('admin hej')
+  // useEffect(() => {
+  //   // info();
+  //   // setLogo(userinfo.logo);
 
-    return () => {
-      setLogo('')
-    }
-  }, [info, userinfo.logo])
+  //   return () => {
+  //     setLogo('')
+  //   }
+  // }, [info, userinfo.logo])
 
   const toggleStateAddUser = () => {
     setStateDisplayUser(false)
@@ -40,8 +40,8 @@ const AdminAccount = ({ userinfo, signout, info, userprofile }) => {
   return (
     <Wrapper>
       <ClientArea>
-        <ClientCompanyLogo src={logo} />
-        <ClientNameArea>{userprofile.firstname + ' ' + userprofile.lastname}</ClientNameArea>
+        <ClientCompanyLogo src={TemporaryCompanyLogo} />
+        <ClientNameArea>John Doe</ClientNameArea>
       </ClientArea>
       <BorderUnderline></BorderUnderline>
 
@@ -72,20 +72,20 @@ const AdminAccount = ({ userinfo, signout, info, userprofile }) => {
   );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.firebase.auth,
-    userprofile: state.firebase.profile,
-    userinfo: state.userinfo.info
-  }
-}
+// const mapStateToProps = (state) => {
+//   return {
+//     auth: state.firebase.auth,
+//     userprofile: state.firebase.profile,
+//     userinfo: state.userinfo.info
+//   }
+// }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    info: () => dispatch(getInfo()),
+    // info: () => dispatch(getInfo()),
     signout: () => dispatch(signout())
   }
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(AdminAccount);
+export default connect(null, mapDispatchToProps)(AdminAccount);

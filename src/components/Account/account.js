@@ -8,7 +8,6 @@ import EmployeeAccount from '../Account/EmployeeView/employeeAccount';
 const Account = ({ userinfo, info }) => {
   useEffect(() => {
     info();
-    console.log('hi')
   }, [info])
 
   return (userinfo.role === 'Admin' ? <AdminAccount/> : <EmployeeAccount/>)
