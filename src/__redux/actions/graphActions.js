@@ -1,3 +1,4 @@
+import { GRAPH_LOADING_FAILURE, GRAPH_LOADING_SUCCESS } from "./types";
 import React, {Component} from 'react';
 import { Line, Doughnut  } from 'react-chartjs-2';
 
