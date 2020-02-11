@@ -63,7 +63,7 @@ const FeatureImage = styled.img`
 `;
 
 const FeatureArea = styled.div`
-  display: inline-flex;
+  // display: inline-flex;
   vertical-align: middle;
   margin-bottom: 2rem;
   width: 15.5rem;
