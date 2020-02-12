@@ -15,7 +15,7 @@ export const addClient = (info) => {
             role: info.role,
             logo: info.logo,
             company: info.company,
-            companyColor: info.color,
+            companyColor: info.companyColor,
             subscription: {
               plan: info.plan,
               period: info.period
