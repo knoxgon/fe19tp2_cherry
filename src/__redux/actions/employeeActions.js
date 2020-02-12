@@ -11,7 +11,8 @@ export const addEmployee = (info) => {
     firebaseEmployeeCreationInstance.auth().createUserWithEmailAndPassword(info.email, info.password)
       .then((res) => {
         firestore.collection('clients').doc(admin_user_uid).get().then((admresult) => {
-          return {company: admresult.data().company, logo: admresult.data().logo, subscription: admresult.data().subscription}
+          const { company, logo, subscription, companyColor } = admresult.data();
+          return {company, logo, subscription, companyColor}
         }).then((compInfo) => {
           firestore.collection('clients').doc(res.user.uid).set({
             adminId: admin_user_uid,
@@ -19,6 +20,7 @@ export const addEmployee = (info) => {
             lastname: info.lastname,
             role: 'Employee',
             company: compInfo.company,
+            companyColor: compInfo.companyColor,
             logo: compInfo.logo,
             subscription: {
               period: compInfo.subscription.period,
