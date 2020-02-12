@@ -1,14 +1,13 @@
-import styled from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Theme from "../../__config/theme";
-
 
 const Nav = styled.nav`
   width: 100%;
   height: auto;
   display: flex;
   align-items: center;
-  background-color: ${Theme.colors.beige};
+  background-color: ${props => props.navColor};
   border-bottom: 0.02rem solid #dddddd;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
@@ -56,11 +55,10 @@ const A = styled.p`
     }
   }
 
-
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 1rem;
     margin-right: 0;
-    width: 100%;  
+    width: 100%;
   }
 `;
 
@@ -112,13 +110,4 @@ const StyledImgLogo = styled.img`
   width: 14rem;
 `;
 
-
-export {
-  Nav,
-  MenuItems,
-  A,
-  AccountA,
-  StyledLogo,
-  Menu,
-  StyledImgLogo
-}
+export { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo };
