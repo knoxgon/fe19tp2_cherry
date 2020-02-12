@@ -4,7 +4,7 @@ import Theme from "../../__config/theme";
 
 const Nav = styled.nav`
   width: 100%;
-  height: auto;
+  height: 12rem;
   display: flex;
   align-items: center;
   background-color: ${props => props.navColor};
@@ -107,7 +107,8 @@ const Menu = styled(FontAwesomeIcon)`
 `;
 
 const StyledImgLogo = styled.img`
-  width: 14rem;
+  width: 13rem;
+  height: 10rem;
 `;
 
 export { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo };
