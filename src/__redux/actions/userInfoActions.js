@@ -4,7 +4,14 @@ export const getInfo = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const firebase = getFirebase();
-    const userid = firebase.auth().currentUser.uid;
+
+    if(!firebase.auth().currentUser) {
+      dispatch({
+        type: USER_INFO_FETCH_FAILURE,
+        payload: null
+      });
+    } else {
+      const userid = firebase.auth().currentUser.uid;;
     firestore
       .collection("clients")
       .doc(userid)
@@ -33,5 +40,6 @@ export const getInfo = () => {
           payload: null
         });
       });
+    }
   };
 };

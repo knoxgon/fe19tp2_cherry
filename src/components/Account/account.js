@@ -9,11 +9,11 @@ const Account = ({ userinfo, info }) => {
   const [role, setRole] = useState('');
 
   useEffect(() => {
-    info(userinfo.role);
-    setRole(role);
-  }, [info, role, userinfo.role])
+    setRole(userinfo.role);
+    
+  }, [userinfo, userinfo.role])
 
-  return (userinfo && userinfo.role === 'Admin' ? <AdminAccount/> : <EmployeeAccount/>)
+  return (userinfo && role === 'Admin' ? <AdminAccount/> : <EmployeeAccount/>)
 }
 
 const mapStateToProps = (state) => {

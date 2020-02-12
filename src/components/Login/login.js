@@ -41,8 +41,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     uid: state.firebase.auth.uid,
-    authError: state.auth.authError,
-    userinfo: state.userinfo.info
+    authError: state.auth.authError
   }
 }
 
