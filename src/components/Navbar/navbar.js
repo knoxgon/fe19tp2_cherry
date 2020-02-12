@@ -86,7 +86,6 @@ const Navbar = props => {
 };
 
 const mapStateToProps = state => {
-  console.log("hej");
   return {
     userInfo: state.userinfo.info,
     authStatus: state.firebase.auth.isEmpty
