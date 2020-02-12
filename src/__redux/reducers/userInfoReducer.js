@@ -7,7 +7,8 @@ const initialState = {
   info: {
     logo: null,
     role: null,
-    companyColor: null
+    companyColor: null,
+    fullName: null
   }
 };
 
@@ -19,7 +20,8 @@ export const userInfoReducer = (state = initialState, action) => {
         info: {
           logo: action.payload.imgurl,
           role: action.payload.role,
-          companyColor: action.payload.companyColor
+          companyColor: action.payload.companyColor,
+          fullName: action.payload.fullName
         }
       };
     case USER_INFO_FETCH_FAILURE:
