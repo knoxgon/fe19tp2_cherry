@@ -19,7 +19,7 @@ const Login = (props) => {
   }
 
   return (
-    (props.uid && (props.userinfo.role === 'Admin' || props.userinfo.role === 'Employee')) ? <Redirect to='/account'/> :
+    (props.uid) ? <Redirect to='/account'/> :
       <LoginContainerArea>
         <LoginArea onSubmit={handleLogin}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
@@ -38,7 +38,6 @@ const Login = (props) => {
   )
 }
 
-//authError is linked through auth reducer
 const mapStateToProps = (state) => {
   return {
     uid: state.firebase.auth.uid,

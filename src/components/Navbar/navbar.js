@@ -31,7 +31,7 @@ const Navbar = props => {
 
   useEffect(() => {
     mediaQuery.addListener(listenerMobileSize);
-    if (!props.userInfo.logo) {
+    if (props.authStatus) {
       setCompanyColor(Theme.colors.beige);
       setLogo(Logo);
       setFullName("Account");
@@ -49,6 +49,7 @@ const Navbar = props => {
     };
   }, [
     mediaQuery,
+    props.authStatus,
     props.userInfo.logo,
     props.userInfo.companyColor,
     props.userInfo.fullName

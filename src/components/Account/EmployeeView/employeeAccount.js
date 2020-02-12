@@ -14,62 +14,39 @@ import {
   FeatureDescription,
   BorderUnderline
 } from "./styledEmployeeAccount";
-// import { getInfo } from '../../../__redux/actions/userInfoActions';
 
-const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
-  // const [logo, setLogo] = useState('')
+const EmployeeAccount = ({ signout }) => {
 
   const logutBtn = () => {
     signout();
   };
 
-  // useEffect(() => {
-  //   info();
-  //   setLogo(userinfo.logo);
-  //   return () => {
-  //     setLogo('')
-  //   }
-  // }, [info, userinfo.logo])
-
   return (
     <Wrapper>
       <BorderUnderline></BorderUnderline>
-
       <MainArea>
         <FeatureWrapper>
           <FeatureArea>
             <FeatureImage src={IconBarChart} />
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
-
           <FeatureArea>
             <FeatureImage src={IconApi} />
             <FeatureDescription>Get data</FeatureDescription>
           </FeatureArea>
-
-          <FeatureArea onClick={() => logutBtn()}>
+          <FeatureArea onClick={logutBtn}>
             <FeatureImage src={IconLogout} />
             <FeatureDescription>Sign out</FeatureDescription>
           </FeatureArea>
         </FeatureWrapper>
-
         <FeatureContainer></FeatureContainer>
       </MainArea>
     </Wrapper>
   );
 };
 
-// const mapStateToProps = (state) => {
-//   return {
-//     auth: state.firebase.auth,
-//     userprofile: state.firebase.profile,
-//     userinfo: state.userinfo.info
-//   }
-// }
-
 const mapDispatchToProps = dispatch => {
   return {
-    // info: () => dispatch(getInfo()),
     signout: () => dispatch(signout())
   };
 };
