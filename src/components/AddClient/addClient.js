@@ -56,6 +56,7 @@ const AddClient = (props) => {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     feedback: state.client.feedback
   }
