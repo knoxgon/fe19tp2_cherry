@@ -19,6 +19,7 @@ const Navbar = props => {
   const [showMenu, setShowMenu] = useState(false);
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
+  const [fullName, setFullName] = useState("");
 
   const mediaQuery = window.matchMedia(
     "(max-width: " + Theme.screenSize.xsmall + ")"
@@ -33,16 +34,25 @@ const Navbar = props => {
     if (!props.userInfo.logo) {
       setCompanyColor(Theme.colors.beige);
       setLogo(Logo);
+      setFullName("Account");
     } else {
       setLogo(props.userInfo.logo);
       setCompanyColor(props.userInfo.companyColor);
+      setFullName(props.userInfo.fullName);
     }
 
     return () => {
       mediaQuery.removeListener(listenerMobileSize);
       setLogo(Logo);
+      setCompanyColor(Theme.colors.beige);
+      setFullName("Account");
     };
-  }, [mediaQuery, props.userInfo.logo, props.userInfo.companyColor]);
+  }, [
+    mediaQuery,
+    props.userInfo.logo,
+    props.userInfo.companyColor,
+    props.userInfo.fullName
+  ]);
 
   const menuBtnClick = () => {
     setIsMobile(isMobile);
@@ -76,7 +86,7 @@ const Navbar = props => {
       </StyledLogo>
       {renderMenu()}
       <AccountA>
-        <Link to="/account">Account</Link>
+        <Link to="/account">{fullName}</Link>
       </AccountA>
       <i>
         <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} />
