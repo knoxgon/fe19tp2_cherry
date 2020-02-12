@@ -1,64 +1,89 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import Logo from "../../assets/logo_transparent.png";
 import Theme from "../../__config/theme";
-import * as IconesSolid from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo } from './styledNavbar';
+import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
+import {
+  Nav,
+  MenuItems,
+  A,
+  AccountA,
+  StyledLogo,
+  Menu,
+  StyledImgLogo
+} from "./styledNavbar";
 
-class Navbar extends React.Component {
-  mediaQuery = window.matchMedia('(max-width: ' + Theme.screenSize.xsmall + ')')
+const Navbar = props => {
+  const [isMobile, setIsMobile] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const [logo, setLogo] = useState("");
 
-  listnerMobileSize = (event) => {
-    this.setState({
-      isMobile: event.matches
-    })
-  }
+  const mediaQuery = window.matchMedia(
+    "(max-width: " + Theme.screenSize.xsmall + ")"
+  );
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      showMenu: false,
-      isMobile: this.mediaQuery.matches
+  const listenerMobileSize = event => {
+    setIsMobile(event.matches);
+  };
+
+  useEffect(() => {
+    mediaQuery.addListener(listenerMobileSize);
+    if (!props.userInfo.logo) {
+      setLogo(Logo);
+    } else {
+      setLogo(props.userInfo.logo);
     }
-  }
 
-  componentDidMount() {
-    this.mediaQuery.addListener(this.listnerMobileSize);
-  }
+    return () => {
+      mediaQuery.removeListener(listenerMobileSize);
+      setLogo(Logo);
+    };
+  }, [mediaQuery, props.userInfo.logo]);
 
-  componentWillUnmount() {
-    this.mediaQuery.removeListener(this.listnerMobileSize);
-  }
+  const menuBtnClick = () => {
+    setIsMobile(isMobile);
+    setShowMenu(!showMenu);
+  };
 
-  menuBtnClick() {
-    this.setState({
-      showMenu: !this.state.showMenu,
-      isMobile: this.state.isMobile
-    })
-  }
-
-  renderMenu() {
-    if ((this.state.isMobile && this.state.showMenu) || !this.state.isMobile) {
+  const renderMenu = () => {
+    if ((isMobile && showMenu) || !isMobile) {
       return (
         <MenuItems>
-          <A><Link to="/">Home</Link></A>
-          <A><Link to="/solutions">Solutions</Link></A>
-          <A><Link to="/about">About</Link></A>
+          <A>
+            <Link to="/">Home</Link>
+          </A>
+          <A>
+            <Link to="/solutions">Solutions</Link>
+          </A>
+          <A>
+            <Link to="/about">About</Link>
+          </A>
         </MenuItems>
-      )
+      );
     }
-  }
+  };
 
-  render() {
-    return (
-      <Nav>
-        <StyledLogo><StyledImgLogo src={Logo} alt="website logo" /></StyledLogo>
-        { this.renderMenu() }
-        <AccountA><Link to="/account">Account</Link></AccountA>
-        <i><Menu onClick={() => this.menuBtnClick()} icon={IconesSolid.faBars} /></i>
-      </Nav>
-    );
-  }
-}
+  return (
+    <Nav>
+      <StyledLogo>
+        <StyledImgLogo src={logo} alt="website logo" />
+      </StyledLogo>
+      {renderMenu()}
+      <AccountA>
+        <Link to="/account">Account</Link>
+      </AccountA>
+      <i>
+        <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} />
+      </i>
+    </Nav>
+  );
+};
 
-export default Navbar;
+const mapStateToProps = state => {
+  return {
+    userInfo: state.userinfo.info
+  };
+};
+
+export default connect(mapStateToProps, null)(Navbar);
