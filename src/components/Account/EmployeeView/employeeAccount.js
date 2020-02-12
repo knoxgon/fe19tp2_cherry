@@ -1,20 +1,27 @@
-import React from 'react';
-import IconBarChart from '../../../assets/account/barchart.svg';
-import IconApi from '../../../assets/account/api.svg';
-import IconLogout from '../../../assets/account/logout.svg';
-import { connect } from 'react-redux';
-import TemporaryCompanyLogo from '../../../assets/account/temporary-klarna-logo.png';
-import { signout } from '../../../__redux/actions/authActions';
-import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledEmployeeAccount';
+import React from "react";
+import IconBarChart from "../../../assets/account/barchart.svg";
+import IconApi from "../../../assets/account/api.svg";
+import IconLogout from "../../../assets/account/logout.svg";
+import { connect } from "react-redux";
+import { signout } from "../../../__redux/actions/authActions";
+import {
+  Wrapper,
+  FeatureWrapper,
+  MainArea,
+  FeatureContainer,
+  FeatureImage,
+  FeatureArea,
+  FeatureDescription,
+  BorderUnderline
+} from "./styledEmployeeAccount";
 // import { getInfo } from '../../../__redux/actions/userInfoActions';
-
 
 const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
   // const [logo, setLogo] = useState('')
 
   const logutBtn = () => {
-    signout()
-  }
+    signout();
+  };
 
   // useEffect(() => {
   //   info();
@@ -26,10 +33,6 @@ const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
 
   return (
     <Wrapper>
-      <ClientArea>
-        <ClientCompanyLogo src={TemporaryCompanyLogo} />
-        <ClientNameArea>Mia Val</ClientNameArea>
-      </ClientArea>
       <BorderUnderline></BorderUnderline>
 
       <MainArea>
@@ -41,22 +44,20 @@ const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
 
           <FeatureArea>
             <FeatureImage src={IconApi} />
-            <FeatureDescription>Get data</ FeatureDescription>
+            <FeatureDescription>Get data</FeatureDescription>
           </FeatureArea>
-          
+
           <FeatureArea onClick={() => logutBtn()}>
             <FeatureImage src={IconLogout} />
             <FeatureDescription>Sign out</FeatureDescription>
           </FeatureArea>
         </FeatureWrapper>
 
-        <FeatureContainer>
-        </FeatureContainer>
+        <FeatureContainer></FeatureContainer>
       </MainArea>
-
     </Wrapper>
   );
-}
+};
 
 // const mapStateToProps = (state) => {
 //   return {
@@ -66,13 +67,11 @@ const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
 //   }
 // }
 
-const mapDispatchToProps = (dispatch) => {
-  console.log(dispatch)
+const mapDispatchToProps = dispatch => {
   return {
     // info: () => dispatch(getInfo()),
     signout: () => dispatch(signout())
-  }
-}
-
+  };
+};
 
 export default connect(null, mapDispatchToProps)(EmployeeAccount);
