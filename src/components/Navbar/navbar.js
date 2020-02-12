@@ -18,6 +18,7 @@ const Navbar = props => {
   const [isMobile, setIsMobile] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [logo, setLogo] = useState("");
+  const [companyColor, setCompanyColor] = useState("");
 
   const mediaQuery = window.matchMedia(
     "(max-width: " + Theme.screenSize.xsmall + ")"
@@ -30,16 +31,18 @@ const Navbar = props => {
   useEffect(() => {
     mediaQuery.addListener(listenerMobileSize);
     if (!props.userInfo.logo) {
+      setCompanyColor(Theme.colors.beige);
       setLogo(Logo);
     } else {
       setLogo(props.userInfo.logo);
+      setCompanyColor(props.userInfo.companyColor);
     }
 
     return () => {
       mediaQuery.removeListener(listenerMobileSize);
       setLogo(Logo);
     };
-  }, [mediaQuery, props.userInfo.logo]);
+  }, [mediaQuery, props.userInfo.logo, props.userInfo.companyColor]);
 
   const menuBtnClick = () => {
     setIsMobile(isMobile);
@@ -47,25 +50,27 @@ const Navbar = props => {
   };
 
   const renderMenu = () => {
-    if ((isMobile && showMenu) || !isMobile) {
-      return (
-        <MenuItems>
-          <A>
-            <Link to="/">Home</Link>
-          </A>
-          <A>
-            <Link to="/solutions">Solutions</Link>
-          </A>
-          <A>
-            <Link to="/about">About</Link>
-          </A>
-        </MenuItems>
-      );
+    if (props.authStatus) {
+      if ((isMobile && showMenu) || !isMobile) {
+        return (
+          <MenuItems>
+            <A>
+              <Link to="/">Home</Link>
+            </A>
+            <A>
+              <Link to="/solutions">Solutions</Link>
+            </A>
+            <A>
+              <Link to="/about">About</Link>
+            </A>
+          </MenuItems>
+        );
+      }
     }
   };
 
   return (
-    <Nav>
+    <Nav navColor={companyColor}>
       <StyledLogo>
         <StyledImgLogo src={logo} alt="website logo" />
       </StyledLogo>
@@ -81,8 +86,10 @@ const Navbar = props => {
 };
 
 const mapStateToProps = state => {
+  console.log("hej");
   return {
-    userInfo: state.userinfo.info
+    userInfo: state.userinfo.info,
+    authStatus: state.firebase.auth.isEmpty
   };
 };
 
