@@ -17,7 +17,6 @@ const Account = ({ userinfo, info }) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     userinfo: state.userinfo.info
   }

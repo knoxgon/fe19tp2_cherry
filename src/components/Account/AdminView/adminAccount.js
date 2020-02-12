@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import IconAddUser from "../../../assets/account/adduser.svg";
 import IconListUsers from "../../../assets/account/listusers.svg";
 import IconLogout from '../../../assets/account/logout.svg';
-import TemporaryCompanyLogo from '../../../assets/account/temporary-klarna-logo.png';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
-import { Wrapper, FeatureWrapper, ClientCompanyLogo,  MainArea, FeatureContainer, ClientArea, ClientNameArea, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAdminAccount';
+import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAdminAccount';
 import AddEmployee from '../../AddEmployee/addEmployee';
 
 
