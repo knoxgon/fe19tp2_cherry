@@ -4,6 +4,7 @@ import Logo from "../../assets/logo_transparent.png";
 import Theme from "../../__config/theme";
 import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { getInfo } from '../../__redux/actions/userInfoActions';
 import {
   Nav,
   MenuItems,
@@ -14,45 +15,48 @@ import {
   StyledImgLogo
 } from "./styledNavbar";
 
-const Navbar = props => {
+const Navbar = ({ userInfo, isGuest, getinfo}) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
   const [fullName, setFullName] = useState("");
-
-  const mediaQuery = window.matchMedia(
-    "(max-width: " + Theme.screenSize.xsmall + ")"
-  );
-
-  const listenerMobileSize = event => {
-    setIsMobile(event.matches);
-  };
+  
+  
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: " + Theme.screenSize.xsmall + ")");
+    const listenerMobileSize = event => {
+      setIsMobile(!event.matches);
+    };
+    mediaQuery.addListener(listenerMobileSize);
+    return () => {
+      mediaQuery.removeListener(listenerMobileSize);
+    }
+  }, [])
 
   useEffect(() => {
-    mediaQuery.addListener(listenerMobileSize);
-    if (props.authStatus) {
+    getinfo()
+    if (isGuest) {
       setCompanyColor(Theme.colors.beige);
       setLogo(Logo);
       setFullName("Account");
     } else {
-      setLogo(props.userInfo.logo);
-      setCompanyColor(props.userInfo.companyColor);
-      setFullName(props.userInfo.fullName);
+      setLogo(userInfo.logo);
+      setCompanyColor(userInfo.companyColor);
+      setFullName(userInfo.fullName);
     }
 
     return () => {
-      mediaQuery.removeListener(listenerMobileSize);
       setLogo(Logo);
       setCompanyColor(Theme.colors.beige);
       setFullName("Account");
     };
   }, [
-    mediaQuery,
-    props.authStatus,
-    props.userInfo.logo,
-    props.userInfo.companyColor,
-    props.userInfo.fullName
+    isGuest,
+    userInfo.logo,
+    userInfo.companyColor,
+    userInfo.fullName,
+    getinfo
   ]);
 
   const menuBtnClick = () => {
@@ -61,8 +65,8 @@ const Navbar = props => {
   };
 
   const renderMenu = () => {
-    if (props.authStatus) {
-      if ((isMobile && showMenu) || !isMobile) {
+    if(isGuest) {
+      if ((showMenu && !isMobile) || isMobile) {
         return (
           <MenuItems>
             <A>
@@ -89,9 +93,7 @@ const Navbar = props => {
       <AccountA>
         <Link to="/account">{fullName}</Link>
       </AccountA>
-      <i>
-        <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} />
-      </i>
+      { isGuest && <i> <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} /> </i> }
     </Nav>
   );
 };
@@ -99,8 +101,16 @@ const Navbar = props => {
 const mapStateToProps = state => {
   return {
     userInfo: state.userinfo.info,
-    authStatus: state.firebase.auth.isEmpty
+    isGuest: state.firebase.auth.isEmpty
   };
 };
 
-export default connect(mapStateToProps, null)(Navbar);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getinfo: () => dispatch(getInfo())
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
