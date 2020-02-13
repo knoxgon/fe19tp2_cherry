@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { addClient } from '../../__redux/actions/clientActions';
 
 const AddClient = (props) => {
-  const [info, setInfo] = useState({ email: '', password: '', firstname: '', lastname: '', role: '', company: '', plan: 'Professional', period: '30', logo: 'klarna-logo.png' })
+  const [info, setInfo] = useState({ companyColor: '', email: '', password: '', firstname: '', lastname: '', role: '', company: '', plan: 'Professional', period: '30', logo: 'klarna-logo.png' })
 
   const onClientRegistration = (e) => {
     e.preventDefault();
@@ -17,7 +17,7 @@ const AddClient = (props) => {
 
   return (
       <form onSubmit = {onClientRegistration}>
-        <input placeholder="Email" type="email" name="email" onChange={onInputChangeHandler} autoComplete="new-password"></input>
+        <input placeholder="Email" type="email" name="email" onChange={onInputChangeHandler}></input>
         <br/>
         <input placeholder="Password" type="password" name="password" onChange={onInputChangeHandler}></input>
         <br/>
@@ -28,6 +28,8 @@ const AddClient = (props) => {
         <input placeholder="Company" type="text" name="company" onChange={onInputChangeHandler}></input>
         <br/>
         <input placeholder="Role" type="text" name="role" onChange={onInputChangeHandler}></input>
+        <br/>
+        <input placeholder="Company color" type="text" name="companyColor" onChange={onInputChangeHandler}></input>
         <br/>
         <select name="logo" onChange={onInputChangeHandler}>
           <option value="klarna-logo.png" selected>Klarna</option>

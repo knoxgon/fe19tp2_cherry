@@ -1,28 +1,31 @@
-import { USER_INFO_FETCH_SUCCESS, USER_INFO_FETCH_FAILURE } from "../actions/types";
+import {
+  USER_INFO_FETCH_SUCCESS,
+  USER_INFO_FETCH_FAILURE
+} from "../actions/types";
 
 const initialState = {
   info: {
     logo: null,
-    role: null
+    role: null,
+    companyColor: null,
+    fullName: null
   }
-}
+};
 
 export const userInfoReducer = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case USER_INFO_FETCH_SUCCESS:
       return {
-        ...state,
         info: {
           logo: action.payload.imgurl,
-          role: action.payload.role
+          role: action.payload.role,
+          companyColor: action.payload.companyColor,
+          fullName: action.payload.fullName
         }
-      }
+      };
     case USER_INFO_FETCH_FAILURE:
-      return {
-        ...state,
-        info: null
-      }
+      return state;
     default:
       return state;
   }
-}
+};
