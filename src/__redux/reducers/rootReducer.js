@@ -5,7 +5,7 @@ import { firestoreReducer } from 'redux-firestore';
 import { clientReducer } from './clientReducer';
 import { userInfoReducer } from './userInfoReducer';
 import { EmployeeReducer } from './employeeReducer';
-import { GraphReducer } from './graphReducer';
+
 //Root reducer combiens multiple reducers for putting in to store
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -13,6 +13,5 @@ export const rootReducer = combineReducers({
   employee: EmployeeReducer,
   userinfo: userInfoReducer,
   firebase: firebaseReducer,
-  firestore: firestoreReducer,
-  graph: GraphReducer
+  firestore: firestoreReducer
 });

@@ -30,12 +30,7 @@ const EmployeeAccount = ({ signout }) => {
             <FeatureImage src={IconBarChart} />
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
-<<<<<<< HEAD
-
-          <FeatureArea onClick={() => showGraphBtn()}>
-=======
           <FeatureArea>
->>>>>>> master
             <FeatureImage src={IconApi} />
             <FeatureDescription>Get data</FeatureDescription>
           </FeatureArea>
