@@ -5,7 +5,7 @@ const initialState = {
   feedback: null
 }
 
-export const EmployeeReducer = (state = initialState, action) => {
+export const graphReducer = (state = initialState, action) => {
   switch(action.type) {
     case GRAPH_LOADING_SUCCESS:
       return {

@@ -94,3 +94,22 @@ export default class App extends Component {
     console.log(datasets[0].data);
   }
 }
+
+
+export const graphShow = (credentials) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+      const firebase = getFirebase();
+      firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+        .then(() => {
+          dispatch({
+            type: GRAPH_LOADING_SUCCESS
+          })
+        })
+        .catch(fail => {
+          dispatch({
+            type: GRAPH_LOADING_FAILURE,
+            payload: fail.message
+          })
+        });
+    }
+  }

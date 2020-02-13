@@ -39,7 +39,7 @@ const EmployeeAccount = ({ /*userinfo,*/ signout /*info, userprofile*/ }) => {
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
 
-          <FeatureArea>
+          <FeatureArea onClick={() => showGraphBtn()}>
             <FeatureImage src={IconApi} />
             <FeatureDescription>Get data</ FeatureDescription>
           </FeatureArea>
