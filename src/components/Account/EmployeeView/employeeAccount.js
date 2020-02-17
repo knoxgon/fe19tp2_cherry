@@ -4,19 +4,10 @@ import IconApi from "../../../assets/account/api.svg";
 import IconLogout from "../../../assets/account/logout.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import {
-  Wrapper,
-  FeatureWrapper,
-  MainArea,
-  FeatureContainer,
-  FeatureImage,
-  FeatureArea,
-  FeatureDescription,
-  BorderUnderline
-} from "./styledEmployeeAccount";
+import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from "./styledEmployeeAccount";
+import MCView from "../../../View/mcView";
 
 const EmployeeAccount = ({ signout }) => {
-
   const logutBtn = () => {
     signout();
   };
@@ -39,7 +30,9 @@ const EmployeeAccount = ({ signout }) => {
             <FeatureDescription>Sign out</FeatureDescription>
           </FeatureArea>
         </FeatureWrapper>
-        <FeatureContainer></FeatureContainer>
+        <FeatureContainer>
+          <MCView></MCView>
+        </FeatureContainer>
       </MainArea>
     </Wrapper>
   );
