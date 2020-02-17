@@ -5,13 +5,20 @@ import { firestoreReducer } from 'redux-firestore';
 import { clientReducer } from './clientReducer';
 import { userInfoReducer } from './userInfoReducer';
 import { EmployeeReducer } from './employeeReducer';
+import { exchangeCandleReducer } from './exchangeCandleReducer';
+import { exchangeTypeSymGrpReducer } from './exchangeTypeSymGrpReducer';
+import { exchangeSymReducer } from './exchangeSymReducer';
+import { modalReducer } from './modalReducer';
 
-//Root reducer combiens multiple reducers for putting in to store
 export const rootReducer = combineReducers({
   auth: authReducer,
   client: clientReducer,
   employee: EmployeeReducer,
   userinfo: userInfoReducer,
   firebase: firebaseReducer,
-  firestore: firestoreReducer
+  firestore: firestoreReducer,
+  excRed: exchangeCandleReducer,
+  excSymGrp: exchangeTypeSymGrpReducer,
+  excSym: exchangeSymReducer,
+  modRed: modalReducer
 });
