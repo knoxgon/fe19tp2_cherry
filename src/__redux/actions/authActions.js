@@ -1,7 +1,6 @@
 import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_OUT } from "./types"
 
 
-
 export const signin = (credentials) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firebase = getFirebase();

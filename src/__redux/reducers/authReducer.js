@@ -4,7 +4,6 @@ const initialState = {
   authError: null
 }
 
-//Upon first launch, state is inactive. Thus pass an initial state
 export const authReducer = (state = initialState, action) => {
   switch(action.type) {
     case SIGN_IN_SUCCESS:
