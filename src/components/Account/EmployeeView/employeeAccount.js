@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import IconBarChart from "../../../assets/account/barchart.svg";
 import IconApi from "../../../assets/account/api.svg";
 import IconLogout from "../../../assets/account/logout.svg";
@@ -8,16 +8,22 @@ import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, Feat
 import MCView from "../../../View/mcView";
 
 const EmployeeAccount = ({ signout }) => {
+  const [showGraph, setShowGraph] = useState(false)
+
   const logutBtn = () => {
     signout();
   };
+
+  const toggleDisplayGraph = () => {
+    setShowGraph(!showGraph);
+  }
 
   return (
     <Wrapper>
       <BorderUnderline></BorderUnderline>
       <MainArea>
         <FeatureWrapper>
-          <FeatureArea>
+          <FeatureArea onClick={toggleDisplayGraph}>
             <FeatureImage src={IconBarChart} />
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
@@ -31,7 +37,7 @@ const EmployeeAccount = ({ signout }) => {
           </FeatureArea>
         </FeatureWrapper>
         <FeatureContainer>
-          <MCView></MCView>
+        { showGraph ? <MCView></MCView> : null }
         </FeatureContainer>
       </MainArea>
     </Wrapper>
