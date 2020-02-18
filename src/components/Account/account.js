@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { getInfo } from '../../__redux/actions/userInfoActions';
 import AdminAccount from './AdminView/adminAccount';
 import EmployeeAccount from '../Account/EmployeeView/employeeAccount';
 
 
-const Account = ({ userinfo, info }) => {
+const Account = ({ userinfo }) => {
   const [role, setRole] = useState('');
 
   useEffect(() => {
     setRole(userinfo.role);
-    
   }, [userinfo, userinfo.role])
 
   return (userinfo && role === 'Admin' ? <AdminAccount/> : <EmployeeAccount/>)
@@ -22,11 +20,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    info: () => dispatch(getInfo())
-  }
-}
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(Account);
+export default connect(mapStateToProps)(Account);
