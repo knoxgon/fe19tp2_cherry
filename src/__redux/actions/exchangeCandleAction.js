@@ -5,8 +5,8 @@ import Axios from 'axios';
 
 export const exchangeCandleAction = (input, modalId) => {
   return (dispatch, getState) => {
-    const { selectedExchange, selectedSym, selectedResolution, intervalFrom, intervalTo } = input;
-    Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedExchange}/candle?symbol=${selectedSym.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
+    const { selectedPlatform, selectedSymbol, selectedResolution, intervalFrom, intervalTo } = input;
+    Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
       .then((result) => {
         if(!result.headers['content-type'].includes('application/json')) {
           if(result.headers['content-type'].includes('text/html'))
@@ -27,24 +27,24 @@ export const exchangeCandleAction = (input, modalId) => {
           throw new Error(s)
         }
       })
-      .then((conObj) => {
+      .then((mappedData) => {
         let primaryBatch = [];
         let alternateBatch = [];
-        const timestamps = [...conObj.t_t];
+        const timestamps = [...mappedData.t_t];
         timestamps.forEach((dt, i) => {
           primaryBatch.push({
             x: new Date(dt * 1000),
-            y: [conObj.o_o[i], conObj.h_h[i], conObj.l_l[i], conObj.c_c[i]]
+            y: [mappedData.o_o[i], mappedData.h_h[i], mappedData.l_l[i], mappedData.c_c[i]]
           })
-          if (conObj.v_v) {
-            alternateBatch.push(conObj.v_v[i])
+          if (mappedData.v_v) {
+            alternateBatch.push(mappedData.v_v[i])
           }
         });
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_SUCCESS,
           payload: {
             dsid: modalId,
-            status: conObj.s_s,
+            status: mappedData.s_s,
             primary: primaryBatch,
             alternate: alternateBatch
           }
@@ -69,7 +69,7 @@ export const exchangeTypeSymGrpAction = (input) => {
         dispatch ({
           type: EXCHANGE_TYPE_SUCCESS,
           payload:  {
-            selectedExchange: input,
+            selectedPlatform: input,
             selectedExSymGroup: ["oanda", "fxcm", "forex.com", "octafx", "fxpig", "pepperstone", "icmtrader", "ic markets", "fxpro"],
             status: true
           }
@@ -79,7 +79,7 @@ export const exchangeTypeSymGrpAction = (input) => {
         dispatch ({
           type: EXCHANGE_TYPE_SUCCESS,
           payload:  {
-            selectedExchange: input,
+            selectedPlatform: input,
             selectedExSymGroup: ["POLONIEX", "Bitmex", "BITTREX", "KRAKEN", "BITFINEX", "COINBASE", "HUOBI", "HITBTC", "Binance", "OKEX", "GEMINI", "ZB", "KUCOIN"],
             status: true
           }
