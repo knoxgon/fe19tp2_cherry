@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Theme from "../../../__config/theme";
 
-
 const Wrapper = styled.div`
   margin-top: 4rem;
   margin-left: 4rem;
@@ -147,7 +146,6 @@ const MainArea = styled.div`
 const FeatureWrapper = styled.div`
   // display: flex;
   // flex-direction: column;
-  /* margin-top: 5rem; */
   // border: 1px solid;'
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
@@ -160,12 +158,10 @@ const FeatureWrapper = styled.div`
 `;
 
 const FeatureContainer = styled.div`
+  background-color:#fff;
   display: flex;
-  flex-direction: column;
-  margin-top: 5rem;
-  margin-left: 5rem;
-  width: 50rem;
-  // border: 1px solid;
+  flex-direction: row;
+  flex-wrap: wrap;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
