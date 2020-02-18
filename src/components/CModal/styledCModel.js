@@ -1,4 +1,7 @@
-export const customStyles = {
+import styled from 'styled-components';
+
+
+const modalStyle = {
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -15,13 +18,18 @@ export const customStyles = {
   }
 };
 
-export const styleGMArea = {
-  padding: '2rem',
-  borderRadius: '10px',
-  color: '#fff',
-  display: 'flex',
-  margin: '0 auto',
-  alignItems: 'center',
-  justifyContent: 'center',
-  marginBottom: '10px'
-};
+const ModalContainer = styled.div`
+  padding: 2rem;
+  border-radius: 1rem;
+  color: #fff;
+  display: flex;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+`;
+
+export {
+  ModalContainer,
+  modalStyle
+}
