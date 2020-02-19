@@ -17,8 +17,8 @@ export const rootReducer = combineReducers({
   userinfo: userInfoReducer,
   firebase: firebaseReducer,
   firestore: firestoreReducer,
-  excRed: exchangeCandleReducer,
-  excSymGrp: exchangeTypeSymGrpReducer,
-  excSym: exchangeSymReducer,
-  modRed: modalReducer
+  exchange: exchangeCandleReducer,
+  exchangeSymbolGroup: exchangeTypeSymGrpReducer,
+  exchangeSymbol: exchangeSymReducer,
+  modals: modalReducer
 });

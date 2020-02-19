@@ -6,7 +6,6 @@ const initState = {
   status: false
 }
 
-
 export const exchangeTypeSymGrpReducer = (state = initState, action) => {
   switch(action.type) {
     case EXCHANGE_TYPE_SUCCESS:

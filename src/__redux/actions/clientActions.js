@@ -5,31 +5,33 @@ export const addClient = (info) => {
     const firebase = getFirebase();
     const firestore = getFirestore();
     firebase.auth().createUserWithEmailAndPassword(info.email, info.password)
-      .then((res) => {
-        return firestore
-          .collection('clients')
-          .doc(res.user.uid)
-          .set({
-            firstname: info.firstname,
-            lastname: info.lastname,
-            role: info.role,
-            logo: info.logo,
-            company: info.company,
-            companyColor: info.companyColor,
-            subscription: {
-              plan: info.plan,
-              period: info.period
-            },
-            users: []
-          })
-      }).then(() => {
-        dispatch({
-          type: ADD_CLIENT_SUCCESS
+    .then((res) => {
+      return firestore
+        .collection('clients')
+        .doc(res.user.uid)
+        .set({
+          firstname: info.firstname,
+          lastname: info.lastname,
+          role: info.role,
+          logo: info.logo,
+          company: info.company,
+          companyColor: info.companyColor,
+          subscription: {
+            plan: info.plan,
+            period: info.period
+          },
+          users: []
         })
-      }).catch((err) => {
-        dispatch({
-          type: ADD_CLIENT_FAILURE, payload: err.message
-        })
+    })
+    .then(() => {
+      dispatch({
+        type: ADD_CLIENT_SUCCESS
       })
+    })
+    .catch((err) => {
+      dispatch({
+        type: ADD_CLIENT_FAILURE, payload: err.message
+      })
+    })
   }
 }

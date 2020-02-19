@@ -5,7 +5,6 @@ const initState = [{
   dsid: random.generate(20)
 }]
 
-
 export const modalReducer = (state = initState, action) => {
   switch(action.type) {
     case MODAL_ADD:

@@ -170,7 +170,6 @@ const FeatureContainer = styled.div`
   margin-top: 5rem;
   margin-left: 5rem;
   width: 50rem;
-  // border: 1px solid;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;

@@ -5,14 +5,14 @@ import { connect } from 'react-redux';
 import DateTimePicker from 'react-datetime-picker';
 import Select from 'react-select';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import {customStyles, styleGMArea} from './styledCModel'
+import {modalStyle, ModalContainer, FormModal} from './styledCModel'
 
-const CModal = ({sharedId, getinfo, retStatus, getExc, excSymGrp, excSym, getSym}) => {
+const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym}) => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [inputs, setInputs] = useState({selectedExchange: '', selectedSymGrp: '',  selectedSym: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
+  const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
-  const exchanges = [{value: 'forex', label: 'Forex'}, {value: 'crypto', label: 'Crypto'}];
+  const platforms = [{value: 'forex', label: 'Forex'}, {value: 'crypto', label: 'Crypto'}];
   const resolutions = [{value: '1', label: '1 minute'}, {value: '5', label: '5 minutes'}, {value: '15', label: '15 minutes'}, {value: '30', label: '30 minutes'}, {value: '60', label: '1 hour'}, {value: 'D', label: '1 day'}, {value: 'W', label: '1 week'}, {value: 'M', label: '1 month'}];
 
 
@@ -35,72 +35,72 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, excSymGrp, excSym, getSym
     setModalOpen(true)
   }
 
-  const doSome = (e) => {
+  const submitForm = (e) => {
     e.preventDefault();
     getinfo(inputs, sharedId)
   }
 
-  const onChangeExchange = (e) => {
+  const onChangePlatform = (e) => {
     getExc(e.value);
-    setInputs({...inputs, selectedSym: {...inputs.selectedSym}, selectedExchange: e.value, selectedSymGrp: 'Select...'})
+    setInputs({...inputs, selectedSymbol: {...inputs.selectedSymbol}, selectedPlatform: e.value, selectedSymbolGroup: 'Select...'})
   }
 
   const onChangeResolution = (e) => {
     setInputs({...inputs, selectedResolution: e.value})
   }
 
-  const onChangeSymGrp = (e) => {
-    getSym(e.value, inputs.selectedExchange);
-    setInputs({...inputs, selectedSymGrp: e.value, selectedSym: {label: 'Select...', value: ''}})
+  const onChangeSymbolGroup = (e) => {
+    getSym(e.value, inputs.selectedPlatform);
+    setInputs({...inputs, selectedSymbolGroup: e.value, selectedSymbol: {label: 'Select...', value: ''}})
   }
 
-  const onChangeSym = (e) => {
-    setInputs({...inputs, selectedSym: {label: e.label, value: e.value}})
+  const onChangeSymbol = (e) => {
+    setInputs({...inputs, selectedSymbol: {label: e.label, value: e.value}})
   }
 
   return (
-    <div style={{styleGMArea}}>
+    <ModalContainer>
       <button onClick={onClickModalOpener}>Open me</button>
-      <ReactModal style={customStyles} isOpen={modalOpen} ariaHideApp={false} onRequestClose={onClickModalCloser}>
-        <form onSubmit={doSome} style={{'textAlign': 'center', 'display': 'flex', 'flexDirection': 'column', 'width': '50%', 'margin': '0 auto'}}>
+      <ReactModal style={modalStyle} isOpen={modalOpen} ariaHideApp={false} onRequestClose={onClickModalCloser}>
+        <FormModal onSubmit={submitForm}>
           <label htmlFor="datefrom">Starting date</label>
           <DateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
 
           <label htmlFor="dateto">End date</label>
           <DateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
 
-          <label htmlFor="selexc">Platform</label>
-          <Select name="selexc" onChange={onChangeExchange} options={exchanges}></Select>
+          <label htmlFor="platform">Platform</label>
+          <Select name="platform" onChange={onChangePlatform} options={platforms}></Select>
 
-          <label htmlFor="resol">Resolution</label>
-          <Select name="resol" onChange={onChangeResolution} options={resolutions}></Select>
+          <label htmlFor="resolution">Resolution</label>
+          <Select name="resolution" onChange={onChangeResolution} options={resolutions}></Select>
 
-          {excSymGrp &&
+          {exchangeSymbolGroup &&
             <React.Fragment>
-              <label htmlFor="symgrp">Market</label>
-              <Select name="symgrp" onChange={onChangeSymGrp} options={excSymGrp} value={{label: inputs.selectedSymGrp}}></Select>
+              <label htmlFor="symbolgroup">Market</label>
+              <Select name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></Select>
             </React.Fragment>
           }
 
-          {excSym &&
+          {exchangeSymbol &&
             <React.Fragment>
-              <label htmlFor="symul">Currency</label>
-              <Select name="symul" onChange={onChangeSym} options={excSym} value={{label: inputs.selectedSym.label}}></Select>
+              <label htmlFor="currencies">Currency</label>
+              <Select name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></Select>
             </React.Fragment>
           }
           <button type="submit">Graph</button>
           <div>{retStatus}</div>
-        </form>
+        </FormModal>
       </ReactModal>
-    </div>
+    </ModalContainer>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    retStatus: state.excRed.status,
-    excSymGrp: state.excSymGrp.selectedExSymGroup,
-    excSym:    state.excSym.selectedExSymMul
+    retStatus: state.exchange.status,
+    exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
+    exchangeSymbol:    state.exchangeSymbol.selectedExSymMul
   }
 }
 
