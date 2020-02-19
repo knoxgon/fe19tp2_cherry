@@ -6,32 +6,40 @@ export const getInfo = () => {
     const firebase = getFirebase();
 
     if(!firebase.auth().currentUser) {
-      throw new Error();
+      dispatch({
+        type: USER_INFO_FETCH_FAILURE,
+        payload: null
+      });
     } else {
-      const userid = firebase.auth().currentUser.uid;
-      firestore.collection("clients")
+      const userid = firebase.auth().currentUser.uid;;
+    firestore
+      .collection("clients")
       .doc(userid)
       .get()
       .then(res => {
         const { logo, role, companyColor, firstname, lastname } = res.data();
-        firebase.storage().ref(logo).getDownloadURL().then(imgurl => {
-          dispatch({
-            type: USER_INFO_FETCH_SUCCESS,
-            payload: {
-              imgurl: imgurl,
-              role: role,
-              companyColor: companyColor,
-              fullName: firstname + " " + lastname
-            }
-          })
-        })
+        firebase
+          .storage()
+          .ref(logo)
+          .getDownloadURL()
+          .then(imgurl => {
+            dispatch({
+              type: USER_INFO_FETCH_SUCCESS,
+              payload: {
+                imgurl: imgurl,
+                role: role,
+                companyColor: companyColor,
+                fullName: firstname + " " + lastname
+              }
+            });
+          });
       })
       .catch(err => {
         dispatch({
           type: USER_INFO_FETCH_FAILURE,
           payload: null
-        })
-      })
+        });
+      });
     }
-  }
-}
+  };
+};
