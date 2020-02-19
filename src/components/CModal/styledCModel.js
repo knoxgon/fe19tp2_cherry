@@ -1,6 +1,14 @@
 import styled from 'styled-components';
 
 
+const FormModal = styled.form`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  margin: 0 auto;
+`;
+
 const modalStyle = {
   content : {
     top                   : '50%',
@@ -31,5 +39,6 @@ const ModalContainer = styled.div`
 
 export {
   ModalContainer,
-  modalStyle
+  modalStyle,
+  FormModal
 }
