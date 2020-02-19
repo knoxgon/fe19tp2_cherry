@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import DateTimePicker from 'react-datetime-picker';
 import Select from 'react-select';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import {modalStyle, ModalContainer} from './styledCModel'
+import {modalStyle, ModalContainer, FormModal} from './styledCModel'
 
 const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym}) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -62,7 +62,7 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
     <ModalContainer>
       <button onClick={onClickModalOpener}>Open me</button>
       <ReactModal style={modalStyle} isOpen={modalOpen} ariaHideApp={false} onRequestClose={onClickModalCloser}>
-        <form onSubmit={submitForm} style={{'textAlign': 'center', 'display': 'flex', 'flexDirection': 'column', 'width': '50%', 'margin': '0 auto'}}>
+        <FormModal onSubmit={submitForm}>
           <label htmlFor="datefrom">Starting date</label>
           <DateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
 
@@ -90,7 +90,7 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
           }
           <button type="submit">Graph</button>
           <div>{retStatus}</div>
-        </form>
+        </FormModal>
       </ReactModal>
     </ModalContainer>
   );
