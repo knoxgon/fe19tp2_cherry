@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import Chart from 'react-apexcharts';
-import {options, optionsBar} from './options';
+import {options, optionsBar} from '../options';
 
 
 const CandleGraph = ({modalId, barid, exchange}) => {
@@ -18,7 +18,6 @@ const CandleGraph = ({modalId, barid, exchange}) => {
       return null;
     })
   }
-
   return (
     renderGraph()
   )
