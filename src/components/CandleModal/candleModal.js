@@ -1,13 +1,13 @@
 import ReactModal from 'react-modal';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
 import { connect } from 'react-redux';
 import DateTimePicker from 'react-datetime-picker';
 import Select from 'react-select';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import {modalStyle, ModalContainer, FormModal} from './styledCModel'
+import {modalStyle, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle } from './styledCandleModel'
 
-const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym}) => {
+const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym}) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
@@ -15,6 +15,9 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
   const platforms = [{value: 'forex', label: 'Forex'}, {value: 'crypto', label: 'Crypto'}];
   const resolutions = [{value: '1', label: '1 minute'}, {value: '5', label: '5 minutes'}, {value: '15', label: '15 minutes'}, {value: '30', label: '30 minutes'}, {value: '60', label: '1 hour'}, {value: 'D', label: '1 day'}, {value: 'W', label: '1 week'}, {value: 'M', label: '1 month'}];
 
+  // useEffect(() => {
+  //   setModalOpen(toggSig);
+  // }, [toggSig])
 
   const onChangeDateFromInput = (e) => {
     setDtpFrom(e)
@@ -61,8 +64,10 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
   return (
     <ModalContainer>
       <button onClick={onClickModalOpener}>Open me</button>
-      <ReactModal style={modalStyle} isOpen={modalOpen} ariaHideApp={false} onRequestClose={onClickModalCloser}>
+      <ReactModal style={modalStyle} shouldCloseOnOverlayClick={false} isOpen={modalOpen} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
+          <ModalTitle>Graph Title</ModalTitle>
+          <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
           <label htmlFor="datefrom">Starting date</label>
           <DateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
 
@@ -88,7 +93,7 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
               <Select name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></Select>
             </React.Fragment>
           }
-          <button type="submit">Graph</button>
+          <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
           <div>{retStatus}</div>
         </FormModal>
       </ReactModal>
@@ -96,7 +101,7 @@ const CModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exch
   );
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
   return {
     retStatus: state.exchange.status,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
@@ -113,4 +118,4 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CModal);
+export default connect(mapStateToProps, mapDispatchToProps)(CandleModal);
