@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import IconBarChart from "../../../assets/account/barchart.svg";
-import IconApi from "../../../assets/account/api.svg";
-import IconLogout from "../../../assets/account/logout.svg";
+import IconGraphGroup from "../../../assets/employee/graph-menu.svg";
+import IconCandle from "../../../assets/employee/candle.svg";
+import IconLine from "../../../assets/employee/line.svg";
+import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from "./styledEmployeeAccount";
+import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
 import MCView from "../../../View/mcView";
 
 const EmployeeAccount = ({ signout }) => {
-  const [showGraph, setShowGraph] = useState(false)
+  // const [showInputArea, setShowInputArea] = useState(false)
+  const [showLeftList, setShowLeftList] = useState(false);
 
   const logutBtn = () => {
     signout();
   };
 
   const toggleDisplayGraph = () => {
-    setShowGraph(!showGraph);
+    setShowLeftList(!showLeftList)
+    // setShowInputArea(!showInputArea);
   }
+
+
 
   return (
     <Wrapper>
@@ -24,20 +29,26 @@ const EmployeeAccount = ({ signout }) => {
       <MainArea>
         <FeatureWrapper>
           <FeatureArea onClick={toggleDisplayGraph}>
-            <FeatureImage src={IconBarChart} />
+            <FeatureImage src={IconGraphGroup} />
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
-          <FeatureArea>
-            <FeatureImage src={IconApi} />
-            <FeatureDescription>Get data</FeatureDescription>
-          </FeatureArea>
-          <FeatureArea onClick={logutBtn}>
-            <FeatureImage src={IconLogout} />
-            <FeatureDescription>Sign out</FeatureDescription>
-          </FeatureArea>
+          <LeftSideFeatureAdapter toggle={showLeftList}>
+            <LeftSideItemArea>
+              <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
+              <SubMenuItemDescription>Candle</SubMenuItemDescription>
+            </LeftSideItemArea>
+            <LeftSideItemArea>
+              <SubMenuItemImg src={IconPie}></SubMenuItemImg>
+              <SubMenuItemDescription>Pie</SubMenuItemDescription>
+            </LeftSideItemArea>
+            <LeftSideItemArea>
+              <SubMenuItemImg src={IconLine}></SubMenuItemImg>
+              <SubMenuItemDescription>Line</SubMenuItemDescription>
+            </LeftSideItemArea>
+          </LeftSideFeatureAdapter>
         </FeatureWrapper>
         <FeatureContainer>
-        { showGraph ? <MCView></MCView> : null }
+        {/* { showInputArea ? <MCView></MCView> : null } */}
         </FeatureContainer>
       </MainArea>
     </Wrapper>
