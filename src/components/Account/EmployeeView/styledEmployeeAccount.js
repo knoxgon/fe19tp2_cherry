@@ -1,5 +1,24 @@
-import styled from 'styled-components';
+import styled, {css, keyframes } from 'styled-components';
 import Theme from "../../../__config/theme";
+
+const KFRightToLeft = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-300%);
+  }
+`
+
+const KFLeftToRight = keyframes`
+  0% {
+    transform: translateX(-300%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`
+
 
 const Wrapper = styled.div`
   margin-top: 4rem;
@@ -44,11 +63,6 @@ const ClientNameArea = styled.h2`
 `;
 
 const FeatureImage = styled.img`
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   width: 5rem;
   height: 5rem;
@@ -56,74 +70,123 @@ const FeatureImage = styled.img`
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display: flex;
     flex-direction: row;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 5.5rem;
+    height: 5.5rem;
+    margin-left: 2rem;
   }
 `;
 
-const FeatureArea = styled.div`
-  // display: inline-flex;
-  vertical-align: middle;
-  margin-bottom: 2rem;
-  width: 15.5rem;
+
+export const SubMenuItemImg = styled.img`
+  user-select: none;
+  width: 3rem;
+  height: 3rem;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    margin-left: 2rem;
+  }
+`;
+
+export const LeftSideItemArea = styled.div`
   cursor: pointer;
+  margin-top: 6rem;
 
-  &:nth-last-child(3) {
-    width: 21.7rem;
 
-    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-      width: 10rem;
+  &:hover {
+    transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}){
+      transform: scale(1);
+      margin-top: 5rem;
       margin-left: 4rem;
     }
   }
 
-  &:nth-last-child(4) {
-    width: 17.6rem;
-
-    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 10rem;
-    }
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    margin-top: 5rem;
+    margin-left: 4rem;
   }
+`;
 
-  &:nth-last-child(1) {
-    margin-top: 20rem;
+export const SubMenuItemDescription = styled.p`
+  user-select: none;
+  font-size: 1.35rem;
+  font-weight: bold;
+  margin-block-start: -2.8rem;
+  margin-block-end: -2rem;
+  margin-left: 4rem;
 
-    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-      margin-top: 0rem;
-      width: 10rem; 
-      margin-left: 5rem;
-    }
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    margin-block-start: 0rem;
+    margin-block-end: 0rem;
+    margin-left: 2rem;
+    margin-top: 1rem;
   }
+`;
+
+const FeatureArea = styled.div`
+  display: inline-flex;
+  vertical-align: middle;
+  width: 25rem;
+  cursor: pointer;
 
   &:hover {
     transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      transform: scale(1);
+    }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
     margin-top: 0rem;
-    width: 10rem;
   }
 `;
 
 const FeatureDescription = styled.p`
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-block-start: 1rem;
   margin-block-end: 1rem;
   margin-left: 2rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    font-size: 1rem;
     margin: 0;
+    margin-block-start: 2rem;
+    margin-block-end: 2rem;
+    margin-left: 2rem;
+  }
+`;
+
+export const LeftSideFeatureAdapter = styled.div`
+  flex-direction: column;
+  margin-left: 4rem;
+  animation-fill-mode: both;
+  visibility: hidden;
+
+  ${props => {
+    return props.toggle ?
+      css`
+        display: flex;
+        animation: ${KFLeftToRight} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        visibility: visible;
+      ` :
+      css`
+        display: flex;
+        visibility: visible;
+        animation: ${KFRightToLeft} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+      `
+    }
+  }
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin-left: 0rem;
   }
 `;
 
@@ -144,16 +207,8 @@ const MainArea = styled.div`
 `;
 
 const FeatureWrapper = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  // border: 1px solid;'
-
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     width: 10rem;
-
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 1fr 1fr;
   }
 `;
 
