@@ -91,8 +91,15 @@ export const LeftSideItemArea = styled.div`
   cursor: pointer;
   margin-top: 6rem;
 
+
   &:hover {
     transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}){
+      transform: scale(1);
+      margin-top: 5rem;
+      margin-left: 4rem;
+    }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
@@ -125,6 +132,10 @@ const FeatureArea = styled.div`
 
   &:hover {
     transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      transform: scale(1);
+    }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
