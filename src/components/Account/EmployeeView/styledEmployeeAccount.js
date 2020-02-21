@@ -6,13 +6,13 @@ const KFRightToLeft = keyframes`
     transform: translateX(0%);
   }
   100% {
-    transform: translateX(-300%);
+    transform: translateX(-400%);
   }
 `
 
 const KFLeftToRight = keyframes`
   0% {
-    transform: translateX(-300%);
+    transform: translateX(-400%);
   }
   100% {
     transform: translateX(0%);
@@ -79,6 +79,7 @@ const FeatureImage = styled.img`
 
 export const SubMenuItemImg = styled.img`
   user-select: none;
+  vertical-align: middle;
   width: 3rem;
   height: 3rem;
 
@@ -89,7 +90,8 @@ export const SubMenuItemImg = styled.img`
 
 export const LeftSideItemArea = styled.div`
   cursor: pointer;
-  margin-top: 6rem;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 
 
   &:hover {
@@ -97,28 +99,28 @@ export const LeftSideItemArea = styled.div`
 
     @media screen and (max-width: ${Theme.screenSize.xsmall}){
       transform: scale(1);
-      margin-top: 5rem;
-      margin-left: 4rem;
     }
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    margin-top: 5rem;
-    margin-left: 4rem;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 `;
 
-export const SubMenuItemDescription = styled.p`
+export const SubMenuItemDescription = styled.span`
   user-select: none;
   font-size: 1.35rem;
   font-weight: bold;
-  margin-block-start: -2.8rem;
-  margin-block-end: -2rem;
+  /* margin-block-start: -2.8rem;
+  margin-block-end: -2rem; */
   margin-left: 4rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    margin-block-start: 0rem;
-    margin-block-end: 0rem;
+    /* margin-block-start: 0rem;
+    margin-block-end: 0rem; */
     margin-left: 2rem;
     margin-top: 1rem;
   }
@@ -129,12 +131,14 @@ const FeatureArea = styled.div`
   vertical-align: middle;
   width: 25rem;
   cursor: pointer;
+  margin-bottom: 2rem;
 
   &:hover {
     transform: scale(1.1);
 
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       transform: scale(1);
+      margin-bottom: 0rem;
     }
   }
 
@@ -150,14 +154,14 @@ const FeatureDescription = styled.p`
   user-select: none;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-block-start: 1rem;
-  margin-block-end: 1rem;
+  /* margin-block-start: 1rem;
+  margin-block-end: 1rem; */
   margin-left: 2rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
-    margin-block-start: 2rem;
-    margin-block-end: 2rem;
+    /* margin-block-start: 2rem;
+    margin-block-end: 2rem; */
     margin-left: 2rem;
   }
 `;
