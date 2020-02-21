@@ -1,11 +1,11 @@
-import { MODAL_ADD, MODAL_REMOVE } from './types';
+import { CONTAINER_ADD, CONTAINER_REMOVE } from './types';
 import random from 'randomstring';
 
 
-export const modalCreate = () => {
+export const containerCreate = () => {
   return (dispatch, getState) => {
     dispatch({
-      type: MODAL_ADD,
+      type: CONTAINER_ADD,
       payload: {
         dsid: random.generate(20)
       }
@@ -13,10 +13,10 @@ export const modalCreate = () => {
   } 
 }
 
-export const modalClose = (dsid) => {
+export const containerClose = (dsid) => {
   return (dispatch, getState) => {
     dispatch({
-      type: MODAL_REMOVE,
+      type: CONTAINER_REMOVE,
       payload: {
         dsid: dsid
       }

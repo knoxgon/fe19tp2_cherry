@@ -3,7 +3,7 @@ import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone,
 import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc/'
 import Axios from 'axios';
 
-export const exchangeCandleAction = (input, modalId) => {
+export const exchangeCandleAction = (input, containerId) => {
   return (dispatch, getState) => {
     const { selectedPlatform, selectedSymbol, selectedResolution, intervalFrom, intervalTo } = input;
     Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
@@ -43,7 +43,7 @@ export const exchangeCandleAction = (input, modalId) => {
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_SUCCESS,
           payload: {
-            dsid: modalId,
+            dsid: containerId,
             status: mappedData.s_s,
             primary: primaryBatch,
             alternate: alternateBatch
@@ -54,7 +54,7 @@ export const exchangeCandleAction = (input, modalId) => {
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_FAILURE,
           payload: {
-            dsid: modalId,
+            dsid: containerId,
             status: err.message
           }
         })
