@@ -1,27 +1,22 @@
 import React, { useState } from "react";
-import IconGraphGroup from "../../../assets/employee/graph-menu.svg";
-import IconCandle from "../../../assets/employee/candle.svg";
-import IconLine from "../../../assets/employee/line.svg";
-import IconPie from "../../../assets/employee/pie.svg";
+import IconBarChart from "../../../assets/account/barchart.svg";
+import IconApi from "../../../assets/account/api.svg";
+import IconLogout from "../../../assets/account/logout.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
+import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from "./styledEmployeeAccount";
 import MCView from "../../../View/mcView";
 
 const EmployeeAccount = ({ signout }) => {
-  // const [showInputArea, setShowInputArea] = useState(false)
-  const [showLeftList, setShowLeftList] = useState(false);
+  const [showGraph, setShowGraph] = useState(false)
 
   const logutBtn = () => {
     signout();
   };
 
   const toggleDisplayGraph = () => {
-    setShowLeftList(!showLeftList)
-    // setShowInputArea(!showInputArea);
+    setShowGraph(!showGraph);
   }
-
-
 
   return (
     <Wrapper>
@@ -29,26 +24,20 @@ const EmployeeAccount = ({ signout }) => {
       <MainArea>
         <FeatureWrapper>
           <FeatureArea onClick={toggleDisplayGraph}>
-            <FeatureImage src={IconGraphGroup} />
+            <FeatureImage src={IconBarChart} />
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
-          <LeftSideFeatureAdapter toggle={showLeftList}>
-            <LeftSideItemArea>
-              <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
-              <SubMenuItemDescription>Candle</SubMenuItemDescription>
-            </LeftSideItemArea>
-            <LeftSideItemArea>
-              <SubMenuItemImg src={IconPie}></SubMenuItemImg>
-              <SubMenuItemDescription>Pie</SubMenuItemDescription>
-            </LeftSideItemArea>
-            <LeftSideItemArea>
-              <SubMenuItemImg src={IconLine}></SubMenuItemImg>
-              <SubMenuItemDescription>Line</SubMenuItemDescription>
-            </LeftSideItemArea>
-          </LeftSideFeatureAdapter>
+          <FeatureArea>
+            <FeatureImage src={IconApi} />
+            <FeatureDescription>Get data</FeatureDescription>
+          </FeatureArea>
+          <FeatureArea onClick={logutBtn}>
+            <FeatureImage src={IconLogout} />
+            <FeatureDescription>Sign out</FeatureDescription>
+          </FeatureArea>
         </FeatureWrapper>
         <FeatureContainer>
-        {/* { showInputArea ? <MCView></MCView> : null } */}
+        { showGraph ? <MCView></MCView> : null }
         </FeatureContainer>
       </MainArea>
     </Wrapper>
