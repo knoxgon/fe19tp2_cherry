@@ -1,4 +1,4 @@
-import { FETCH_CANDLE_EXCHANGE_SUCCESS, FETCH_CANDLE_EXCHANGE_FAILURE, MODAL_REMOVE } from '../actions/types';
+import { FETCH_CANDLE_EXCHANGE_SUCCESS, FETCH_CANDLE_EXCHANGE_FAILURE, CONTAINER_REMOVE } from '../actions/types';
 
 const initState = []
 
@@ -41,7 +41,7 @@ export const exchangeCandleReducer = (state = initState, action) => {
         }
         return elem
       })
-    case MODAL_REMOVE:
+    case CONTAINER_REMOVE:
       return state.filter(elem => elem.dsid !== action.payload.dsid)
     default:
       return state;

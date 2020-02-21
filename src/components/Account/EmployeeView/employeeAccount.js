@@ -6,11 +6,13 @@ import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
-import MCView from "../../../View/mcView";
+import ModalCandleView from "../../../View/modalCandleView";
+import CandleModal from '../../CandleModal/candleModal';
 
 const EmployeeAccount = ({ signout }) => {
   // const [showInputArea, setShowInputArea] = useState(false)
   const [showLeftList, setShowLeftList] = useState(false);
+  const [renderCandle, setRenderCandle] = useState(false);
 
   const logutBtn = () => {
     signout();
@@ -19,6 +21,10 @@ const EmployeeAccount = ({ signout }) => {
   const toggleDisplayGraph = () => {
     setShowLeftList(!showLeftList)
     // setShowInputArea(!showInputArea);
+  }
+
+  const onClickCandleViewer = () => {
+    setRenderCandle(!renderCandle);
   }
 
 
@@ -33,7 +39,7 @@ const EmployeeAccount = ({ signout }) => {
             <FeatureDescription>Generate graph</FeatureDescription>
           </FeatureArea>
           <LeftSideFeatureAdapter toggle={showLeftList}>
-            <LeftSideItemArea>
+            <LeftSideItemArea onClick={onClickCandleViewer}>
               <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
               <SubMenuItemDescription>Candle</SubMenuItemDescription>
             </LeftSideItemArea>
@@ -48,7 +54,8 @@ const EmployeeAccount = ({ signout }) => {
           </LeftSideFeatureAdapter>
         </FeatureWrapper>
         <FeatureContainer>
-        {/* { showInputArea ? <MCView></MCView> : null } */}
+        <ModalCandleView></ModalCandleView>
+          {/* <CandleModal sendToggSignal={renderCandle}></CandleModal> */}
         </FeatureContainer>
       </MainArea>
     </Wrapper>

@@ -8,7 +8,7 @@ import { EmployeeReducer } from './employeeReducer';
 import { exchangeCandleReducer } from './exchangeCandleReducer';
 import { exchangeTypeSymGrpReducer } from './exchangeTypeSymGrpReducer';
 import { exchangeSymReducer } from './exchangeSymReducer';
-import { modalReducer } from './modalReducer';
+import { containerReducer } from './containerReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -20,5 +20,5 @@ export const rootReducer = combineReducers({
   exchange: exchangeCandleReducer,
   exchangeSymbolGroup: exchangeTypeSymGrpReducer,
   exchangeSymbol: exchangeSymReducer,
-  modals: modalReducer
+  containers: containerReducer
 });
