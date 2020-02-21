@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { modalClose, modalCreate } from '../__redux/actions/modalAction';
 import random from 'randomstring';
-import { GMArea } from "./styled"
+import { GMArea, MCCloser } from "./styled"
 import CModal from '../components/CModal/cmodal';
 import CandleGraph from '../components/Graph/Candle/candle'
 
@@ -20,7 +20,7 @@ const MCView = ({exchange, eraseModal, modals, createModal}) => {
         <GMArea>
           <CModal sharedId={dsid}></CModal>
           <button onClick={modOnClick}>Open</button>
-          <button onClick={() => modOnDel(dsid)}>Del me</button>
+          <MCCloser src={require('../assets/employee/bin.svg')} onClick={() => modOnDel(dsid)}></MCCloser>
           {exchange.map((grafData, j) => {
             if(grafData.status === 'ok' && grafData.dsid === dsid)
               return <CandleGraph key={j} modalId={dsid} barid={random.generate(16)}></CandleGraph>
