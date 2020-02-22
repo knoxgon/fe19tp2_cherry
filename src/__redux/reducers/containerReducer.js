@@ -1,21 +1,18 @@
-import { CONTAINER_ADD, CONTAINER_REMOVE } from '../actions/types';
-import random from 'randomstring';
+import { CONTAINER_ADD, CONTAINER_REMOVE, CONTAINER_REMOVE_LAST } from '../actions/types';
 
-const initState = [{
-  dsid: random.generate(20)
-}]
+const initState = []
 
 export const containerReducer = (state = initState, action) => {
   switch(action.type) {
     case CONTAINER_ADD:
       return [
         ...state, {
-          dsid: action.payload.dsid
-        }]
+        dsid: action.payload.dsid
+      }]
     case CONTAINER_REMOVE:
-      if(state.length > 1)
-        return state.filter(elem => elem.dsid !== action.payload.dsid)
-      return state;
+      return state.filter(elem => elem.dsid !== action.payload.dsid)
+    case CONTAINER_REMOVE_LAST:
+      return state.shift()
     default:
       return state;
   }

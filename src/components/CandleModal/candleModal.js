@@ -1,23 +1,18 @@
-import ReactModal from 'react-modal';
-import React, { useState, useEffect } from 'react';
-import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import DateTimePicker from 'react-datetime-picker';
-import Select from 'react-select';
+import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import {modalStyle, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle } from './styledCandleModel'
+import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
+import { fireCandleModalAction } from '../../__redux/actions/modalActions';
+import { containerCreate } from '../../__redux/actions/containerAction';
 
-const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym}) => {
-  const [modalOpen, setModalOpen] = useState(false);
+
+const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
   const platforms = [{value: 'forex', label: 'Forex'}, {value: 'crypto', label: 'Crypto'}];
   const resolutions = [{value: '1', label: '1 minute'}, {value: '5', label: '5 minutes'}, {value: '15', label: '15 minutes'}, {value: '30', label: '30 minutes'}, {value: '60', label: '1 hour'}, {value: 'D', label: '1 day'}, {value: 'W', label: '1 week'}, {value: 'M', label: '1 month'}];
-
-  // useEffect(() => {
-  //   setModalOpen(toggSig);
-  // }, [toggSig])
 
   const onChangeDateFromInput = (e) => {
     setDtpFrom(e)
@@ -30,17 +25,9 @@ const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup,
 
   }
 
-  const onClickModalCloser = () => {
-    setModalOpen(false)
-  }
-
-  const onClickModalOpener = () => {
-    setModalOpen(true)
-  }
-
   const submitForm = (e) => {
     e.preventDefault();
-    getinfo(inputs, sharedId)
+    getinfo(inputs)
   }
 
   const onChangePlatform = (e) => {
@@ -61,48 +48,68 @@ const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup,
     setInputs({...inputs, selectedSymbol: {label: e.label, value: e.value}})
   }
 
+  const onClickModalCloser = () => {
+    fireCandleModal();
+  }
+
   return (
     <ModalContainer>
-      <button onClick={onClickModalOpener}>Open me</button>
-      <ReactModal style={modalStyle} shouldCloseOnOverlayClick={false} isOpen={modalOpen} ariaHideApp={false}>
+      <CRModal shouldCloseOnOverlayClick={false} isOpen={modalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle>Graph Title</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
-          <label htmlFor="datefrom">Starting date</label>
-          <DateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
 
-          <label htmlFor="dateto">End date</label>
-          <DateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
+          <AreaWrap>
+            <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
+            <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
+          </AreaWrap>
 
-          <label htmlFor="platform">Platform</label>
-          <Select name="platform" onChange={onChangePlatform} options={platforms}></Select>
+          <AreaWrap>
+            <CandleLabel htmlFor="dateto">End date</CandleLabel>
+            <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
+          </AreaWrap>
 
-          <label htmlFor="resolution">Resolution</label>
-          <Select name="resolution" onChange={onChangeResolution} options={resolutions}></Select>
+          <AreaWrap>
+            <CandleLabel htmlFor="platform">Platform</CandleLabel>
+            <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
+          </AreaWrap>
 
-          {exchangeSymbolGroup &&
+          <AreaWrap>
+            <CandleLabel htmlFor="resolution">Resolution</CandleLabel>
+            <CMSelect name="resolution" onChange={onChangeResolution} options={resolutions}></CMSelect>
+          </AreaWrap>
+
+          {exchangeSymbolGroup.length &&
             <React.Fragment>
-              <label htmlFor="symbolgroup">Market</label>
-              <Select name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></Select>
+              <AreaWrap>
+                <label htmlFor="symbolgroup">Market</label>
+                <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
+              </AreaWrap>
             </React.Fragment>
           }
 
           {exchangeSymbol &&
             <React.Fragment>
-              <label htmlFor="currencies">Currency</label>
-              <Select name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></Select>
+              <AreaWrap>
+                <label htmlFor="currencies">Currency</label>
+                <CMSelect name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></CMSelect>
+              </AreaWrap>
             </React.Fragment>
           }
-          <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+
+          <ButtonAreaWrap>
+            <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+          </ButtonAreaWrap>
           <div>{retStatus}</div>
         </FormModal>
-      </ReactModal>
+      </CRModal>
     </ModalContainer>
   );
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state) => {
   return {
+    modalTogg: state.modalToggler.toggle,
     retStatus: state.exchange.status,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
     exchangeSymbol:    state.exchangeSymbol.selectedExSymMul
@@ -111,9 +118,10 @@ const mapStateToProps = (state, props) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getinfo : (inf, sid) => dispatch(exchangeCandleAction(inf, sid)),
+    getinfo : (inf) => dispatch(exchangeCandleAction(inf)),
     getExc  : (inp) => dispatch(exchangeTypeSymGrpAction(inp)),
-    getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx))
+    getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx)),
+    fireCandleModal: () => dispatch(fireCandleModalAction())
   }
 }
 

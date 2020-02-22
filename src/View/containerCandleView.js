@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { containerClose, containerCreate } from '../__redux/actions/containerAction';
+import { containerClose } from '../__redux/actions/containerAction';
 import random from 'randomstring';
 import { GMArea, MCCloser } from "./styled"
-import CandleModal from '../components/CandleModal/candleModal';
 import CandleGraph from '../components/Graph/Candle/candle'
 
-const ModalCandleView = ({exchange, eraseContainer, containers, createContainer}) => {
-  const containerOnClick = () => {
-    createContainer()
-  }
+const ContainerCandleView = ({exchange, eraseContainer, containers}) => {
   const containerOnDel = (dsid) => {
     eraseContainer(dsid)
   }
@@ -18,8 +14,6 @@ const ModalCandleView = ({exchange, eraseContainer, containers, createContainer}
     return containers.map(({dsid}, i) => {
       return <React.Fragment key={i}>
         <GMArea>
-          <CandleModal sharedId={dsid}></CandleModal>
-          <button onClick={containerOnClick}>Open</button>
           <MCCloser src={require('../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
           {exchange.map((grafData, j) => {
             if(grafData.status === 'ok' && grafData.dsid === dsid)
@@ -46,9 +40,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    eraseContainer: (id) => dispatch(containerClose(id)),
-    createContainer: () => dispatch(containerCreate())
+    eraseContainer: (id) => dispatch(containerClose(id))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ModalCandleView)
+export default connect(mapStateToProps, mapDispatchToProps)(ContainerCandleView)

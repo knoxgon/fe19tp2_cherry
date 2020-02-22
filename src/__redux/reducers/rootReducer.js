@@ -9,6 +9,7 @@ import { exchangeCandleReducer } from './exchangeCandleReducer';
 import { exchangeTypeSymGrpReducer } from './exchangeTypeSymGrpReducer';
 import { exchangeSymReducer } from './exchangeSymReducer';
 import { containerReducer } from './containerReducer';
+import { modalReducer } from './modalReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -20,5 +21,6 @@ export const rootReducer = combineReducers({
   exchange: exchangeCandleReducer,
   exchangeSymbolGroup: exchangeTypeSymGrpReducer,
   exchangeSymbol: exchangeSymReducer,
-  containers: containerReducer
+  containers: containerReducer,
+  modalToggler: modalReducer
 });

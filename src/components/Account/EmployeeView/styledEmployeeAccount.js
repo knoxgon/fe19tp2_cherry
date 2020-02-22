@@ -106,7 +106,7 @@ export const LeftSideItemArea = styled.div`
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     padding-left: 4rem;
-    padding-right: 4rem;
+    padding-right: 2rem;
   }
 `;
 
@@ -114,13 +114,9 @@ export const SubMenuItemDescription = styled.span`
   user-select: none;
   font-size: 1.35rem;
   font-weight: bold;
-  /* margin-block-start: -2.8rem;
-  margin-block-end: -2rem; */
   margin-left: 4rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    /* margin-block-start: 0rem;
-    margin-block-end: 0rem; */
     margin-left: 2rem;
     margin-top: 1rem;
   }
@@ -154,14 +150,10 @@ const FeatureDescription = styled.p`
   user-select: none;
   font-size: 1.5rem;
   font-weight: bold;
-  /* margin-block-start: 1rem;
-  margin-block-end: 1rem; */
   margin-left: 2rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
-    /* margin-block-start: 2rem;
-    margin-block-end: 2rem; */
     margin-left: 2rem;
   }
 `;

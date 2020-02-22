@@ -5,14 +5,13 @@ import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
+import { fireCandleModalAction } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
-import ModalCandleView from "../../../View/modalCandleView";
+import ContainerCandleView from "../../../View/containerCandleView";
 import CandleModal from '../../CandleModal/candleModal';
 
-const EmployeeAccount = ({ signout }) => {
-  // const [showInputArea, setShowInputArea] = useState(false)
+const EmployeeAccount = ({ signout, fireCandleModal }) => {
   const [showLeftList, setShowLeftList] = useState(false);
-  const [renderCandle, setRenderCandle] = useState(false);
 
   const logutBtn = () => {
     signout();
@@ -20,11 +19,10 @@ const EmployeeAccount = ({ signout }) => {
 
   const toggleDisplayGraph = () => {
     setShowLeftList(!showLeftList)
-    // setShowInputArea(!showInputArea);
   }
 
   const onClickCandleViewer = () => {
-    setRenderCandle(!renderCandle);
+    fireCandleModal();
   }
 
 
@@ -54,8 +52,8 @@ const EmployeeAccount = ({ signout }) => {
           </LeftSideFeatureAdapter>
         </FeatureWrapper>
         <FeatureContainer>
-        <ModalCandleView></ModalCandleView>
-          {/* <CandleModal sendToggSignal={renderCandle}></CandleModal> */}
+          <CandleModal></CandleModal>
+          <ContainerCandleView></ContainerCandleView>
         </FeatureContainer>
       </MainArea>
     </Wrapper>
@@ -64,7 +62,8 @@ const EmployeeAccount = ({ signout }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signout: () => dispatch(signout())
+    signout: () => dispatch(signout()),
+    fireCandleModal: () => dispatch(fireCandleModalAction())
   };
 };
 

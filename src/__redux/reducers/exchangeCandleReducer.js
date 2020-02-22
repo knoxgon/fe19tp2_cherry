@@ -32,16 +32,10 @@ export const exchangeCandleReducer = (state = initState, action) => {
         })
       }
     case FETCH_CANDLE_EXCHANGE_FAILURE:
-      return state.map(elem => {
-        if(elem.dsid === action.payload.dsid) {
-          return {
-              dsid: action.payload.dsid,
-              status: action.payload.status
-          }
-        }
-        return elem
-      })
+      return state;
     case CONTAINER_REMOVE:
+      if(action.payload.dsid == null)
+        return state;
       return state.filter(elem => elem.dsid !== action.payload.dsid)
     default:
       return state;

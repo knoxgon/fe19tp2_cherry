@@ -2,12 +2,16 @@ import { FETCH_CANDLE_EXCHANGE_FAILURE, FETCH_CANDLE_EXCHANGE_SUCCESS, EXCHANGE_
 import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone, fxpig } from '../../__misc/fx/';
 import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc/'
 import Axios from 'axios';
+import { containerCreate } from './containerAction';
+import { fireCandleModalAction } from './modalActions';
 
-export const exchangeCandleAction = (input, containerId) => {
+export const exchangeCandleAction = (input) => {
   return (dispatch, getState) => {
     const { selectedPlatform, selectedSymbol, selectedResolution, intervalFrom, intervalTo } = input;
     Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
       .then((result) => {
+        if(result.data == null) {
+        }
         if(!result.headers['content-type'].includes('application/json')) {
           if(result.headers['content-type'].includes('text/html'))
             throw new Error('Please select a platform')
@@ -16,6 +20,12 @@ export const exchangeCandleAction = (input, containerId) => {
           }
         }
         const { c, h, l, o, t, s, v } = result.data;
+        if(s === 'no_data') {
+          throw new Error('No record found')
+        }
+        if(s === 'ok' && c == null && h == null && l == null && o == null && t == null) {
+          throw new Error('Records are missing')
+        }
         if ((s !== 'no_data') && c != null && h != null && l != null && o != null && t != null) {
           let concatObj = {};
           concatObj = { c_c: [...c], h_h: [...h], l_l: [...l], o_o: [...o], t_t: [...t], s_s: s }
@@ -40,6 +50,18 @@ export const exchangeCandleAction = (input, containerId) => {
             alternateBatch.push(mappedData.v_v[i])
           }
         });
+        dispatch(containerCreate())
+        let containerId = getState().containers[getState().containers.length - 1].dsid
+        dispatch(fireCandleModalAction())
+
+        // let containerId;
+        // if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) === -1) {
+        //   dispatch(containerCreate())
+        //   containerId = getState().containers[getState().containers.length - 1].dsid
+        // } else {
+        //   const index = getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid);
+        //   containerId = getState().exchange[index].dsid
+        // }
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_SUCCESS,
           payload: {
@@ -51,6 +73,11 @@ export const exchangeCandleAction = (input, containerId) => {
         })
       })
       .catch(err => {
+        let containerId = null;
+        if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) !== -1) {
+          const index = getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid);
+          containerId = getState().exchange[index].dsid
+        }
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_FAILURE,
           payload: {
