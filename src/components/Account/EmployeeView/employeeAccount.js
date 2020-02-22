@@ -5,14 +5,15 @@ import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
+import { fireCandleModalAction } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
 import ModalCandleView from "../../../View/modalCandleView";
 import CandleModal from '../../CandleModal/candleModal';
 
-const EmployeeAccount = ({ signout }) => {
+const EmployeeAccount = ({ signout, fireCandleModal }) => {
   // const [showInputArea, setShowInputArea] = useState(false)
   const [showLeftList, setShowLeftList] = useState(false);
-  const [renderCandle, setRenderCandle] = useState(false);
+  // const [renderCandle, setRenderCandle] = useState(false);
 
   const logutBtn = () => {
     signout();
@@ -24,7 +25,7 @@ const EmployeeAccount = ({ signout }) => {
   }
 
   const onClickCandleViewer = () => {
-    setRenderCandle(!renderCandle);
+    fireCandleModal();
   }
 
 
@@ -54,8 +55,8 @@ const EmployeeAccount = ({ signout }) => {
           </LeftSideFeatureAdapter>
         </FeatureWrapper>
         <FeatureContainer>
-        <ModalCandleView></ModalCandleView>
-          {/* <CandleModal sendToggSignal={renderCandle}></CandleModal> */}
+        {/* <ModalCandleView></ModalCandleView> */}
+          <CandleModal></CandleModal>
         </FeatureContainer>
       </MainArea>
     </Wrapper>
@@ -64,7 +65,8 @@ const EmployeeAccount = ({ signout }) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    signout: () => dispatch(signout())
+    signout: () => dispatch(signout()),
+    fireCandleModal: () => dispatch(fireCandleModalAction())
   };
 };
 
