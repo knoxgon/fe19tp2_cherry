@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker } from './styledCandleModal'
+import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
 import { fireCandleModalAction } from '../../__redux/actions/modalActions';
 
 const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
@@ -95,9 +95,9 @@ const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup,
             </React.Fragment>
           }
 
-          <AreaWrap>
+          <ButtonAreaWrap>
             <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
-          </AreaWrap>
+          </ButtonAreaWrap>
           <div>{retStatus}</div>
         </FormModal>
       </CRModal>
