@@ -28,10 +28,14 @@ export const CRModal = styled(RMConnector).attrs({
     padding: 2rem;
     margin-right: -50%;
     transform: translate(-50%, -50%);
-    height: calc(100% - 40rem);
     max-width: 50rem;
     width: calc(100% - 10rem);
     min-width: 25rem;
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      width: calc(100% - 15rem);
+      height: auto;
+    }
   }
   .Overlay {
     position: fixed;
@@ -51,10 +55,13 @@ export const CMSelect = styled(Select)`
 export const AreaWrap = styled.div`
   display: flex;
   flex-direction: column;
-  text-align: center;
   width: 50%;
   margin: 0 auto;
   margin-bottom: 2rem;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    width: auto;
+  }
 `;
 
 const FormModal = styled.form`
@@ -72,6 +79,18 @@ export const CandleLabel = styled.label`
 
 export const CMDateTimePicker = styled(DateTimePicker)`
   font-size: 1.6rem;
+  height: 4rem;
+  width: 25rem;
+`;
+
+export const ButtonAreaWrap = styled(AreaWrap)`
+  margin-top: 6rem;
+  margin-bottom: 2rem;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    margin-top: 5rem;  width: auto;
+    width: calc(100% - 1rem);
+  }
 `;
 
 const modalStyle = {
