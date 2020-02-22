@@ -5,9 +5,9 @@ import {options, optionsBar} from '../options';
 
 
 const CandleGraph = ({containerId, barid, exchange}) => {
-  const renderGraph = () => {
-    return exchange.map(({status, dsid, primary, alternate}, i) => {
-      if(status === 'ok' && dsid === containerId && alternate.series[0].data.length > 0) {
+  return (
+    exchange.map(({status, dsid, primary, alternate}, i) => {
+      if(status === 'ok' && alternate.series[0].data.length > 0) {
         return <React.Fragment key={i}>
           <Chart options={options(dsid)} series={primary.series} type="candlestick" height="350px" width="550px" />
           <Chart options={optionsBar(dsid, barid)} series={alternate.series} type="bar"  height="150px" width="550px" />
@@ -17,9 +17,6 @@ const CandleGraph = ({containerId, barid, exchange}) => {
       }
       return null;
     })
-  }
-  return (
-    renderGraph()
   )
 }
 
