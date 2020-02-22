@@ -4,7 +4,6 @@ import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } fro
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
 import { fireCandleModalAction } from '../../__redux/actions/modalActions';
-import { containerCreate } from '../../__redux/actions/containerAction';
 
 
 const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
