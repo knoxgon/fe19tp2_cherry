@@ -7,13 +7,11 @@ import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModalAction } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
-import ModalCandleView from "../../../View/modalCandleView";
+import ContainerCandleView from "../../../View/containerCandleView";
 import CandleModal from '../../CandleModal/candleModal';
 
 const EmployeeAccount = ({ signout, fireCandleModal }) => {
-  // const [showInputArea, setShowInputArea] = useState(false)
   const [showLeftList, setShowLeftList] = useState(false);
-  // const [renderCandle, setRenderCandle] = useState(false);
 
   const logutBtn = () => {
     signout();
@@ -21,7 +19,6 @@ const EmployeeAccount = ({ signout, fireCandleModal }) => {
 
   const toggleDisplayGraph = () => {
     setShowLeftList(!showLeftList)
-    // setShowInputArea(!showInputArea);
   }
 
   const onClickCandleViewer = () => {
@@ -55,8 +52,8 @@ const EmployeeAccount = ({ signout, fireCandleModal }) => {
           </LeftSideFeatureAdapter>
         </FeatureWrapper>
         <FeatureContainer>
-        {/* <ModalCandleView></ModalCandleView> */}
           <CandleModal></CandleModal>
+          <ContainerCandleView></ContainerCandleView>
         </FeatureContainer>
       </MainArea>
     </Wrapper>
