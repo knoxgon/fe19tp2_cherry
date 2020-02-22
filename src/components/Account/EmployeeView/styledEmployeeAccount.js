@@ -106,7 +106,7 @@ export const LeftSideItemArea = styled.div`
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     padding-left: 4rem;
-    padding-right: 4rem;
+    padding-right: 2rem;
   }
 `;
 
