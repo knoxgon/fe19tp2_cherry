@@ -2,6 +2,8 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
+import Select from 'react-select';
+import DateTimePicker from 'react-datetime-picker';
 
 
 const RMConnector = ({ className, modalPointer, ...props }) => <ReactModal className={modalPointer} portalClassName={className} {...props}/>
@@ -10,6 +12,9 @@ export const CRModal = styled(RMConnector).attrs({
   overlayClassName: 'Overlay',
   modalPointer: 'Modal'
 })`
+  &::-webkit-scrollbar {
+    display: none;
+  }
   .Modal {
     position: absolute;
     top: 50%;
@@ -18,7 +23,6 @@ export const CRModal = styled(RMConnector).attrs({
     bottom: auto;
     border: 1px solid rgb(204, 204, 204);
     background: white;
-    overflow: auto;
     border-radius: 0.4rem;
     outline: none;
     padding: 2rem;
@@ -39,18 +43,36 @@ export const CRModal = styled(RMConnector).attrs({
   }
 `
 
-const FormModal = styled.form`
+export const CMSelect = styled(Select)`
+  font-size: 1.6rem;
+  width: 25rem;
+`;
+
+export const AreaWrap = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
   width: 50%;
   margin: 0 auto;
+  margin-bottom: 2rem;
+`;
+
+const FormModal = styled.form`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
 `;
 
 export const CandleLabel = styled.label`
   font-size: 1.5rem;
+  font-weight: 600;
+  color: #08a7ad;
 `;
 
+export const CMDateTimePicker = styled(DateTimePicker)`
+  font-size: 1.6rem;
+`;
 
 const modalStyle = {
   content : {
@@ -79,7 +101,6 @@ export const ModalTitle = styled.div`
 `;
 
 export const ModalSubmitButton = styled.button`
-  position:fixed;
   bottom:0;
   font-size: 1.5rem;
   font-weight: 600;
