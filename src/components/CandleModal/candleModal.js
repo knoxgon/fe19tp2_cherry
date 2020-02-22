@@ -4,8 +4,10 @@ import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } fro
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
 import { fireCandleModalAction } from '../../__redux/actions/modalActions';
+import { containerCreate } from '../../__redux/actions/containerAction';
 
-const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
+
+const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -25,7 +27,7 @@ const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup,
 
   const submitForm = (e) => {
     e.preventDefault();
-    getinfo(inputs, sharedId)
+    getinfo(inputs)
   }
 
   const onChangePlatform = (e) => {
@@ -116,7 +118,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getinfo : (inf, sid) => dispatch(exchangeCandleAction(inf, sid)),
+    getinfo : (inf) => dispatch(exchangeCandleAction(inf)),
     getExc  : (inp) => dispatch(exchangeTypeSymGrpAction(inp)),
     getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx)),
     fireCandleModal: () => dispatch(fireCandleModalAction())
