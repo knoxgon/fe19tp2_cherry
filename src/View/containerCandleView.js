@@ -16,8 +16,9 @@ const ContainerCandleView = ({exchange, eraseContainer, containers}) => {
         <GMArea>
           <MCCloser src={require('../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
           {exchange.map((grafData, j) => {
-            if(grafData.status === 'ok' && grafData.dsid === dsid)
+            if(grafData.status === 'ok' && grafData.dsid === dsid) {
               return <CandleGraph key={j} containerId={dsid} barid={random.generate(16)}></CandleGraph>
+            }
             return null;
           })}
         </GMArea>

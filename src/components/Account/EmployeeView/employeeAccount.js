@@ -50,9 +50,9 @@ const EmployeeAccount = ({ signout, fireCandleModal }) => {
               <SubMenuItemDescription>Line</SubMenuItemDescription>
             </LeftSideItemArea>
           </LeftSideFeatureAdapter>
+        <CandleModal></CandleModal>
         </FeatureWrapper>
         <FeatureContainer>
-          <CandleModal></CandleModal>
           <ContainerCandleView></ContainerCandleView>
         </FeatureContainer>
       </MainArea>
