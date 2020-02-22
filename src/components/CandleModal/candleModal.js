@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
-import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
 import { connect } from 'react-redux';
-import DateTimePicker from 'react-datetime-picker';
-import Select from 'react-select';
+import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import { ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal } from './styledCandleModal'
+import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker } from './styledCandleModal'
 import { fireCandleModalAction } from '../../__redux/actions/modalActions';
 
 const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
@@ -58,32 +56,48 @@ const CandleModal = ({sharedId, getinfo, retStatus, getExc, exchangeSymbolGroup,
         <FormModal onSubmit={submitForm}>
           <ModalTitle>Graph Title</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
-          <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
-          <DateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
 
-          <label htmlFor="dateto">End date</label>
-          <DateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
+          <AreaWrap>
+            <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
+            <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
+          </AreaWrap>
 
-          <label htmlFor="platform">Platform</label>
-          <Select name="platform" onChange={onChangePlatform} options={platforms}></Select>
+          <AreaWrap>
+            <CandleLabel htmlFor="dateto">End date</CandleLabel>
+            <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
+          </AreaWrap>
 
-          <label htmlFor="resolution">Resolution</label>
-          <Select name="resolution" onChange={onChangeResolution} options={resolutions}></Select>
+          <AreaWrap>
+            <CandleLabel htmlFor="platform">Platform</CandleLabel>
+            <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
+          </AreaWrap>
+
+          <AreaWrap>
+            <CandleLabel htmlFor="resolution">Resolution</CandleLabel>
+            <CMSelect name="resolution" onChange={onChangeResolution} options={resolutions}></CMSelect>
+          </AreaWrap>
 
           {exchangeSymbolGroup.length &&
             <React.Fragment>
-              <label htmlFor="symbolgroup">Market</label>
-              <Select name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></Select>
+              <AreaWrap>
+                <label htmlFor="symbolgroup">Market</label>
+                <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
+              </AreaWrap>
             </React.Fragment>
           }
 
           {exchangeSymbol &&
             <React.Fragment>
-              <label htmlFor="currencies">Currency</label>
-              <Select name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></Select>
+              <AreaWrap>
+                <label htmlFor="currencies">Currency</label>
+                <CMSelect name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></CMSelect>
+              </AreaWrap>
             </React.Fragment>
           }
-          <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+
+          <AreaWrap>
+            <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+          </AreaWrap>
           <div>{retStatus}</div>
         </FormModal>
       </CRModal>
