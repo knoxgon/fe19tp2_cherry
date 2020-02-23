@@ -1,8 +1,8 @@
-import { FETCH_CANDLE_EXCHANGE_FAILURE, FETCH_CANDLE_EXCHANGE_SUCCESS, EXCHANGE_TYPE_SUCCESS, EXCHANGE_TYPE_FAILURE, EXCHANGE_SYM_SUCCESS, EXCHANGE_SYM_FAILURE } from '../actions/types';
-import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone, fxpig } from '../../__misc/fx/';
-import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc/'
+import { FETCH_CANDLE_EXCHANGE_FAILURE, FETCH_CANDLE_EXCHANGE_SUCCESS, EXCHANGE_TYPE_SUCCESS, EXCHANGE_TYPE_FAILURE, EXCHANGE_SYM_SUCCESS, EXCHANGE_SYM_FAILURE } from './types';
+import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone, fxpig } from '../../__misc/fx';
+import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc'
 import Axios from 'axios';
-import { containerCreate } from './containerAction';
+import { containerCreate } from './containerActions';
 import { fireCandleModalAction } from './modalActions';
 
 export const exchangeCandleAction = (input) => {
