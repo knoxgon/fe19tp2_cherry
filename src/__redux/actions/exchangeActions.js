@@ -3,7 +3,7 @@ import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone,
 import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc'
 import Axios from 'axios';
 import { containerCreate } from './containerActions';
-import { fireCandleModalAction } from './modalActions';
+import { fireCandleModal } from './modalActions';
 
 export const exchangeCandleAction = (input) => {
   return (dispatch, getState) => {
@@ -52,7 +52,7 @@ export const exchangeCandleAction = (input) => {
         });
         dispatch(containerCreate())
         let containerId = getState().containers[getState().containers.length - 1].dsid
-        dispatch(fireCandleModalAction())
+        dispatch(fireCandleModal())
 
         // let containerId;
         // if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) === -1) {

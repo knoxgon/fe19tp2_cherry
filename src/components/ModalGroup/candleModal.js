@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeActions';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
-import { fireCandleModalAction } from '../../__redux/actions/modalActions';
+import { fireCandleModal } from '../../__redux/actions/modalActions';
 
 
 const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
@@ -120,7 +120,7 @@ const mapDispatchToProps = (dispatch) => {
     getinfo : (inf) => dispatch(exchangeCandleAction(inf)),
     getExc  : (inp) => dispatch(exchangeTypeSymGrpAction(inp)),
     getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx)),
-    fireCandleModal: () => dispatch(fireCandleModalAction())
+    fireCandleModal: () => dispatch(fireCandleModal())
   }
 }
 

@@ -1,7 +1,7 @@
 import { CANDLE_MODAL_TOGGLE, LINE_MODAL_TOGGLE, PIE_MODAL_TOGGLE } from './types'
 
 
-export const fireCandleModalAction = () => {
+export const fireCandleModal = () => {
   return (dispatch, getState) => {
     dispatch({
       type: CANDLE_MODAL_TOGGLE
@@ -9,7 +9,7 @@ export const fireCandleModalAction = () => {
   }
 }
 
-export const fireLineModalAction = () => {
+export const fireLineModal = () => {
   return (dispatch, getState) => {
     dispatch({
       type: LINE_MODAL_TOGGLE
@@ -17,7 +17,7 @@ export const fireLineModalAction = () => {
   }
 }
 
-export const firePieModalAction = () => {
+export const firePieModal = () => {
   return (dispatch, getState) => {
     dispatch({
       type: PIE_MODAL_TOGGLE

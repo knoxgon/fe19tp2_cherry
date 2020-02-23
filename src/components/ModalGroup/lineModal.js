@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { surpriseEarningAction } from '../../__redux/actions/earningActions';
+import { surpriseEarnings } from '../../__redux/actions/earningActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledCandleModal'
-import { fireLineModalAction } from '../../__redux/actions/modalActions';
+import { fireLineModal } from '../../__redux/actions/modalActions';
 
 
 const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
@@ -49,8 +49,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getLinfo : (sym) => dispatch(surpriseEarningAction(sym)),
-    fireLineModal: () => dispatch(fireLineModalAction())
+    getLinfo : (sym) => dispatch(surpriseEarnings(sym)),
+    fireLineModal: () => dispatch(fireLineModal())
   }
 }
 

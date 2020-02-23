@@ -1,9 +1,9 @@
 import { FETCH_EARNING_SURPRISES_SUCCESS, FETCH_EARNING_SURPRISES_FAILURE } from './types';
 import { containerCreate } from './containerActions';
 import Axios from 'axios';
-import { fireLineModalAction } from './modalActions';
+import { fireLineModal } from './modalActions';
 
-export const surpriseEarningAction = (symbol) => {
+export const surpriseEarnings = (symbol) => {
   return (dispatch, getState) => {
     Axios(`https://finnhub.io/api/v1/stock/earnings?symbol=${symbol}&token=bp3cl47rh5r9d7scmmd0`)
     .then(result => {
@@ -16,8 +16,7 @@ export const surpriseEarningAction = (symbol) => {
       
       dispatch(containerCreate())
       let containerId = getState().containers[getState().containers.length - 1].dsid
-      dispatch(fireLineModalAction())
-
+      dispatch(fireLineModal())
       dispatch({
         type: FETCH_EARNING_SURPRISES_SUCCESS,
         payload: {

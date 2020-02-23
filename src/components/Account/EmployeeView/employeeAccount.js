@@ -5,13 +5,13 @@ import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import { fireCandleModalAction, fireLineModalAction } from "../../../__redux/actions/modalActions";
+import { fireCandleModal, fireLineModal } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 
-const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) => {
+const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal }) => {
   const [showLeftList, setShowLeftList] = useState(false);
 
   const logutBtn = () => {
@@ -69,16 +69,14 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) 
 
 const mapStateToProps = (state) => {
   return {
-    cmt: state.candleModalToggler.toggle,
-    lmt: state.lineModalToggler.toggle,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     signout: () => dispatch(signout()),
-    fireCandleModal: () => dispatch(fireCandleModalAction()),
-    fireLineModal: () => dispatch(fireLineModalAction())
+    fireCandleModal: () => dispatch(fireCandleModal()),
+    fireLineModal: () => dispatch(fireLineModal())
   };
 };
 
