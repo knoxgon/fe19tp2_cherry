@@ -4,7 +4,6 @@ const initState = {
   toggle: false
 }
 
-
 export const lineModalReducer = (state = initState, action) => {
   switch(action.type) {
     case LINE_MODAL_TOGGLE:
