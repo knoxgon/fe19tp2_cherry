@@ -95,3 +95,63 @@ export const optionsBar = (trgId, id) => {
     ]
   }
 }
+
+export const optionsLine = (dsid, catry, comp) => {
+  return {
+    chart: {
+      id: dsid,
+      type: 'line',
+      dropShadow: {
+        enabled: true,
+        color: '#000',
+        top: 18,
+        left: 7,
+        blur: 10,
+        opacity: 0.2
+      },
+      toolbar: {
+        show: false
+      }
+    },
+    colors: ['#77B6EA', '#545454'],
+    dataLabels: {
+      enabled: true,
+    },
+    stroke: {
+      curve: 'smooth'
+    },
+    title: {
+      text: 'Earnings Surprises - ' + comp,
+      align: 'left'
+    },
+    grid: {
+      borderColor: '#e7e7e7',
+      row: {
+        colors: ['#f3f3f3', 'transparent'],
+        opacity: 0.5
+      },
+    },
+    markers: {
+      size: 1
+    },
+    xaxis: {
+      categories: catry,
+      title: {
+        text: 'Timeline'
+      }
+    },
+    yaxis: {
+      title: {
+        text: 'Earning estimation'
+      }
+    },
+    legend: {
+      position: 'top',
+      horizontalAlign: 'right',
+      floating: true,
+      offsetY: -25,
+      offsetX: -5
+    }
+  }
+}
+
