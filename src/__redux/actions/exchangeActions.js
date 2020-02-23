@@ -7,7 +7,7 @@ import { fireCandleModal } from './modalActions';
 
 export const exchangeCandleAction = (input) => {
   return (dispatch, getState) => {
-    const { selectedPlatform, selectedSymbol, selectedResolution, intervalFrom, intervalTo } = input;
+    const { selectedPlatform, selectedSymbol, selectedSymbolGroup, selectedResolution, intervalFrom, intervalTo } = input;
     Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
       .then((result) => {
         if(result.data == null) {
@@ -68,7 +68,9 @@ export const exchangeCandleAction = (input) => {
             dsid: containerId,
             status: mappedData.s_s,
             primary: primaryBatch,
-            alternate: alternateBatch
+            alternate: alternateBatch,
+            market: selectedSymbolGroup,
+            currency: selectedSymbol.label
           }
         })
       })
