@@ -5,9 +5,8 @@ import random from 'randomstring';
 import { GMArea, MCCloser } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
-import PieGraph from '../Graph/Pie/pie'
 
-const ContainerGraphView = ({central, eraseContainer, containers}) => {
+const ContainerGraphView = ({exchange, eraseContainer, containers}) => {
   const containerOnDel = (dsid) => {
     eraseContainer(dsid)
   }
@@ -17,13 +16,11 @@ const ContainerGraphView = ({central, eraseContainer, containers}) => {
       return <React.Fragment key={i}>
         <GMArea>
           <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
-          {central.map((grafData, j) => {
+          {exchange.map((grafData, j) => {
             if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'candle') {
-              return <CandleGraph key={j} market={grafData.market} currency={grafData.currency} primary={grafData.primary.series} alternate={grafData.alternate.series} containerId={dsid} barid={random.generate(16)}></CandleGraph>
+              return <CandleGraph key={j} containerId={dsid} barid={random.generate(16)}></CandleGraph>
             } if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'line') {
-              return <LineGraph key={j} series={grafData.series} period={grafData.period} symcomp={grafData.symcomp} containerId={dsid}></LineGraph>
-            } if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'pie') {
-              return <PieGraph key={j} series={grafData.series} period={grafData.period} compname={grafData.compname} containerId={dsid}></PieGraph>
+              return <LineGraph key={j} containerId={dsid}></LineGraph>
             }
             return null;
           })}
