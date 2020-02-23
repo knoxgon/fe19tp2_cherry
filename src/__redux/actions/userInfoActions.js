@@ -17,7 +17,7 @@ export const getInfo = () => {
       .doc(userid)
       .get()
       .then(res => {
-        const { logo, role, companyColor, firstname, lastname } = res.data();
+        const { logo, role, companyColor, companyColorDark, firstname, lastname } = res.data();
         firebase
           .storage()
           .ref(logo)
@@ -29,6 +29,7 @@ export const getInfo = () => {
                 imgurl: imgurl,
                 role: role,
                 companyColor: companyColor,
+                companyColorDark: companyColorDark,
                 fullName: firstname + " " + lastname
               }
             });

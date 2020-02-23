@@ -61,7 +61,7 @@ const InputImage = styled.img`
 
 const EmailInput = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: white;
+  background-color: ${Theme.colors.whiteToGrey};
   border-radius: 0.5rem;
   width: 28rem;
   height: 4rem;

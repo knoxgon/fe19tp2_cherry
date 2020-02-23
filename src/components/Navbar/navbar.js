@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Logo from "../../assets/logo_transparent.png";
-import Theme from "../../__config/theme";
+import Theme, { CheckDarkMode } from "../../__config/theme";
 import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { getInfo } from '../../__redux/actions/userInfoActions';
@@ -23,6 +23,7 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
   const [fullName, setFullName] = useState("");
+
   
   
   useEffect(() => {
@@ -44,7 +45,15 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
       setFullName("Account");
     } else {
       setLogo(userInfo.logo);
-      setCompanyColor(userInfo.companyColor);
+
+      let color 
+      if (CheckDarkMode()) {
+        color = userInfo.companyColorDark
+      } else {
+        color = userInfo.companyColor
+      }
+
+      setCompanyColor(color);
       setFullName(userInfo.fullName);
     }
 
@@ -57,6 +66,7 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
     isGuest,
     userInfo.logo,
     userInfo.companyColor,
+    userInfo.companyColorDark,
     userInfo.fullName,
     getinfo
   ]);

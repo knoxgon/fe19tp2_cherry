@@ -8,6 +8,7 @@ const initialState = {
     logo: null,
     role: null,
     companyColor: null,
+    companyColorDark: null,
     fullName: null
   }
 };
@@ -20,6 +21,7 @@ export const userInfoReducer = (state = initialState, action) => {
           logo: action.payload.imgurl,
           role: action.payload.role,
           companyColor: action.payload.companyColor,
+          companyColorDark: action.payload.companyColorDark,
           fullName: action.payload.fullName
         }
       };
