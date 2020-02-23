@@ -5,12 +5,13 @@ import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import { fireCandleModalAction } from "../../../__redux/actions/modalActions";
+import { fireCandleModalAction, fireLineModalAction } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
-import ContainerCandleView from "../../../View/containerCandleView";
-import CandleModal from '../../CandleModal/candleModal';
+import ContainerGraphView from "../../../View/containerGraphView";
+import CandleModal from '../../ModalGroup/candleModal';
+import LineModal from '../../ModalGroup/lineModal';
 
-const EmployeeAccount = ({ signout, fireCandleModal }) => {
+const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) => {
   const [showLeftList, setShowLeftList] = useState(false);
 
   const logutBtn = () => {
@@ -23,6 +24,9 @@ const EmployeeAccount = ({ signout, fireCandleModal }) => {
 
   const onClickCandleViewer = () => {
     fireCandleModal();
+  }
+  const onClickLineViewer = () => {
+    fireLineModal();
   }
 
 
@@ -39,32 +43,43 @@ const EmployeeAccount = ({ signout, fireCandleModal }) => {
           <LeftSideFeatureAdapter toggle={showLeftList}>
             <LeftSideItemArea onClick={onClickCandleViewer}>
               <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
-              <SubMenuItemDescription>Candle</SubMenuItemDescription>
+              <SubMenuItemDescription>OHLC</SubMenuItemDescription>
             </LeftSideItemArea>
             <LeftSideItemArea>
               <SubMenuItemImg src={IconPie}></SubMenuItemImg>
-              <SubMenuItemDescription>Pie</SubMenuItemDescription>
+              <SubMenuItemDescription>Trends</SubMenuItemDescription>
             </LeftSideItemArea>
-            <LeftSideItemArea>
+            <LeftSideItemArea onClick={onClickLineViewer}>
               <SubMenuItemImg src={IconLine}></SubMenuItemImg>
-              <SubMenuItemDescription>Line</SubMenuItemDescription>
+              <SubMenuItemDescription>Earnings</SubMenuItemDescription>
             </LeftSideItemArea>
           </LeftSideFeatureAdapter>
-        <CandleModal></CandleModal>
+          <React.Fragment>
+            <CandleModal></CandleModal>
+            <LineModal></LineModal>
+          </React.Fragment>
         </FeatureWrapper>
         <FeatureContainer>
-          <ContainerCandleView></ContainerCandleView>
+          <ContainerGraphView></ContainerGraphView>
         </FeatureContainer>
       </MainArea>
     </Wrapper>
   );
 };
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = (state) => {
+  return {
+    cmt: state.candleModalToggler.toggle,
+    lmt: state.lineModalToggler.toggle,
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
   return {
     signout: () => dispatch(signout()),
-    fireCandleModal: () => dispatch(fireCandleModalAction())
+    fireCandleModal: () => dispatch(fireCandleModalAction()),
+    fireLineModal: () => dispatch(fireLineModalAction())
   };
 };
 
-export default connect(null, mapDispatchToProps)(EmployeeAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(EmployeeAccount);
