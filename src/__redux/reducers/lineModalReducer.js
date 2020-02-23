@@ -1,13 +1,13 @@
-import { MODAL_TOGGLE } from '../actions/types';
+import { LINE_MODAL_TOGGLE } from '../actions/types';
 
 const initState = {
   toggle: false
 }
 
 
-export const modalReducer = (state = initState, action) => {
+export const lineModalReducer = (state = initState, action) => {
   switch(action.type) {
-    case MODAL_TOGGLE:
+    case LINE_MODAL_TOGGLE:
       return {
         ...state,
         toggle: !state.toggle

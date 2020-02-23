@@ -73,15 +73,9 @@ export const exchangeCandleAction = (input) => {
         })
       })
       .catch(err => {
-        let containerId = null;
-        if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) !== -1) {
-          const index = getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid);
-          containerId = getState().exchange[index].dsid
-        }
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_FAILURE,
           payload: {
-            dsid: containerId,
             status: err.message
           }
         })

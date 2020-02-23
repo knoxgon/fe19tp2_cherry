@@ -16,7 +16,7 @@ export const GMArea = styled.div`
   position: relative;
   margin: 3.5rem auto;
   width: 55rem;
-  height: 52.5rem;
+  height: auto;
   opacity: 0.9;
   border: 1px solid;
 `;

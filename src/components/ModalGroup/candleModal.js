@@ -6,7 +6,7 @@ import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, Mo
 import { fireCandleModalAction } from '../../__redux/actions/modalActions';
 
 
-const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, modalTogg, fireCandleModal}) => {
+const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -53,9 +53,9 @@ const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeS
 
   return (
     <ModalContainer>
-      <CRModal shouldCloseOnOverlayClick={false} isOpen={modalTogg} ariaHideApp={false}>
+      <CRModal shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle>Graph Title</ModalTitle>
+          <ModalTitle>Open-High-Low-Close</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
 
           <AreaWrap>
@@ -108,7 +108,7 @@ const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeS
 
 const mapStateToProps = (state) => {
   return {
-    modalTogg: state.modalToggler.toggle,
+    candleModalTogg: state.candleModalToggler.toggle,
     retStatus: state.exchange.status,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
     exchangeSymbol:    state.exchangeSymbol.selectedExSymMul

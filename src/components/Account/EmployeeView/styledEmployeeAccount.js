@@ -217,8 +217,7 @@ const FeatureContainer = styled.div`
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
     padding: 0;
-    padding-bottom: 10rem;
-    margin-bottom: 7.5rem;
+    margin-bottom: 10rem;
     width: 100%;
   }
 `;
