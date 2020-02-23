@@ -28,26 +28,35 @@ export const trendsPrefetch = (symbol) => {
 }
 
 export const trends = (period, compname) => {
+  console.log('P: ' + period)
   return (dispatch, getState) => {
-    const procItem = getState().predata.series.find(el => el.period === period)
-    if(!procItem) {
+    if(!period) {
       dispatch({
         type: FETCH_RECOMMENTATION_TRENDS_FAILURE,
-        errMsg: `No records found for ${period}`
+        errMsg: 'Please select a period'
       })
-    }
-    const data = Array.of(procItem.buy, procItem.hold, procItem.sell, procItem.strongBuy, procItem.strongSell)
-    dispatch(containerCreate())
-    let containerId = getState().containers[getState().containers.length - 1].dsid
-    dispatch(firePieModal())
-    dispatch({
-      type: FETCH_RECOMMENTATION_TRENDS_SUCCESS,
-      payload: {
-        dsid: containerId,
-        data,
-        period,
-        compname
+    } else {
+      const procItem = getState().predata.series.find(el => el.period === period)
+      if(!procItem) {
+        dispatch({
+          type: FETCH_RECOMMENTATION_TRENDS_FAILURE,
+          errMsg: `No records found for ${period}`
+        })
+      } else {
+        const data = Array.of(procItem.buy, procItem.hold, procItem.sell, procItem.strongBuy, procItem.strongSell)
+        dispatch(containerCreate())
+        let containerId = getState().containers[getState().containers.length - 1].dsid
+        dispatch(firePieModal())
+        dispatch({
+          type: FETCH_RECOMMENTATION_TRENDS_SUCCESS,
+          payload: {
+            dsid: containerId,
+            data,
+            period,
+            compname
+          }
+        })
       }
-    })
+    }
   }
 }
