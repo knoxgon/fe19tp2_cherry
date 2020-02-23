@@ -23,7 +23,7 @@ const CandleGraph = ({containerId, barid, exchange}) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    exchange: state.exchange,
+    central: state.central,
     containerId: props.containerId,
     barid: props.barid
   }

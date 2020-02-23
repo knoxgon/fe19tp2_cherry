@@ -35,7 +35,7 @@ const ContainerGraphView = ({exchange, eraseContainer, containers}) => {
 
 const mapStateToProps = (state) => {
   return {
-    exchange: state.exchange,
+    central: state.central,
     containers: state.containers
   }
 }
