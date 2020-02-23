@@ -11,6 +11,8 @@ import { exchangeSymReducer } from './exchangeSymReducer';
 import { containerReducer } from './containerReducer';
 import { candleModalReducer } from './candleModalReducer';
 import { lineModalReducer } from './lineModalReducer';
+import { pieModalReducer } from './pieModalReducer';
+import { prefetchReducer } from './prefetchReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -20,9 +22,11 @@ export const rootReducer = combineReducers({
   firebase: firebaseReducer,
   firestore: firestoreReducer,
   central: centralReducer,
+  predata: prefetchReducer,
   exchangeSymbolGroup: exchangeTypeSymGrpReducer,
   exchangeSymbol: exchangeSymReducer,
   containers: containerReducer,
   candleModalToggler: candleModalReducer,
   lineModalToggler: lineModalReducer,
+  pieModalToggler: pieModalReducer
 });
