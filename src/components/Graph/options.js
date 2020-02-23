@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-export const options = (id) => {
+export const options = (id, mkt, crc) => {
   return {
     chart: { 
       background: '#000000',
@@ -20,6 +20,10 @@ export const options = (id) => {
           customIcons: []
         },
       }
+    },
+    title: {
+      text: 'OHLC - ' + mkt + ' - ' + crc,
+      align: 'left'
     },
     xaxis: {
       type: 'category',
@@ -110,13 +114,20 @@ export const optionsLine = (dsid, catry, comp) => {
         opacity: 0.2
       },
       toolbar: {
-        show: false
+        show: true,
+        tools: {
+          download: true,
+          selection: true,
+          zoom: true,
+          zoomin: true,
+          zoomout: true,
+          pan: true,
+          reset: true,
+          customIcons: []
+        },
       }
     },
     colors: ['#77B6EA', '#545454'],
-    dataLabels: {
-      enabled: true,
-    },
     stroke: {
       curve: 'smooth'
     },
@@ -131,9 +142,6 @@ export const optionsLine = (dsid, catry, comp) => {
         opacity: 0.5
       },
     },
-    markers: {
-      size: 1
-    },
     xaxis: {
       categories: catry,
       title: {
@@ -146,8 +154,8 @@ export const optionsLine = (dsid, catry, comp) => {
       }
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'right',
+      position: 'bottom',
+      horizontalAlign: 'center',
       floating: true,
       offsetY: -25,
       offsetX: -5
@@ -155,3 +163,24 @@ export const optionsLine = (dsid, catry, comp) => {
   }
 }
 
+export const optionsPie = (dsid, period, comp) => {
+  return {
+    chart: {
+      type: 'pie',
+      id: dsid
+    },
+    labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
+    title: {
+      text: 'Recommendation Trends - ' + period + ' - ' + comp,
+      align: 'left'
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }]
+  }
+}
