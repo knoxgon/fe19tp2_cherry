@@ -7,7 +7,6 @@ export const exchangeCandleReducer = (state = initState, action) => {
   switch(action.type) {
     case FETCH_EARNING_SURPRISES_SUCCESS:
       if(state.findIndex(e => e.dsid === action.payload.dsid) === -1) {
-        console.log(action.payload.series[1].estimate)
         return [
           ...state,
           {
