@@ -5,7 +5,7 @@ import { firePieModal } from './modalActions';
 
 export const trendsPrefetch = (symbol) => {
   return (dispatch, getState) => {
-    Axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol}&token=bp3cl47rh5r9d7scmmd0`)
+    Axios(`https://finnhub.io/api/v1/stock/recommendation?symbol=${symbol.value}&token=bp3cl47rh5r9d7scmmd0`)
     .then(result => {
       if(result.data.length === 0) {
         throw new Error('No company records were found')
@@ -16,7 +16,7 @@ export const trendsPrefetch = (symbol) => {
         payload: {
           data: result.data,
           periods: prepPeriods,
-          compname: symbol
+          compname: symbol.label
         }
       })
     }).catch(err => {

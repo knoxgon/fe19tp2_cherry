@@ -5,7 +5,7 @@ import { fireLineModal } from './modalActions';
 
 export const surpriseEarnings = (symbol) => {
   return (dispatch, getState) => {
-    Axios(`https://finnhub.io/api/v1/stock/earnings?symbol=${symbol}&token=bp3cl47rh5r9d7scmmd0`)
+    Axios(`https://finnhub.io/api/v1/stock/earnings?symbol=${symbol.value}&token=bp3cl47rh5r9d7scmmd0`)
     .then(result => {
       if(result.data.length === 0) {
         throw new Error('No company records were found')
@@ -27,7 +27,7 @@ export const surpriseEarnings = (symbol) => {
           ],
           period: period.reverse(),
           status: 'ok',
-          symcomp: symbol
+          symcomp: symbol.label
         }
       })
     }).catch(err => {
