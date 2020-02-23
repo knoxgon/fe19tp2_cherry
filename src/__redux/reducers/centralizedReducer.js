@@ -3,7 +3,7 @@ import { FETCH_CANDLE_EXCHANGE_SUCCESS, FETCH_CANDLE_EXCHANGE_FAILURE, CONTAINER
 const initState = []
 
 
-export const exchangeCandleReducer = (state = initState, action) => {
+export const centralReducer = (state = initState, action) => {
   switch(action.type) {
     case FETCH_EARNING_SURPRISES_SUCCESS:
       if(state.findIndex(e => e.dsid === action.payload.dsid) === -1) {
