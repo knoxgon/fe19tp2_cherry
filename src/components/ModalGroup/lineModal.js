@@ -11,7 +11,7 @@ const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    getLinfo(sym.value)
+    getLinfo(sym)
   }
 
   const onChangeSymbol = (e) => {

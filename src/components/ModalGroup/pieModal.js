@@ -15,7 +15,7 @@ const PieModal = ({getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend}
   }
   
   const onChangeSymbol = (e) => {
-    getPinfo(e.value)
+    getPinfo(e)
   }
   
   const onChangePeriod = (e) => {
