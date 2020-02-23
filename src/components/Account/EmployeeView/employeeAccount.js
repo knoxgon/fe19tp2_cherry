@@ -5,13 +5,14 @@ import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
-import { fireCandleModalAction, fireLineModalAction } from "../../../__redux/actions/modalActions";
+import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
 import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
+import PieModal from '../../ModalGroup/pieModal';
 
-const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) => {
+const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal }) => {
   const [showLeftList, setShowLeftList] = useState(false);
 
   const logutBtn = () => {
@@ -28,8 +29,9 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) 
   const onClickLineViewer = () => {
     fireLineModal();
   }
-
-
+  const onClickPieViewer = () => {
+    firePieModal();
+  }
 
   return (
     <Wrapper>
@@ -45,7 +47,7 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) 
               <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
               <SubMenuItemDescription>OHLC</SubMenuItemDescription>
             </LeftSideItemArea>
-            <LeftSideItemArea>
+            <LeftSideItemArea onClick={onClickPieViewer}>
               <SubMenuItemImg src={IconPie}></SubMenuItemImg>
               <SubMenuItemDescription>Trends</SubMenuItemDescription>
             </LeftSideItemArea>
@@ -57,6 +59,7 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) 
           <React.Fragment>
             <CandleModal></CandleModal>
             <LineModal></LineModal>
+            <PieModal></PieModal>
           </React.Fragment>
         </FeatureWrapper>
         <FeatureContainer>
@@ -69,16 +72,15 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, cmt, lmt }) 
 
 const mapStateToProps = (state) => {
   return {
-    cmt: state.candleModalToggler.toggle,
-    lmt: state.lineModalToggler.toggle,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     signout: () => dispatch(signout()),
-    fireCandleModal: () => dispatch(fireCandleModalAction()),
-    fireLineModal: () => dispatch(fireLineModalAction())
+    fireCandleModal: () => dispatch(fireCandleModal()),
+    fireLineModal: () => dispatch(fireLineModal()),
+    firePieModal: () => dispatch(firePieModal())
   };
 };
 

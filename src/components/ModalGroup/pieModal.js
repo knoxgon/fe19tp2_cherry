@@ -1,37 +1,46 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { surpriseEarnings } from '../../__redux/actions/earningActions';
+import { trendsPrefetch, trends } from '../../__redux/actions/trendActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledCandleModal'
-import { fireLineModal } from '../../__redux/actions/modalActions';
+import { firePieModal } from '../../__redux/actions/modalActions';
 
 
-const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
-  const [sym, setSym] = useState({label: '', value: ''})
+const PieModal = ({getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend}) => {
+  const [period, setPeriod] = useState('');
   const symset = [{label: 'Asbury Automotive Group Inc', value: 'ABG'}, {label: 'Agree Reality Corp', value: 'ADC'}, {label: 'ABM Industries Incorporated', value: 'ABM'}, {label: 'GAIN Capital Holdings', value: 'GCAP'}, {label: 'Genesis Energy LP', value: 'GEL'}, {label: 'Microsoft Corporation', value: 'MSFT'}, {label: 'Apple Inc', value: 'AAPL'}]
 
   const submitForm = (e) => {
     e.preventDefault();
-    getLinfo(sym)
+    trend(period, comp)
   }
-
+  
   const onChangeSymbol = (e) => {
-    setSym({label: e.label, value: e.value})
+    getPinfo(e)
+  }
+  
+  const onChangePeriod = (e) => {
+    setPeriod(e.value)
   }
 
   const onClickModalCloser = () => {
-    fireLineModal();
+    firePieModal();
   }
 
   return (
     <ModalContainer>
-      <CRModal shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
+      <CRModal shouldCloseOnOverlayClick={false} isOpen={pieModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle>Earnings Surprises</ModalTitle>
+          <ModalTitle>Recommendation Trends</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
           </AreaWrap>
+          {timePeers ?
+          <AreaWrap>
+            <CandleLabel htmlFor="periods">Time period</CandleLabel>
+            <CMSelect name="periods" onChange={onChangePeriod} options={timePeers}></CMSelect>
+          </AreaWrap> : null}
           <ButtonAreaWrap>
             <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
@@ -43,15 +52,18 @@ const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
 
 const mapStateToProps = (state) => {
   return {
-    lineModalTogg: state.lineModalToggler.toggle
+    pieModalTogg: state.pieModalToggler.toggle,
+    timePeers: state.predata.periods,
+    comp: state.predata.compname
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getLinfo : (sym) => dispatch(surpriseEarnings(sym)),
-    fireLineModal: () => dispatch(fireLineModal())
+    getPinfo: (sym) => dispatch(trendsPrefetch(sym)),
+    trend: (per, sym) => dispatch(trends(per, sym)),
+    firePieModal: () => dispatch(firePieModal()),
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LineModal);
+export default connect(mapStateToProps, mapDispatchToProps)(PieModal);

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const MCCloser = styled.img`
   cursor: pointer;
   position: relative;
-  right: 0;
+  left: 90%;
   top: 0;
   width: 5rem;
   height: 5rem;
