@@ -4,24 +4,18 @@ import Chart from 'react-apexcharts';
 import { optionsLine } from '../options';
 
 
-const LineGraph = ({containerId, exchange}) => {
+const LineGraph = ({containerId, period, symcomp, series}) => {
   return (
-    exchange.map(({status, dsid, series, gtype, period, symcomp}, i) => {
-      if(gtype === 'line') {
-        if(status === 'ok' && dsid === containerId) {
-          return <React.Fragment key={i}>
-            <Chart options={optionsLine(dsid, period, symcomp)} series={series} type="line" height="350px" width="550px" />
-          </React.Fragment>
-        } return null;
-      } return null;
-    })
+    <Chart options={optionsLine(containerId, period, symcomp)} series={series} type="line" height="350px" width="550px" />
   )
 }
 
 const mapStateToProps = (state, props) => {
   return {
-    central: state.central,
-    containerId: props.containerId
+    containerId: props.containerId,
+    series: props.series,
+    symcomp: props.symcomp,
+    period: props.period
   }
 }
 
