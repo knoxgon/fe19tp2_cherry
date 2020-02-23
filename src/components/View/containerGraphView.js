@@ -6,7 +6,7 @@ import { GMArea, MCCloser } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
 
-const ContainerGraphView = ({exchange, eraseContainer, containers}) => {
+const ContainerGraphView = ({central, eraseContainer, containers}) => {
   const containerOnDel = (dsid) => {
     eraseContainer(dsid)
   }
@@ -16,7 +16,7 @@ const ContainerGraphView = ({exchange, eraseContainer, containers}) => {
       return <React.Fragment key={i}>
         <GMArea>
           <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
-          {exchange.map((grafData, j) => {
+          {central.map((grafData, j) => {
             if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'candle') {
               return <CandleGraph key={j} containerId={dsid} barid={random.generate(16)}></CandleGraph>
             } if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'line') {
