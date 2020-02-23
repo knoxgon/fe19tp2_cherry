@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Chart from 'react-apexcharts';
 import { optionsPie } from '../options';
+import { GraphWrapper } from '../styledGraph'
 
 
 const PieGraph = ({containerId, period, symcomp, series}) => {
   return (
-    <Chart options={optionsPie(containerId, period, symcomp)} series={series} type="pie" height="350px" width="550px" />
+    <GraphWrapper options={optionsPie(containerId, period, symcomp)} series={series} type="pie" />
   )
 }
 

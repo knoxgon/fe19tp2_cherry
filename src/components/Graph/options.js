@@ -3,8 +3,6 @@ import dayjs from 'dayjs';
 export const options = (id, mkt, crc) => {
   return {
     chart: { 
-      background: '#000000',
-      foreColor: 'white',
       id: id,
       type: 'candlestick',
       toolbar: {
@@ -22,7 +20,7 @@ export const options = (id, mkt, crc) => {
       }
     },
     title: {
-      text: 'OHLC - ' + mkt + ' - ' + crc,
+      text: mkt + ' - ' + crc,
       align: 'left'
     },
     xaxis: {
@@ -35,7 +33,7 @@ export const options = (id, mkt, crc) => {
     },
     responsive: [
       {
-        breakpoint: 1000,
+        breakpoint: 400,
         options: {
           plotOptions: {
             bar: {
@@ -54,8 +52,6 @@ export const options = (id, mkt, crc) => {
 export const optionsBar = (trgId, id) => {
   return {
     chart: {
-      foreColor: 'yellow',
-      background: '#191818',
       type: 'bar',
       id: id,
       brush: {
@@ -66,7 +62,6 @@ export const optionsBar = (trgId, id) => {
       selection: {
         enabled: true,
         fill: {
-          color: '#caaefc',
           opacity: 0.4
         }
       },
@@ -84,7 +79,7 @@ export const optionsBar = (trgId, id) => {
     },
     responsive: [
       {
-        breakpoint: 1000,
+        breakpoint: 400,
         options: {
           plotOptions: {
             bar: {
@@ -132,7 +127,7 @@ export const optionsLine = (dsid, catry, comp) => {
       curve: 'smooth'
     },
     title: {
-      text: 'Earnings Surprises - ' + comp,
+      text: comp,
       align: 'left'
     },
     grid: {
@@ -159,7 +154,17 @@ export const optionsLine = (dsid, catry, comp) => {
       floating: true,
       offsetY: -25,
       offsetX: -5
-    }
+    },
+    responsive: [
+      {
+        breakpoint: 400,
+        options: {
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    ]
   }
 }
 
@@ -171,11 +176,11 @@ export const optionsPie = (dsid, period, comp) => {
     },
     labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
     title: {
-      text: 'Recommendation Trends - ' + period + ' - ' + comp,
+      text: period + ' - ' + comp,
       align: 'left'
     },
     responsive: [{
-      breakpoint: 480,
+      breakpoint: 400,
       options: {
         legend: {
           position: 'bottom'

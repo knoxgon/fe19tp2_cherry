@@ -6,7 +6,7 @@ import { firePieModal } from '../../__redux/actions/modalActions';
 
 
 const PieModal = ({getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend}) => {
-  const [period, setPeriod] = useState('');
+  const [period, setPeriod] = useState(null);
   const symset = [{label: 'Asbury Automotive Group Inc', value: 'ABG'}, {label: 'Agree Reality Corp', value: 'ADC'}, {label: 'ABM Industries Incorporated', value: 'ABM'}, {label: 'GAIN Capital Holdings', value: 'GCAP'}, {label: 'Genesis Energy LP', value: 'GEL'}, {label: 'Microsoft Corporation', value: 'MSFT'}, {label: 'Apple Inc', value: 'AAPL'}]
 
   const submitForm = (e) => {
