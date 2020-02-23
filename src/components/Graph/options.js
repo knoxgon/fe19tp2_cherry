@@ -181,6 +181,10 @@ export const optionsPie = (dsid, period, comp) => {
           position: 'bottom'
         }
       }
-    }]
+    }],
+    legend: {
+      position: 'bottom',
+      horizontalAlign: 'center'
+    }
   }
 }
