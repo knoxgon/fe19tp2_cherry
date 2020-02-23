@@ -34,7 +34,6 @@ const ContainerGraphView = ({exchange, eraseContainer, containers}) => {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     exchange: state.exchange,
     containers: state.containers

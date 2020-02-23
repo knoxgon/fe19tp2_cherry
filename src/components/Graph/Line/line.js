@@ -7,7 +7,6 @@ import { optionsLine } from '../options';
 const LineGraph = ({containerId, exchange}) => {
   return (
     exchange.map(({status, dsid, series, gtype, period, symcomp}, i) => {
-      console.log(i)
       if(gtype === 'line') {
         if(status === 'ok' && dsid === containerId) {
           return <React.Fragment key={i}>
@@ -20,7 +19,6 @@ const LineGraph = ({containerId, exchange}) => {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state)
   return {
     exchange: state.exchange,
     containerId: props.containerId
