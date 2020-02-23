@@ -209,7 +209,7 @@ const FeatureWrapper = styled.div`
 `;
 
 const FeatureContainer = styled.div`
-  background-color:#fff;
+  background-color:#f9f9f9;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
