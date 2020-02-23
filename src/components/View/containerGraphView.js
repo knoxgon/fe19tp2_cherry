@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { containerClose } from '../../__redux/actions/containerAction';
+import { containerClose } from '../../__redux/actions/containerActions';
 import random from 'randomstring';
 import { GMArea, MCCloser } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'

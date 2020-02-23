@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { surpriseEarningAction } from '../../__redux/actions/surpriseEarningActions';
+import { surpriseEarningAction } from '../../__redux/actions/earningActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledCandleModal'
 import { fireLineModalAction } from '../../__redux/actions/modalActions';
 
