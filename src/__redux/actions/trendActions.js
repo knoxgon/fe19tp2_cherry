@@ -28,7 +28,6 @@ export const trendsPrefetch = (symbol) => {
 }
 
 export const trends = (period, compname) => {
-  console.log('P: ' + period)
   return (dispatch, getState) => {
     if(!period) {
       dispatch({
