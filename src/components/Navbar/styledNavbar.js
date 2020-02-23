@@ -71,7 +71,7 @@ const AccountA = styled.p`
 
   & a {
     text-decoration: none;
-    color: black;
+    color: ${Theme.colors.fontColor};
 
     &:hover {
       text-decoration: underline #bebebe;

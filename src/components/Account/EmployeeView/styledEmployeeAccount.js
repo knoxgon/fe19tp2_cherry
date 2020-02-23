@@ -19,8 +19,8 @@ const KFLeftToRight = keyframes`
   }
 `
 
-
 const Wrapper = styled.div`
+
   margin-top: 4rem;
   margin-left: 4rem;
   margin-right: 4rem;
@@ -82,6 +82,7 @@ export const SubMenuItemImg = styled.img`
   vertical-align: middle;
   width: 3rem;
   height: 3rem;
+  
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-left: 2rem;
@@ -115,6 +116,7 @@ export const SubMenuItemDescription = styled.span`
   font-size: 1.35rem;
   font-weight: bold;
   margin-left: 4rem;
+  color: ${Theme.colors.fontColor};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin-left: 2rem;
@@ -151,6 +153,7 @@ const FeatureDescription = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: 2rem;
+  color:${Theme.colors.fontColor};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -189,12 +192,13 @@ export const LeftSideFeatureAdapter = styled.div`
 const BorderUnderline = styled.div`
   margin: 2rem 4rem 2rem 4rem;
   height: 0.1rem;
-  background-color: #dddddd;
+  background-color: ${Theme.colors.borderUnderlineColor};
 `;
 
 const MainArea = styled.div`
   display: flex;
   flex-direction: row;
+  background-color: ${Theme.colors.background};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     flex-direction: column;
@@ -209,7 +213,6 @@ const FeatureWrapper = styled.div`
 `;
 
 const FeatureContainer = styled.div`
-  background-color:#fff;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

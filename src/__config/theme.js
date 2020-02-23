@@ -8,9 +8,7 @@ export const ToggleDarkMode = () => {
     localStorage.setItem('Darkmode', JSON.stringify(false))
   } else {
     localStorage.setItem('Darkmode', JSON.stringify(true));
-  }
-
-  
+  }  
 }
 
 const colorScheme = () => {
@@ -18,15 +16,19 @@ const colorScheme = () => {
 }
 
 const ThemeColorsLight = {
-  background: 'red',
+  background: 'white',
+  fontColor: 'black',
   greyLight:'#e6e6e6',
-  beige:'#f3f3d3'
+  beige:'#f3f3d3',
+  borderUnderlineColor:'#dddddd'
 }
 
 const ThemeColorsDark = {
-  background: 'blue',
+  background:'#262626',
+  fontColor: 'white',
   greyLight:'#e6e6e6',
-  beige:'#f3f3d3'
+  beige:'#f3f3d3',
+  borderUnderlineColor:'white'
 }
 
 const Theme = {
