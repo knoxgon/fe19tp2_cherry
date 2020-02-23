@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { containerClose } from '../../__redux/actions/containerActions';
 import random from 'randomstring';
-import { GMArea, MCCloser } from "./styled"
+import { GMArea, MCCloser, GMTitle, GMTop } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
 import PieGraph from '../Graph/Pie/pie'
@@ -16,14 +16,25 @@ const ContainerGraphView = ({central, eraseContainer, containers}) => {
     return containers.map(({dsid}, i) => {
       return <React.Fragment key={i}>
         <GMArea>
-          <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
+          <GMTop color="#0fc4ac">
+            <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
+          </GMTop>
           {central.map((grafData, j) => {
             if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'candle') {
-              return <CandleGraph key={j} market={grafData.market} currency={grafData.currency} primary={grafData.primary.series} alternate={grafData.alternate.series} containerId={dsid} barid={random.generate(16)}></CandleGraph>
+              return <React.Fragment key={j}>
+                <GMTitle color="#6c96af">OHLC</GMTitle>
+                <CandleGraph market={grafData.market} currency={grafData.currency} primary={grafData.primary.series} alternate={grafData.alternate.series} containerId={dsid} barid={random.generate(16)}></CandleGraph>
+                </React.Fragment>
             } if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'line') {
-              return <LineGraph key={j} series={grafData.series} period={grafData.period} symcomp={grafData.symcomp} containerId={dsid}></LineGraph>
+              return <React.Fragment key={j}>
+                <GMTitle color="#30c97c">Earnings Surprises</GMTitle>
+                <LineGraph series={grafData.series} period={grafData.period} symcomp={grafData.symcomp} containerId={dsid}></LineGraph>
+                </React.Fragment>
             } if(grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'pie') {
-              return <PieGraph key={j} series={grafData.series} period={grafData.period} compname={grafData.compname} containerId={dsid}></PieGraph>
+              return <React.Fragment key={j}>
+                <GMTitle color="#44b9bf">Recommendation Trends</GMTitle>
+                <PieGraph series={grafData.series} period={grafData.period} compname={grafData.compname} containerId={dsid}></PieGraph>
+                </React.Fragment>
             }
             return null;
           })}
