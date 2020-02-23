@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Chart from 'react-apexcharts';
 import {options, optionsBar} from '../options';
+import { GraphWrapper, GraphWrapperBar } from '../styledGraph'
 
 
 const CandleGraph = ({containerId, barid, primary, alternate, market, currency}) => {
@@ -9,10 +9,10 @@ const CandleGraph = ({containerId, barid, primary, alternate, market, currency})
     <React.Fragment>
       {alternate[0].data.length > 0 ?
         <React.Fragment>
-          <Chart options={options(containerId, market, currency)} series={primary} type="candlestick" height="350px" width="550px" />
-          <Chart options={optionsBar(containerId, barid)} series={alternate} type="bar"  height="150px" width="550px" />
+          <GraphWrapper options={options(containerId, market, currency)} series={primary} type="candlestick" />
+          <GraphWrapperBar options={optionsBar(containerId, barid)} series={alternate} type="bar" height="150px" />
         </React.Fragment>
-       : <Chart options={options(containerId, market, currency)} series={primary} type="candlestick" height="350px" width="550px" />
+       : <GraphWrapper options={options(containerId, market, currency)} series={primary} type="candlestick" />
       }
     </React.Fragment>
   )
