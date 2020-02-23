@@ -5,6 +5,8 @@ import Theme from "../../__config/theme";
 import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { getInfo } from '../../__redux/actions/userInfoActions';
+import { ToggleDarkMode } from '../../__config/theme';
+
 import {
   Nav,
   MenuItems,
@@ -64,6 +66,12 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
     setShowMenu(!showMenu);
   };
 
+
+const darkModeBtn = () => {
+  ToggleDarkMode();
+  
+};
+
   const renderMenu = () => {
     if(isGuest) {
       if ((showMenu && !isMobile) || isMobile) {
@@ -91,6 +99,7 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
       </StyledLogo>
       {renderMenu()}
       <AccountA>
+      <button onClick={darkModeBtn}>Darkmode</button>
         <Link to="/account">{fullName}</Link>
       </AccountA>
       { isGuest && <i> <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} /> </i> }
