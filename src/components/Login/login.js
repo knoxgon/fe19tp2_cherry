@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea } from './styledLogin';
+import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, ForgotPassword } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
@@ -31,6 +31,7 @@ const Login = (props) => {
             <InputImage src={require('../../assets/login/key.svg')}></InputImage>
             <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
           </InputArea>
+          <ForgotPassword> Forgot Password? </ForgotPassword>
           <LoginButton type="submit">Login</LoginButton>
           {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
         </LoginArea>
