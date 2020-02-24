@@ -32,6 +32,7 @@ const Login = (props) => {
             <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
           </InputArea>
           <ForgotPassword> Forgot Password? </ForgotPassword>
+          <p></p>
           <LoginButton type="submit">Login</LoginButton>
           {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
         </LoginArea>
