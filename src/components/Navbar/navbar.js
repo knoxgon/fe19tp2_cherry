@@ -6,7 +6,7 @@ import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { getInfo } from '../../__redux/actions/userInfoActions';
 import { ToggleDarkMode } from '../../__config/theme';
-
+import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 import {
   Nav,
   MenuItems,
@@ -18,7 +18,7 @@ import {
   CheckBoxLabel,CheckBoxWrapper,CheckBox
 } from "./styledNavbar";
 
-const Navbar = ({ userInfo, isGuest, getinfo}) => {
+const Navbar = ({ userInfo, isGuest, getinfo, dmToggler}) => {
   const [isMobile, setIsMobile] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
   const [logo, setLogo] = useState("");
@@ -77,6 +77,7 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
 
 
 const darkModeBtn = () => {
+  dmToggler();
   ToggleDarkMode();
   let color 
   if (CheckDarkMode()) {
@@ -126,17 +127,19 @@ const darkModeBtn = () => {
   );
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = state => { console.log(state);
   return {
     userInfo: state.userinfo.info,
-    isGuest: state.firebase.auth.isEmpty
+    isGuest: state.firebase.auth.isEmpty,
+    isDmToggler: state.darkModeToggler.toggle
   };
 };
 
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getinfo: () => dispatch(getInfo())
+    getinfo: () => dispatch(getInfo()),
+    dmToggler: () => dispatch(darkModeToggler())
   }
 }
 

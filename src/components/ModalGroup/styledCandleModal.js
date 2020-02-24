@@ -69,8 +69,6 @@ const FormModal = styled.form`
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
- 
-
   
 `;
 
@@ -86,7 +84,7 @@ export const CMDateTimePicker = styled(DateTimePicker)`
   height: 4rem;
   width: 25rem;
   color: ${Theme.colors.fontColor};
-  background-color: 
+  background-color: ${Theme.colors.whiteToGrey}
  
 `;
 
@@ -130,7 +128,7 @@ export const ModalSubmitButton = styled.button`
   bottom:0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: black;
+  color: ${Theme.colors.fontColor};
   background-color: ${Theme.colors.greenToDarkGreen};
   height: 4rem;
 `;
