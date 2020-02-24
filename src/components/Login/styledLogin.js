@@ -88,7 +88,7 @@ const LoginButton = styled.button`
   margin: 0 auto;
   width: 25rem;
   height: 4rem;
-  margin-top: 2.5rem;
+  margin-top: 1.5rem;
   color: white;
   background-color: #364f6b;
   font-size: 2.5rem;
@@ -119,27 +119,23 @@ const ErrorArea = styled.div`
   font-weight: 600;
 `;
 
-const ForgotPassword = styled.p`
+const ForgotPassword = styled.a`
 
-margin: 0 auto;
-  margin-top: .5rem;
-  text-align: center;
-  width: auto;
-  height: 3rem;
+  margin: 0 ;
+  display: flex;
+  text-align: right;
+  justify-content: flex-end;
+  margin-right: 8rem;
   color: #d50000;
   font-size: 1.3rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;
 
 @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-  margin-top: .5rem;
   font-size: 1.3rem;
-  width: 18rem;
-  margin: 0 auto;
-  margin-top: 2rem;
+  margin: 0;
+  margin-right: 2rem;
 }
 
 `;
