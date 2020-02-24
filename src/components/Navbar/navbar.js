@@ -46,16 +46,14 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
       setFullName("Account");
     } else {
       setLogo(userInfo.logo);
-
+      setFullName(userInfo.fullName);
       let color 
       if (CheckDarkMode()) {
         color = userInfo.companyColorDark
       } else {
         color = userInfo.companyColor
       }
-
       setCompanyColor(color);
-      setFullName(userInfo.fullName);
     }
 
     return () => {
@@ -79,7 +77,14 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
 
 
 const darkModeBtn = () => {
-  ToggleDarkMode(); 
+  ToggleDarkMode();
+  let color 
+  if (CheckDarkMode()) {
+    color = userInfo.companyColorDark
+  } else {
+    color = userInfo.companyColor
+  }
+  setCompanyColor(color);
 };
 
   const renderMenu = () => {
