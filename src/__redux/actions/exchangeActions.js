@@ -1,13 +1,13 @@
-import { FETCH_CANDLE_EXCHANGE_FAILURE, FETCH_CANDLE_EXCHANGE_SUCCESS, EXCHANGE_TYPE_SUCCESS, EXCHANGE_TYPE_FAILURE, EXCHANGE_SYM_SUCCESS, EXCHANGE_SYM_FAILURE } from '../actions/types';
-import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone, fxpig } from '../../__misc/fx/';
-import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc/'
+import { FETCH_CANDLE_EXCHANGE_FAILURE, FETCH_CANDLE_EXCHANGE_SUCCESS, EXCHANGE_TYPE_SUCCESS, EXCHANGE_TYPE_FAILURE, EXCHANGE_SYM_SUCCESS, EXCHANGE_SYM_FAILURE } from './types';
+import {fxcm, oanda, forexcom, fxpro, icmarkets, icmtrader, octafx, pepperstone, fxpig } from '../../__misc/fx';
+import { poloniex, bitmex, bittrex, kraken, bitfinex, huobi, hitbtc, binance, okex, gemini, zb, kucoin, coinbase } from '../../__misc/cc'
 import Axios from 'axios';
-import { containerCreate } from './containerAction';
-import { fireCandleModalAction } from './modalActions';
+import { containerCreate } from './containerActions';
+import { fireCandleModal } from './modalActions';
 
 export const exchangeCandleAction = (input) => {
   return (dispatch, getState) => {
-    const { selectedPlatform, selectedSymbol, selectedResolution, intervalFrom, intervalTo } = input;
+    const { selectedPlatform, selectedSymbol, selectedSymbolGroup, selectedResolution, intervalFrom, intervalTo } = input;
     Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
       .then((result) => {
         if(result.data == null) {
@@ -52,7 +52,7 @@ export const exchangeCandleAction = (input) => {
         });
         dispatch(containerCreate())
         let containerId = getState().containers[getState().containers.length - 1].dsid
-        dispatch(fireCandleModalAction())
+        dispatch(fireCandleModal())
 
         // let containerId;
         // if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) === -1) {
@@ -68,7 +68,9 @@ export const exchangeCandleAction = (input) => {
             dsid: containerId,
             status: mappedData.s_s,
             primary: primaryBatch,
-            alternate: alternateBatch
+            alternate: alternateBatch,
+            market: selectedSymbolGroup,
+            currency: selectedSymbol.label
           }
         })
       })

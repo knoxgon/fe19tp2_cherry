@@ -1,27 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import Chart from 'react-apexcharts';
 import { optionsLine } from '../options';
+import { GraphWrapper } from '../styledGraph'
 
-
-const LineGraph = ({containerId, exchange}) => {
+const LineGraph = ({containerId, period, symcomp, series}) => {
   return (
-    exchange.map(({status, dsid, series, gtype, period, symcomp}, i) => {
-      if(gtype === 'line') {
-        if(status === 'ok' && dsid === containerId) {
-          return <React.Fragment key={i}>
-            <Chart options={optionsLine(dsid, period, symcomp)} series={series} type="line" height="350px" width="550px" />
-          </React.Fragment>
-        } return null;
-      } return null;
-    })
+    <GraphWrapper options={optionsLine(containerId, period, symcomp)} series={series} type="line" />
   )
 }
 
 const mapStateToProps = (state, props) => {
   return {
-    exchange: state.exchange,
-    containerId: props.containerId
+    containerId: props.containerId,
+    series: props.series,
+    symcomp: props.symcomp,
+    period: props.period
   }
 }
 

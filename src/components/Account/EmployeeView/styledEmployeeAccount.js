@@ -213,6 +213,10 @@ const FeatureWrapper = styled.div`
 `;
 
 const FeatureContainer = styled.div`
+<<<<<<< HEAD
+=======
+  background-color:#f9f9f9;
+>>>>>>> 222e020e1c4e998a791e30f8fa3cd932f7057d1b
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -5,12 +5,14 @@ import { firestoreReducer } from 'redux-firestore';
 import { clientReducer } from './clientReducer';
 import { userInfoReducer } from './userInfoReducer';
 import { EmployeeReducer } from './employeeReducer';
-import { exchangeCandleReducer } from './exchangeCandleReducer';
+import { centralReducer } from './centralizedReducer';
 import { exchangeTypeSymGrpReducer } from './exchangeTypeSymGrpReducer';
 import { exchangeSymReducer } from './exchangeSymReducer';
 import { containerReducer } from './containerReducer';
 import { candleModalReducer } from './candleModalReducer';
 import { lineModalReducer } from './lineModalReducer';
+import { pieModalReducer } from './pieModalReducer';
+import { prefetchReducer } from './prefetchReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -19,10 +21,12 @@ export const rootReducer = combineReducers({
   userinfo: userInfoReducer,
   firebase: firebaseReducer,
   firestore: firestoreReducer,
-  exchange: exchangeCandleReducer,
+  central: centralReducer,
+  predata: prefetchReducer,
   exchangeSymbolGroup: exchangeTypeSymGrpReducer,
   exchangeSymbol: exchangeSymReducer,
   containers: containerReducer,
   candleModalToggler: candleModalReducer,
   lineModalToggler: lineModalReducer,
+  pieModalToggler: pieModalReducer
 });

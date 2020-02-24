@@ -27,14 +27,14 @@ const ThemeColorsLight = {
 }
 
 const ThemeColorsDark = {
-  background:'#262626',
+  background:'#3f3f3f',
   fontColor: 'white',
   greyLight:'#e6e6e6',
   beige:'#6d6d6d',
   borderUnderlineColor:'white',
   backgroundColorModal:'#3a3939',
   colorModalTitle:'white',
-  whiteToGrey:'#b7b7b7',
+  whiteToGrey:'#c9c9c9',
   greenToDarkGreen:'#1a7f0b'
 
 }

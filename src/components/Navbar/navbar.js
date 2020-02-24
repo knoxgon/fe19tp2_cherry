@@ -14,7 +14,8 @@ import {
   AccountA,
   StyledLogo,
   Menu,
-  StyledImgLogo
+  StyledImgLogo,
+  CheckBoxLabel,CheckBoxWrapper,CheckBox
 } from "./styledNavbar";
 
 const Navbar = ({ userInfo, isGuest, getinfo}) => {
@@ -78,8 +79,7 @@ const Navbar = ({ userInfo, isGuest, getinfo}) => {
 
 
 const darkModeBtn = () => {
-  ToggleDarkMode();
-  
+  ToggleDarkMode(); 
 };
 
   const renderMenu = () => {
@@ -109,7 +109,11 @@ const darkModeBtn = () => {
       </StyledLogo>
       {renderMenu()}
       <AccountA>
-      <button onClick={darkModeBtn}>Darkmode</button>
+      <CheckBoxWrapper>
+        <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
+        <CheckBoxLabel htmlFor="checkbox" />
+      </CheckBoxWrapper> 
+      
         <Link to="/account">{fullName}</Link>
       </AccountA>
       { isGuest && <i> <Menu onClick={menuBtnClick} icon={IconesSolid.faBars} /> </i> }

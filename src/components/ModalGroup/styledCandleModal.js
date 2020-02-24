@@ -69,6 +69,8 @@ const FormModal = styled.form`
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
+ 
+
   
 `;
 
@@ -76,6 +78,7 @@ export const CandleLabel = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
   color: ${Theme.colors.fontColor};
+
 `;
 
 export const CMDateTimePicker = styled(DateTimePicker)`

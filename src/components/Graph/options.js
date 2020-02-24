@@ -1,10 +1,8 @@
 import dayjs from 'dayjs';
 
-export const options = (id) => {
+export const options = (id, mkt, crc) => {
   return {
     chart: { 
-      background: '#000000',
-      foreColor: 'white',
       id: id,
       type: 'candlestick',
       toolbar: {
@@ -21,6 +19,10 @@ export const options = (id) => {
         },
       }
     },
+    title: {
+      text: mkt + ' - ' + crc,
+      align: 'left'
+    },
     xaxis: {
       type: 'category',
       labels: {
@@ -31,7 +33,7 @@ export const options = (id) => {
     },
     responsive: [
       {
-        breakpoint: 1000,
+        breakpoint: 400,
         options: {
           plotOptions: {
             bar: {
@@ -50,8 +52,6 @@ export const options = (id) => {
 export const optionsBar = (trgId, id) => {
   return {
     chart: {
-      foreColor: 'yellow',
-      background: '#191818',
       type: 'bar',
       id: id,
       brush: {
@@ -62,7 +62,6 @@ export const optionsBar = (trgId, id) => {
       selection: {
         enabled: true,
         fill: {
-          color: '#caaefc',
           opacity: 0.4
         }
       },
@@ -80,7 +79,7 @@ export const optionsBar = (trgId, id) => {
     },
     responsive: [
       {
-        breakpoint: 1000,
+        breakpoint: 400,
         options: {
           plotOptions: {
             bar: {
@@ -110,18 +109,25 @@ export const optionsLine = (dsid, catry, comp) => {
         opacity: 0.2
       },
       toolbar: {
-        show: false
+        show: true,
+        tools: {
+          download: true,
+          selection: true,
+          zoom: true,
+          zoomin: true,
+          zoomout: true,
+          pan: true,
+          reset: true,
+          customIcons: []
+        },
       }
     },
     colors: ['#77B6EA', '#545454'],
-    dataLabels: {
-      enabled: true,
-    },
     stroke: {
       curve: 'smooth'
     },
     title: {
-      text: 'Earnings Surprises - ' + comp,
+      text: comp,
       align: 'left'
     },
     grid: {
@@ -130,9 +136,6 @@ export const optionsLine = (dsid, catry, comp) => {
         colors: ['#f3f3f3', 'transparent'],
         opacity: 0.5
       },
-    },
-    markers: {
-      size: 1
     },
     xaxis: {
       categories: catry,
@@ -146,12 +149,47 @@ export const optionsLine = (dsid, catry, comp) => {
       }
     },
     legend: {
-      position: 'top',
-      horizontalAlign: 'right',
+      position: 'bottom',
+      horizontalAlign: 'center',
       floating: true,
       offsetY: -25,
       offsetX: -5
-    }
+    },
+    responsive: [
+      {
+        breakpoint: 400,
+        options: {
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    ]
   }
 }
 
+export const optionsPie = (dsid, period, comp) => {
+  return {
+    chart: {
+      type: 'pie',
+      id: dsid
+    },
+    labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
+    title: {
+      text: period + ' - ' + comp,
+      align: 'left'
+    },
+    responsive: [{
+      breakpoint: 400,
+      options: {
+        legend: {
+          position: 'bottom'
+        }
+      }
+    }],
+    legend: {
+      position: 'bottom',
+      horizontalAlign: 'center'
+    }
+  }
+}

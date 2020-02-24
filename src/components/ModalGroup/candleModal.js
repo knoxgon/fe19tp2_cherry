@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeCandleAction';
+import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeActions';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
-import { fireCandleModalAction } from '../../__redux/actions/modalActions';
+import { fireCandleModal } from '../../__redux/actions/modalActions';
 
 
-const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
+const CandleModal = ({getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -57,49 +57,39 @@ const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeS
         <FormModal onSubmit={submitForm}>
           <ModalTitle>Open-High-Low-Close</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
-
           <AreaWrap>
             <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
             <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
           </AreaWrap>
-
           <AreaWrap>
             <CandleLabel htmlFor="dateto">End date</CandleLabel>
             <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
           </AreaWrap>
-
           <AreaWrap>
             <CandleLabel htmlFor="platform">Platform</CandleLabel>
             <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
           </AreaWrap>
-
           <AreaWrap>
             <CandleLabel htmlFor="resolution">Resolution</CandleLabel>
             <CMSelect name="resolution" onChange={onChangeResolution} options={resolutions}></CMSelect>
           </AreaWrap>
-
           {exchangeSymbolGroup.length &&
             <React.Fragment>
               <AreaWrap>
-                <label htmlFor="symbolgroup">Market</label>
+                <CandleLabel htmlFor="symbolgroup">Market</CandleLabel>
                 <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
               </AreaWrap>
-            </React.Fragment>
-          }
-
+            </React.Fragment>}
           {exchangeSymbol &&
             <React.Fragment>
               <AreaWrap>
-                <label htmlFor="currencies">Currency</label>
+                <CandleLabel htmlFor="currencies">Currency</CandleLabel>
                 <CMSelect name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></CMSelect>
               </AreaWrap>
-            </React.Fragment>
-          }
-
+            </React.Fragment>}
           <ButtonAreaWrap>
             <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
-          <div>{retStatus}</div>
         </FormModal>
       </CRModal>
     </ModalContainer>
@@ -109,7 +99,6 @@ const CandleModal = ({getinfo, retStatus, getExc, exchangeSymbolGroup, exchangeS
 const mapStateToProps = (state) => {
   return {
     candleModalTogg: state.candleModalToggler.toggle,
-    retStatus: state.exchange.status,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
     exchangeSymbol:    state.exchangeSymbol.selectedExSymMul
   }
@@ -120,7 +109,7 @@ const mapDispatchToProps = (dispatch) => {
     getinfo : (inf) => dispatch(exchangeCandleAction(inf)),
     getExc  : (inp) => dispatch(exchangeTypeSymGrpAction(inp)),
     getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx)),
-    fireCandleModal: () => dispatch(fireCandleModalAction())
+    fireCandleModal: () => dispatch(fireCandleModal())
   }
 }
 
