@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
-import Theme from '../../__config/theme';
+import Theme, { ThemeColorsLight } from '../../__config/theme';
 import Select from 'react-select';
 import DateTimePicker from 'react-datetime-picker';
 
@@ -22,7 +22,7 @@ export const CRModal = styled(RMConnector).attrs({
     right: auto;
     bottom: auto;
     border: 1px solid rgb(204, 204, 204);
-    background: ${Theme.colors.backgroundColorModal};
+    background: ${ThemeColorsLight.colors.backgroundColorModal};
     border-radius: 0.4rem;
     outline: none;
     padding: 2rem;
@@ -83,8 +83,8 @@ export const CMDateTimePicker = styled(DateTimePicker)`
   font-size: 1.6rem;
   height: 4rem;
   width: 25rem;
-  color: ${Theme.colors.fontColor};
-  background-color: ${Theme.colors.whiteToGrey}
+  color: ${ThemeColorsLight.colors.fontColor};
+  background-color: ${ThemeColorsLight.colors.whiteToGrey}
  
 `;
 
@@ -119,7 +119,7 @@ const modalStyle = {
 
 export const ModalTitle = styled.div`
   font-size: 2rem;
-  color: ${Theme.colors.colorModalTitle};
+  color: ${ThemeColorsLight.colors.colorModalTitle};
   margin-bottom: 5rem;
   font-weight: 500;
 `;
@@ -129,7 +129,7 @@ export const ModalSubmitButton = styled.button`
   font-size: 1.5rem;
   font-weight: 600;
   color: ${Theme.colors.fontColor};
-  background-color: ${Theme.colors.greenToDarkGreen};
+  background-color: ${ThemeColorsLight.colors.greenToDarkGreen};
   height: 4rem;
 `;
 

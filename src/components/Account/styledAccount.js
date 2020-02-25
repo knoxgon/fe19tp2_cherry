@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Theme from "../../__config/theme";
+import { ThemeColorsLight } from '../../__config/theme';
 
 const Wrapper = styled.div`
 
@@ -38,7 +39,7 @@ const FeatureDescription = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: 2rem;
-  color:${Theme.colors.fontColor};
+  color:${ThemeColorsLight.colors.fontColors};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -50,14 +51,14 @@ const FeatureDescription = styled.p`
 const BorderUnderline = styled.div`
   margin: 2rem 4rem 2rem 4rem;
   height: 0.1rem;
-  background-color: ${Theme.colors.borderUnderlineColor};
+  background-color: ${ThemeColorsLight.colors.borderUnderlineColor};
 `;
 
 
 const MainArea = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${Theme.colors.background};
+  background-color: ${ThemeColorsLight.colors.background};
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     flex-direction: column;
