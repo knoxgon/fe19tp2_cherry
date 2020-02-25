@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import IconGraphGroup from "../../../assets/employee/graph-menu.svg";
+import IconLogout from "../../../assets/account/logout.svg";
 import IconCandle from "../../../assets/employee/candle.svg";
 import IconLine from "../../../assets/employee/line.svg";
 import IconPie from "../../../assets/employee/pie.svg";
@@ -15,7 +16,7 @@ import PieModal from '../../ModalGroup/pieModal';
 const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal }) => {
   const [showLeftList, setShowLeftList] = useState(false);
 
-  const logutBtn = () => {
+  const logoutBtn = () => {
     signout();
   };
 
@@ -56,6 +57,10 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal
               <SubMenuItemDescription>Earnings</SubMenuItemDescription>
             </LeftSideItemArea>
           </LeftSideFeatureAdapter>
+          <FeatureArea onClick={logoutBtn}>
+            <FeatureImage src={IconLogout} />
+            <FeatureDescription>Logout</FeatureDescription>
+          </FeatureArea>
           <React.Fragment>
             <CandleModal></CandleModal>
             <LineModal></LineModal>
