@@ -13,20 +13,20 @@ import PieModal from '../../ModalGroup/pieModal';
 const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
-  const [fullName, setFullName] = useState("");
+  // const [fullName, setFullName] = useState("");
 
   useEffect(() => {
     getinfo()
     setLogo(userInfo.logo);
     setCompanyColor(userInfo.companyColor);
-    setFullName(userInfo.fullName);
+    // setFullName(userInfo.fullName);
 
     return () => {
     };
   }, [
     userInfo.logo,
     userInfo.companyColor,
-    userInfo.fullName,
+    // userInfo.fullName,
     getinfo
   ]);
 
@@ -49,7 +49,7 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
       <Wrapper>
         <MainArea>
           <ClientMenu navColor={companyColor}>
-            <MenuGroupArea style={{'marginTop': '0'}}>
+            <MenuGroupArea>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
@@ -67,7 +67,7 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
-            <MenuGroupArea style={{'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)'}} onClick={logoutBtn}>
+            <MenuGroupArea onClick={logoutBtn}>
               <MenuImage icon={faSignOutAlt} />
               <MenuDescription>Logout</MenuDescription>
             </MenuGroupArea>
