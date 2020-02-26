@@ -16,14 +16,13 @@ import Theme, { CheckDarkMode, color } from "../../../__config/theme";
 const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, ...props }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
-  const [fullName, setFullName] = useState("");
+  // const [fullName, setFullName] = useState("");
 
 
   useEffect(() => {
     getinfo()
     setLogo(userInfo.logo);
     setCompanyColor(userInfo.companyColor);
-    setFullName(userInfo.fullName);
     let color
     if (CheckDarkMode()) {
       color = userInfo.companyColorDark
@@ -31,6 +30,7 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
       color = userInfo.companyColor
     }
     setCompanyColor(color);
+    // setFullName(userInfo.fullName);
 
     return () => {
     };
@@ -39,7 +39,7 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
     userInfo.logo,
     userInfo.companyColor,
     userInfo.companyColorDark,
-    userInfo.fullName,
+    // userInfo.fullName,
     getinfo
   ]);
 
@@ -72,10 +72,10 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
 
   return (
     <BodyWrapper>
-      <Wrapper>
-        <MainArea>
+      <Wrapper style = {{background: props.backgroundColor}}>
+        <MainArea style = {{background: props.backgroundColor}}>
           <ClientMenu navColor={companyColor}>
-            <MenuGroupArea style={{ 'marginTop': '0' }}>
+            <MenuGroupArea>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
@@ -89,15 +89,16 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
             <MenuGroupArea onClick={onClickLineViewer}>
               <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartLine} />
               <MenuDescription style={{ color: props.fontColor }}>Earnings</MenuDescription>
+              <CheckBoxWrapper>
+              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
+              <CheckBoxLabel htmlFor="checkbox" />
+            </CheckBoxWrapper>
             </MenuGroupArea>
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
-            <CheckBoxWrapper>
-              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
-              <CheckBoxLabel htmlFor="checkbox" />
-            </CheckBoxWrapper>
-            <MenuGroupArea style={{ 'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)' }} onClick={logoutBtn}>
+            <MenuGroupArea onClick={logoutBtn}>
+            
               <MenuImage style = {{ color: props.navbarIconColor}} icon={faSignOutAlt} />
               <MenuDescription style={{ color: props.fontColor }}>Logout</MenuDescription>
             </MenuGroupArea>
@@ -119,6 +120,7 @@ const mapStateToProps = (state) => {
     pieTogg: state.pieModalToggler.toggle,
     fontColor: state.darkModeToggler.color.colors.fontColor,
     navbarIconColor: state.darkModeToggler.color.colors.navbarIconColor,
+    backgroundColor: state.darkModeToggler.color.colors.backgroundColor,
     isDmToggler: state.darkModeToggler.toggle
   }
 }
