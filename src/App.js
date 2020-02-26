@@ -11,7 +11,6 @@ const StyledApp = styled.div`
 const App = () => {
   return (
     <StyledApp>
-      <Navbar />
       <Routes />
     </StyledApp>
   );
