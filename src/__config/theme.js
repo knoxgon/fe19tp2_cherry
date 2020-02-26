@@ -41,22 +41,8 @@ const Theme = {
 
 
 export const ThemeColorsLight = {
-  name: 'ColorsLight',
-  colors: {
-    backgroundColor: Theme.color.greyLight,
-    fontColor: Theme.color.black,
-    navbarIconColor: Theme.color.black,
-    navbarColor: Theme.color.grey,
-    borderUnderlineColor: Theme.color.grey,
-    backgroundColorModal: Theme.color.white,
-    modalBtnColor: Theme.color.green
-  },
-};
-
-
-export const ThemeColorsDark = {
   name: 'ColorsDark',
-    colors: {
+  colors: {
     backgroundColor: Theme.color.darkGrey,
     fontColor: Theme.color.white,
     navbarIconColor: Theme.color.white,
@@ -64,6 +50,21 @@ export const ThemeColorsDark = {
     borderUnderlineColor: Theme.color.white,
     backgroundColorModal: Theme.color.darkgrey,
     modalBtnColor: Theme.color.darkgreen
+  },
+};
+
+
+export const ThemeColorsDark = {
+  name: 'ColorsLight',
+    colors: {
+      backgroundColor: Theme.color.greyLight,
+    fontColor: Theme.color.black,
+    navbarIconColor: Theme.color.black,
+    navbarColor: Theme.color.grey,
+    borderUnderlineColor: Theme.color.grey,
+    backgroundColorModal: Theme.color.white,
+    modalBtnColor: Theme.color.green
+    
   },
 };
 

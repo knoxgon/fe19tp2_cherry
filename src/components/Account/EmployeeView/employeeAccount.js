@@ -2,46 +2,40 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo, CheckBox, CheckBoxWrapper, CheckBoxLabel } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { getInfo } from "../../../__redux/actions/userInfoActions";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
-import { ToggleDarkMode } from '../../__config/theme';
-import { darkModeToggler } from "../../__redux/actions/darkModeAction";
+import { ToggleDarkMode } from '../../../__config/theme';
+import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
+import Theme, { CheckDarkMode, color } from "../../../__config/theme";
 
-const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg ...props }) => {
+const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, ...props }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
   const [fullName, setFullName] = useState("");
 
+
   useEffect(() => {
     getinfo()
-    if (isGuest) {
-      setCompanyColor(Theme.color.grey);
-      setLogo(Logo);
-      setFullName("Account");
+    setLogo(userInfo.logo);
+    setCompanyColor(userInfo.companyColor);
+    setFullName(userInfo.fullName);
+    let color
+    if (CheckDarkMode()) {
+      color = userInfo.companyColorDark
     } else {
-      setLogo(userInfo.logo);
-      setFullName(userInfo.fullName);
-      let color 
-      if (CheckDarkMode()) {
-        color = userInfo.companyColorDark
-      } else {
-        color = userInfo.companyColor
-      }
-      setCompanyColor(color);
+      color = userInfo.companyColor
     }
+    setCompanyColor(color);
 
     return () => {
-      setLogo(Logo);
-      setCompanyColor(Theme.color.grey);
-      setFullName("Account");
     };
+
   }, [
-    isGuest,
     userInfo.logo,
     userInfo.companyColor,
     userInfo.companyColorDark,
@@ -50,17 +44,17 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
   ]);
 
 
-const darkModeBtn = () => {
-  dmToggler();
-  ToggleDarkMode();
-  let color 
-  if (CheckDarkMode()) {
-    color = userInfo.companyColorDark
-  } else {
-    color = userInfo.companyColor
-  }
-  setCompanyColor(color);
-}; 
+  const darkModeBtn = () => {
+    dmToggler();
+    ToggleDarkMode();
+    let color
+    if (CheckDarkMode()) {
+      color = userInfo.companyColorDark
+    } else {
+      color = userInfo.companyColor
+    }
+    setCompanyColor(color);
+  };
 
   const logoutBtn = () => {
     signout();
@@ -81,31 +75,31 @@ const darkModeBtn = () => {
       <Wrapper>
         <MainArea>
           <ClientMenu navColor={companyColor}>
-            <MenuGroupArea style={{'marginTop': '0'}}>
+            <MenuGroupArea style={{ 'marginTop': '0' }}>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
-              <MenuImage icon={faChartBar} />
-              <MenuDescription style = {{ color: props.fontColor}}>Currency</MenuDescription>
+              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartBar} />
+              <MenuDescription style={{ color: props.fontColor }}>Currency</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickPieViewer}>
-              <MenuImage icon={faChartPie} />
-              <MenuDescription style = {{ color: props.fontColor}}>Trends</MenuDescription>
+              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartPie} />
+              <MenuDescription style={{ color: props.fontColor }}>Trends</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickLineViewer}>
-              <MenuImage icon={faChartLine} />
-              <MenuDescription style = {{ color: props.fontColor}}>Earnings</MenuDescription>
+              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartLine} />
+              <MenuDescription style={{ color: props.fontColor }}>Earnings</MenuDescription>
             </MenuGroupArea>
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
-            <MenuGroupArea style={{'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)'}} onClick={logoutBtn}>
-              <MenuImage icon={faSignOutAlt} />
-              <CheckBoxWrapper>
-        <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
-        <CheckBoxLabel htmlFor="checkbox" />
-      </CheckBoxWrapper> 
-              <MenuDescription style = {{ color: props.fontColor}}>Logout</MenuDescription>
+            <CheckBoxWrapper>
+              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
+              <CheckBoxLabel htmlFor="checkbox" />
+            </CheckBoxWrapper>
+            <MenuGroupArea style={{ 'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)' }} onClick={logoutBtn}>
+              <MenuImage style = {{ color: props.navbarIconColor}} icon={faSignOutAlt} />
+              <MenuDescription style={{ color: props.fontColor }}>Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
           <GraphContainer>
@@ -124,6 +118,7 @@ const mapStateToProps = (state) => {
     lineTogg: state.lineModalToggler.toggle,
     pieTogg: state.pieModalToggler.toggle,
     fontColor: state.darkModeToggler.color.colors.fontColor,
+    navbarIconColor: state.darkModeToggler.color.colors.navbarIconColor,
     isDmToggler: state.darkModeToggler.toggle
   }
 }
