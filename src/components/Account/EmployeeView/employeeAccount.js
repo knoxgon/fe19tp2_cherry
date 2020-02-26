@@ -1,28 +1,38 @@
-import React, { useState } from "react";
-import IconGraphGroup from "../../../assets/employee/graph-menu.svg";
-import IconLogout from "../../../assets/account/logout.svg";
-import IconCandle from "../../../assets/employee/candle.svg";
-import IconLine from "../../../assets/employee/line.svg";
-import IconPie from "../../../assets/employee/pie.svg";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline, LeftSideItemArea } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
+import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { getInfo } from "../../../__redux/actions/userInfoActions";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
 
-const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal }) => {
-  const [showLeftList, setShowLeftList] = useState(false);
+const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg }) => {
+  const [logo, setLogo] = useState("");
+  const [companyColor, setCompanyColor] = useState("");
+  const [fullName, setFullName] = useState("");
+
+  useEffect(() => {
+    getinfo()
+    setLogo(userInfo.logo);
+    setCompanyColor(userInfo.companyColor);
+    setFullName(userInfo.fullName);
+
+    return () => {
+    };
+  }, [
+    userInfo.logo,
+    userInfo.companyColor,
+    userInfo.fullName,
+    getinfo
+  ]);
 
   const logoutBtn = () => {
     signout();
   };
-
-  const toggleDisplayGraph = () => {
-    setShowLeftList(!showLeftList)
-  }
 
   const onClickCandleViewer = () => {
     fireCandleModal();
@@ -35,48 +45,48 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal
   }
 
   return (
-    <Wrapper>
-      <BorderUnderline></BorderUnderline>
-      <MainArea>
-        <FeatureWrapper>
-          <FeatureArea onClick={toggleDisplayGraph}>
-            <FeatureImage src={IconGraphGroup} />
-            <FeatureDescription>Generate graph</FeatureDescription>
-          </FeatureArea>
-          <LeftSideFeatureAdapter toggle={showLeftList}>
-            <LeftSideItemArea onClick={onClickCandleViewer}>
-              <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
-              <SubMenuItemDescription>OHLC</SubMenuItemDescription>
-            </LeftSideItemArea>
-            <LeftSideItemArea onClick={onClickPieViewer}>
-              <SubMenuItemImg src={IconPie}></SubMenuItemImg>
-              <SubMenuItemDescription>Trends</SubMenuItemDescription>
-            </LeftSideItemArea>
-            <LeftSideItemArea onClick={onClickLineViewer}>
-              <SubMenuItemImg src={IconLine}></SubMenuItemImg>
-              <SubMenuItemDescription>Earnings</SubMenuItemDescription>
-            </LeftSideItemArea>
-          </LeftSideFeatureAdapter>
-          <FeatureArea onClick={logoutBtn}>
-            <FeatureImage src={IconLogout} />
-            <FeatureDescription>Logout</FeatureDescription>
-          </FeatureArea>
-          <React.Fragment>
-            <CandleModal></CandleModal>
-            <LineModal></LineModal>
-            <PieModal></PieModal>
-          </React.Fragment>
-        </FeatureWrapper>
-        <FeatureContainer>
-          <ContainerGraphView></ContainerGraphView>
-        </FeatureContainer>
-      </MainArea>
-    </Wrapper>
+    <BodyWrapper>
+      <Wrapper>
+        <MainArea>
+          <ClientMenu navColor={companyColor}>
+            <MenuGroupArea style={{'marginTop': '0'}}>
+              <StyledImgLogo src={logo} alt="website logo" />
+            </MenuGroupArea>
+            <MenuGroupArea onClick={onClickCandleViewer}>
+              <MenuImage icon={faChartBar} />
+              <MenuDescription>Currency</MenuDescription>
+            </MenuGroupArea>
+            <MenuGroupArea onClick={onClickPieViewer}>
+              <MenuImage icon={faChartPie} />
+              <MenuDescription>Trends</MenuDescription>
+            </MenuGroupArea>
+            <MenuGroupArea onClick={onClickLineViewer}>
+              <MenuImage icon={faChartLine} />
+              <MenuDescription>Earnings</MenuDescription>
+            </MenuGroupArea>
+            {candTogg ? <CandleModal></CandleModal> : null}
+            {lineTogg ? <LineModal></LineModal> : null}
+            {pieTogg ? <PieModal></PieModal> : null}
+            <MenuGroupArea style={{'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)'}} onClick={logoutBtn}>
+              <MenuImage icon={faSignOutAlt} />
+              <MenuDescription>Logout</MenuDescription>
+            </MenuGroupArea>
+          </ClientMenu>
+          <GraphContainer>
+            <ContainerGraphView></ContainerGraphView>
+          </GraphContainer>
+        </MainArea>
+      </Wrapper>
+    </BodyWrapper>
   );
 };
 
 const mapStateToProps = (state) => {
   return {
+    userInfo: state.userinfo.info,
+    candTogg: state.candleModalToggler.toggle,
+    lineTogg: state.lineModalToggler.toggle,
+    pieTogg: state.pieModalToggler.toggle
   }
 }
 
@@ -85,7 +95,8 @@ const mapDispatchToProps = (dispatch) => {
     signout: () => dispatch(signout()),
     fireCandleModal: () => dispatch(fireCandleModal()),
     fireLineModal: () => dispatch(fireLineModal()),
-    firePieModal: () => dispatch(firePieModal())
+    firePieModal: () => dispatch(firePieModal()),
+    getinfo: () => dispatch(getInfo())
   };
 };
 
