@@ -1,82 +1,60 @@
-import styled, {css, keyframes } from 'styled-components';
+import styled from 'styled-components';
 import Theme from "../../../__config/theme";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const KFRightToLeft = keyframes`
-  0% {
-    transform: translateX(0%);
+export const BodyWrapper = styled.div`
+  padding: 0rem;
+  background-color: #F4F8F9;
+`;
+
+export const StyledImgLogo = styled.img`
+  width: 100%;
+`;
+
+export const Wrapper = styled.div`
+  display: flex;
+  height: 100vh;
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {    
   }
-  100% {
-    transform: translateX(-400%);
-  }
-`
+`;
 
-const KFLeftToRight = keyframes`
-  0% {
-    transform: translateX(-400%);
-  }
-  100% {
-    transform: translateX(0%);
-  }
-`
+export const ClientCompanyLogo = styled.img`
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+  margin-left: 2rem;
 
-
-
-
-
-export const SubMenuItemImg = styled.img`
-  user-select: none;
-  vertical-align: middle;
-  width: 3rem;
-  height: 3rem;
-  
-  
+  justify-content: center;
+  width: 9rem;
+  max-height:100%;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-left: 2rem;
+    margin-right: 2rem;
   }
 `;
 
-export const LeftSideItemArea = styled.div`
-  cursor: pointer;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
-
-  &:hover {
-    transform: scale(1.1);
-
-    @media screen and (max-width: ${Theme.screenSize.xsmall}){
-      transform: scale(1);
-    }
-  }
-
-  @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    padding-top: 2.5rem;
-    padding-bottom: 2.5rem;
-    padding-left: 4rem;
-    padding-right: 2rem;
-  }
-`;
-
-export const SubMenuItemDescription = styled.span`
+export const MenuImage = styled(FontAwesomeIcon)`
   user-select: none;
-  font-size: 1.35rem;
-  font-weight: bold;
-  margin-left: 4rem;
+  font-size: 3rem;
   color: black;
 
-  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    display: flex;
+    flex-direction: row;
+    width: 5.5rem;
+    height: 5.5rem;
     margin-left: 2rem;
-    margin-top: 1rem;
   }
 `;
 
-const FeatureArea = styled.div`
-  display: inline-flex;
-  vertical-align: middle;
-  width: 25rem;
+export const MenuGroupArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
   cursor: pointer;
-  margin-bottom: 2rem;
 
   &:hover {
     transform: scale(1.1);
@@ -95,47 +73,48 @@ const FeatureArea = styled.div`
   }
 `;
 
-
-export const LeftSideFeatureAdapter = styled.div`
-  flex-direction: column;
-  margin-left: 4rem;
-  animation-fill-mode: both;
-  visibility: hidden;
-
-  ${props => {
-    return props.toggle ?
-      css`
-        display: flex;
-        animation: ${KFLeftToRight} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        visibility: visible;
-      ` :
-      css`
-        display: flex;
-        visibility: visible;
-        animation: ${KFRightToLeft} 0.8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-      `
-    }
-  }
+export const MenuDescription = styled.span`
+  user-select: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    flex-direction: row;
-    flex-wrap: nowrap;
-    margin-left: 0rem;
+    margin: 0;
+    margin-left: 2rem;
   }
 `;
 
+export const ClientMenu = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 10rem;
+  height: 100vh;
+  border-right: inset;
+  background-color: ${props => props.navColor ? props.navColor : "#ffffff"};
 
-const FeatureWrapper = styled.div`
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    width: 10rem;
   }
 `;
 
-const FeatureContainer = styled.div`
-  background-color:#f9f9f9;
+export const MainArea = styled.div`
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+
+  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+    flex-direction: column;
+
+  }
+`;
+
+export const GraphContainer = styled.div`
+  background-color:#f9f9f9;
+  display: flex;
+  flex-grow: 1;
+  background-color: #e5f1e5;
+  margin-left: 1rem;
+  width: calc(100vw - 11.3rem);
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -144,9 +123,3 @@ const FeatureContainer = styled.div`
     width: 100%;
   }
 `;
-
-export {
-  FeatureArea,
-  FeatureWrapper,
-  FeatureContainer
-}

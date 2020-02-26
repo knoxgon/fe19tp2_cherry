@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Navbar from "./components/Navbar/navbar";
 import Routes from './__route/routes';
 import backgroundColor from './__config/theme';
 import { createGlobalStyle } from 'styled-components';
@@ -35,7 +34,6 @@ height:100%;
 const App = () => {
   return (
     <StyledApp>
-      <Navbar />
       <Routes />
       <GlobalStyle/>
     </StyledApp>
