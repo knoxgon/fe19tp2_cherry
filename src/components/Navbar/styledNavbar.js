@@ -2,28 +2,32 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Theme from "../../__config/theme";
 
+
 const Nav = styled.nav`
-  width: 100%;
-  height: 12rem;
+  position: absolute;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: 100%;
   background-color: ${props => props.navColor};
   border-bottom: 0.02rem solid #dddddd;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    justify-content: space-around;
-    height: 11rem;
+    position: fixed;
+    bottom: 0%;
+    width: 100%;
+    height: 5%;
+    left: initial;
+    top: initial;
   }
 `;
 
 const MenuItems = styled.div`
   display: flex;
-  flex-direction: row;
-  width: 100%;
-  align-items: center;
-  margin-left: 6rem;
-  padding: 0;
-  overflow: hidden;
+  flex-direction: column;
+  width: 10%;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     flex-direction: column;
@@ -43,10 +47,12 @@ const MenuItems = styled.div`
 const A = styled.p`
   font-weight: 500;
   text-align: center;
+  align-items: center;
   color: #1a1a1a;
   margin-right: 2rem;
 
   & a {
+  margin: 0 auto;
     font-size: 2.3rem;
     text-decoration: none;
     color: black;
@@ -62,9 +68,7 @@ const A = styled.p`
   }
 `;
 
-const AccountA = styled.p`
-  margin-left: auto;
-  margin-right: 2rem;
+const AccountA = styled.span`
   font-weight: 500;
   color: #1a1a1a;
   font-size: 2.3rem;
@@ -107,8 +111,7 @@ const Menu = styled(FontAwesomeIcon)`
 `;
 
 const StyledImgLogo = styled.img`
-  width: 13rem;
-  height: 10rem;
+  width: 14rem;
 `;
 
 export { Nav, MenuItems, A, AccountA, StyledLogo, Menu, StyledImgLogo };
