@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { SubMenuItemDescription, SubMenuItemImg, LeftSideFeatureAdapter, Wrapper, ClientMenu, MainArea, FeatureContainer, MenuImage, MenuGroupArea, MenuDescription, BorderUnderline, LeftSideItemArea, BodyWrapper } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
+import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { getInfo } from "../../../__redux/actions/userInfoActions";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
-import { faSignOutAlt, faChartLine, faChartArea, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
-import { getInfo } from "../../../__redux/actions/userInfoActions";
-import Theme from "../../../__config/theme";
-import { StyledLogo, StyledImgLogo } from "../../Navbar/styledNavbar";
 
-const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal }) => {
-  const [showLeftList, setShowLeftList] = useState(false);
+const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
   const [fullName, setFullName] = useState("");
@@ -37,10 +34,6 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
     signout();
   };
 
-  const toggleDisplayGraph = () => {
-    setShowLeftList(!showLeftList)
-  }
-
   const onClickCandleViewer = () => {
     fireCandleModal();
   }
@@ -59,44 +52,29 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
             <MenuGroupArea style={{'marginTop': '0'}}>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
-            <MenuGroupArea onClick={toggleDisplayGraph}>
-              <MenuImage icon={faChartArea} />
-              <MenuDescription>Graph</MenuDescription>
+            <MenuGroupArea onClick={onClickCandleViewer}>
+              <MenuImage icon={faChartBar} />
+              <MenuDescription>Currency</MenuDescription>
             </MenuGroupArea>
-            <MenuGroupArea onClick={toggleDisplayGraph}>
-              <MenuImage icon={faChartArea} />
-              <MenuDescription>Graph</MenuDescription>
+            <MenuGroupArea onClick={onClickPieViewer}>
+              <MenuImage icon={faChartPie} />
+              <MenuDescription>Trends</MenuDescription>
             </MenuGroupArea>
-            <MenuGroupArea onClick={toggleDisplayGraph}>
-              <MenuImage icon={faChartArea} />
-              <MenuDescription>Graph</MenuDescription>
+            <MenuGroupArea onClick={onClickLineViewer}>
+              <MenuImage icon={faChartLine} />
+              <MenuDescription>Earnings</MenuDescription>
             </MenuGroupArea>
-            <MenuGroupArea onClick={toggleDisplayGraph}>
-              <MenuImage icon={faChartArea} />
-              <MenuDescription>Graph</MenuDescription>
-            </MenuGroupArea>
-            <LeftSideFeatureAdapter toggle={showLeftList}>
-              <LeftSideItemArea onClick={onClickCandleViewer}>
-                <SubMenuItemImg icon={faChartBar}></SubMenuItemImg>
-                <SubMenuItemDescription>Currency</SubMenuItemDescription>
-              </LeftSideItemArea>
-              <LeftSideItemArea onClick={onClickPieViewer}>
-                <SubMenuItemImg icon={faChartPie}></SubMenuItemImg>
-                <SubMenuItemDescription>Trends</SubMenuItemDescription>
-              </LeftSideItemArea>
-              <LeftSideItemArea onClick={onClickLineViewer}>
-                <SubMenuItemImg icon={faChartLine}></SubMenuItemImg>
-                <SubMenuItemDescription>Earnings</SubMenuItemDescription>
-              </LeftSideItemArea>
-            </LeftSideFeatureAdapter>
-            <MenuGroupArea style={{'marginTop': 'auto', 'marginBottom': '1rem'}} onClick={logoutBtn}>
+            {candTogg ? <CandleModal></CandleModal> : null}
+            {lineTogg ? <LineModal></LineModal> : null}
+            {pieTogg ? <PieModal></PieModal> : null}
+            <MenuGroupArea style={{'marginTop': 'auto', 'marginBottom': '1rem', 'transform': 'scale(1.0)'}} onClick={logoutBtn}>
               <MenuImage icon={faSignOutAlt} />
               <MenuDescription>Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
-          <FeatureContainer>
+          <GraphContainer>
             <ContainerGraphView></ContainerGraphView>
-          </FeatureContainer>
+          </GraphContainer>
         </MainArea>
       </Wrapper>
     </BodyWrapper>
@@ -105,7 +83,10 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
 
 const mapStateToProps = (state) => {
   return {
-    userInfo: state.userinfo.info
+    userInfo: state.userinfo.info,
+    candTogg: state.candleModalToggler.toggle,
+    lineTogg: state.lineModalToggler.toggle,
+    pieTogg: state.pieModalToggler.toggle
   }
 }
 
