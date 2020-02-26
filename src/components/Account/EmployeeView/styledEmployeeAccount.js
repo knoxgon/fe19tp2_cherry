@@ -1,5 +1,6 @@
 import styled, {css, keyframes } from 'styled-components';
 import Theme from "../../../__config/theme";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const KFRightToLeft = keyframes`
   0% {
@@ -19,20 +20,16 @@ const KFLeftToRight = keyframes`
   }
 `
 
+export const BodyWrapper = styled.div`
+  padding: 0rem;
+  background-color: #e0e0e0;
+`;
+
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
-  margin-bottom: 14rem;
   display: flex;
-  flex-direction: column;
-
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-top: 2rem;
-    margin-left: 0rem;
-    margin-right: 0rem;
-    
+  height: 100vh;
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {    
   }
 `;
 
@@ -62,10 +59,10 @@ const ClientNameArea = styled.h2`
   font-size: 1.75rem;
 `;
 
-const FeatureImage = styled.img`
+const MenuImage = styled(FontAwesomeIcon)`
   user-select: none;
-  width: 5rem;
-  height: 5rem;
+  font-size: 4.5rem;
+  color: white;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display: flex;
@@ -77,11 +74,11 @@ const FeatureImage = styled.img`
 `;
 
 
-export const SubMenuItemImg = styled.img`
+export const SubMenuItemImg = styled(FontAwesomeIcon)`
   user-select: none;
+  color: white;
   vertical-align: middle;
-  width: 3rem;
-  height: 3rem;
+  font-size: 3.5rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-left: 2rem;
@@ -90,9 +87,6 @@ export const SubMenuItemImg = styled.img`
 
 export const LeftSideItemArea = styled.div`
   cursor: pointer;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-
 
   &:hover {
     transform: scale(1.1);
@@ -122,12 +116,14 @@ export const SubMenuItemDescription = styled.span`
   }
 `;
 
-const FeatureArea = styled.div`
-  display: inline-flex;
-  vertical-align: middle;
-  width: 25rem;
+const MenuGroupArea = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 15rem;
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
   cursor: pointer;
-  margin-bottom: 2rem;
 
   &:hover {
     transform: scale(1.1);
@@ -146,11 +142,11 @@ const FeatureArea = styled.div`
   }
 `;
 
-const FeatureDescription = styled.p`
+const MenuDescription = styled.span`
   user-select: none;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 2rem;
+  color: white;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -160,7 +156,7 @@ const FeatureDescription = styled.p`
 
 export const LeftSideFeatureAdapter = styled.div`
   flex-direction: column;
-  margin-left: 4rem;
+  margin-left: 1.5rem;
   animation-fill-mode: both;
   visibility: hidden;
 
@@ -187,7 +183,6 @@ export const LeftSideFeatureAdapter = styled.div`
 `;
 
 const BorderUnderline = styled.div`
-  margin: 2rem 4rem 2rem 4rem;
   height: 0.1rem;
   background-color: #dddddd;
 `;
@@ -202,17 +197,25 @@ const MainArea = styled.div`
   }
 `;
 
-const FeatureWrapper = styled.div`
+const ClientMenu = styled.div`
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  width: 15rem;
+  background-color: #3a3838;
+  background-color: ${props => props.navColor};
+
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    width: 10rem;
   }
 `;
 
 const FeatureContainer = styled.div`
   background-color:#f9f9f9;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-grow: 1;
+  background-color: #e5f1e5;
+  margin-left: 1rem;
+  width: calc(100vw - 16rem);
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -227,11 +230,11 @@ export {
   ClientCompanyLogo,
   ClientArea,
   ClientNameArea,
-  FeatureImage,
-  FeatureArea,
-  FeatureDescription,
+  MenuImage,
+  MenuGroupArea,
+  MenuDescription,
   BorderUnderline,
-  FeatureWrapper,
+  ClientMenu,
   MainArea,
   FeatureContainer
 }
