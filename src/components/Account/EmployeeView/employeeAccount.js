@@ -13,7 +13,8 @@ import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
 
-const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal }) => {
+
+const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal, ...props }) => {
   const [showLeftList, setShowLeftList] = useState(false);
 
   const logutBtn = () => {
@@ -41,20 +42,20 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal
         <FeatureWrapper>
           <FeatureArea onClick={toggleDisplayGraph}>
             <FeatureImage src={IconGraphGroup} />
-            <FeatureDescription>Generate graph</FeatureDescription>
+            <FeatureDescription style = {{ color: props.fontColor}}>Generate graph</FeatureDescription>
           </FeatureArea>
           <LeftSideFeatureAdapter toggle={showLeftList}>
             <LeftSideItemArea onClick={onClickCandleViewer}>
               <SubMenuItemImg src={IconCandle}></SubMenuItemImg>
-              <SubMenuItemDescription>OHLC</SubMenuItemDescription>
+              <SubMenuItemDescription style = {{ color: props.fontColor}}>OHLC</SubMenuItemDescription>
             </LeftSideItemArea>
             <LeftSideItemArea onClick={onClickPieViewer}>
               <SubMenuItemImg src={IconPie}></SubMenuItemImg>
-              <SubMenuItemDescription>Trends</SubMenuItemDescription>
+              <SubMenuItemDescription style = {{ color: props.fontColor}}>Trends</SubMenuItemDescription>
             </LeftSideItemArea>
             <LeftSideItemArea onClick={onClickLineViewer}>
               <SubMenuItemImg src={IconLine}></SubMenuItemImg>
-              <SubMenuItemDescription>Earnings</SubMenuItemDescription>
+              <SubMenuItemDescription style = {{ color: props.fontColor}}>Earnings</SubMenuItemDescription>
             </LeftSideItemArea>
           </LeftSideFeatureAdapter>
           <React.Fragment>
@@ -73,8 +74,11 @@ const EmployeeAccount = ({ signout, fireCandleModal, fireLineModal, firePieModal
 
 const mapStateToProps = (state) => {
   return {
+    fontColor: state.darkModeToggler.color.colors.fontColor
   }
 }
+
+
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -82,6 +86,7 @@ const mapDispatchToProps = (dispatch) => {
     fireCandleModal: () => dispatch(fireCandleModal()),
     fireLineModal: () => dispatch(fireLineModal()),
     firePieModal: () => dispatch(firePieModal())
+    
   };
 };
 

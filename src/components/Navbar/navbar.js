@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Logo from "../../assets/logo_transparent.png";
-import Theme, { CheckDarkMode } from "../../__config/theme";
+import Theme,{ CheckDarkMode, color } from "../../__config/theme";
 import * as IconesSolid from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { getInfo } from '../../__redux/actions/userInfoActions';
@@ -41,7 +41,7 @@ const Navbar = ({ userInfo, isGuest, getinfo, dmToggler}) => {
   useEffect(() => {
     getinfo()
     if (isGuest) {
-      setCompanyColor(Theme.colors.beige);
+      setCompanyColor(Theme.color.grey);
       setLogo(Logo);
       setFullName("Account");
     } else {
@@ -58,7 +58,7 @@ const Navbar = ({ userInfo, isGuest, getinfo, dmToggler}) => {
 
     return () => {
       setLogo(Logo);
-      setCompanyColor(Theme.colors.beige);
+      setCompanyColor(Theme.color.grey);
       setFullName("Account");
     };
   }, [
@@ -127,7 +127,8 @@ const darkModeBtn = () => {
   );
 };
 
-const mapStateToProps = state => { console.log(state);
+const mapStateToProps = state => {
+  console.log(state);
   return {
     userInfo: state.userinfo.info,
     isGuest: state.firebase.auth.isEmpty,

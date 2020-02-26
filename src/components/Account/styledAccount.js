@@ -39,7 +39,7 @@ const FeatureDescription = styled.p`
   font-size: 1.5rem;
   font-weight: bold;
   margin-left: 2rem;
-  color:${ThemeColorsLight.colors.fontColors};
+  color: black;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
@@ -51,14 +51,14 @@ const FeatureDescription = styled.p`
 const BorderUnderline = styled.div`
   margin: 2rem 4rem 2rem 4rem;
   height: 0.1rem;
-  background-color: ${ThemeColorsLight.colors.borderUnderlineColor};
+  background-color: black;
 `;
 
 
 const MainArea = styled.div`
   display: flex;
   flex-direction: row;
-  background-color: ${ThemeColorsLight.colors.background};
+  background-color: white;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     flex-direction: column;

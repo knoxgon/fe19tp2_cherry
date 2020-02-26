@@ -29,6 +29,7 @@ export const SubMenuItemImg = styled.img`
   width: 3rem;
   height: 3rem;
   
+  
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-left: 2rem;
@@ -62,7 +63,7 @@ export const SubMenuItemDescription = styled.span`
   font-size: 1.35rem;
   font-weight: bold;
   margin-left: 4rem;
-  color: ${Theme.colors.fontColor};
+  color: black;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin-left: 2rem;

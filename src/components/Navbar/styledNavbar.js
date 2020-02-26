@@ -29,7 +29,7 @@ const MenuItems = styled.div`
     flex-direction: column;
     background-color: grey;
     position: absolute;
-    background-color: ${Theme.colors.beige};
+    background-color: grey;
     right: 0;
     width: 15rem;
     margin-top: 13.5rem;
@@ -71,7 +71,7 @@ const AccountA = styled.p`
 
   & a {
     text-decoration: none;
-    color: ${Theme.colors.fontColor};
+    color: black;
 
     &:hover {
       text-decoration: underline #bebebe;

@@ -22,7 +22,7 @@ export const CRModal = styled(RMConnector).attrs({
     right: auto;
     bottom: auto;
     border: 1px solid rgb(204, 204, 204);
-    background: ${ThemeColorsLight.colors.backgroundColorModal};
+    background: ${props => props.themeColor};
     border-radius: 0.4rem;
     outline: none;
     padding: 2rem;
@@ -75,7 +75,7 @@ const FormModal = styled.form`
 export const CandleLabel = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
-  color: ${Theme.colors.fontColor};
+  color: black;
 
 `;
 
@@ -83,9 +83,8 @@ export const CMDateTimePicker = styled(DateTimePicker)`
   font-size: 1.6rem;
   height: 4rem;
   width: 25rem;
-  color: ${ThemeColorsLight.colors.fontColor};
-  background-color: ${ThemeColorsLight.colors.whiteToGrey}
- 
+  color: black;
+  background-color: white;
 `;
 
 export const ButtonAreaWrap = styled(AreaWrap)`
@@ -119,7 +118,7 @@ const modalStyle = {
 
 export const ModalTitle = styled.div`
   font-size: 2rem;
-  color: ${ThemeColorsLight.colors.colorModalTitle};
+  color: grey;
   margin-bottom: 5rem;
   font-weight: 500;
 `;
@@ -128,8 +127,8 @@ export const ModalSubmitButton = styled.button`
   bottom:0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: ${Theme.colors.fontColor};
-  background-color: ${ThemeColorsLight.colors.greenToDarkGreen};
+  color: black;
+  background-color: green;
   height: 4rem;
 `;
 

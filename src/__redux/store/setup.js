@@ -13,7 +13,7 @@ const store = createStore(rootReducer,
 );
 store.subscribe(() => {
   const { toggle } = store.getState().darkModeToggler;
-  localStorage.setItem('darkMode', toggle);
+  localStorage.setItem('DarkMode', toggle);
 })
 
 export {store};

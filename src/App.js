@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Navbar from "./components/Navbar/navbar";
 import Routes from './__route/routes';
-import Theme from './__config/theme';
+import backgroundColor from './__config/theme';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle`
   font-size: 62.5%;
   width: 100%;
   height: 100%;
-  background-color:${Theme.colors.background};
+  background-color:white;
   }
 
 body {
