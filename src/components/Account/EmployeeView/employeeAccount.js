@@ -13,7 +13,7 @@ import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Theme, { CheckDarkMode, color } from "../../../__config/theme";
 
-const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, ...props }) => {
+const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, navbarIconColor, ...props }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
   // const [fullName, setFullName] = useState("");
@@ -43,8 +43,16 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
     getinfo
   ]);
 
+  useEffect(() => {
+    if(JSON.parse(localStorage.getItem('DarkMode')) === true){
+      document.getElementById('checkbox').checked = true
+    }
+    else
+      document.getElementById('checkbox').checked = false
+  })
 
-  const darkModeBtn = () => {
+
+  const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
     let color
@@ -72,38 +80,37 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
 
   return (
     <BodyWrapper>
-      <Wrapper style = {{background: props.backgroundColor}}>
-        <MainArea style = {{background: props.backgroundColor}}>
+      <Wrapper>
+        <MainArea style = {{background: backgroundColor}}>
           <ClientMenu navColor={companyColor}>
             <MenuGroupArea>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
-              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartBar} />
-              <MenuDescription style={{ color: props.fontColor }}>Currency</MenuDescription>
+              <MenuImage style = {{ color: fontColor }} icon={faChartBar} />
+              <MenuDescription style={{ color: fontColor }}>Currency</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickPieViewer}>
-              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartPie} />
-              <MenuDescription style={{ color: props.fontColor }}>Trends</MenuDescription>
+              <MenuImage style = {{ color: fontColor}} icon={faChartPie} />
+              <MenuDescription style={{ color: fontColor }}>Trends</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickLineViewer}>
-              <MenuImage style = {{ color: props.navbarIconColor}} icon={faChartLine} />
-              <MenuDescription style={{ color: props.fontColor }}>Earnings</MenuDescription>
-              <CheckBoxWrapper>
-              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
-              <CheckBoxLabel htmlFor="checkbox" />
-            </CheckBoxWrapper>
+              <MenuImage style = {{ color: fontColor}} icon={faChartLine} />
+              <MenuDescription style={{ color: fontColor }}>Earnings</MenuDescription>
             </MenuGroupArea>
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
+           <CheckBoxWrapper>
+              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
+              <CheckBoxLabel htmlFor="checkbox" />
+            </CheckBoxWrapper>
             <MenuGroupArea onClick={logoutBtn}>
-            
-              <MenuImage style = {{ color: props.navbarIconColor}} icon={faSignOutAlt} />
-              <MenuDescription style={{ color: props.fontColor }}>Logout</MenuDescription>
+              <MenuImage style = {{ color: navbarIconColor}} icon={faSignOutAlt} />
+              <MenuDescription style={{ color: fontColor }}>Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
-          <GraphContainer>
+          <GraphContainer style = {{ background: backgroundColor }}>
             <ContainerGraphView></ContainerGraphView>
           </GraphContainer>
         </MainArea>

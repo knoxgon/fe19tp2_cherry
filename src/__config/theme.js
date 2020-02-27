@@ -40,9 +40,12 @@ const Theme = {
 }
 
 
-export const ThemeColorsLight = {
+export const ThemeColorsDark = {
   name: 'ColorsDark',
   colors: {
+    //Swedbank Svart
+    //Klarna Grå
+    //Wasa Kredit Whatever
     backgroundColor: Theme.color.darkGrey,
     fontColor: Theme.color.white,
     navbarIconColor: Theme.color.white,
@@ -54,16 +57,16 @@ export const ThemeColorsLight = {
 };
 
 
-export const ThemeColorsDark = {
+export const ThemeColorsLight = {
   name: 'ColorsLight',
     colors: {
       backgroundColor: Theme.color.greyLight,
-    fontColor: Theme.color.black,
-    navbarIconColor: Theme.color.black,
-    navbarColor: Theme.color.grey,
-    borderUnderlineColor: Theme.color.grey,
-    backgroundColorModal: Theme.color.white,
-    modalBtnColor: Theme.color.green
+      fontColor: Theme.color.black,
+      navbarIconColor: Theme.color.black,
+      navbarColor: Theme.color.grey,
+      borderUnderlineColor: Theme.color.grey,
+      backgroundColorModal: Theme.color.white,
+      modalBtnColor: Theme.color.green
     
   },
 };

@@ -22,7 +22,7 @@ export const CRModal = styled(RMConnector).attrs({
     right: auto;
     bottom: auto;
     border: 1px solid rgb(204, 204, 204);
-    background: ${props => props.themeColor};
+    background-color: ${props => props.themeColor};
     border-radius: 0.4rem;
     outline: none;
     padding: 2rem;

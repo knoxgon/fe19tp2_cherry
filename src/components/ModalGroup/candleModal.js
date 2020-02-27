@@ -4,9 +4,10 @@ import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } fro
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
 import { fireCandleModal } from '../../__redux/actions/modalActions';
+import { ToggleDarkMode } from '../../__config/theme';
+import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 
-
-const CandleModal = ({getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
+const CandleModal = ({backgroundColorModal, getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, dmToggler, ...props }) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -50,12 +51,12 @@ const CandleModal = ({getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getS
   const onClickModalCloser = () => {
     fireCandleModal();
   }
-
+console.log(props.fontColor);
   return (
     <ModalContainer>
-      <CRModal shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
+      <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle>Open-High-Low-Close</ModalTitle>
+          <ModalTitle style = {{ color: props.fontColor }}>Open-High-Low-Close</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
@@ -100,7 +101,10 @@ const mapStateToProps = (state) => {
   return {
     candleModalTogg: state.candleModalToggler.toggle,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
-    exchangeSymbol:    state.exchangeSymbol.selectedExSymMul
+    exchangeSymbol:    state.exchangeSymbol.selectedExSymMul,
+    backgroundColorModal: state.darkModeToggler.color.colors.backgroundColorModal,
+    fontColor: state.darkModeToggler.color.colors.fontColor,
+    isDmToggler: state.darkModeToggler.toggle
   }
 }
 
@@ -109,7 +113,8 @@ const mapDispatchToProps = (dispatch) => {
     getinfo : (inf) => dispatch(exchangeCandleAction(inf)),
     getExc  : (inp) => dispatch(exchangeTypeSymGrpAction(inp)),
     getSym  : (ing, fcx) => dispatch(exchangeSymAction(ing, fcx)),
-    fireCandleModal: () => dispatch(fireCandleModal())
+    fireCandleModal: () => dispatch(fireCandleModal()),
+    dmToggler: () => dispatch(darkModeToggler())
   }
 }
 

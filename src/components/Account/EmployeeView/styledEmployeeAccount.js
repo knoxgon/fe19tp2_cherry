@@ -25,7 +25,6 @@ export const Wrapper = styled.div`
 export const MenuImage = styled(FontAwesomeIcon)`
   user-select: none;
   font-size: 1.5rem;
-  color: black;
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
     
@@ -83,7 +82,6 @@ export const MenuDescription = styled.span`
   user-select: none;
   font-size: 1.5rem;
   font-weight: bold;
-  color: black;
 
   @media screen and (max-width: ${Theme.screenSize.small}){
     
@@ -96,7 +94,7 @@ export const ClientMenu = styled.div`
   justify-content: center;
   width: 10rem;
   height: 100vh;
-  border-right: inset;
+  /*border-right: inset;*/
   background-color: ${props => props.navColor ? props.navColor : "#ffffff"};
 
   @media screen and (max-width: ${Theme.screenSize.small}){
@@ -127,7 +125,7 @@ export const GraphContainer = styled.div`
   flex-direction: initial;
   flex-grow: 1;
   background-color: #e5f1e5;
-  margin-left: 1rem;
+  /*margin-left: 1rem;*/
   width: calc(100vw - 11.3rem);
   overflow: scroll;
   
@@ -151,8 +149,8 @@ position: relative;
 
 export const CheckBoxLabel = styled.label`
 position: absolute;
-top: 0;
-left: 0;
+top: 10rem;
+left: 2.7rem;
 width: 4rem;
 height: 2.3rem;
 border-radius: 15px;
