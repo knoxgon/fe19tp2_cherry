@@ -10,15 +10,8 @@ export const ToggleDarkMode = () => {
   }  
 }
 
-const colorScheme = () => {
-  //return CheckDarkMode() ? ThemeColorsDark : ThemeColorsLight
-}
-
-
-
 
 const Theme = {
-  colors: colorScheme(),
   screenSize: {
     xsmall: '600px',
     small: '768px',
