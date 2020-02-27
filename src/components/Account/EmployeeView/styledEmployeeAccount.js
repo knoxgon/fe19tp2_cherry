@@ -95,6 +95,7 @@ export const ClientMenu = styled.div`
   width: 10rem;
   height: 100vh;
   /*border-right: inset;*/
+  transition: all 0.75s linear;
   background-color: ${props => props.navColor ? props.navColor : "#ffffff"};
 
   @media screen and (max-width: ${Theme.screenSize.small}){
@@ -120,13 +121,12 @@ export const MainArea = styled.div`
 `;
 
 export const GraphContainer = styled.div`
-  background-color:#f9f9f9;
+  transition: all 0.75s linear;
   display: flex;
   flex-direction: initial;
   flex-grow: 1;
   background-color: #e5f1e5;
-  /*margin-left: 1rem;*/
-  width: calc(100vw - 11.3rem);
+  width: calc(100vw - 10rem);
   overflow: scroll;
   
   &::-webkit-scrollbar{
