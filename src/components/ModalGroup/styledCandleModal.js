@@ -128,7 +128,8 @@ export const ModalSubmitButton = styled.button`
   font-size: 1.5rem;
   font-weight: 600;
   color: black;
-  background-color: green;
+  background-color: #50c95c;
+  border-radius:0.4rem;
   height: 4rem;
 `;
 

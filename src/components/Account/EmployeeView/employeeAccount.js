@@ -101,10 +101,12 @@ const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signou
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
+          
            <CheckBoxWrapper>
               <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
               <CheckBoxLabel htmlFor="checkbox" />
             </CheckBoxWrapper>
+            
             <MenuGroupArea onClick={logoutBtn}>
               <MenuImage style = {{ color: navbarIconColor}} icon={faSignOutAlt} />
               <MenuDescription style={{ color: fontColor }}>Logout</MenuDescription>

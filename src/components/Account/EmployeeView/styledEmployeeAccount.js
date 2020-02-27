@@ -148,21 +148,21 @@ position: relative;
 `;
 
 export const CheckBoxLabel = styled.label`
-position: absolute;
-top: 10rem;
-left: 2.7rem;
+position: fixed;
+bottom:10rem;
+left: 2.9rem;
 width: 4rem;
 height: 2.3rem;
 border-radius: 15px;
-background: #bebebe;
+background: #e2e2e2;
 cursor: pointer;
 &::after {
   content: "";
   display: block;
   border-radius: 50%;
   width: 1.8rem;
-  height: 1.8rem;
-  margin: 0.3rem;
+  height: 1.95rem;
+  margin: 0.2rem;
   background: #ffffff;
   box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
   transition: 0.2s;

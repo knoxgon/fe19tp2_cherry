@@ -7,6 +7,8 @@ import { fireCandleModal } from '../../__redux/actions/modalActions';
 import { ToggleDarkMode } from '../../__config/theme';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 
+
+
 const CandleModal = ({ fontColor, backgroundColorModal, getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, dmToggler, ...props }) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
@@ -57,7 +59,7 @@ const CandleModal = ({ fontColor, backgroundColorModal, getinfo, getExc, exchang
       <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle style = {{ color: fontColor }}>Open-High-Low-Close</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel style = {{ color: fontColor }} htmlFor="datefrom">Starting date</CandleLabel>
             <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
@@ -89,7 +91,7 @@ const CandleModal = ({ fontColor, backgroundColorModal, getinfo, getExc, exchang
               </AreaWrap>
             </React.Fragment>}
           <ButtonAreaWrap>
-            <ModalSubmitButton style = {{color: fontColor }} type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton style = {{ color: fontColor }} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
@@ -105,6 +107,7 @@ const mapStateToProps = (state) => {
     backgroundColorModal: state.darkModeToggler.color.colors.backgroundColorModal,
     fontColor: state.darkModeToggler.color.colors.fontColor,
     isDmToggler: state.darkModeToggler.toggle
+    
   }
 }
 

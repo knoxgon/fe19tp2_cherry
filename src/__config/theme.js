@@ -30,10 +30,11 @@ const Theme = {
   black: 'black',
   grey: 'grey',
   greyLight: '#e6e6e6',
-  darkGrey: '#3a3939',
+  greyMiddle: '#666464',
+  darkGrey: '#606060',
   beige: '#f3f3d3',
-  green:'5a9667',
-  darkGreen: '137223'
+  green:'#50c95c',
+  darkGreen: '#146895e'
 
 }
 
@@ -50,8 +51,7 @@ export const ThemeColorsDark = {
     fontColor: Theme.color.white,
     navbarIconColor: Theme.color.white,
     navbarColor: Theme.color.beige,
-    borderUnderlineColor: Theme.color.white,
-    backgroundColorModal: Theme.color.darkgrey,
+    backgroundColorModal: Theme.color.greyMiddle,
     modalBtnColor: Theme.color.darkgreen
   },
 };
@@ -64,7 +64,6 @@ export const ThemeColorsLight = {
       fontColor: Theme.color.black,
       navbarIconColor: Theme.color.black,
       navbarColor: Theme.color.grey,
-      borderUnderlineColor: Theme.color.grey,
       backgroundColorModal: Theme.color.white,
       modalBtnColor: Theme.color.green
     

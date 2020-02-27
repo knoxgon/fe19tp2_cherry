@@ -27,7 +27,7 @@ const LineModal = ({ backgroundColorModal, fontColor, getLinfo, lineModalTogg, f
       <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle style = {{ color: fontColor }} >Earnings Surprises</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel style = {{color: fontColor }} htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>

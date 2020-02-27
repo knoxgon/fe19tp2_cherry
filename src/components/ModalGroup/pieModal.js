@@ -31,7 +31,7 @@ const PieModal = ({ backgroundColorModal, fontColor, dmToggler, getPinfo, pieMod
       <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={pieModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle style = {{color: fontColor }}>Recommendation Trends</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel style = {{color: fontColor }} htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
