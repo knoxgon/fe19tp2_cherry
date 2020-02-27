@@ -3,8 +3,9 @@ import Theme from '../../__config/theme';
 import Chart from 'react-apexcharts';
 
 export const GraphWrapper = styled(Chart)`
-  width: 50rem;
+  width: 40rem;
   margin: 0 auto;
+  height: 50rem;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     width: 40rem;
@@ -12,7 +13,7 @@ export const GraphWrapper = styled(Chart)`
 `;
 
 export const GraphWrapperBar = styled(Chart)`
-  width: 50rem;
+  width: 30rem;
   height: 25rem;
   margin: 0 auto;
   
