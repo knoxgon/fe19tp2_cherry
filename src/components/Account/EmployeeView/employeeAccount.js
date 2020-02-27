@@ -11,7 +11,8 @@ import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
 import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
-import Theme, { CheckDarkMode, color } from "../../../__config/theme";
+import { CheckDarkMode } from "../../../__config/theme";
+import Toggle from '../../../__misc/js/ts/tcom';
 
 const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, navbarIconColor, ...props }) => {
   const [logo, setLogo] = useState("");
@@ -42,15 +43,6 @@ const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signou
     // userInfo.fullName,
     getinfo
   ]);
-
-  useEffect(() => {
-    if(JSON.parse(localStorage.getItem('DarkMode')) === true){
-      document.getElementById('checkbox').checked = true
-    }
-    else
-      document.getElementById('checkbox').checked = false
-  })
-
 
   const darkModeBtn = (e) => {
     dmToggler();
@@ -102,10 +94,9 @@ const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signou
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
           
-           <CheckBoxWrapper>
-              <CheckBox onChange={darkModeBtn} id="checkbox" type="checkbox" />
-              <CheckBoxLabel htmlFor="checkbox" />
-            </CheckBoxWrapper>
+           <MenuGroupArea>
+              <Toggle ocl={darkModeBtn} id="checkbox" type="checkbox" />
+            </MenuGroupArea>
             
             <MenuGroupArea onClick={logoutBtn}>
               <MenuImage style = {{ color: navbarIconColor}} icon={faSignOutAlt} />
