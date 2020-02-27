@@ -9,10 +9,13 @@ import { getInfo } from "../../../__redux/actions/userInfoActions";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import containerGraphView from "../../View/containerGraphView";
 
 const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg }) => {
   const [logo, setLogo] = useState("");
   const [companyColor, setCompanyColor] = useState("");
+  const [content, setContent] = useState("");
   // const [fullName, setFullName] = useState("");
 
   useEffect(() => {
@@ -43,6 +46,47 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
   const onClickPieViewer = () => {
     firePieModal();
   }
+  // const getListStyle = isDraggingOver => ({
+  //   background: isDraggingOver ? "lightblue" : "lightgrey",
+  //   // display: grid,
+  //   //padding: grid,
+  //   //width: 250
+  // });
+
+  // const getItemStyle = (isDragging, draggableStyle) => ({
+  //   // some basic styles to make the items look a bit nicer
+  //   userSelect: "none",
+  //   // padding: grid * 2,
+  //   // margin: `0 0 ${grid}px 0`,
+
+  //   // change background colour if dragging
+  //   background: isDragging ? "lightgreen" : "",
+
+  //   // styles we need to apply on draggables
+  //   ...draggableStyle
+  // });
+
+  // const grid = 8;
+
+  const dragContext = result => {
+    if(!result.destination) {
+      return;
+    }
+    //Det räcker med denna, alltså, från och med här kommer det att kräva en koppling till containern.
+    // ok, sen manipulera det och lägg tillbaka det nya 'reordered' objekt
+    // jag vet inte hur jag ska koppla containern, hur jag än gör så blir det inte rätt...
+    //Jag gör samtidigt switch knappen som vi ska ha för color theme,
+    //Ge över uppgiften så gör jag, bra jobbat hittils, :) pusha till branchen så ska jag fixa resten
+    
+
+    // const content = reorder(containern, result.source.index, result.destination.index);
+  }
+  const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
 
   return (
     <BodyWrapper>
@@ -73,7 +117,19 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
             </MenuGroupArea>
           </ClientMenu>
           <GraphContainer>
-            <ContainerGraphView></ContainerGraphView>
+            <DragDropContext onDragUpdate={dragContext} onDragEnd={dragContext}>
+              <Droppable droppableId="dropid">
+                {(provided, snapshot) => (
+                <div
+                  ref={provided.innerRef}
+                  {...provided.droppableProps}
+                  style={{'display': 'flex', 'flexWrap': 'wrap'}}
+                >
+                <ContainerGraphView></ContainerGraphView>
+                {provided.placeholder}
+                </div> )}
+              </Droppable>
+            </DragDropContext>
           </GraphContainer>
         </MainArea>
       </Wrapper>
