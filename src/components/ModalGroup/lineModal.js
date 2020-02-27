@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { surpriseEarnings } from '../../__redux/actions/earningActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledCandleModal'
 import { fireLineModal } from '../../__redux/actions/modalActions';
+import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 
-
-const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
+const LineModal = ({ backgroundColorModal, fontColor, getLinfo, lineModalTogg, fireLineModal, dmToggler }) => {
   const [sym, setSym] = useState({label: '', value: ''})
   const symset = [{label: 'Asbury Automotive Group Inc', value: 'ABG'}, {label: 'Agree Reality Corp', value: 'ADC'}, {label: 'ABM Industries Incorporated', value: 'ABM'}, {label: 'GAIN Capital Holdings', value: 'GCAP'}, {label: 'Genesis Energy LP', value: 'GEL'}, {label: 'Microsoft Corporation', value: 'MSFT'}, {label: 'Apple Inc', value: 'AAPL'}]
 
@@ -24,16 +24,16 @@ const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
 
   return (
     <ModalContainer>
-      <CRModal shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
+      <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle>Earnings Surprises</ModalTitle>
+          <ModalTitle style = {{ color: fontColor }} >Earnings Surprises</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
-            <CandleLabel htmlFor="secsym">Company</CandleLabel>
+            <CandleLabel style = {{color: fontColor }} htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
           </AreaWrap>
           <ButtonAreaWrap>
-            <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton style = {{color: fontColor }} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
@@ -43,14 +43,19 @@ const LineModal = ({getLinfo, lineModalTogg, fireLineModal}) => {
 
 const mapStateToProps = (state) => {
   return {
-    lineModalTogg: state.lineModalToggler.toggle
+    lineModalTogg: state.lineModalToggler.toggle,
+    fontColor: state.darkModeToggler.color.colors.fontColor,
+    isDmToggler: state.darkModeToggler.toggle,
+    backgroundColorModal: state.darkModeToggler.color.colors.backgroundColorModal,
+    
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     getLinfo : (sym) => dispatch(surpriseEarnings(sym)),
-    fireLineModal: () => dispatch(fireLineModal())
+    fireLineModal: () => dispatch(fireLineModal()),
+    dmToggler: () => dispatch(darkModeToggler())
   }
 }
 

@@ -7,7 +7,7 @@ import { fireCandleModal } from '../../__redux/actions/modalActions';
 import { ToggleDarkMode } from '../../__config/theme';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 
-const CandleModal = ({backgroundColorModal, getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, dmToggler, ...props }) => {
+const CandleModal = ({ fontColor, backgroundColorModal, getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, dmToggler, ...props }) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -51,45 +51,45 @@ const CandleModal = ({backgroundColorModal, getinfo, getExc, exchangeSymbolGroup
   const onClickModalCloser = () => {
     fireCandleModal();
   }
-console.log(props.fontColor);
+
   return (
     <ModalContainer>
       <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle style = {{ color: props.fontColor }}>Open-High-Low-Close</ModalTitle>
+          <ModalTitle style = {{ color: fontColor }}>Open-High-Low-Close</ModalTitle>
           <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
-            <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
+            <CandleLabel style = {{ color: fontColor }} htmlFor="datefrom">Starting date</CandleLabel>
             <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="dateto">End date</CandleLabel>
+            <CandleLabel style = {{ color: fontColor }} htmlFor="dateto">End date</CandleLabel>
             <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="platform">Platform</CandleLabel>
+            <CandleLabel style = {{ color: fontColor }} htmlFor="platform">Platform</CandleLabel>
             <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="resolution">Resolution</CandleLabel>
+            <CandleLabel style = {{ color: fontColor }} htmlFor="resolution">Resolution</CandleLabel>
             <CMSelect name="resolution" onChange={onChangeResolution} options={resolutions}></CMSelect>
           </AreaWrap>
           {exchangeSymbolGroup.length &&
             <React.Fragment>
               <AreaWrap>
-                <CandleLabel htmlFor="symbolgroup">Market</CandleLabel>
+                <CandleLabel style = {{ color: fontColor }} htmlFor="symbolgroup">Market</CandleLabel>
                 <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
               </AreaWrap>
             </React.Fragment>}
           {exchangeSymbol &&
             <React.Fragment>
               <AreaWrap>
-                <CandleLabel htmlFor="currencies">Currency</CandleLabel>
+                <CandleLabel style = {{ color: fontColor }} htmlFor="currencies">Currency</CandleLabel>
                 <CMSelect name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></CMSelect>
               </AreaWrap>
             </React.Fragment>}
           <ButtonAreaWrap>
-            <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton style = {{color: fontColor }} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
