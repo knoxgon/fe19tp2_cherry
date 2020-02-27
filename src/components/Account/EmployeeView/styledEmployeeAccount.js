@@ -84,7 +84,7 @@ export const MenuDescription = styled.span`
   font-weight: bold;
 
   @media screen and (max-width: ${Theme.screenSize.small}){
-    
+    display:none;
   }
 `;
 
@@ -187,4 +187,5 @@ height: 26px;
     transition: 0.2s;
   }
 }
+
 `;

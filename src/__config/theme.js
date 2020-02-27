@@ -3,10 +3,10 @@ export const CheckDarkMode = ()  => {
 }
 
 export const ToggleDarkMode = () => {
-  if (CheckDarkMode()){ 
-    localStorage.setItem('DarkMode', JSON.stringify(false))
-  } else {
-    localStorage.setItem('DarkMode', JSON.stringify(true));
+ if (CheckDarkMode()){ 
+   localStorage.setItem('DarkMode', JSON.stringify(false))
+ } else {
+   localStorage.setItem('DarkMode', JSON.stringify(true));
   }  
 }
 
@@ -34,7 +34,13 @@ const Theme = {
   darkGrey: '#606060',
   beige: '#f3f3d3',
   green:'#50c95c',
-  darkGreen: '#146895e'
+  darkGreen: '#146895e',
+  klarna: '#ffb3c6',
+  WasaKredit: '#f3f3f3',
+  swedBank: '#f9c35e'
+  // WasaKreditFontColor: '#005aa0'
+  //swedbank orange: '#ee7023'
+
 
 }
 
