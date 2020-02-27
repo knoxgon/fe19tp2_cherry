@@ -15,13 +15,13 @@ export const GMArea = styled.div`
   position: relative;
   background-color: white;
   margin: 3.5rem auto;
-  margin-left: 3.5rem;
-  width: 60rem;
-  height: 60rem;
+  margin-left: .5rem;
+  margin-right: 1.5rem;
+  width: 40rem; 
+  height: 40rem;
   opacity: 0.9;
   border: 1px solid #dddddd;
   border-radius: 1rem;
-  box-shadow: -12px 10px 5px 0px rgba(221,221,221,1);
   
   @media screen and (max-width: ${Theme.screenSize.large}){
     margin-left: 0rem;
@@ -33,7 +33,10 @@ export const GMArea = styled.div`
   }
   transition: all .8s ease-in-out;
   &:hover {
+    transition: 0.2s ease;
     transform: scale(1.050);
+    box-shadow: -12px 10px 5px 0px rgba(221,221,221,1);
+
     @media screen and (max-width: ${Theme.screenSize.xsmall}) {
       -webkit-transition: none;
       transform: scale(1.0);
