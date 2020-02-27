@@ -143,11 +143,6 @@ export const optionsLine = (dsid, catry, comp) => {
         text: 'Timeline'
       }
     },
-    yaxis: {
-      title: {
-        text: 'Earning estimation'
-      }
-    },
     legend: {
       position: 'bottom',
       horizontalAlign: 'center',
