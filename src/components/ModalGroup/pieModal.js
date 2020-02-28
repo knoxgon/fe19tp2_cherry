@@ -5,7 +5,7 @@ import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, Mo
 import { firePieModal } from '../../__redux/actions/modalActions';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 
-const PieModal = ({ backgroundColorModal, fontColor, dmToggler, getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend}) => {
+const PieModal = ({ getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend, theme }) => {
   const [period, setPeriod] = useState(null);
   const symset = [{label: 'Asbury Automotive Group Inc', value: 'ABG'}, {label: 'Agree Reality Corp', value: 'ADC'}, {label: 'ABM Industries Incorporated', value: 'ABM'}, {label: 'GAIN Capital Holdings', value: 'GCAP'}, {label: 'Genesis Energy LP', value: 'GEL'}, {label: 'Microsoft Corporation', value: 'MSFT'}, {label: 'Apple Inc', value: 'AAPL'}]
 
@@ -28,21 +28,21 @@ const PieModal = ({ backgroundColorModal, fontColor, dmToggler, getPinfo, pieMod
 
   return (
     <ModalContainer>
-      <CRModal themeColor={backgroundColorModal} shouldCloseOnOverlayClick={false} isOpen={pieModalTogg} ariaHideApp={false}>
+      <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={pieModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle style = {{color: fontColor }}>Recommendation Trends</ModalTitle>
+          <ModalTitle fcolor={theme.fontColor} >Recommendation Trends</ModalTitle>
           <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
-            <CandleLabel style = {{color: fontColor }} htmlFor="secsym">Company</CandleLabel>
+            <CandleLabel bgcolor={theme.fontColor} fcolor={theme.fontColor}  htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
           </AreaWrap>
           {timePeers ?
           <AreaWrap>
-            <CandleLabel style = {{color: fontColor }} htmlFor="periods">Time period</CandleLabel>
+            <CandleLabel bgcolor={theme.fontColor} fcolor={theme.fontColor}  htmlFor="periods">Time period</CandleLabel>
             <CMSelect name="periods" onChange={onChangePeriod} options={timePeers}></CMSelect>
           </AreaWrap> : null}
           <ButtonAreaWrap>
-            <ModalSubmitButton style = {{color: fontColor }} type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.navColor}  type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
@@ -55,10 +55,7 @@ const mapStateToProps = (state) => {
     pieModalTogg: state.pieModalToggler.toggle,
     timePeers: state.predata.periods,
     comp: state.predata.compname,
-    fontColor: state.darkModeToggler.color.colors.fontColor,
-    isDmToggler: state.darkModeToggler.toggle,
-    backgroundColorModal: state.darkModeToggler.color.colors.backgroundColorModal,
-
+    theme: state.darkModeToggler.activeTheme
   }
 }
 
