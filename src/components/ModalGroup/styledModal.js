@@ -75,8 +75,7 @@ const FormModal = styled.form`
 export const CandleLabel = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
-  color: black;
-
+  color: ${props => props.fcolor};
 `;
 
 export const CMDateTimePicker = styled(DateTimePicker)`
