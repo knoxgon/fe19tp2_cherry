@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Theme from '../../__config/theme';
 import Select from 'react-select';
 import DateTimePicker from 'react-datetime-picker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const RMConnector = ({ className, modalPointer, ...props }) => <ReactModal className={modalPointer} portalClassName={className} {...props}/>
@@ -126,7 +127,7 @@ const ModalContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const ModalCloser = styled.img`
+export const ModalCloser = styled(FontAwesomeIcon)`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -135,6 +136,8 @@ export const ModalCloser = styled.img`
   margin-top: 1.5rem;
   width: 3rem;
   height: 3rem;
+  font-size: 5rem;
+  color: ${props => props.xcolor};
 
   &:hover {
     transform: scale(1.1);
