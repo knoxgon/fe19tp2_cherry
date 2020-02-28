@@ -86,7 +86,7 @@ export const MenuDescription = styled.span`
   font-size: 1.5rem;
   transition: all 0.75s linear;
   color: ${props => props.fcolor};
-  font-weight: 400;
+  font-weight: 500;
 
   @media screen and (max-width: ${Theme.screenSize.small}){
     display:none;
