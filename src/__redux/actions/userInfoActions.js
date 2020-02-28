@@ -38,7 +38,7 @@ export const getInfo = () => {
                 companyLightSpecBord,
                 companyDarkSpecBg,
                 companyDarkSpecBord,
-                fullName: firstname + " " + lastname
+                fullName: firstname[0] + ". " + lastname
               }
             })
             dispatch({
