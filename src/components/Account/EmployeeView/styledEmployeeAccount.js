@@ -110,7 +110,7 @@ export const ClientMenu = styled.div`
     height: 5rem;
     align-self: flex-end;
     border-right: unset;
-    border-top: inset;
+    border-top: 1px solid #c5c5c5;
     justify-content: space-around;
     order: 1;
   }
