@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo, CheckBox, CheckBoxWrapper, CheckBoxLabel } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import { getInfo } from "../../../__redux/actions/userInfoActions";
@@ -83,16 +83,16 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
-              <MenuImage fColor={compFontColor} icon={faChartBar} />
-              <MenuDescription fColor={compFontColor}>Currency</MenuDescription>
+              <MenuImage fcolor={compFontColor} icon={faChartBar} />
+              <MenuDescription fcolor={compFontColor}>Currency</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickPieViewer}>
-              <MenuImage fColor={compFontColor} icon={faChartPie} />
-              <MenuDescription fColor={compFontColor}>Trends</MenuDescription>
+              <MenuImage fcolor={compFontColor} icon={faChartPie} />
+              <MenuDescription fcolor={compFontColor}>Trends</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickLineViewer}>
-              <MenuImage fColor={compFontColor} icon={faChartLine} />
-              <MenuDescription fColor={compFontColor}>Earnings</MenuDescription>
+              <MenuImage fcolor={compFontColor} icon={faChartLine} />
+              <MenuDescription fcolor={compFontColor}>Earnings</MenuDescription>
             </MenuGroupArea>
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
@@ -101,8 +101,8 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
               <Toggle ocl={darkModeBtn} id="checkbox" type="checkbox" />
             </MenuGroupArea>
             <MenuGroupArea onClick={logoutBtn}>
-              <MenuImage fColor={compFontColor} icon={faSignOutAlt} />
-              <MenuDescription fColor={compFontColor} >Logout</MenuDescription>
+              <MenuImage fcolor={compFontColor} icon={faSignOutAlt} />
+              <MenuDescription fcolor={compFontColor} >Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
           <GraphContainer compContColor={compContColor}>

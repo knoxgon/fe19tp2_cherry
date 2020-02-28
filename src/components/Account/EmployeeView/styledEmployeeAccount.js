@@ -27,7 +27,7 @@ export const MenuImage = styled(FontAwesomeIcon)`
   user-select: none;
   font-size: 3.25rem;
   transition: all 0.75s linear;
-  color: ${props => props.fColor};
+  color: ${props => props.fcolor};
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
     
@@ -85,7 +85,7 @@ export const MenuDescription = styled.span`
   user-select: none;
   font-size: 1.5rem;
   transition: all 0.75s linear;
-  color: ${props => props.fColor};
+  color: ${props => props.fcolor};
   font-weight: 400;
 
   @media screen and (max-width: ${Theme.screenSize.small}){
