@@ -43,7 +43,7 @@ const PieModal = ({ getPinfo, pieModalTogg, firePieModal, timePeers, comp, trend
             <CMSelect name="periods" onChange={onChangePeriod} options={timePeers}></CMSelect>
           </AreaWrap> : null}
           <ButtonAreaWrap>
-            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.navColor}  type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor}  type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>

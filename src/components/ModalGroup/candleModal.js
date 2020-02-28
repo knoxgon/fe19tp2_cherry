@@ -89,7 +89,7 @@ const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, get
               </AreaWrap>
             </React.Fragment>}
           <ButtonAreaWrap>
-            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.navColor} type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>

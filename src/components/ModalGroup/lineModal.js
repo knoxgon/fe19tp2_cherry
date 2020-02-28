@@ -34,7 +34,7 @@ const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
           </AreaWrap>
           <ButtonAreaWrap>
-            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.navColor} type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
