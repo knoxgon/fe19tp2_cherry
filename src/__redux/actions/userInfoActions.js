@@ -17,7 +17,8 @@ export const getInfo = () => {
       .doc(userid)
       .get()
       .then(res => {
-        const { logo, role, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor, firstname, lastname } = res.data();
+        console.log(res)
+        const { logo, role, companyLightSpecBg, companyLightSpecBord, companyDarkSpecBg, companyDarkSpecBord, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor, firstname, lastname } = res.data();
         firebase
           .storage()
           .ref(logo)
@@ -34,6 +35,10 @@ export const getInfo = () => {
                 companyDarkContainerColor,
                 companyDarkFontColor,
                 companyDarkNavbarColor,
+                companyLightSpecBg,
+                companyLightSpecBord,
+                companyDarkSpecBg,
+                companyDarkSpecBord,
                 fullName: firstname + " " + lastname
               }
             })
@@ -45,7 +50,11 @@ export const getInfo = () => {
                 companyLightNavbarColor,
                 companyDarkContainerColor,
                 companyDarkFontColor,
-                companyDarkNavbarColor
+                companyDarkNavbarColor,
+                companyLightSpecBg,
+                companyLightSpecBord,
+                companyDarkSpecBg,
+                companyDarkSpecBord
               }
             })
           })

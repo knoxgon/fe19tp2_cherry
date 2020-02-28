@@ -13,6 +13,10 @@ const initialState = {
     companyDarkContainerColor: null,
     companyDarkFontColor: null,
     companyDarkNavbarColor: null,
+    companyLightSpecBg: null,
+    companyLightSpecBord: null,
+    companyDarkSpecBg: null,
+    companyDarkSpecBord: null,
     fullName: null
   }
 };
@@ -30,6 +34,10 @@ export const userInfoReducer = (state = initialState, action) => {
           companyDarkContainerColor: action.payload.companyDarkContainerColor,
           companyDarkFontColor: action.payload.companyDarkFontColor,
           companyDarkNavbarColor: action.payload.companyDarkNavbarColor,
+          companyLightSpecBg: action.payload.companyLightSpecBg,
+          companyLightSpecBord: action.payload.companyLightSpecBord,
+          companyDarkSpecBg: action.payload.companyDarkSpecBg,
+          companyDarkSpecBord: action.payload.companyDarkSpecBord,
           fullName: action.payload.fullName
         }
       };

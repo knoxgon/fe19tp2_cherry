@@ -7,8 +7,8 @@ export const SwitchWrapper = styled.button`
   outline: none;
   width: 6rem;
   border-radius: 3rem;
-  background: ${props => props.dark ? 'linear-gradient(to bottom, #4d4d84 0%,#2185ca 100%)' : 'linear-gradient(to bottom, #427cff 0%, #70caff 100%)'};
-  border: 2px solid ${props => props.dark ? '#3f87a6' : '#a5b4ff'};
+  background: ${props => props.bgcol};
+  border: 2px solid ${props => props.brcol};
   overflow: hidden;
 
   img {

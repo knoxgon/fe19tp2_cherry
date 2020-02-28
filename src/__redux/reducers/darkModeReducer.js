@@ -20,11 +20,15 @@ export const darkModeReducer = (state = initialState, action) => {
 			const activeTheme = state.toggle ? {
 				contColor: action.payload.companyDarkContainerColor,
 				fontColor: action.payload.companyDarkFontColor,
-				navColor: action.payload.companyDarkNavbarColor
+				navColor: action.payload.companyDarkNavbarColor,
+				swbgColor: action.payload.companyDarkSpecBg,
+				swbrColor: action.payload.companyDarkSpecBord
 			} : {
 				contColor: action.payload.companyLightContainerColor,
 				fontColor: action.payload.companyLightFontColor,
-				navColor: action.payload.companyLightNavbarColor
+				navColor: action.payload.companyLightNavbarColor,
+				swbgColor: action.payload.companyLightSpecBg,
+				swbrColor: action.payload.companyLightSpecBord
 			};
 			return {
 				...state,
@@ -32,12 +36,16 @@ export const darkModeReducer = (state = initialState, action) => {
 				lightColors: { 
 					contColor: action.payload.companyLightContainerColor,
 					fontColor: action.payload.companyLightFontColor,
-					navColor: action.payload.companyLightNavbarColor
+					navColor: action.payload.companyLightNavbarColor,
+					swbgColor: action.payload.companyLightSpecBg,
+					swbrColor: action.payload.companyLightSpecBord
 				},
 				darkColors: {
 					contColor: action.payload.companyDarkContainerColor,
 					fontColor: action.payload.companyDarkFontColor,
-					navColor: action.payload.companyDarkNavbarColor
+					navColor: action.payload.companyDarkNavbarColor,
+					swbgColor: action.payload.companyDarkSpecBg,
+					swbrColor: action.payload.companyDarkSpecBord
 				}
 			}
 		default:
