@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import Theme from "../../../__config/theme";
 
-
-
-
-
 const FeatureArea = styled.div`
   // display: inline-flex;
   vertical-align: middle;
@@ -56,16 +52,8 @@ const FeatureArea = styled.div`
 `;
 
 const FeatureWrapper = styled.div`
-  // display: flex;
-  // flex-direction: column;
-  /* margin-top: 5rem; */
-  // border: 1px solid;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
-    // width: 10rem;
-    // flex-direction: row;
-    // justify-content: space-between;
-    display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr;
   }
