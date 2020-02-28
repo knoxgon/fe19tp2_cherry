@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, UserElement, TopMenu, MainArea, GraphContainer, TopMenuGroupArea, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
 import CandleModal from '../../ModalGroup/candleModal';
@@ -12,18 +12,7 @@ import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Toggle from '../../../__misc/js/ts/tcom';
 
-const EmployeeAccount = ({ theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
-  const [logo, setLogo] = useState("");
-  // const [fullName, setFullName] = useState("");
-
-
-  useEffect(() => {
-    setLogo(userInfo.logo);
-  }, [
-    userInfo.logo,
-    logo
-  ]);
-
+const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
   const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
@@ -45,11 +34,19 @@ const EmployeeAccount = ({ theme, userInfo, signout, fireCandleModal, fireLineMo
   return (
     <BodyWrapper>
       <Wrapper>
+        <TopMenu navColor={theme.navColor}>
+          <TopMenuGroupArea>
+            <StyledImgLogo comptype={comp} src={userInfo.logo} alt="website logo" />
+          </TopMenuGroupArea>
+          <TopMenuGroupArea>
+            <Toggle ocl={darkModeBtn} />
+          </TopMenuGroupArea>
+          <TopMenuGroupArea>
+            <UserElement fcolor={theme.fontColor}>{userInfo.fullName}</UserElement>
+          </TopMenuGroupArea>
+        </TopMenu>
         <MainArea>
           <ClientMenu navColor={theme.navColor}>
-            <MenuGroupArea>
-              <StyledImgLogo src={logo} alt="website logo" />
-            </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
               <MenuImage fcolor={theme.fontColor} icon={faChartBar} />
               <MenuDescription fcolor={theme.fontColor}>Currency</MenuDescription>
@@ -65,9 +62,6 @@ const EmployeeAccount = ({ theme, userInfo, signout, fireCandleModal, fireLineMo
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
             {pieTogg ? <PieModal></PieModal> : null}
-           <MenuGroupArea>
-              <Toggle ocl={darkModeBtn} id="checkbox" type="checkbox" />
-            </MenuGroupArea>
             <MenuGroupArea onClick={logoutBtn}>
               <MenuImage fcolor={theme.fontColor} icon={faSignOutAlt} />
               <MenuDescription fcolor={theme.fontColor} >Logout</MenuDescription>
@@ -89,6 +83,7 @@ const mapStateToProps = (state) => {
     candTogg: state.candleModalToggler.toggle,
     lineTogg: state.lineModalToggler.toggle,
     pieTogg: state.pieModalToggler.toggle,
+    comp: state.firebase.profile.company
   }
 }
 
