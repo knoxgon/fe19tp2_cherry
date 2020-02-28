@@ -2,7 +2,7 @@ import { SwitchWrapper } from './styled';
 import { connect } from 'react-redux';
 import React, { useEffect, useState } from 'react';
 
-const Toggle = ({dark, ocl}) => {
+const Toggle = ({dark, ocl, theme}) => {
   const [mode, setMode] = useState(JSON.parse(localStorage.getItem('DarkMode')));
   
   useEffect(() => {
@@ -15,7 +15,7 @@ const Toggle = ({dark, ocl}) => {
   }, [mode, setMode])
 
   return (
-    <SwitchWrapper dark={dark} onClick={ocl}>
+    <SwitchWrapper bgcol={theme.swbgColor} brcol={theme.swbrColor} dark={dark} onClick={ocl}>
       <img src={require('../../../assets/account/sun.svg')} alt="s"/>
       <img src={require('../../../assets/account/moon.svg')} alt="m"/>
     </SwitchWrapper>
@@ -25,7 +25,8 @@ const Toggle = ({dark, ocl}) => {
 const mapStateToProps = (state, props) => {
   return {
     dark: state.darkModeToggler.toggle,
-    ocl: props.ocl
+    ocl: props.ocl,
+    theme: state.darkModeToggler.activeTheme
   }
 }
 
