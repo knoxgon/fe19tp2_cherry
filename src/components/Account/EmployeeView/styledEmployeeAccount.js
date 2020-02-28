@@ -18,14 +18,16 @@ export const StyledImgLogo = styled.img`
 export const Wrapper = styled.div`
   display: flex;
   height: 100vh;
+  box-shadow: 1px 0px 0px 0px rgba(0,0,0,0.04);
   @media screen and (max-width: ${Theme.screenSize.small}) {
   }
 `;
 
 export const MenuImage = styled(FontAwesomeIcon)`
   user-select: none;
-  font-size: 1.5rem;
-  color: black;
+  font-size: 3.25rem;
+  transition: all 0.75s linear;
+  color: ${props => props.fcolor};
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
     
@@ -82,11 +84,12 @@ export const MenuGroupArea = styled.div`
 export const MenuDescription = styled.span`
   user-select: none;
   font-size: 1.5rem;
-  font-weight: bold;
-  color: black;
+  transition: all 0.75s linear;
+  color: ${props => props.fcolor};
+  font-weight: 500;
 
   @media screen and (max-width: ${Theme.screenSize.small}){
-    
+    display:none;
   }
 `;
 
@@ -96,8 +99,9 @@ export const ClientMenu = styled.div`
   justify-content: center;
   width: 10rem;
   height: 100vh;
-  border-right: inset;
-  background-color: ${props => props.navColor ? props.navColor : "#ffffff"};
+  box-shadow: 1px 0px 0px 0px rgba(0,0,0,0.04);
+  transition: all 0.75s linear;
+  background: ${props => props.navColor};
 
   @media screen and (max-width: ${Theme.screenSize.small}){
     flex-flow: wrap;
@@ -122,14 +126,13 @@ export const MainArea = styled.div`
 `;
 
 export const GraphContainer = styled.div`
-  background-color:#f9f9f9;
   display: flex;
   flex-direction: initial;
   flex-grow: 1;
-  background-color: #e5f1e5;
-  margin-left: 1rem;
-  width: calc(100vw - 11.3rem);
   overflow: scroll;
+  background-color: ${props => props.compContColor};
+  transition: all 0.75s linear;
+  width: calc(100vw - 10rem);
   
   &::-webkit-scrollbar{
     width: 0;

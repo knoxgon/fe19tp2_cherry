@@ -19,6 +19,7 @@
     "react-apexcharts": "^1.3.6",
     "react-datetime-picker": "^2.9.0",
     "react-dom": "^16.12.0",
+    "react-loader": "^2.4.7",
     "react-modal": "^3.11.1",
     "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.2.4",

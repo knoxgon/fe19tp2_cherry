@@ -17,7 +17,7 @@ const AddEmployee = (props) => {
   }
 
   return (
-      <EmployeeForm onSubmit = { onEmployeeRegistration }>
+      <EmployeeForm themeColor={props.bgColor} onSubmit = { onEmployeeRegistration }>
         <input placeholder="Email" type="email" name="email" onChange={onInputChangeHandler} autoComplete="new-password"></input>
         <br/>
         <input placeholder="Password" type="password" name="password" onChange={onInputChangeHandler}></input>
@@ -35,7 +35,8 @@ const AddEmployee = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    feedback: state.employee.feedback
+    feedback: state.employee.feedback,
+    bgColor: state.darkModeToggler.color.colors.background
   }
 }
 

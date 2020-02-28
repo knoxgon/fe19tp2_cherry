@@ -4,7 +4,10 @@ import IconListUsers from "../../../assets/account/listusers.svg";
 import IconLogout from '../../../assets/account/logout.svg';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
-import { Wrapper, FeatureWrapper, MainArea, FeatureContainer, FeatureImage, FeatureArea, FeatureDescription, BorderUnderline } from './styledAdminAccount';
+import { FeatureContainer,FeatureArea,FeatureWrapper } from './styledAdminAccount';
+
+import {
+  MainArea,BorderUnderline,Wrapper,FeatureDescription,FeatureImage} from '../styledAccount'
 import AddEmployee from '../../AddEmployee/addEmployee';
 
 

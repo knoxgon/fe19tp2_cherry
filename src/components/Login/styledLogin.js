@@ -16,7 +16,7 @@ const LoginArea = styled.form`
   width: 45rem;
   height: 53rem;
   margin-top: 5rem;
-  background-color: ${Theme.colors.beige};
+  background-color: beige;
   
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     width: 28rem;

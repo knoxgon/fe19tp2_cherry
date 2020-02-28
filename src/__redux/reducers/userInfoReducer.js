@@ -7,7 +7,12 @@ const initialState = {
   info: {
     logo: null,
     role: null,
-    companyColor: null,
+    companyLightContainerColor: null,
+    companyLightFontColor: null,
+    companyLightNavbarColor: null,
+    companyDarkContainerColor: null,
+    companyDarkFontColor: null,
+    companyDarkNavbarColor: null,
     fullName: null
   }
 };
@@ -19,7 +24,12 @@ export const userInfoReducer = (state = initialState, action) => {
         info: {
           logo: action.payload.imgurl,
           role: action.payload.role,
-          companyColor: action.payload.companyColor,
+          companyLightContainerColor: action.payload.companyLightContainerColor,
+          companyLightFontColor: action.payload.companyLightFontColor,
+          companyLightNavbarColor: action.payload.companyLightNavbarColor,
+          companyDarkContainerColor: action.payload.companyDarkContainerColor,
+          companyDarkFontColor: action.payload.companyDarkFontColor,
+          companyDarkNavbarColor: action.payload.companyDarkNavbarColor,
           fullName: action.payload.fullName
         }
       };

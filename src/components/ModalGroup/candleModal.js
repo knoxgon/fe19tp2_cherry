@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } from '../../__redux/actions/exchangeActions';
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
-import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
+import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledModal'
 import { fireCandleModal } from '../../__redux/actions/modalActions';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
-const CandleModal = ({getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal}) => {
+const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, theme }) => {
   const [inputs, setInputs] = useState({selectedPlatform: '', selectedSymbolGroup: '',  selectedSymbol: {label: '', value: ''}, selectedResolution: '', intervalFrom: parseDatePrev(new Date()), intervalTo: parseDate(new Date())})
   const [dtpFrom, setDtpFrom] = useState(normDatePrev(new Date()))
   const [dtpTo, setDtpTo] = useState(new Date())
@@ -53,42 +54,42 @@ const CandleModal = ({getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getS
 
   return (
     <ModalContainer>
-      <CRModal shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
+      <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle>Open-High-Low-Close</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/bin.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalTitle fcolor={theme.fontColor}>Open-High-Low-Close</ModalTitle>
+          <ModalCloser icon={faTimes} xcolor={theme.fontColor} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
-            <CandleLabel htmlFor="datefrom">Starting date</CandleLabel>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="datefrom">Starting date</CandleLabel>
             <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="dateto">End date</CandleLabel>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="dateto">End date</CandleLabel>
             <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="platform">Platform</CandleLabel>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="platform">Platform</CandleLabel>
             <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel htmlFor="resolution">Resolution</CandleLabel>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="resolution">Resolution</CandleLabel>
             <CMSelect name="resolution" onChange={onChangeResolution} options={resolutions}></CMSelect>
           </AreaWrap>
           {exchangeSymbolGroup.length &&
             <React.Fragment>
               <AreaWrap>
-                <CandleLabel htmlFor="symbolgroup">Market</CandleLabel>
+                <CandleLabel fcolor={theme.fontColor} htmlFor="symbolgroup">Market</CandleLabel>
                 <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
               </AreaWrap>
             </React.Fragment>}
           {exchangeSymbol &&
             <React.Fragment>
               <AreaWrap>
-                <CandleLabel htmlFor="currencies">Currency</CandleLabel>
+                <CandleLabel fcolor={theme.fontColor} htmlFor="currencies">Currency</CandleLabel>
                 <CMSelect name="currencies" onChange={onChangeSymbol} options={exchangeSymbol} value={{label: inputs.selectedSymbol.label}}></CMSelect>
               </AreaWrap>
             </React.Fragment>}
           <ButtonAreaWrap>
-            <ModalSubmitButton type="submit">Graph</ModalSubmitButton>
+            <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor} type="submit">Graph</ModalSubmitButton>
           </ButtonAreaWrap>
         </FormModal>
       </CRModal>
@@ -100,7 +101,8 @@ const mapStateToProps = (state) => {
   return {
     candleModalTogg: state.candleModalToggler.toggle,
     exchangeSymbolGroup: state.exchangeSymbolGroup.selectedExSymGroup,
-    exchangeSymbol:    state.exchangeSymbol.selectedExSymMul
+    exchangeSymbol:    state.exchangeSymbol.selectedExSymMul,
+    theme: state.darkModeToggler.activeTheme
   }
 }
 

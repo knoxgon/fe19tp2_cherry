@@ -1,4 +1,4 @@
-import { USER_INFO_FETCH_SUCCESS, USER_INFO_FETCH_FAILURE } from "./types";
+import { USER_INFO_FETCH_SUCCESS, USER_COLOR_PREP, USER_INFO_FETCH_FAILURE } from "./types";
 
 export const getInfo = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -11,13 +11,13 @@ export const getInfo = () => {
         payload: null
       });
     } else {
-      const userid = firebase.auth().currentUser.uid;;
-    firestore
+      const userid = firebase.auth().currentUser.uid;
+      firestore
       .collection("clients")
       .doc(userid)
       .get()
       .then(res => {
-        const { logo, role, companyColor, firstname, lastname } = res.data();
+        const { logo, role, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor, firstname, lastname } = res.data();
         firebase
           .storage()
           .ref(logo)
@@ -28,11 +28,27 @@ export const getInfo = () => {
               payload: {
                 imgurl: imgurl,
                 role: role,
-                companyColor: companyColor,
+                companyLightContainerColor,
+                companyLightFontColor,
+                companyLightNavbarColor,
+                companyDarkContainerColor,
+                companyDarkFontColor,
+                companyDarkNavbarColor,
                 fullName: firstname + " " + lastname
               }
-            });
-          });
+            })
+            dispatch({
+              type: USER_COLOR_PREP,
+              payload: {
+                companyLightContainerColor,
+                companyLightFontColor,
+                companyLightNavbarColor,
+                companyDarkContainerColor,
+                companyDarkFontColor,
+                companyDarkNavbarColor
+              }
+            })
+          })
       })
       .catch(err => {
         dispatch({

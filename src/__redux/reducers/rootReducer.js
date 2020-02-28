@@ -13,6 +13,7 @@ import { candleModalReducer } from './candleModalReducer';
 import { lineModalReducer } from './lineModalReducer';
 import { pieModalReducer } from './pieModalReducer';
 import { prefetchReducer } from './prefetchReducer';
+import { darkModeReducer } from './darkModeReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -28,5 +29,6 @@ export const rootReducer = combineReducers({
   containers: containerReducer,
   candleModalToggler: candleModalReducer,
   lineModalToggler: lineModalReducer,
-  pieModalToggler: pieModalReducer
+  pieModalToggler: pieModalReducer,
+  darkModeToggler: darkModeReducer
 });

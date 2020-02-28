@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Theme from '../../__config/theme';
 import Select from 'react-select';
 import DateTimePicker from 'react-datetime-picker';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
 const RMConnector = ({ className, modalPointer, ...props }) => <ReactModal className={modalPointer} portalClassName={className} {...props}/>
@@ -22,7 +23,7 @@ export const CRModal = styled(RMConnector).attrs({
     right: auto;
     bottom: auto;
     border: 1px solid rgb(204, 204, 204);
-    background: white;
+    background-color: ${props => props.themeColor};
     border-radius: 0.4rem;
     outline: none;
     padding: 2rem;
@@ -69,18 +70,21 @@ const FormModal = styled.form`
   flex-direction: column;
   text-align: center;
   margin: 0 auto;
+  
 `;
 
 export const CandleLabel = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #08a7ad;
+  color: ${props => props.fcolor};
 `;
 
 export const CMDateTimePicker = styled(DateTimePicker)`
   font-size: 1.6rem;
   height: 4rem;
   width: 25rem;
+  color: black;
+  background-color: white;
 `;
 
 export const ButtonAreaWrap = styled(AreaWrap)`
@@ -93,39 +97,23 @@ export const ButtonAreaWrap = styled(AreaWrap)`
   }
 `;
 
-const modalStyle = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'white',
-    height: 'calc(100% - 40rem)',
-    maxWidth: '50rem',
-    width: 'calc(100% - 10rem)',
-    minWidth: '25rem'
-  },
-  overlay: {
-    background: "rgba(0, 0, 0, 0.75)"
-  }
-};
-
 export const ModalTitle = styled.div`
   font-size: 2rem;
-  color: gray;
+  color: grey;
   margin-bottom: 5rem;
   font-weight: 500;
+  color: ${props => props.fcolor};
 `;
 
 export const ModalSubmitButton = styled.button`
   bottom:0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: black;
-  background-color: #0ef994;
+  color: ${props => props.fcolor};
+  background-color: ${props => props.bgcolor};
+  border-radius: 30px;
   height: 4rem;
+  border: none;
 `;
 
 const ModalContainer = styled.div`
@@ -140,7 +128,7 @@ const ModalContainer = styled.div`
   margin-bottom: 1rem;
 `;
 
-export const ModalCloser = styled.img`
+export const ModalCloser = styled(FontAwesomeIcon)`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -149,6 +137,8 @@ export const ModalCloser = styled.img`
   margin-top: 1.5rem;
   width: 3rem;
   height: 3rem;
+  font-size: 5rem;
+  color: ${props => props.xcolor};
 
   &:hover {
     transform: scale(1.1);
@@ -161,6 +151,5 @@ export const ModalCloser = styled.img`
 
 export {
   ModalContainer,
-  modalStyle,
   FormModal
 }
