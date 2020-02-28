@@ -14,7 +14,7 @@ import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import { CheckDarkMode } from "../../../__config/theme";
 import Toggle from '../../../__misc/js/ts/tcom';
 
-const EmployeeAccount = ({ fontColor, backgroundColor, getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler, navbarIconColor, ...props }) => {
+const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
   const [logo, setLogo] = useState("");
   const [compContColor, setCompContColor] = useState("");
   const [compFontColor, setCompFontColor] = useState("");
@@ -120,10 +120,6 @@ const mapStateToProps = (state) => {
     candTogg: state.candleModalToggler.toggle,
     lineTogg: state.lineModalToggler.toggle,
     pieTogg: state.pieModalToggler.toggle,
-    fontColor: state.darkModeToggler.color.colors.fontColor,
-    navbarIconColor: state.darkModeToggler.color.colors.navbarIconColor,
-    backgroundColor: state.darkModeToggler.color.colors.backgroundColor,
-    isDmToggler: state.darkModeToggler.toggle
   }
 }
 
