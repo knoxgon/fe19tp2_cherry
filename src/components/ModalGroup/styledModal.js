@@ -111,8 +111,9 @@ export const ModalSubmitButton = styled.button`
   font-weight: 600;
   color: ${props => props.fcolor};
   background-color: ${props => props.bgcolor};
-  border-radius:0.4rem;
+  border-radius: 30px;
   height: 4rem;
+  border: none;
 `;
 
 const ModalContainer = styled.div`
