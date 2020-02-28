@@ -23,7 +23,6 @@ const Toggle = ({dark, ocl}) => {
 }
 
 const mapStateToProps = (state, props) => {
-  console.log(state)
   return {
     dark: state.darkModeToggler.toggle,
     ocl: props.ocl

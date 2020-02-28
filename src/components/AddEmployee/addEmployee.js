@@ -34,8 +34,6 @@ const AddEmployee = (props) => {
 }
 
 const mapStateToProps = (state) => {
-  if(state.darkModeToggler.color.colors.background)
-    console.log(state.darkModeToggler.color.colors.background)
   return {
     feedback: state.employee.feedback,
     bgColor: state.darkModeToggler.color.colors.background
