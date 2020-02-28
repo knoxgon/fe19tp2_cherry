@@ -102,14 +102,15 @@ export const ModalTitle = styled.div`
   color: grey;
   margin-bottom: 5rem;
   font-weight: 500;
+  color: ${props => props.fcolor};
 `;
 
 export const ModalSubmitButton = styled.button`
   bottom:0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: black;
-  background-color: #50c95c;
+  color: ${props => props.fcolor};
+  background-color: ${props => props.bgcolor};
   border-radius:0.4rem;
   height: 4rem;
 `;
