@@ -12,17 +12,22 @@ export const addEmployee = (info) => {
     .then((res) => {
       firestore.collection('clients').doc(admin_user_uid).get()
       .then((admresult) => {
-        const { company, logo, subscription, companyColor } = admresult.data();
-        return { company, logo, subscription, companyColor }
+        const { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor } = admresult.data();
+        return { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor }
       })
       .then((compInfo) => {
         firestore.collection('clients').doc(res.user.uid).set({
           adminId: admin_user_uid,
           firstname: info.firstname,
           lastname: info.lastname,
+          companyLightContainerColor: compInfo.companyLightContainerColor,
+          companyLightFontColor: compInfo.companyLightFontColor,
+          companyLightNavbarColor: compInfo.companyLightNavbarColor,
+          companyDarkContainerColor: compInfo.companyDarkContainerColor,
+          companyDarkFontColor: compInfo.companyDarkFontColor,
+          companyDarkNavbarColor: compInfo.companyDarkNavbarColor,
           role: 'Employee',
           company: compInfo.company,
-          companyColor: compInfo.companyColor,
           logo: compInfo.logo,
           subscription: {
             period: compInfo.subscription.period,
