@@ -1,4 +1,4 @@
-import { USER_INFO_FETCH_SUCCESS, USER_INFO_FETCH_FAILURE } from "./types";
+import { USER_INFO_FETCH_SUCCESS, USER_COLOR_PREP, USER_INFO_FETCH_FAILURE } from "./types";
 
 export const getInfo = () => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -11,8 +11,8 @@ export const getInfo = () => {
         payload: null
       });
     } else {
-      const userid = firebase.auth().currentUser.uid;;
-    firestore
+      const userid = firebase.auth().currentUser.uid;
+      firestore
       .collection("clients")
       .doc(userid)
       .get()
@@ -36,8 +36,19 @@ export const getInfo = () => {
                 companyDarkNavbarColor,
                 fullName: firstname + " " + lastname
               }
-            });
-          });
+            })
+            dispatch({
+              type: USER_COLOR_PREP,
+              payload: {
+                companyLightContainerColor,
+                companyLightFontColor,
+                companyLightNavbarColor,
+                companyDarkContainerColor,
+                companyDarkFontColor,
+                companyDarkNavbarColor
+              }
+            })
+          })
       })
       .catch(err => {
         dispatch({
