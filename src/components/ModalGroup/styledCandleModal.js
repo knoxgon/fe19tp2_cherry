@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import styled from 'styled-components';
-import Theme, { ThemeColorsLight } from '../../__config/theme';
+import Theme from '../../__config/theme';
 import Select from 'react-select';
 import DateTimePicker from 'react-datetime-picker';
 
@@ -97,25 +97,6 @@ export const ButtonAreaWrap = styled(AreaWrap)`
   }
 `;
 
-const modalStyle = {
-  content : {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    backgroundColor: 'white',
-    height: 'calc(100% - 40rem)',
-    maxWidth: '50rem',
-    width: 'calc(100% - 10rem)',
-    minWidth: '25rem'
-  },
-  overlay: {
-    background: "rgba(0, 0, 0, 0.75)"
-  }
-};
-
 export const ModalTitle = styled.div`
   font-size: 2rem;
   color: grey;
@@ -166,6 +147,5 @@ export const ModalCloser = styled.img`
 
 export {
   ModalContainer,
-  modalStyle,
   FormModal
 }

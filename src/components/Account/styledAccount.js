@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 import Theme from "../../__config/theme";
-import { ThemeColorsLight } from '../../__config/theme';
 
 const Wrapper = styled.div`
+  margin-top: 4rem;
+  margin-left: 4rem;
+  margin-right: 4rem;
+  margin-bottom: 14rem;
+  display: flex;
+  flex-direction: column;
 
-margin-top: 4rem;
-margin-left: 4rem;
-margin-right: 4rem;
-margin-bottom: 14rem;
-display: flex;
-flex-direction: column;
-
-@media screen and (max-width: ${Theme.screenSize.xsmall}) {
-  margin-top: 2rem;
-  margin-left: 0rem;
-  margin-right: 0rem;
-  
-}
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    margin-top: 2rem;
+    margin-left: 0rem;
+    margin-right: 0rem;
+  }
 `;
 
 const FeatureImage = styled.img`
@@ -62,14 +59,13 @@ const MainArea = styled.div`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     flex-direction: column;
-
   }
 `;
 
 export {
-    MainArea,
-    BorderUnderline,
-    Wrapper,
-    FeatureDescription,
-    FeatureImage,
+  MainArea,
+  BorderUnderline,
+  Wrapper,
+  FeatureDescription,
+  FeatureImage,
 }

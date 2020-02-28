@@ -4,9 +4,7 @@ import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } fro
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledCandleModal'
 import { fireCandleModal } from '../../__redux/actions/modalActions';
-import { ToggleDarkMode } from '../../__config/theme';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
-
 
 
 const CandleModal = ({ fontColor, backgroundColorModal, getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, dmToggler, ...props }) => {

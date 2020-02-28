@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import Routes from './__route/routes';
-import backgroundColor from './__config/theme';
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
