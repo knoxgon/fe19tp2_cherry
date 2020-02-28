@@ -5,60 +5,28 @@ import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/a
 import { Wrapper, ClientMenu, MainArea, GraphContainer, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
 import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
-import { getInfo } from "../../../__redux/actions/userInfoActions";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
 import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
-import { CheckDarkMode } from "../../../__config/theme";
 import Toggle from '../../../__misc/js/ts/tcom';
 
-const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
+const EmployeeAccount = ({ theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
   const [logo, setLogo] = useState("");
-  const [compContColor, setCompContColor] = useState("");
-  const [compFontColor, setCompFontColor] = useState("");
-  const [compNavColor,  setCompNavColor] = useState("");
   // const [fullName, setFullName] = useState("");
 
 
   useEffect(() => {
-    getinfo()
     setLogo(userInfo.logo);
-    if (CheckDarkMode()) {
-      setCompContColor(userInfo.companyDarkContainerColor)
-      setCompFontColor(userInfo.companyDarkFontColor)
-      setCompNavColor(userInfo.companyDarkNavbarColor)
-    } else {
-      setCompContColor(userInfo.companyLightContainerColor)
-      setCompFontColor(userInfo.companyLightFontColor)
-      setCompNavColor(userInfo.companyLightNavbarColor)
-    }
   }, [
     userInfo.logo,
-    userInfo.companyLightContainerColor,
-    userInfo.companyLightFontColor,
-    userInfo.companyLightNavbarColor,
-    userInfo.companyDarkContainerColor,
-    userInfo.companyDarkFontColor,
-    userInfo.companyDarkNavbarColor,
-    // userInfo.fullName,
-    getinfo
+    logo
   ]);
 
   const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
-    
-    if (CheckDarkMode()) {
-      setCompContColor(userInfo.companyDarkContainerColor)
-      setCompFontColor(userInfo.companyDarkFontColor)
-      setCompNavColor(userInfo.companyDarkNavbarColor)
-    } else {
-      setCompContColor(userInfo.companyLightContainerColor)
-      setCompFontColor(userInfo.companyLightFontColor)
-      setCompNavColor(userInfo.companyLightNavbarColor)
-    }
   };
 
   const logoutBtn = () => {
@@ -78,21 +46,21 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
     <BodyWrapper>
       <Wrapper>
         <MainArea>
-          <ClientMenu navColor={compNavColor}>
+          <ClientMenu navColor={theme.navColor}>
             <MenuGroupArea>
               <StyledImgLogo src={logo} alt="website logo" />
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickCandleViewer}>
-              <MenuImage fcolor={compFontColor} icon={faChartBar} />
-              <MenuDescription fcolor={compFontColor}>Currency</MenuDescription>
+              <MenuImage fcolor={theme.fontColor} icon={faChartBar} />
+              <MenuDescription fcolor={theme.fontColor}>Currency</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickPieViewer}>
-              <MenuImage fcolor={compFontColor} icon={faChartPie} />
-              <MenuDescription fcolor={compFontColor}>Trends</MenuDescription>
+              <MenuImage fcolor={theme.fontColor} icon={faChartPie} />
+              <MenuDescription fcolor={theme.fontColor}>Trends</MenuDescription>
             </MenuGroupArea>
             <MenuGroupArea onClick={onClickLineViewer}>
-              <MenuImage fcolor={compFontColor} icon={faChartLine} />
-              <MenuDescription fcolor={compFontColor}>Earnings</MenuDescription>
+              <MenuImage fcolor={theme.fontColor} icon={faChartLine} />
+              <MenuDescription fcolor={theme.fontColor}>Earnings</MenuDescription>
             </MenuGroupArea>
             {candTogg ? <CandleModal></CandleModal> : null}
             {lineTogg ? <LineModal></LineModal> : null}
@@ -101,11 +69,11 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
               <Toggle ocl={darkModeBtn} id="checkbox" type="checkbox" />
             </MenuGroupArea>
             <MenuGroupArea onClick={logoutBtn}>
-              <MenuImage fcolor={compFontColor} icon={faSignOutAlt} />
-              <MenuDescription fcolor={compFontColor} >Logout</MenuDescription>
+              <MenuImage fcolor={theme.fontColor} icon={faSignOutAlt} />
+              <MenuDescription fcolor={theme.fontColor} >Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
-          <GraphContainer compContColor={compContColor}>
+          <GraphContainer compContColor={theme.contColor}>
             <ContainerGraphView></ContainerGraphView>
           </GraphContainer>
         </MainArea>
@@ -117,6 +85,7 @@ const EmployeeAccount = ({ getinfo, userInfo, signout, fireCandleModal, fireLine
 const mapStateToProps = (state) => {
   return {
     userInfo: state.userinfo.info,
+    theme: state.darkModeToggler.activeTheme,
     candTogg: state.candleModalToggler.toggle,
     lineTogg: state.lineModalToggler.toggle,
     pieTogg: state.pieModalToggler.toggle,
@@ -129,7 +98,6 @@ const mapDispatchToProps = (dispatch) => {
     fireCandleModal: () => dispatch(fireCandleModal()),
     fireLineModal: () => dispatch(fireLineModal()),
     firePieModal: () => dispatch(firePieModal()),
-    getinfo: () => dispatch(getInfo()),
     dmToggler: () => dispatch(darkModeToggler())
   };
 };
