@@ -4,6 +4,7 @@ import { exchangeCandleAction, exchangeTypeSymGrpAction, exchangeSymAction } fro
 import { parseDate, parseDatePrev, normDatePrev } from './misc';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, CMDateTimePicker, ButtonAreaWrap } from './styledModal'
 import { fireCandleModal } from '../../__redux/actions/modalActions';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
 const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, getSym, candleModalTogg, fireCandleModal, theme }) => {
@@ -56,7 +57,7 @@ const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, get
       <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={candleModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle fcolor={theme.fontColor}>Open-High-Low-Close</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalCloser icon={faTimes} xcolor={theme.fontColor} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel fcolor={theme.fontColor} htmlFor="datefrom">Starting date</CandleLabel>
             <CMDateTimePicker name="datefrom" onChange={onChangeDateFromInput} maxDate={new Date()} value={dtpFrom} />

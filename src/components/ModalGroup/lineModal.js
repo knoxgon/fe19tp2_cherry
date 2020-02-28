@@ -4,6 +4,7 @@ import { surpriseEarnings } from '../../__redux/actions/earningActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledModal'
 import { fireLineModal } from '../../__redux/actions/modalActions';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
   const [sym, setSym] = useState({label: '', value: ''})
@@ -27,7 +28,7 @@ const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
       <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
           <ModalTitle fcolor={theme.fontColor}>Earnings Surprises</ModalTitle>
-          <ModalCloser src={require('../../assets/employee/clear-24px.svg')} onClick={onClickModalCloser}></ModalCloser>
+          <ModalCloser icon={faTimes} xcolor={theme.fontColor} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel fcolor={theme.fontColor} htmlFor="secsym">Company</CandleLabel>
             <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
