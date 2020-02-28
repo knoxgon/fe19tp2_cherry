@@ -12,7 +12,7 @@ export const StyledImgLogo = styled.img`
   padding-left: 1.25rem;
   
   @media screen and (max-width: ${Theme.screenSize.small}) {
-    height: ${props => props.comptype === 'Wasa Kredit' ? "6rem" : props.comptype === 'Swedbank' ? "5rem" : "4.5rem"};
+    height: ${props => props.comptype === 'Wasa Kredit' ? "6rem" : props.comptype === 'Swedbank' ? "4.5rem" : "4.5rem"};
     padding-left: 0.75rem;
   }
 `;
