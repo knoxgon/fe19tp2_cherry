@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Theme from '../../../__config/theme';
 
 export const SwitchWrapper = styled.button`
   display: flex;
@@ -11,10 +12,23 @@ export const SwitchWrapper = styled.button`
   border: 2px solid ${props => props.brcol};
   overflow: hidden;
 
+  @media screen and (max-width: ${Theme.screenSize.small}) {
+    height: 2rem;
+    width: 4rem;
+  }
+
   img {
+    min-width: 1.5rem;
     max-width: 2rem;
+    width: 2rem;
     height: auto;
     transition: all 0.5s linear;
+
+    @media screen and (max-width: ${Theme.screenSize.small}) {
+      img {
+        max-width: 1.5rem;
+      }
+    }
 
     &:first-child {
       transform: ${props => props.dark ? 'translateX(-200%)' : 'translateX(0)'};
