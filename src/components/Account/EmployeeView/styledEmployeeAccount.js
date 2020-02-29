@@ -190,7 +190,7 @@ export const GraphContainer = styled.div`
     margin: 0;
     padding: 0;
     width: 100vw;
-    flex-direction: column;
+    flex-flow: row wrap;
     height: calc(100vh - 10.1rem);
   }
 `;
