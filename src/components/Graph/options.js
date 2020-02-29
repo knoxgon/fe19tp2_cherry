@@ -33,7 +33,7 @@ export const options = (id, mkt, crc) => {
     },
     responsive: [
       {
-        breakpoint: 400,
+        breakpoint: 768,
         options: {
           plotOptions: {
             bar: {
@@ -79,7 +79,7 @@ export const optionsBar = (trgId, id) => {
     },
     responsive: [
       {
-        breakpoint: 400,
+        breakpoint: 768,
         options: {
           plotOptions: {
             bar: {
@@ -100,14 +100,6 @@ export const optionsLine = (dsid, catry, comp) => {
     chart: {
       id: dsid,
       type: 'line',
-      dropShadow: {
-        enabled: true,
-        color: '#000',
-        top: 18,
-        left: 7,
-        blur: 10,
-        opacity: 0.2
-      },
       toolbar: {
         show: true,
         tools: {
@@ -117,25 +109,16 @@ export const optionsLine = (dsid, catry, comp) => {
           zoomin: true,
           zoomout: true,
           pan: true,
-          reset: true,
-          customIcons: []
+          reset: true
         },
       }
     },
-    colors: ['#77B6EA', '#545454'],
     stroke: {
       curve: 'smooth'
     },
     title: {
       text: comp,
       align: 'left'
-    },
-    grid: {
-      borderColor: '#e7e7e7',
-      row: {
-        colors: ['#f3f3f3', 'transparent'],
-        opacity: 0.5
-      },
     },
     xaxis: {
       categories: catry,
@@ -149,7 +132,7 @@ export const optionsLine = (dsid, catry, comp) => {
       }
     },
     legend: {
-      position: 'bottom',
+      position: 'top',
       horizontalAlign: 'center',
       floating: true,
       offsetY: -25,
@@ -157,7 +140,7 @@ export const optionsLine = (dsid, catry, comp) => {
     },
     responsive: [
       {
-        breakpoint: 400,
+        breakpoint: 768,
         options: {
           legend: {
             position: "bottom"
@@ -168,19 +151,15 @@ export const optionsLine = (dsid, catry, comp) => {
   }
 }
 
-export const optionsPie = (dsid, period, comp) => {
+export const optionsPie = (dsid) => {
   return {
     chart: {
       type: 'pie',
       id: dsid
     },
     labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
-    title: {
-      text: period + ' - ' + comp,
-      align: 'left'
-    },
     responsive: [{
-      breakpoint: 400,
+      breakpoint: 768,
       options: {
         legend: {
           position: 'bottom'
