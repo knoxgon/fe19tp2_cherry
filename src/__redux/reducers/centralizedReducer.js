@@ -69,7 +69,6 @@ export const centralReducer = (state = initState, action) => {
       }
     case FETCH_CANDLE_EXCHANGE_FAILURE:
       return state;
-    
     case CONTAINER_REMOVE:
       if(action.payload.dsid == null)
         return state;
