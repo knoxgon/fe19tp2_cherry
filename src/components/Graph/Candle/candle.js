@@ -9,7 +9,7 @@ const CandleGraph = ({containerId, barid, primary, alternate, market, currency})
     <React.Fragment>
       {alternate[0].data.length > 0 ?
         <React.Fragment>
-          <GraphWrapper options={options(containerId, market, currency)} series={primary} type="candlestick" />
+          <GraphWrapper height={300} options={options(containerId, market, currency)} series={primary} type="candlestick" />
           <GraphWrapperBar options={optionsBar(containerId, barid)} series={alternate} type="bar" height="150px" />
         </React.Fragment>
        : <GraphWrapper options={options(containerId, market, currency)} series={primary} type="candlestick" />

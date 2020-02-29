@@ -59,9 +59,6 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
               <MenuImage fcolor={theme.fontColor} icon={faChartLine} />
               <MenuDescription fcolor={theme.fontColor}>Earnings</MenuDescription>
             </MenuGroupArea>
-            {candTogg ? <CandleModal></CandleModal> : null}
-            {lineTogg ? <LineModal></LineModal> : null}
-            {pieTogg ? <PieModal></PieModal> : null}
             <MenuGroupArea onClick={logoutBtn}>
               <MenuImage fcolor={theme.fontColor} icon={faSignOutAlt} />
               <MenuDescription fcolor={theme.fontColor} >Logout</MenuDescription>
@@ -72,6 +69,9 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
           </GraphContainer>
         </MainArea>
       </Wrapper>
+      {candTogg ? <CandleModal></CandleModal> : null}
+      {lineTogg ? <LineModal></LineModal> : null}
+      {pieTogg ? <PieModal></PieModal> : null}
     </BodyWrapper>
   );
 };

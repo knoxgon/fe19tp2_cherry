@@ -50,7 +50,7 @@ export const exchangeCandleAction = (input) => {
             alternateBatch.push(mappedData.v_v[i])
           }
         });
-        dispatch(containerCreate())
+        dispatch(containerCreate('c', 400, 500, 1000, 750, 400, 500))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(fireCandleModal())
 

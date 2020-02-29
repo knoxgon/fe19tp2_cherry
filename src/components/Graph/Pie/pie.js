@@ -3,19 +3,16 @@ import { connect } from 'react-redux'
 import { optionsPie } from '../options';
 import { GraphWrapper } from '../styledGraph'
 
-
-const PieGraph = ({containerId, period, symcomp, series}) => {
+const PieGraph = ({containerId, series}) => {
   return (
-    <GraphWrapper options={optionsPie(containerId, period, symcomp)} series={series} type="pie" />
+    <GraphWrapper options={optionsPie(containerId)} series={series} type="pie" />
   )
 }
 
 const mapStateToProps = (state, props) => {
   return {
     containerId: props.containerId,
-    series: props.series,
-    symcomp: props.compname,
-    period: props.period
+    series: props.series
   }
 }
 

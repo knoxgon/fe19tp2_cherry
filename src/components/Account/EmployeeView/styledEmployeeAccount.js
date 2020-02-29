@@ -84,6 +84,7 @@ export const MenuGroupArea = styled.div`
   cursor: pointer;
 
   &:first-child {
+    margin-top: 15rem;
     @media screen and (max-width: ${Theme.screenSize.small}) {
       margin-top: initial;
     }
@@ -189,7 +190,7 @@ export const GraphContainer = styled.div`
     margin: 0;
     padding: 0;
     width: 100vw;
-    flex-direction: column;
+    flex-flow: row wrap;
     height: calc(100vh - 10.1rem);
   }
 `;
