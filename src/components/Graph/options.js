@@ -166,6 +166,11 @@ export const optionsPie = (dsid) => {
         }
       }
     }],
+    dataLabels: {
+      formatter: function (val, opts) {
+          return opts.w.config.series[opts.seriesIndex]
+      },
+    },
     legend: {
       position: 'bottom',
       horizontalAlign: 'center'
