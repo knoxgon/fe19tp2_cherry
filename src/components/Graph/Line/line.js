@@ -5,7 +5,7 @@ import { GraphWrapper } from '../styledGraph'
 
 const LineGraph = ({containerId, period, symcomp, series}) => {
   return (
-    <GraphWrapper options={optionsLine(containerId, period, symcomp)} series={series} type="line" />
+    <GraphWrapper height={250} options={optionsLine(containerId, period, symcomp)} series={series} type="line" />
   )
 }
 
