@@ -4,6 +4,8 @@ import { Resizable } from 're-resizable';
 
 export const MCCloser = styled.img`
   cursor: pointer;
+  width: 3.5rem;
+  height: 3.5rem;
   &:hover {
     transform: scale(1.3);
   }
@@ -26,6 +28,7 @@ export const GMArea = styled(Resizable)`
 
 export const GMTitle = styled.div`
   font-weight: 700;
+  font-size: 2rem;
   text-align: center;
   padding-bottom: 0.75rem;
   color: ${props => props.color};
