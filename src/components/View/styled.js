@@ -36,3 +36,13 @@ export const GMTop = styled.div`
   font-weight: 900;
   text-align: right;
 `;
+
+export const GMRH = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom: 0.5rem solid orange;
+  border-right: 0.5rem solid orange;
+  height: 0.75rem;
+  width: 0.75rem;
+`;
