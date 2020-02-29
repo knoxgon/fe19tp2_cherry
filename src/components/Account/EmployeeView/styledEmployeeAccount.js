@@ -84,6 +84,7 @@ export const MenuGroupArea = styled.div`
   cursor: pointer;
 
   &:first-child {
+    margin-top: 15rem;
     @media screen and (max-width: ${Theme.screenSize.small}) {
       margin-top: initial;
     }
