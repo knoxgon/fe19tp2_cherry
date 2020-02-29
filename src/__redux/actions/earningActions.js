@@ -14,7 +14,7 @@ export const surpriseEarnings = (symbol) => {
       const estimate = result.data.map(e => e.estimate);
       const period = result.data.map(e => e.period);
       
-      dispatch(containerCreate())
+      dispatch(containerCreate('l', 200, 220, 1000, 400, 200, 220))
       let containerId = getState().containers[getState().containers.length - 1].dsid
       dispatch(fireLineModal())
       dispatch({

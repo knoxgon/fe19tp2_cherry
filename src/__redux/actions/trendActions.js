@@ -43,7 +43,7 @@ export const trends = (period, compname) => {
         })
       } else {
         const data = Array.of(procItem.buy, procItem.hold, procItem.sell, procItem.strongBuy, procItem.strongSell)
-        dispatch(containerCreate())
+        dispatch(containerCreate('p', 200, 220, 300, 300, 200, 220))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(firePieModal())
         dispatch({
