@@ -72,7 +72,7 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
             </MenuGroupArea>
           </ClientMenu>
           <DragDropContext style={{'overflow': 'scroll'}} onDragEnd={onDragEnd}>
-            <Droppable droppableId="droppable">
+            <Droppable droppableId="droppable" direction='horizontal'>
               {(provided, snapshot) => (
                 <GraphContainer
                   compContColor={theme.contColor}

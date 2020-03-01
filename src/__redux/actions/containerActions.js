@@ -32,7 +32,6 @@ export const containerCreate = (t, w, h, mw, mh, lw, lh) => {
       type: CONTAINER_ADD,
       payload: {
         dsid: random.generate(20),
-        type: t,
         bsw: w,
         bsh: h,
         bsmw: mw,

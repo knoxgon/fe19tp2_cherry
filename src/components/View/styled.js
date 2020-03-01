@@ -11,11 +11,13 @@ export const MCCloser = styled.img`
   }
 `;
 
-export const GMArea = styled(Resizable)`
-  width: 20rem;
+export const GMCircle = styled.div`
   margin-left: 2rem;
   margin-top: 2rem;
-  height: 20rem;
+  height: fit-content;
+`;
+
+export const GMArea = styled(Resizable)`
   background-color: white;
   opacity: 0.9;
   border-radius: 0.5rem;

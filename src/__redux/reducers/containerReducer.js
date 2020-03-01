@@ -8,7 +8,6 @@ export const containerReducer = (state = initState, action) => {
       return [
         ...state, {
         dsid: action.payload.dsid,
-        type: action.payload.type,
         bsw: action.payload.bsw,
         bsh: action.payload.bsh,
         bsmw: action.payload.bsmw,
