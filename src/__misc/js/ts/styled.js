@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Theme from '../../../__config/theme';
 
 export const SwitchWrapper = styled.button`
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
   height: 3rem;
