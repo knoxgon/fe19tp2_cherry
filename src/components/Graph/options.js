@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-export const options = (id, mkt, crc) => {
+export const options = (id) => {
   return {
     chart: { 
       id: id,
@@ -18,10 +18,6 @@ export const options = (id, mkt, crc) => {
           customIcons: []
         },
       }
-    },
-    title: {
-      text: mkt + ' - ' + crc,
-      align: 'left'
     },
     xaxis: {
       type: 'category',
@@ -95,7 +91,7 @@ export const optionsBar = (trgId, id) => {
   }
 }
 
-export const optionsLine = (dsid, catry, comp) => {
+export const optionsLine = (dsid, catry) => {
   return {
     chart: {
       id: dsid,
@@ -115,10 +111,6 @@ export const optionsLine = (dsid, catry, comp) => {
     },
     stroke: {
       curve: 'smooth'
-    },
-    title: {
-      text: comp,
-      align: 'left'
     },
     xaxis: {
       categories: catry,

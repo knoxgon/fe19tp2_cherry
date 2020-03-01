@@ -34,11 +34,6 @@ export const TopMenuGroupArea = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  cursor: pointer;
-
-  &:first-child {
-
-  }
 
   &:nth-child(2) {
     margin-left: auto;
@@ -93,7 +88,6 @@ export const MenuGroupArea = styled.div`
   &:last-child {
     margin-top: auto;
     margin-bottom: 1rem;
-    transform: scale(1.0);
 
     @media screen and (max-width: ${Theme.screenSize.small}) {
       margin-top: inherit;
@@ -104,6 +98,10 @@ export const MenuGroupArea = styled.div`
 
   &:hover {
     transform: scale(1.1);
+
+    &:last-child {
+      transform: scale(1.0);
+    }
 
     @media screen and (max-width: ${Theme.screenSize.small}) {
       transform: scale(1);
@@ -173,7 +171,9 @@ export const UserElement = styled.span`
 
 export const GraphContainer = styled.div`
   display: flex;
-  flex-direction: initial;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
   flex-grow: 1;
   overflow: scroll;
   background-color: ${props => props.compContColor};

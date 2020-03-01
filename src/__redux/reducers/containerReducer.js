@@ -1,4 +1,4 @@
-import { CONTAINER_ADD, CONTAINER_REMOVE, CONTAINER_BREWSEND, CONTAINER_REMOVE_LAST } from '../actions/types';
+import { CONTAINER_ADD, CONTAINER_BMT, CONTAINER_REMOVE, CONTAINER_BREWSEND, CONTAINER_REMOVE_LAST } from '../actions/types';
 
 const initState = []
 
@@ -26,6 +26,11 @@ export const containerReducer = (state = initState, action) => {
           return { ...obj, bsw: obj.bsw + action.payload.bsw, bsh: obj.bsh + action.payload.bsh}
         } return obj;
       })
+    case CONTAINER_BMT:
+      const result = Array.from(state);
+      const [removed] = result.splice(action.payload.b, 1);
+      result.splice(action.payload.d, 0, removed);
+      return result;
     default:
       return state;
   }

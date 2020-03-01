@@ -11,8 +11,10 @@ import PieModal from '../../ModalGroup/pieModal';
 import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Toggle from '../../../__misc/js/ts/tcom';
+import { Droppable, DragDropContext } from "react-beautiful-dnd";
+import { bmwhen } from "../../../__redux/actions/containerActions";
 
-const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, dmToggler }) => {
+const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, bmteffect, dmToggler }) => {
   const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
@@ -30,7 +32,12 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
   const onClickPieViewer = () => {
     firePieModal();
   }
-
+  const onDragEnd = (result) => {
+    if (!result.destination)
+      return;
+    bmteffect(result.source.index, result.destination.index)
+  }
+  
   return (
     <BodyWrapper>
       <Wrapper>
@@ -64,9 +71,19 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
               <MenuDescription fcolor={theme.fontColor} >Logout</MenuDescription>
             </MenuGroupArea>
           </ClientMenu>
-          <GraphContainer compContColor={theme.contColor}>
-            <ContainerGraphView></ContainerGraphView>
-          </GraphContainer>
+          <DragDropContext style={{'overflow': 'scroll'}} onDragEnd={onDragEnd}>
+            <Droppable droppableId="droppable">
+              {(provided, snapshot) => (
+                <GraphContainer
+                  compContColor={theme.contColor}
+                  {...provided.droppableProps}
+                  ref={provided.innerRef}
+                  ><ContainerGraphView></ContainerGraphView>
+                  {provided.placeholder}
+                </GraphContainer>
+              )}
+            </Droppable>
+          </DragDropContext>
         </MainArea>
       </Wrapper>
       {candTogg ? <CandleModal></CandleModal> : null}
@@ -93,7 +110,8 @@ const mapDispatchToProps = (dispatch) => {
     fireCandleModal: () => dispatch(fireCandleModal()),
     fireLineModal: () => dispatch(fireLineModal()),
     firePieModal: () => dispatch(firePieModal()),
-    dmToggler: () => dispatch(darkModeToggler())
+    dmToggler: () => dispatch(darkModeToggler()),
+    bmteffect: (a, c) => dispatch(bmwhen(a,c))
   };
 };
 
