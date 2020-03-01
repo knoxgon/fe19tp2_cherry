@@ -1,4 +1,4 @@
-import { CONTAINER_ADD, CONTAINER_REMOVE, CONTAINER_BREWSEND } from './types';
+import { CONTAINER_ADD, CONTAINER_REMOVE, CONTAINER_BMT, CONTAINER_BREWSEND } from './types';
 import random from 'randomstring';
 
 export const brewsend = (i, a, b, c, d) => {
@@ -9,6 +9,18 @@ export const brewsend = (i, a, b, c, d) => {
         dsid: i,
         bsw: a,
         bsh: b
+      }
+    })
+  }
+}
+
+export const bmwhen = (a,c) => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: CONTAINER_BMT,
+      payload: {
+        b: a,
+        d: c
       }
     })
   }
