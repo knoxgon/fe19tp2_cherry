@@ -2,26 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { containerClose, brewsend } from '../../__redux/actions/containerActions';
 import random from 'randomstring';
-import { GMArea, MCCloser, GMTitle, GMTop, GMRH } from "./styled"
+import { GMArea, MCCloser, GMTitle, GMTop, GMRH, GMCircle } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
 import PieGraph from '../Graph/Pie/pie'
 import { Draggable } from 'react-beautiful-dnd';
 
 const ContainerGraphView = ({ brewort, central, eraseContainer, containers }) => {
-  const containerOnDel = (dsid) => {
-    eraseContainer(dsid)
-  }
-
+  const containerOnDel = (dsid) => eraseContainer(dsid)
   const renderContainers = () => (
-    containers.map(({ dsid, type, bsw, bsh, bsmw, bsmh, bslw, bslh }, i) => (
+    containers.map(({ dsid, bsw, bsh, bsmw, bsmh, bslw, bslh }, i) => (
       <Draggable draggableId={dsid} key={dsid} index={i}>
         {(provided, snapshot) => (
-          <div ref={provided.innerRef} {...provided.draggableProps}>
-            <GMArea key={i} t={type} bl={dsid} size={{ width: bsw, height: bsh }} maxHeight={bsmh} maxWidth={bsmw} minHeight={bslh} minWidth={bslw} enable={{ top: false, right: false, bottom: false, left: false, topRight: false, bottomRight: true, bottomLeft: false, topLeft: false }}
-              onResizeStop={(bz, dc, ac, lc) => {
-                brewort(dsid, lc.width, lc.height)
-              }}>
+          <GMCircle ref={provided.innerRef} {...provided.draggableProps}>
+            <GMArea size={{ width: bsw, height: bsh }} maxHeight={bsmh} maxWidth={bsmw} minHeight={bslh} minWidth={bslw} enable={{ top: false, right: false, bottom: false, left: false, topRight: false, bottomRight: true, bottomLeft: false, topLeft: false }}
+              onResizeStop={(bz, dc, ac, lc) => brewort(dsid, lc.width, lc.height)}>
               <GMTop {...provided.dragHandleProps} color="#0fc4ac">
                 <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
               </GMTop>
@@ -43,9 +38,9 @@ const ContainerGraphView = ({ brewort, central, eraseContainer, containers }) =>
                   </React.Fragment>
                 } return null;
               })}
-              <GMRH />
+              <GMRH/>
             </GMArea>
-          </div>)}
+          </GMCircle>)}
       </Draggable>
     ))
   )
