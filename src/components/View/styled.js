@@ -28,14 +28,14 @@ export const GMArea = styled(Resizable)`
 
 export const GMTitle = styled.div`
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: center;
   padding-bottom: 0.75rem;
   color: ${props => props.color};
 `;
 
 export const GMTop = styled.div`
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 900;
   text-align: right;
 `;
