@@ -1,23 +1,29 @@
 import React, { useState } from 'react';
-import IconAddUser from "../../../assets/account/adduser.svg";
-import IconListUsers from "../../../assets/account/listusers.svg";
-import IconLogout from '../../../assets/account/logout.svg';
+import { faSignOutAlt, faAddressCard, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
-import { FeatureContainer,FeatureArea,FeatureWrapper } from './styledAdminAccount';
-
-import {
-  MainArea,BorderUnderline,Wrapper,FeatureDescription,FeatureImage} from '../styledAccount'
+import { AdminNav, AdminMenu, FeatureArea, FeatureContainer } from './styledAdminAccount';
+import { Wrapper, FeatureDescription, FeatureImage } from '../styledAccount'
+import { TopMenuGroupArea } from "../EmployeeView/styledEmployeeAccount";
+import { ToggleDarkMode } from '../../../__config/theme';
+import Toggle from '../../../__misc/js/ts/tcom';
+import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
+import { bmwhen } from "../../../__redux/actions/containerActions";
 import AddEmployee from '../../AddEmployee/addEmployee';
 
 
-const AdminAccount = ({ signout }) => {
+const AdminAccount = ({ signout, dmToggler }) => {
   const [stateAddUser, setStateAddUser] = useState(false)
   const [stateDisplayUser, setStateDisplayUser] = useState(false)
 
+  const darkModeBtn = (e) => {
+    dmToggler();
+    ToggleDarkMode();
+  };
+
   const logutBtn = () => {
-    signout()
-  }
+    signout();
+  };
 
   const toggleStateAddUser = () => {
     setStateDisplayUser(false)
@@ -28,42 +34,51 @@ const AdminAccount = ({ signout }) => {
     setStateDisplayUser(!stateDisplayUser)
   }
 
-  return (
+return (
     <Wrapper>
-      <BorderUnderline></BorderUnderline>
-
-      <MainArea>
-        <FeatureWrapper>
-          <FeatureArea onClick={toggleStateAddUser}>
-            <FeatureImage src={IconAddUser} />
+      <AdminNav>
+        {/* <StyledImgLogo src={userInfo.logo} alt="bev-logo" /> */}
+        <TopMenuGroupArea>
+          {/* <UserElement fcolor={theme.fontColor}>{userInfo.fullName}</UserElement> */}
+          <Toggle ocl={darkModeBtn} />
+        </TopMenuGroupArea>
+      </AdminNav>
+      <AdminMenu>
+        <FeatureArea onClick={toggleStateAddUser}>
+          <FeatureImage icon={faUserPlus} />
             <FeatureDescription>Add user</FeatureDescription>
-          </FeatureArea>
-
-          <FeatureArea onClick={toggleStateDisplayUser}>
-            <FeatureImage src={IconListUsers} />
+        </FeatureArea>
+        <FeatureArea onClick={toggleStateDisplayUser}>
+          <FeatureImage icon={faAddressCard} />
             <FeatureDescription>Show users</FeatureDescription>
-          </FeatureArea>
-          
-          <FeatureArea onClick={logutBtn}>
-            <FeatureImage src={IconLogout} />
-            <FeatureDescription>Sign out</FeatureDescription>
-          </FeatureArea>
-        </FeatureWrapper>
-
-        <FeatureContainer>
-          {stateAddUser ? <AddEmployee></AddEmployee> : null}
-        </FeatureContainer>
-      </MainArea>
-
+        </FeatureArea>
+        <FeatureArea onClick={logutBtn}>
+          <FeatureImage icon={faSignOutAlt} />
+          <FeatureDescription>Sign out</FeatureDescription>
+        </FeatureArea>
+      </AdminMenu>
+      <FeatureContainer>
+        {stateAddUser ? <AddEmployee></AddEmployee> : null}
+      </FeatureContainer>
     </Wrapper>
   );
+};
+
+
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.userinfo.indo, 
+    theme: state.darkModeToggler.activeTheme
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signout: () => dispatch(signout())
+    signout: () => dispatch(signout()),
+    dmToggler: () => dispatch(darkModeToggler()),
+    bmteffect: (a, c) => dispatch(bmwhen(a,c))
   }
 }
 
 
-export default connect(null, mapDispatchToProps)(AdminAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminAccount);

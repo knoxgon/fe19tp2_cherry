@@ -2,12 +2,9 @@ import styled from 'styled-components';
 import Theme from "../../__config/theme";
 
 const Wrapper = styled.div`
-  margin-top: 4rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
-  margin-bottom: 14rem;
-  display: flex;
-  flex-direction: column;
+  width: 100vw;
+  /* height: 100;  */
+  background-color: #F4F8F9;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     margin-top: 2rem;
@@ -17,9 +14,11 @@ const Wrapper = styled.div`
 `;
 
 const FeatureImage = styled.img`
+  margin-left: 2rem;
   user-select: none;
   width: 5rem;
   height: 5rem;
+  cursor: pointer;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     display: flex;
@@ -32,11 +31,12 @@ const FeatureImage = styled.img`
 
 
 const FeatureDescription = styled.p`
+  margin-left: 1.2rem;
+  justify-content: center;
   user-select: none;
   font-size: 1.5rem;
   font-weight: bold;
-  margin-left: 2rem;
-  color: black;
+  color: #000;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
