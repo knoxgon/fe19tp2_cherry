@@ -16,11 +16,15 @@ const LoginArea = styled.form`
   width: 45rem;
   height: 53rem;
   margin-top: 5rem;
-  background-color: beige;
+
+  background: #E8CBC0;  
+  background: -webkit-linear-gradient(to top, #636FA4, #E8CBC0);
+  background: linear-gradient(to top, #636FA4, #E8CBC0);
   
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 28rem;
-    height: 44rem;
+    width: 100vw;
+    height: 100vh;
+    margin:0;
   }
 `;
 
@@ -46,6 +50,7 @@ const InputArea = styled.div`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     width: 25rem;
+    margin-top: 2rem;
   }
 `;
 
@@ -61,7 +66,7 @@ const InputImage = styled.img`
 
 const EmailInput = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
-  background-color: white;
+
   border-radius: 0.5rem;
   width: 28rem;
   height: 4rem;
@@ -70,8 +75,13 @@ const EmailInput = styled.input`
   border-right-style: hidden;
   border-left-style: hidden;
   border-bottom-style: groove;
-  outline-color: gray;
+  outline-color: none;
   font-size: 2rem;
+  outline: none;
+
+  background: #C9D6FF;
+  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
+  background: linear-gradient(to top, #E2E2E2, #C9D6FF);
   
   &::placeholder {
     padding: 1rem;
@@ -89,18 +99,23 @@ const LoginButton = styled.button`
   width: 25rem;
   height: 4rem;
   margin-top: 1.5rem;
-  color: white;
-  background-color: #364f6b;
+  color: #29293d;
   font-size: 2.5rem;
   border-radius: 2rem;
+  border: none;
+
+  background: #C9D6FF;
+  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
+  background: linear-gradient(to top, #E2E2E2, #C9D6FF); 
 
   &:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transition: 0.3s ease;
+    color: #3f3f3f;
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-top: 1.5rem;
+    margin-top: 16rem;
     font-size: 2.2rem;
     width: 18rem;
   }
@@ -112,11 +127,11 @@ const ErrorArea = styled.div`
   text-align: center;
   width: auto;
   height: 3rem;
-  color: #d50000;
+  color: #ffeaea;
   font-size: 1.3rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-weight: 600;
+  font-weight: 400;
 `;
 
 const ForgotPassword = styled.a`
@@ -125,9 +140,9 @@ const ForgotPassword = styled.a`
   text-align: right;
   justify-content: flex-end;
   margin-right: 8rem;
-  color: #d50000;
+  color: #ffeaea;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 400;
   text-decoration: underline;
   cursor: pointer;
   margin-left: 26.4rem;
@@ -136,7 +151,7 @@ const ForgotPassword = styled.a`
 
   font-size: 1.3rem;
   margin: 0;
-  margin-right: 2rem;
+  margin-right: 6.5rem;
 }
 `;
 
