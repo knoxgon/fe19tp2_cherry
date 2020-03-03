@@ -14,6 +14,7 @@ import { lineModalReducer } from './lineModalReducer';
 import { pieModalReducer } from './pieModalReducer';
 import { prefetchReducer } from './prefetchReducer';
 import { darkModeReducer } from './darkModeReducer';
+import { qTriggerReducer } from './qtriggerReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -30,5 +31,6 @@ export const rootReducer = combineReducers({
   candleModalToggler: candleModalReducer,
   lineModalToggler: lineModalReducer,
   pieModalToggler: pieModalReducer,
-  darkModeToggler: darkModeReducer
+  darkModeToggler: darkModeReducer,
+  qgtrigger: qTriggerReducer
 });
