@@ -13,8 +13,10 @@ import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Toggle from '../../../__misc/js/ts/tcom';
 import { Droppable, DragDropContext } from "react-beautiful-dnd";
 import { bmwhen } from "../../../__redux/actions/containerActions";
+import QTogg from "../../../__misc/js/qt";
+import { HQToggler } from "../../../__redux/actions/qtriggerAction";
 
-const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, bmteffect, dmToggler }) => {
+const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, bmteffect, dmToggler }) => {
   const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
@@ -37,6 +39,9 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
       return;
     bmteffect(result.source.index, result.destination.index)
   }
+  const toggleTutor = () => {
+    hqSwitch();
+  }
   
   return (
     <BodyWrapper>
@@ -44,6 +49,9 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
         <TopMenu navColor={theme.navColor}>
           <TopMenuGroupArea>
             <StyledImgLogo comptype={comp} src={userInfo.logo} alt="website logo" />
+          </TopMenuGroupArea>
+          <TopMenuGroupArea onClick={toggleTutor}>
+            <img style={{'cursor': 'pointer'}} width="35" height="35" src={require('../../../assets/question.svg')} alt="questionmark" />
           </TopMenuGroupArea>
           <TopMenuGroupArea>
             <Toggle ocl={darkModeBtn} />
@@ -53,6 +61,7 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
           </TopMenuGroupArea>
         </TopMenu>
         <MainArea>
+          <QTogg></QTogg>
           <ClientMenu navColor={theme.navColor}>
             <MenuGroupArea onClick={onClickCandleViewer}>
               <MenuImage fcolor={theme.fontColor} icon={faChartBar} />
@@ -94,6 +103,7 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, fireCandleModal, fire
 };
 
 const mapStateToProps = (state) => {
+  console.log(state.darkModeToggler.activeTheme);
   return {
     userInfo: state.userinfo.info,
     theme: state.darkModeToggler.activeTheme,
@@ -111,7 +121,8 @@ const mapDispatchToProps = (dispatch) => {
     fireLineModal: () => dispatch(fireLineModal()),
     firePieModal: () => dispatch(firePieModal()),
     dmToggler: () => dispatch(darkModeToggler()),
-    bmteffect: (a, c) => dispatch(bmwhen(a,c))
+    bmteffect: (a, c) => dispatch(bmwhen(a,c)),
+    hqSwitch: () => dispatch(HQToggler())
   };
 };
 
