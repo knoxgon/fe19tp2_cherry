@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Theme from "../../__config/theme";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -13,7 +14,7 @@ const Wrapper = styled.div`
   }
 `;
 
-const FeatureImage = styled.img`
+const FeatureImage = styled(FontAwesomeIcon)`
   margin-left: 2rem;
   user-select: none;
   width: 5rem;

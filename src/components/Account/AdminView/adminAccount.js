@@ -67,7 +67,7 @@ return (
 
 const mapStateToProps = (state) => {
   return {
-    userInfo: state.userinfo.indo, 
+    userInfo: state.userinfo.info, 
     theme: state.darkModeToggler.activeTheme
   };
 }

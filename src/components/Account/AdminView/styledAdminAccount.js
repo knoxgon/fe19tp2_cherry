@@ -18,18 +18,16 @@ const AdminMenu = styled.div`
   justify-content: center;
   width: 10rem;
   height: 100%;
-  background-color: #dbe6f6; 
   margin-left: 0;
 `;
 
-const FeatureArea = styled.p`
+const FeatureArea = styled.div`
   display: flex; 
   flex-direction: column;
   flex-wrap: wrap;
-  background-color: #dbe6f6;
-  vertical-align: middle;
   margin-bottom: 2rem;
   width: 10rem;
+  font-size: 3rem;
 
   &:nth-last-child(3) {
     width: 10rem;
@@ -85,10 +83,10 @@ const FeatureContainer = styled.div`
   }
 `;
 const MenuImage = styled(FontAwesomeIcon)`
+  width: 3rem;
   user-select: none;
   font-size: 3.25rem;
   transition: all 0.75s linear;
-  color: ${props => props.fcolor};
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
     font-size: 2.25rem
