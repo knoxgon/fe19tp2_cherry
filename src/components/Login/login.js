@@ -3,7 +3,7 @@ import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, E
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
-
+import UserTable from '../Account/AdminView/UserTable/userTable';
 
 const Login = (props) => {
   const [creds, setCreds] = useState({ email: '', password: ''});
@@ -19,24 +19,25 @@ const Login = (props) => {
   }
 
   return (
-    (props.uid) ? <Redirect to='/account'/> :
-      <LoginContainerArea>
-        <LoginArea onSubmit={handleLogin}>
-          <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
-          <InputArea>
-            <InputImage src={require('../../assets/login/user.svg')}></InputImage>
-            <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
-          </InputArea>
-          <InputArea>
-            <InputImage src={require('../../assets/login/key.svg')}></InputImage>
-            <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
-          </InputArea>
-          <ForgotPassword>Forgot Password?</ForgotPassword>
-          <br/>
-          <LoginButton type="submit">Login</LoginButton>
-          {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
-        </LoginArea>
-      </LoginContainerArea>
+    <UserTable></UserTable>
+    // (props.uid) ? <Redirect to='/account'/> :
+    //   <LoginContainerArea>
+    //     <LoginArea onSubmit={handleLogin}>
+    //       <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
+    //       <InputArea>
+    //         <InputImage src={require('../../assets/login/user.svg')}></InputImage>
+    //         <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
+    //       </InputArea>
+    //       <InputArea>
+    //         <InputImage src={require('../../assets/login/key.svg')}></InputImage>
+    //         <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
+    //       </InputArea>
+    //       <ForgotPassword>Forgot Password?</ForgotPassword>
+    //       <br/>
+    //       <LoginButton type="submit">Login</LoginButton>
+    //       {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
+    //     </LoginArea>
+    //   </LoginContainerArea>
   )
 }
 
