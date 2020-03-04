@@ -61,7 +61,6 @@ const EmailInput = styled.input`
   outline: none;
 
   background: #C9D6FF;
-  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
   background: linear-gradient(to top, #E2E2E2, #C9D6FF);
   
   &::placeholder {
@@ -76,17 +75,15 @@ const EmailInput = styled.input`
 
 const LoginButton = styled.button`
   text-align: center;
-  margin: 0 auto;
   width: 25rem;
   height: 4rem;
-  margin-top: 1.5rem;
+  margin-left: 4rem;
   color: #29293d;
   font-size: 2.5rem;
   border-radius: 2rem;
   border: none;
 
   background: #C9D6FF;
-  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
   background: linear-gradient(to top, #E2E2E2, #C9D6FF); 
 
   &:hover {
