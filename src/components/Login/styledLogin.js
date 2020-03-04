@@ -1,91 +1,78 @@
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-
-const LoginContainerArea = styled.div`
+export const LoginContainerArea = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
-`;
-
-const LoginArea = styled.form`
-  align-items: center;
-  border-radius: 1rem;
-  text-align: center;
-  border: 1px solid #dddddd;
-  width: 45rem;
-  height: 53rem;
-  margin-top: 5rem;
-
-  background: #E8CBC0;  
-  background: -webkit-linear-gradient(to top, #636FA4, #E8CBC0);
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #E8CBC0;
   background: linear-gradient(to top, #636FA4, #E8CBC0);
-  
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 100vw;
-    height: 100vh;
-    margin:0;
+
+  @media only screen and (max-height: 400px) and (orientation: landscape) {
+    height: initial;
   }
 `;
 
-const LoginLogo = styled.img`
+export const LoginArea = styled.form`
+  text-align: center;
+`;
+
+export const LoginLogo = styled.img`
   text-align: center;
   width: 20rem;
   height: 20rem;
   margin-bottom: 3.5rem;
 
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+  @media only screen and (min-height: 700px) and (orientation: portrait) {
+    margin-top: 5rem;
+    width: 30rem;
+    height: 30rem;
+  }
+  @media only screen and (max-height: 450px) and (orientation: landscape) {
+    margin-top: 0rem;
     width: 15rem;
-    height: auto;
-    margin-bottom: 2rem;
+    height: 15rem;
   }
 `;
 
-const InputArea = styled.div`
+export const InputArea = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
-  width: 35rem;
-  height: auto;
-  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
 
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 25rem;
+  @media screen and (min-width: ${Theme.deviceSize.iph5SE.w} and (max-width: ${Theme.deviceSize.iph678P.w})) {
+    width: 75vw;
     margin-top: 2rem;
   }
 `;
 
-const InputImage = styled.img`
-  width: 3rem;
-  height: 5rem;
-  
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 2.3rem;
-    height: 5rem;
-  }
+export const InputImage = styled(FontAwesomeIcon)`
+  position: absolute;
+  color: #44293a;
+  font-size: 2.5rem;
+  left: 1rem;
 `;
 
-const EmailInput = styled.input`
+export const Input = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
-
   border-radius: 0.5rem;
-  width: 28rem;
+  width: 27rem;
   height: 4rem;
-  margin-left: 1rem;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
-  border-bottom-style: groove;
+  border: none;
   outline-color: none;
   font-size: 2rem;
   outline: none;
-
   background: #C9D6FF;
-  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
   background: linear-gradient(to top, #E2E2E2, #C9D6FF);
+  padding-left: 4rem;
   
   &::placeholder {
-    padding: 1rem;
-    color: #3f3f3f;
+    color: #44293a;
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
@@ -93,19 +80,16 @@ const EmailInput = styled.input`
   }
 `;
 
-const LoginButton = styled.button`
+export const LoginButton = styled.button`
   text-align: center;
-  margin: 0 auto;
   width: 25rem;
   height: 4rem;
-  margin-top: 1.5rem;
-  color: #29293d;
+  color: #44293a;
   font-size: 2.5rem;
   border-radius: 2rem;
   border: none;
 
   background: #C9D6FF;
-  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
   background: linear-gradient(to top, #E2E2E2, #C9D6FF); 
 
   &:hover {
@@ -113,57 +97,43 @@ const LoginButton = styled.button`
     transition: 0.3s ease;
     color: #3f3f3f;
   }
-
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-top: 16rem;
-    font-size: 2.2rem;
-    width: 18rem;
-  }
 `;
 
-const ErrorArea = styled.div`
+export const ErrorArea = styled.div`
   margin: 0 auto;
   margin-top: 2.5rem;
   text-align: center;
   width: auto;
   height: 3rem;
-  color: #ffeaea;
-  font-size: 1.3rem;
+  color: #4e1717;
+  font-size: 1.75rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-weight: 400;
+  font-weight: 900;
 `;
 
-const ForgotPassword = styled.a`
-
+export const RecoverPasswordField = styled.a`
   display: flex;
   text-align: right;
   justify-content: flex-end;
-  margin-right: 8rem;
   color: #ffeaea;
   font-size: 1.3rem;
   font-weight: 400;
   text-decoration: underline;
   cursor: pointer;
-  margin-left: 26.4rem;
-
-@media screen and (max-width: ${Theme.screenSize.xsmall}) {
-
-  font-size: 1.3rem;
-  margin: 0;
-  margin-right: 6.5rem;
-}
+  color: #2f2b28;
+  font-weight: 600;
 `;
 
+export const RecoverPasswordFieldWrapper = styled.div`
+  width: 31.5rem;
+  justify-content: flex-end;
+  margin: 0 auto;
+`;
 
-export {
-  LoginArea,
-  LoginLogo,
-  InputArea,
-  InputImage,
-  EmailInput,
-  LoginButton,
-  ErrorArea,
-  LoginContainerArea,
-  ForgotPassword
-}
+export const LoginButtonWrapper = styled.div`
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 31.5rem;
+`;

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, ForgotPassword } from './styledLogin';
+import { LoginArea, LoginLogo, LoginButtonWrapper, RecoverPasswordFieldWrapper, InputArea, InputImage, Input, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordField } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
-
+import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
 
 const Login = (props) => {
   const [creds, setCreds] = useState({ email: '', password: ''});
@@ -23,17 +23,20 @@ const Login = (props) => {
       <LoginContainerArea>
         <LoginArea onSubmit={handleLogin}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
-          <InputArea>
-            <InputImage src={require('../../assets/login/user.svg')}></InputImage>
-            <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
+          <InputArea style={{marginBottom: '2rem'}}>
+            <InputImage icon={faUserAlt}></InputImage>
+            <Input placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <InputArea>
-            <InputImage src={require('../../assets/login/key.svg')}></InputImage>
-            <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
+            <InputImage icon={faKey}></InputImage>
+            <Input placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></Input>
           </InputArea>
-          <ForgotPassword>Forgot Password?</ForgotPassword>
-          <br/>
-          <LoginButton type="submit">Login</LoginButton>
+          <RecoverPasswordFieldWrapper>
+            <RecoverPasswordField>Forgot Password?</RecoverPasswordField>
+          </RecoverPasswordFieldWrapper>
+          <LoginButtonWrapper>
+           <LoginButton type="submit">Login</LoginButton>
+          </LoginButtonWrapper>
           {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
         </LoginArea>
       </LoginContainerArea>
@@ -53,5 +56,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-//First parameter is state, second dispatch
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
