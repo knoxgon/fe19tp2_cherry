@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, ForgotPassword } from './styledLogin';
+import { LoginArea, LoginLogo, LoginButtonWrapper, RecoverPasswordFieldWrapper, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordField } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
