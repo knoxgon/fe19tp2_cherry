@@ -23,12 +23,12 @@ const Login = (props) => {
       <LoginContainerArea>
         <LoginArea onSubmit={handleLogin}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
-          <InputArea>
-            <InputImage src={require('../../assets/login/user.svg')}></InputImage>
+          <InputArea style={{marginBottom: '2rem'}}>
+            <InputImage icon={faUserAlt}></InputImage>
             <Input placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <InputArea>
-            <InputImage src={require('../../assets/login/key.svg')}></InputImage>
+            <InputImage icon={faKey}></InputImage>
             <Input placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <RecoverPasswordFieldWrapper>
