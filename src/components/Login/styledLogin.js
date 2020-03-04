@@ -106,25 +106,30 @@ const ErrorArea = styled.div`
   font-weight: 400;
 `;
 
-const ForgotPassword = styled.a`
-
+export const ForgotPassword = styled.a`
   display: flex;
   text-align: right;
   justify-content: flex-end;
-  margin-right: 8rem;
   color: #ffeaea;
   font-size: 1.3rem;
   font-weight: 400;
   text-decoration: underline;
   cursor: pointer;
-  margin-left: 26.4rem;
+  color: #2f2b28;
+  font-weight: 600;
+`;
 
-@media screen and (max-width: ${Theme.screenSize.xsmall}) {
+export const ForgotPasswordLinkWrapper = styled.div`
+  width: 31.5rem;
+  justify-content: flex-end;
+  margin: 0 auto;
+`;
 
-  font-size: 1.3rem;
-  margin: 0;
-  margin-right: 6.5rem;
-}
+export const LoginButtonWrapper = styled.div`
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 5rem;
+  width: 31.5rem;
 `;
 
 
