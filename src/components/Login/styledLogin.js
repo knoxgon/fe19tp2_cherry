@@ -55,26 +55,27 @@ export const InputImage = styled.img`
   height: 5rem;
 `;
 
-export const EmailInput = styled.input`
+export const Input = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
 
   border-radius: 0.5rem;
   width: 28rem;
   height: 4rem;
   margin-left: 1rem;
-  border-top-style: hidden;
-  border-right-style: hidden;
-  border-left-style: hidden;
+  border-top-style: none;
+  border-right-style: none;
+  border-left-style: none;
   border-bottom-style: groove;
   outline-color: none;
   font-size: 2rem;
   outline: none;
+  padding-left: 1rem;
+  padding-right: 1rem;
 
   background: #C9D6FF;
   background: linear-gradient(to top, #E2E2E2, #C9D6FF);
   
   &::placeholder {
-    padding: 1rem;
     color: #3f3f3f;
   }
 
