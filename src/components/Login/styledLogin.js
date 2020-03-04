@@ -91,12 +91,6 @@ const LoginButton = styled.button`
     transition: 0.3s ease;
     color: #3f3f3f;
   }
-
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-top: 16rem;
-    font-size: 2.2rem;
-    width: 18rem;
-  }
 `;
 
 const ErrorArea = styled.div`
