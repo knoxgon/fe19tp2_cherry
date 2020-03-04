@@ -21,35 +21,28 @@ const LoginLogo = styled.img`
   width: 20rem;
   height: 20rem;
   margin-bottom: 3.5rem;
+  margin-left: 2rem;
 
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 15rem;
-    height: auto;
-    margin-bottom: 2rem;
+  @media only screen and (min-height: 700px) {
+    margin-top: 7.5rem;
   }
 `;
 
 const InputArea = styled.div`
   display: flex;
   flex-direction: row;
-  width: 35rem;
-  height: auto;
-  margin: 0 auto;
+  justify-content: center;
 
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 25rem;
+  @media screen and (min-width: ${Theme.deviceSize.iph5SE.w} and (max-width: ${Theme.deviceSize.iph678P.w})) {
+    width: 75vw;
     margin-top: 2rem;
+    margin: auto;
   }
 `;
 
 const InputImage = styled.img`
   width: 3rem;
   height: 5rem;
-  
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 2.3rem;
-    height: 5rem;
-  }
 `;
 
 const EmailInput = styled.input`
