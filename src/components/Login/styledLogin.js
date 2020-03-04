@@ -12,7 +12,6 @@ export const LoginContainerArea = styled.div`
 `;
 
 export const LoginArea = styled.form`
-  align-items: center;
   text-align: center;
 `;
 
@@ -25,6 +24,8 @@ export const LoginLogo = styled.img`
 
   @media only screen and (min-height: 700px) {
     margin-top: 7.5rem;
+    width: 30rem;
+    height: 30rem;
   }
 `;
 
