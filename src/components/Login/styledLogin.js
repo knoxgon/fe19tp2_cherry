@@ -106,7 +106,7 @@ export const ErrorArea = styled.div`
   font-weight: 400;
 `;
 
-export const ForgotPassword = styled.a`
+export const RecoverPasswordField = styled.a`
   display: flex;
   text-align: right;
   justify-content: flex-end;
@@ -119,7 +119,7 @@ export const ForgotPassword = styled.a`
   font-weight: 600;
 `;
 
-export const ForgotPasswordLinkWrapper = styled.div`
+export const RecoverPasswordFieldWrapper = styled.div`
   width: 31.5rem;
   justify-content: flex-end;
   margin: 0 auto;
