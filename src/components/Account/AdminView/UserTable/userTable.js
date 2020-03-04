@@ -23,6 +23,15 @@ const Styles = styled.div`
     }
 
     th,
+    /* {
+      th:nth-last-child(3) {
+        text-align: center;
+        border-right: 0;
+        color: purple;
+        font-weight: 1000;
+        cursor: pointer;
+      }
+    } */
     td {
       margin: 0;
       padding: 1.5rem;
@@ -46,7 +55,8 @@ const UserTable = () => {
     [
       {name: "Eva", role: "Employee", email: "eva@bev.com", id: "a"},
       {name: "Peter", role: "Admin", email: "peter@bev.com", id: "b"},
-      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"}
+      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"},
+      {name: "", role: "Employee", email: "", id: "d"}    
     ])
 
     const deleteUser = (e) => {
@@ -56,6 +66,15 @@ const UserTable = () => {
 
     const removeUser = (id) => {
       return users.filter(user => user.id !== id)
+    }
+
+    const addUser = (id) => {
+      return users.push()
+    }
+
+    const newUser = (e) => {
+      const addedUser = addUser(e.target.id);
+      setUsers(addedUser)
     }
 
   
