@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
 
-const LoginContainerArea = styled.div`
+export const LoginContainerArea = styled.div`
   display: flex;
   justify-content: center;
   align-content: center;
@@ -11,12 +11,12 @@ const LoginContainerArea = styled.div`
   background: linear-gradient(to top, #636FA4, #E8CBC0);
 `;
 
-const LoginArea = styled.form`
+export const LoginArea = styled.form`
   align-items: center;
   text-align: center;
 `;
 
-const LoginLogo = styled.img`
+export const LoginLogo = styled.img`
   text-align: center;
   width: 20rem;
   height: 20rem;
@@ -28,7 +28,7 @@ const LoginLogo = styled.img`
   }
 `;
 
-const InputArea = styled.div`
+export const InputArea = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -40,12 +40,12 @@ const InputArea = styled.div`
   }
 `;
 
-const InputImage = styled.img`
+export const InputImage = styled.img`
   width: 3rem;
   height: 5rem;
 `;
 
-const EmailInput = styled.input`
+export const EmailInput = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
 
   border-radius: 0.5rem;
@@ -73,7 +73,7 @@ const EmailInput = styled.input`
   }
 `;
 
-const LoginButton = styled.button`
+export const LoginButton = styled.button`
   text-align: center;
   width: 25rem;
   height: 4rem;
@@ -93,7 +93,7 @@ const LoginButton = styled.button`
   }
 `;
 
-const ErrorArea = styled.div`
+export const ErrorArea = styled.div`
   margin: 0 auto;
   margin-top: 2.5rem;
   text-align: center;
@@ -131,16 +131,3 @@ export const LoginButtonWrapper = styled.div`
   margin-top: 5rem;
   width: 31.5rem;
 `;
-
-
-export {
-  LoginArea,
-  LoginLogo,
-  InputArea,
-  InputImage,
-  EmailInput,
-  LoginButton,
-  ErrorArea,
-  LoginContainerArea,
-  ForgotPassword
-}
