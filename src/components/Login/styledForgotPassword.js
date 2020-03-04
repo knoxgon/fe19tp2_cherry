@@ -3,9 +3,16 @@ import Theme from '../../__config/theme';
 
 
 const LoginContainerArea = styled.div`
+
   display: flex;
   justify-content: center;
   align-items: center;
+  
+  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+    width: 95vw;
+    height: 100vh;
+  }
+
 `;
 
 const LoginArea = styled.form`
@@ -17,14 +24,15 @@ const LoginArea = styled.form`
   height: 53rem;
   margin-top: 5rem;
 
-  background: #E8CBC0;  
-  background: -webkit-linear-gradient(to top, #636FA4, #E8CBC0);
-  background: linear-gradient(to top, #636FA4, #E8CBC0);
+  background: #E8CBC0;
+  background: -webkit-linear-gradient(to bottom, #636FA4, #E8CBC0);  
+  background: linear-gradient(to bottom, #636FA4, #E8CBC0);
+
   
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     width: 100vw;
     height: 100vh;
-    margin:0;
+    margin: 0;
   }
 `;
 
@@ -49,8 +57,7 @@ const InputArea = styled.div`
   margin: 0 auto;
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 25rem;
-    margin-top: 2rem;
+    width: 15rem;
   }
 `;
 
@@ -59,15 +66,17 @@ const InputImage = styled.img`
   height: 5rem;
   
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 2.3rem;
-    height: 5rem;
+    // width: 2.3rem;
+    // height: 5rem;
+    display:none;
   }
 `;
 
 const EmailInput = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
-
+  // background-color: transparent;
   border-radius: 0.5rem;
+  color: lightblack;
   width: 28rem;
   height: 4rem;
   margin-left: 1rem;
@@ -79,10 +88,12 @@ const EmailInput = styled.input`
   font-size: 2rem;
   outline: none;
 
-  background: #C9D6FF;
-  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
-  background: linear-gradient(to top, #E2E2E2, #C9D6FF);
-  
+  border: none;
+
+  background: #C9D6FF;  
+  background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF); 
+  background: linear-gradient(to top, #E2E2E2, #C9D6FF); 
+
   &::placeholder {
     padding: 1rem;
     color: #3f3f3f;
@@ -90,23 +101,27 @@ const EmailInput = styled.input`
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
     font-size: 1.8rem;
+    width: 15rem;
+    margin: 0;
+    
   }
 `;
 
 const LoginButton = styled.button`
   text-align: center;
   margin: 0 auto;
-  width: 25rem;
-  height: 4rem;
+  width: 9rem;
+  height: 3rem;
   margin-top: 1.5rem;
-  color: #29293d;
-  font-size: 2.5rem;
-  border-radius: 2rem;
+  color: black;
+  background-color: #364f6b;
+  font-size: 1.7rem;
+  border-radius: 1rem;
   border: none;
 
   background: #C9D6FF;
   background: -webkit-linear-gradient(to top, #E2E2E2, #C9D6FF);
-  background: linear-gradient(to top, #E2E2E2, #C9D6FF); 
+  background: linear-gradient(to top, #E2E2E2, #C9D6FF);
 
   &:hover {
     cursor: pointer;
@@ -115,43 +130,43 @@ const LoginButton = styled.button`
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    margin-top: 16rem;
+    margin-top: 10rem;
     font-size: 2.2rem;
     width: 18rem;
   }
 `;
 
 const ErrorArea = styled.div`
+  
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0 auto;
   margin-top: 2.5rem;
   text-align: center;
   width: auto;
   height: 3rem;
-  color: #ffeaea;
+  color: #29293d;
   font-size: 1.3rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-weight: 400;
+  font-weight: 600;
 `;
 
 const ForgotPassword = styled.a`
-
+  
+  font-family: 'Roboto Condensed', sans-serif;
   display: flex;
-  text-align: right;
-  justify-content: flex-end;
-  margin-right: 8rem;
+  text-align: center;
+  // color: #29293d;
   color: #ffeaea;
   font-size: 1.3rem;
-  font-weight: 400;
-  text-decoration: underline;
+  font-weight: 600;
   cursor: pointer;
-  margin-left: 26.4rem;
+  margin-left: 9.5rem;
 
 @media screen and (max-width: ${Theme.screenSize.xsmall}) {
 
   font-size: 1.3rem;
-  margin: 0;
-  margin-right: 6.5rem;
+  margin-left: 1rem;
 }
 `;
 
