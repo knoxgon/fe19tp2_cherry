@@ -3,7 +3,7 @@ import { LoginArea, LoginLogo, LoginButtonWrapper, RecoverPasswordFieldWrapper, 
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
-
+import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
 
 const Login = (props) => {
   const [creds, setCreds] = useState({ email: '', password: ''});
