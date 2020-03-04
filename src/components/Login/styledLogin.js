@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const LoginContainerArea = styled.div`
   display: flex;
@@ -39,44 +40,40 @@ export const LoginLogo = styled.img`
 `;
 
 export const InputArea = styled.div`
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 
   @media screen and (min-width: ${Theme.deviceSize.iph5SE.w} and (max-width: ${Theme.deviceSize.iph678P.w})) {
     width: 75vw;
     margin-top: 2rem;
-    margin: auto;
   }
 `;
 
-export const InputImage = styled.img`
-  width: 3rem;
-  height: 5rem;
+export const InputImage = styled(FontAwesomeIcon)`
+  position: absolute;
+  color: #44293a;
+  font-size: 2.5rem;
+  left: 1rem;
 `;
 
 export const Input = styled.input`
   font-family: 'Roboto Condensed', sans-serif;
-
   border-radius: 0.5rem;
-  width: 28rem;
+  width: 27rem;
   height: 4rem;
-  margin-left: 1rem;
-  border-top-style: none;
-  border-right-style: none;
-  border-left-style: none;
-  border-bottom-style: groove;
+  border: none;
   outline-color: none;
   font-size: 2rem;
   outline: none;
-  padding-left: 1rem;
-  padding-right: 1rem;
-
   background: #C9D6FF;
   background: linear-gradient(to top, #E2E2E2, #C9D6FF);
+  padding-left: 4rem;
   
   &::placeholder {
-    color: #3f3f3f;
+    color: #44293a;
   }
 
   @media screen and (max-width: ${Theme.screenSize.xsmall}) {
