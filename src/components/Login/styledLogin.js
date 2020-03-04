@@ -25,10 +25,9 @@ export const LoginLogo = styled.img`
   width: 20rem;
   height: 20rem;
   margin-bottom: 3.5rem;
-  margin-left: 2rem;
 
   @media only screen and (min-height: 700px) and (orientation: portrait) {
-    margin-top: 7.5rem;
+    margin-top: 5rem;
     width: 30rem;
     height: 30rem;
   }
@@ -85,8 +84,7 @@ export const LoginButton = styled.button`
   text-align: center;
   width: 25rem;
   height: 4rem;
-  margin-left: 4rem;
-  color: #29293d;
+  color: #44293a;
   font-size: 2.5rem;
   border-radius: 2rem;
   border: none;
@@ -107,11 +105,11 @@ export const ErrorArea = styled.div`
   text-align: center;
   width: auto;
   height: 3rem;
-  color: #ffeaea;
-  font-size: 1.3rem;
+  color: #4e1717;
+  font-size: 1.75rem;
   margin-left: 1rem;
   margin-right: 1rem;
-  font-weight: 400;
+  font-weight: 900;
 `;
 
 export const RecoverPasswordField = styled.a`
