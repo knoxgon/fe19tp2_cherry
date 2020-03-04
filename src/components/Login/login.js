@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, LoginButtonWrapper, RecoverPasswordFieldWrapper, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordField } from './styledLogin';
+import { LoginArea, LoginLogo, LoginButtonWrapper, RecoverPasswordFieldWrapper, InputArea, InputImage, Input, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordField } from './styledLogin';
 import { connect } from 'react-redux';
 import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
@@ -25,11 +25,11 @@ const Login = (props) => {
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
           <InputArea>
             <InputImage src={require('../../assets/login/user.svg')}></InputImage>
-            <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
+            <Input placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <InputArea>
             <InputImage src={require('../../assets/login/key.svg')}></InputImage>
-            <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
+            <Input placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <RecoverPasswordFieldWrapper>
             <RecoverPasswordField>Forgot Password?</RecoverPasswordField>
