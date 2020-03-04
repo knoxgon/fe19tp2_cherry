@@ -9,6 +9,10 @@ export const LoginContainerArea = styled.div`
   height: 100vh;
   background: #E8CBC0;
   background: linear-gradient(to top, #636FA4, #E8CBC0);
+
+  @media only screen and (max-height: 400px) and (orientation: landscape) {
+    height: initial;
+  }
 `;
 
 export const LoginArea = styled.form`
@@ -22,10 +26,15 @@ export const LoginLogo = styled.img`
   margin-bottom: 3.5rem;
   margin-left: 2rem;
 
-  @media only screen and (min-height: 700px) {
+  @media only screen and (min-height: 700px) and (orientation: portrait) {
     margin-top: 7.5rem;
     width: 30rem;
     height: 30rem;
+  }
+  @media only screen and (max-height: 450px) and (orientation: landscape) {
+    margin-top: 0rem;
+    width: 15rem;
+    height: 15rem;
   }
 `;
 
