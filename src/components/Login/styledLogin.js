@@ -1,31 +1,19 @@
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
 
-
 const LoginContainerArea = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 100vh;
+  background: #E8CBC0;
+  background: linear-gradient(to top, #636FA4, #E8CBC0);
 `;
 
 const LoginArea = styled.form`
   align-items: center;
-  border-radius: 1rem;
   text-align: center;
-  border: 1px solid #dddddd;
-  width: 45rem;
-  height: 53rem;
-  margin-top: 5rem;
-
-  background: #E8CBC0;  
-  background: -webkit-linear-gradient(to top, #636FA4, #E8CBC0);
-  background: linear-gradient(to top, #636FA4, #E8CBC0);
-  
-  @media screen and (max-width: ${Theme.screenSize.xsmall}) {
-    width: 100vw;
-    height: 100vh;
-    margin:0;
-  }
 `;
 
 const LoginLogo = styled.img`
