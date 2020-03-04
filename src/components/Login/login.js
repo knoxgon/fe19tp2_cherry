@@ -31,9 +31,12 @@ const Login = (props) => {
             <InputImage src={require('../../assets/login/key.svg')}></InputImage>
             <EmailInput placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></EmailInput>
           </InputArea>
-          <ForgotPassword>Forgot Password?</ForgotPassword>
-          <br/>
-          <LoginButton type="submit">Login</LoginButton>
+          <RecoverPasswordFieldWrapper>
+            <RecoverPasswordField>Forgot Password?</RecoverPasswordField>
+          </RecoverPasswordFieldWrapper>
+          <LoginButtonWrapper>
+           <LoginButton type="submit">Login</LoginButton>
+          </LoginButtonWrapper>
           {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
         </LoginArea>
       </LoginContainerArea>
@@ -53,5 +56,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-//First parameter is state, second dispatch
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
