@@ -3,7 +3,7 @@ import { LoginArea, LoginLogo, LoginButtonWrapper, InputArea, InputImage, Input,
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
-import { recoverPassword } from '../../__redux/actions/authActions';
+import { recoverPassword, resetFeedback } from '../../__redux/actions/authActions';
 import { BackToSignInWrapper, BackToSignIn } from './styledForgotPassword';
 
 const ForgotPassword = (props) => {
@@ -31,7 +31,7 @@ const ForgotPassword = (props) => {
            <LoginButton type="submit">Reset</LoginButton>
           </LoginButtonWrapper>
           <BackToSignInWrapper>
-            <BackToSignIn to="/login">Click here to sign in</BackToSignIn>
+            <BackToSignIn onClick={() => props.resetfeedback()} to="/login">Click here to sign in</BackToSignIn>
           </BackToSignInWrapper>
           {props.feedback ? <ErrorArea >{props.feedback}</ErrorArea> : null}
         </LoginArea>
@@ -48,7 +48,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    recover: (email) => dispatch(recoverPassword(email))
+    recover: (email) => dispatch(recoverPassword(email)),
+    resetfeedback: () => dispatch(resetFeedback())
   }
 }
 
