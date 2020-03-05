@@ -19,5 +19,6 @@ export const BackToSignIn = styled(Link)`
   color: #000;
   font-weight: 600;
   margin-top: 6rem;
+  margin-left: 2rem;
 `;
 
