@@ -23,14 +23,12 @@ export const LoginArea = styled.form`
 
 export const LoginLogo = styled.img`
   text-align: center;
-  width: 20rem;
-  height: 20rem;
+  width: 30rem;
+  height: 30rem;
   margin-bottom: 3.5rem;
 
   @media only screen and (min-height: 700px) and (orientation: portrait) {
     margin-top: 5rem;
-    width: 30rem;
-    height: 30rem;
   }
   @media only screen and (max-height: 450px) and (orientation: landscape) {
     margin-top: 0rem;
