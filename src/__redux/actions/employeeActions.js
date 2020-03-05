@@ -12,8 +12,8 @@ export const addEmployee = (info) => {
     .then((res) => {
       firestore.collection('clients').doc(admin_user_uid).get()
       .then((admresult) => {
-        const { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor } = admresult.data();
-        return { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor }
+        const { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkSpecBg, companyDarkSpecBord, companyLightSpecBg, companyLightSpecBord, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor } = admresult.data();
+        return { company, logo, subscription, companyDarkContainerColor, companyDarkFontColor, companyDarkSpecBg, companyDarkSpecBord, companyLightSpecBg, companyLightSpecBord, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor }
       })
       .then((compInfo) => {
         firestore.collection('clients').doc(res.user.uid).set({
@@ -23,9 +23,13 @@ export const addEmployee = (info) => {
           companyLightContainerColor: compInfo.companyLightContainerColor,
           companyLightFontColor: compInfo.companyLightFontColor,
           companyLightNavbarColor: compInfo.companyLightNavbarColor,
+          companyLightSpecBg: compInfo.companyLightSpecBg,
+          companyLightSpecBord: compInfo.companyLightSpecBord,
           companyDarkContainerColor: compInfo.companyDarkContainerColor,
           companyDarkFontColor: compInfo.companyDarkFontColor,
           companyDarkNavbarColor: compInfo.companyDarkNavbarColor,
+          companyDarkSpecBg: compInfo.companyDarkSpecBg,
+          companyDarkSpecBord: compInfo.companyDarkSpecBord,
           role: 'Employee',
           company: compInfo.company,
           logo: compInfo.logo,

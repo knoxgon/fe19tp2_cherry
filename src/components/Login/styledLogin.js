@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Theme from '../../__config/theme';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router-dom';
 
 export const LoginContainerArea = styled.div`
   display: flex;
@@ -12,7 +13,7 @@ export const LoginContainerArea = styled.div`
   background: linear-gradient(to top, #636FA4, #E8CBC0);
 
   @media only screen and (max-height: 400px) and (orientation: landscape) {
-    height: initial;
+    height: 50rem;
   }
 `;
 
@@ -22,19 +23,17 @@ export const LoginArea = styled.form`
 
 export const LoginLogo = styled.img`
   text-align: center;
-  width: 20rem;
-  height: 20rem;
+  width: 30rem;
+  height: 30rem;
   margin-bottom: 3.5rem;
 
   @media only screen and (min-height: 700px) and (orientation: portrait) {
     margin-top: 5rem;
-    width: 30rem;
-    height: 30rem;
   }
   @media only screen and (max-height: 450px) and (orientation: landscape) {
     margin-top: 0rem;
-    width: 15rem;
-    height: 15rem;
+    width: 25rem;
+    height: 25rem;
   }
 `;
 
@@ -103,7 +102,7 @@ export const ErrorArea = styled.div`
   margin: 0 auto;
   margin-top: 2.5rem;
   text-align: center;
-  width: auto;
+  width: 28rem;
   height: 3rem;
   color: #4e1717;
   font-size: 1.75rem;
@@ -112,7 +111,7 @@ export const ErrorArea = styled.div`
   font-weight: 900;
 `;
 
-export const RecoverPasswordField = styled.a`
+export const RecoverPasswordField = styled(Link)`
   display: flex;
   text-align: right;
   justify-content: flex-end;

@@ -32,12 +32,12 @@ const Login = (props) => {
             <Input placeholder="Password" name="password" type="password" onChange={onChangeInputHandler}></Input>
           </InputArea>
           <RecoverPasswordFieldWrapper>
-            <RecoverPasswordField>Forgot Password?</RecoverPasswordField>
+            <RecoverPasswordField to="/recovery">Forgot Password?</RecoverPasswordField>
           </RecoverPasswordFieldWrapper>
           <LoginButtonWrapper>
            <LoginButton type="submit">Login</LoginButton>
           </LoginButtonWrapper>
-          {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
+          {props.feedback ? <ErrorArea >{props.feedback}</ErrorArea> : null}
         </LoginArea>
       </LoginContainerArea>
   )
@@ -46,7 +46,7 @@ const Login = (props) => {
 const mapStateToProps = (state) => {
   return {
     uid: state.firebase.auth.uid,
-    authError: state.auth.authError
+    feedback: state.auth.feedback
   }
 }
 
