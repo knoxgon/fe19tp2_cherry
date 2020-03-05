@@ -1,37 +1,39 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, InputArea, InputImage, EmailInput, LoginButton, ErrorArea, LoginContainerArea, ForgotPassword } from './styledForgotPassword';
+import { LoginArea, LoginLogo, LoginButtonWrapper, InputArea, InputImage, Input, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordFieldWrapper, RecoverPasswordField } from './styledLogin';
 import { connect } from 'react-redux';
-import { signin } from '../../__redux/actions/authActions';
 import { Redirect } from 'react-router-dom';
+import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
+import { recoverPassword } from '../../__redux/actions/authActions';
+import { BackToSignInWrapper, BackToSignIn } from './styledForgotPassword';
 
+const ForgotPassword = (props) => {
+  const [cred, setCred] = useState('');
 
-
-const Login = (props) => {
-  const [creds, setCreds] = useState({ email: '', password: ''});
-
-  const handleLogin = (e) => {
-    e.preventDefault();
-    props.signin(creds);
+  const handleRecovery = (e) => {
+    e.preventDefault()
+    props.recover(cred)
   }
 
   const onChangeInputHandler = (e) => {
-    const { name, value } = e.target;
-    setCreds({...creds, [name]: value });
+    setCred(e.target.value)
   }
 
   return (
     (props.uid) ? <Redirect to='/account'/> :
       <LoginContainerArea>
-        <LoginArea onSubmit={handleLogin}>
+        <LoginArea onSubmit={handleRecovery}>
           <LoginLogo src={require('../../assets/logo_transparent.png')} alt="complogo"></LoginLogo>
-          <ForgotPassword> Enter email to recover password </ForgotPassword>
-          <br/>
-          <InputArea>
-            <InputImage src={require('../../assets/login/user.svg')}></InputImage>
-            <EmailInput placeholder="Email" name="email" type="email" onChange={onChangeInputHandler}></EmailInput>
+          <InputArea style={{marginBottom: '2rem'}}>
+            <InputImage icon={faUserAlt}></InputImage>
+            <Input placeholder="Enter email" name="email" type="email" onChange={onChangeInputHandler}></Input>
           </InputArea>
-          <LoginButton type="submit">Reset</LoginButton>
-          {props.authError ? <ErrorArea >{props.authError}</ErrorArea> : null}
+          <LoginButtonWrapper>
+           <LoginButton type="submit">Reset</LoginButton>
+          </LoginButtonWrapper>
+          <BackToSignInWrapper>
+            <BackToSignIn to="/login">Click here to sign in</BackToSignIn>
+          </BackToSignInWrapper>
+          {props.feedback ? <ErrorArea >{props.feedback}</ErrorArea> : null}
         </LoginArea>
       </LoginContainerArea>
   )
