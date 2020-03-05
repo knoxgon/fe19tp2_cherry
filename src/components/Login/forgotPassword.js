@@ -42,15 +42,14 @@ const ForgotPassword = (props) => {
 const mapStateToProps = (state) => {
   return {
     uid: state.firebase.auth.uid,
-    authError: state.auth.authError
+    feedback: state.auth.feedback
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signin: (credentials) => dispatch(signin(credentials))
+    recover: (email) => dispatch(recoverPassword(email))
   }
 }
 
-//First parameter is state, second dispatch
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(ForgotPassword);
