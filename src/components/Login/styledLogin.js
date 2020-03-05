@@ -32,8 +32,8 @@ export const LoginLogo = styled.img`
   }
   @media only screen and (max-height: 450px) and (orientation: landscape) {
     margin-top: 0rem;
-    width: 15rem;
-    height: 15rem;
+    width: 25rem;
+    height: 25rem;
   }
 `;
 
