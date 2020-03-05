@@ -21,17 +21,8 @@ const Styles = styled.div`
         }
       }
     }
-
     th,
-    /* {
-      th:nth-last-child(3) {
-        text-align: center;
-        border-right: 0;
-        color: purple;
-        font-weight: 1000;
-        cursor: pointer;
-      }
-    } */
+    
     td {
       margin: 0;
       padding: 1.5rem;
@@ -51,34 +42,34 @@ const Styles = styled.div`
 `
 
 const UserTable = () => {
-  const [users, setUsers] = useState(
-    [
+  const [users, setUsers] = useState([
       {name: "Eva", role: "Employee", email: "eva@bev.com", id: "a"},
       {name: "Peter", role: "Admin", email: "peter@bev.com", id: "b"},
-      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"},
-      {name: "", role: "Employee", email: "", id: "d"}    
+      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"} 
     ])
+  const [user, setUser] = useState({name: null, role: null, email: null})
 
-    const deleteUser = (e) => {
-      const filteredUsers = removeUser(e.target.id);
-      setUsers(filteredUsers);
-    }
 
-    const removeUser = (id) => {
-      return users.filter(user => user.id !== id)
-    }
+  const deleteUser = (e) => {
+    const filteredUsers = removeUser(e.target.id);
+    setUsers(filteredUsers);
+  }
 
-    const addUser = (id) => {
-      return users.push()
-    }
+  const removeUser = (id) => {
+    return users.filter(user => user.id !== id)
+  }
+    
+  const addUser = () => {
+    users.push({name: "", role: "Employee", email: "", id: "d"});
+  }
 
-    const newUser = (e) => {
-      const addedUser = addUser(e.target.id);
-      setUsers(addedUser)
-    }
+  const onChangeListener = (e) => {
+    setUser({
+      ...user, 
+      [e.target.id]: e.target.value
+    })
+  }
 
-  
-  
   return (
     <Wrapper>
       <Styles>
@@ -102,6 +93,19 @@ const UserTable = () => {
                   <td id={user.id} onClick={deleteUser}>X</td>
                 </tr>
             })}
+            <tr>
+              <td></td>
+              <td id="name">
+                <input type="text" onChange={onChangeListener}></input>
+              </td>
+              <td id="role">
+                <input type="text" onChange={onChangeListener}></input>
+              </td>
+              <td id="email">
+                <input type="email" onChange={onChangeListener}></input>
+              </td>
+              <td onClick={addUser}>OK</td> 
+            </tr>
           </tbody>
         </table>
       </Styles>
