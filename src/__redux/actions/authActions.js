@@ -1,4 +1,4 @@
-import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_OUT, PASSWORD_RECOVERY_SUCCESS, PASSWORD_RECOVERY_FAILURE } from "./types"
+import { SIGN_IN_SUCCESS, SIGN_IN_ERROR, SIGN_OUT, RESET_FEEDBACK, PASSWORD_RECOVERY_SUCCESS, PASSWORD_RECOVERY_FAILURE } from "./types"
 
 
 export const signin = (credentials) => {
@@ -48,5 +48,13 @@ export const recoverPassword = (email) => {
           payload: fail.message
         })
       });
+  }
+}
+
+export const resetFeedback = () => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: RESET_FEEDBACK
+    })
   }
 }
