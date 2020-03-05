@@ -103,7 +103,6 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleM
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.darkModeToggler.activeTheme);
   return {
     userInfo: state.userinfo.info,
     theme: state.darkModeToggler.activeTheme,
