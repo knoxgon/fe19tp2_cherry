@@ -21,6 +21,8 @@ export const GMArea = styled(Resizable)`
   background-color: white;
   opacity: 0.9;
   border-radius: 0.5rem;
+
+  background: ${props => props.bColor};
   
   @media screen and (max-width: ${Theme.screenSize.small}){
     margin-left: 0.25rem;
@@ -34,6 +36,7 @@ export const GMTitle = styled.div`
   text-align: center;
   padding-bottom: 0.75rem;
   color: ${props => props.color};
+  transition: 0.6s ease; // change color slower when toggling dark mode
 `;
 
 export const GMTop = styled.div`
