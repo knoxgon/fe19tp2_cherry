@@ -1,14 +1,32 @@
 import styled from 'styled-components'
 import Theme from '../../__config/theme';
 import { Resizable } from 're-resizable';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export const MCCloser = styled.img`
+export const GraphFeature = styled(FontAwesomeIcon)`
   cursor: pointer;
-  width: 3.5rem;
-  height: 3.5rem;
+  font-size: 2.75rem;
+  color: ${props => props.fcolor};
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.1);
+    opacity: 1;
   }
+  &:first-child {
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  &:last-child {
+    margin-top: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  transition: all 0.75s linear;
+  opacity: 0.5;
+`;
+
+export const GraphFeatureHold = styled(GraphFeature)`
+  cursor: grab;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
 `;
 
 export const GMCircle = styled.div`
