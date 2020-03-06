@@ -58,17 +58,21 @@ export const GMTitle = styled.div`
 `;
 
 export const GMTop = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   font-size: 1.5rem;
+  margin-bottom: 2rem;
   font-weight: 900;
-  text-align: right;
 `;
 
 export const GMRH = styled.div`
   position: absolute;
   bottom: 0;
   right: 0;
-  border-bottom: 0.5rem solid orange;
-  border-right: 0.5rem solid orange;
+  opacity: 0.5;
+  border-bottom: 0.5rem solid ${props => props.fcolor};
+  border-right: 0.5rem solid ${props => props.fcolor};
   height: 0.75rem;
   width: 0.75rem;
 `;
