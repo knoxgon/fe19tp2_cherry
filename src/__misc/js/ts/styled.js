@@ -8,6 +8,7 @@ export const SwitchWrapper = styled.button`
   height: 3rem;
   outline: none;
   width: 6rem;
+  margin-right: 1.5rem;
   border-radius: 3rem;
   background: ${props => props.bgcol};
   border: 2px solid ${props => props.brcol};
