@@ -15,7 +15,7 @@ const ContainerGraphView = ({ brewort, central, eraseContainer, containers, them
       <Draggable draggableId={dsid} key={dsid} index={i}>
         {(provided, snapshot) => (
           <GMCircle ref={provided.innerRef} {...provided.draggableProps}>
-            <GMArea bColor={theme.graphColor} size={{ width: bsw, height: bsh }} maxHeight={bsmh} maxWidth={bsmw} minHeight={bslh} minWidth={bslw} enable={{ top: false, right: false, bottom: false, left: false, topRight: false, bottomRight: true, bottomLeft: false, topLeft: false }}
+            <GMArea bcolor={theme.graphColor} size={{ width: bsw, height: bsh }} maxHeight={bsmh} maxWidth={bsmw} minHeight={bslh} minWidth={bslw} enable={{ top: false, right: false, bottom: false, left: false, topRight: false, bottomRight: true, bottomLeft: false, topLeft: false }}
               onResizeStop={(bz, dc, ac, lc) => brewort(dsid, lc.width, lc.height)}>
               <GMTop {...provided.dragHandleProps} color="#0fc4ac">
                 <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
