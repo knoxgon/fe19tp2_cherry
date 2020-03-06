@@ -22,7 +22,7 @@ export const GMArea = styled(Resizable)`
   opacity: 0.9;
   border-radius: 0.5rem;
 
-  background: ${props => props.bColor};
+  background: ${props => props.bcolor};
   
   @media screen and (max-width: ${Theme.screenSize.small}){
     margin-left: 0.25rem;
