@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { containerClose, brewsend } from '../../__redux/actions/containerActions';
 import random from 'randomstring';
-import { GMArea, MCCloser, GMTitle, GMTop, GMRH, GMCircle } from "./styled"
+import { GMArea, GraphFeature, GMTitle, GMTop, GMRH, GMCircle, GraphFeatureHold } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
 import PieGraph from '../Graph/Pie/pie'
 import { Draggable } from 'react-beautiful-dnd';
+import { faTrashAlt, faSave, faGripLines } from '@fortawesome/free-solid-svg-icons';
 
 const ContainerGraphView = ({ brewort, central, eraseContainer, containers, theme }) => {
   const containerOnDel = (dsid) => eraseContainer(dsid)
@@ -17,8 +18,12 @@ const ContainerGraphView = ({ brewort, central, eraseContainer, containers, them
           <GMCircle ref={provided.innerRef} {...provided.draggableProps}>
             <GMArea bcolor={theme.graphColor} size={{ width: bsw, height: bsh }} maxHeight={bsmh} maxWidth={bsmw} minHeight={bslh} minWidth={bslw} enable={{ top: false, right: false, bottom: false, left: false, topRight: false, bottomRight: true, bottomLeft: false, topLeft: false }}
               onResizeStop={(bz, dc, ac, lc) => brewort(dsid, lc.width, lc.height)}>
-              <GMTop {...provided.dragHandleProps} color="#0fc4ac">
-                <MCCloser src={require('../../assets/employee/bin.svg')} onClick={() => containerOnDel(dsid)}></MCCloser>
+              <GMTop color="#0fc4ac">
+                <GraphFeature icon={faSave} fcolor={theme.fontColor} onClick={() => containerOnDel(dsid)}></GraphFeature>
+                <div {...provided.dragHandleProps}>
+                  <GraphFeatureHold icon={faGripLines} fcolor={theme.fontColor}></GraphFeatureHold>
+                </div>
+                <GraphFeature icon={faTrashAlt} fcolor={theme.fontColor} onClick={() => containerOnDel(dsid)}></GraphFeature>
               </GMTop>
               {central.map((grafData, j) => {
                 if (grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'candle') {
@@ -38,7 +43,7 @@ const ContainerGraphView = ({ brewort, central, eraseContainer, containers, them
                   </React.Fragment>
                 } return null;
               })}
-              <GMRH/>
+              <GMRH fcolor={theme.fontColor}/>
             </GMArea>
           </GMCircle>)}
       </Draggable>
