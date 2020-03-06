@@ -4,13 +4,13 @@ import {options, optionsBar} from '../options';
 import { GraphWrapper, GraphWrapperBar } from '../styledGraph'
 
 
-const CandleGraph = ({containerId, barid, primary, alternate}) => {
+const CandleGraph = ({containerId, barid, primary, alternate, theme}) => {
   return (
     <React.Fragment>
       {alternate[0].data.length > 0 ?
         <React.Fragment>
-          <GraphWrapper height={300} options={options(containerId)} series={primary} type="candlestick" />
-          <GraphWrapperBar options={optionsBar(containerId, barid)} series={alternate} type="bar" height="150px" />
+          <GraphWrapper height={300} options={options(containerId, theme.fontColor, theme.graphColor)} series={primary} type="candlestick" />
+          <GraphWrapperBar options={optionsBar(containerId, barid, theme.fontColor, theme.graphColor)} series={alternate} type="bar" height="150px" />
         </React.Fragment>
        : <GraphWrapper options={options(containerId)} series={primary} type="candlestick" />
       }
@@ -23,7 +23,8 @@ const mapStateToProps = (state, props) => {
     containerId: props.containerId,
     barid: props.barid,
     primary: props.primary,
-    alternate: props.alternate
+    alternate: props.alternate,
+    theme: state.darkModeToggler.activeTheme
   }
 }
 
