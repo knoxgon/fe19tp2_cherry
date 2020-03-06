@@ -1,10 +1,12 @@
 import dayjs from 'dayjs';
 
-export const options = (id) => {
+export const options = (id, fcolor, bcolor) => {
   return {
     chart: { 
       id: id,
       type: 'candlestick',
+      foreColor: fcolor,
+      background: bcolor,
       toolbar: {
         show: true,
         tools: {
@@ -45,11 +47,13 @@ export const options = (id) => {
   }
 }
 
-export const optionsBar = (trgId, id) => {
+export const optionsBar = (trgId, id, fcolor, bcolor) => {
   return {
     chart: {
       type: 'bar',
       id: id,
+      foreColor: fcolor,
+      background: bcolor,
       brush: {
         enabled: true,
         target: trgId,
@@ -91,11 +95,13 @@ export const optionsBar = (trgId, id) => {
   }
 }
 
-export const optionsLine = (dsid, catry) => {
+export const optionsLine = (dsid, catry, fcolor, bcolor) => {
   return {
     chart: {
       id: dsid,
       type: 'line',
+      foreColor: fcolor,
+      background: bcolor,
       toolbar: {
         show: true,
         tools: {
@@ -143,11 +149,13 @@ export const optionsLine = (dsid, catry) => {
   }
 }
 
-export const optionsPie = (dsid) => {
+export const optionsPie = (dsid, fcolor, bcolor) => {
   return {
     chart: {
       type: 'pie',
-      id: dsid
+      id: dsid,
+      foreColor: fcolor,
+      background: bcolor,
     },
     labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
     responsive: [{
