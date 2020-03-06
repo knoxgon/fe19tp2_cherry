@@ -194,3 +194,10 @@ export const GraphContainer = styled.div`
     height: calc(100vh - 10.1rem);
   }
 `;
+
+export const HelperWizard = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  cursor: pointer;
+  color: ${props => props.fcolor};
+  transition: all 0.75s linear;
+`;
