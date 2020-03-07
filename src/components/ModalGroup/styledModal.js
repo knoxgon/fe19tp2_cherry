@@ -75,6 +75,7 @@ const FormModal = styled.form`
 
 export const CandleLabel = styled.label`
   font-size: 1.5rem;
+  margin-bottom: 0.5rem;
   font-weight: 600;
   color: ${props => props.fcolor};
 `;
