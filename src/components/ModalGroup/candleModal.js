@@ -67,7 +67,7 @@ const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, get
             <CMDateTimePicker name="dateto" onChange={onChangeDateToInput} value={dtpTo} maxDate={new Date()} minDate={dtpFrom} />
           </AreaWrap>
           <AreaWrap>
-            <CandleLabel fcolor={theme.fontColor} htmlFor="platform">Platform</CandleLabel>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="platform">Market</CandleLabel>
             <CMSelect name="platform" onChange={onChangePlatform} options={platforms}></CMSelect>
           </AreaWrap>
           <AreaWrap>
@@ -77,7 +77,7 @@ const CandleModal = ({ getinfo, getExc, exchangeSymbolGroup, exchangeSymbol, get
           {exchangeSymbolGroup.length &&
             <React.Fragment>
               <AreaWrap>
-                <CandleLabel fcolor={theme.fontColor} htmlFor="symbolgroup">Market</CandleLabel>
+                <CandleLabel fcolor={theme.fontColor} htmlFor="symbolgroup">Broker/Platform</CandleLabel>
                 <CMSelect name="symbolgroup" onChange={onChangeSymbolGroup} options={exchangeSymbolGroup} value={{label: inputs.selectedSymbolGroup}}></CMSelect>
               </AreaWrap>
             </React.Fragment>}

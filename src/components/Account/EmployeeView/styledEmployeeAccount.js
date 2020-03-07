@@ -175,6 +175,7 @@ export const GraphContainer = styled.div`
   flex-wrap: wrap;
   height: fit-content;
   flex-grow: 1;
+  align-content: flex-start;
   overflow: scroll;
   background-color: ${props => props.compContColor};
   transition: all 0.75s linear;
