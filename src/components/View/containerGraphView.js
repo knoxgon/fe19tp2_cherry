@@ -49,12 +49,28 @@ const ContainerGraphView = ({ getcmp, dyntick, peers, brewort, central, eraseCon
                 } if (grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'line') {
                   return <React.Fragment key={j}>
                     <GMTitle color={theme.fontColor}>{grafData.symcomp}</GMTitle>
-                    <LineGraph series={grafData.series} period={grafData.period} symcomp={grafData.symcomp} containerId={dsid} ></LineGraph>
+                    <LineGraph series={grafData.series} period={grafData.period} symcomp={grafData.symcomp} containerId={dsid}></LineGraph>
                   </React.Fragment>
                 } if (grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'pie') {
                   return <React.Fragment key={j}>
                     <GMTitle color={theme.fontColor}>{grafData.compname} - {grafData.period}</GMTitle>
-                    <PieGraph series={grafData.series} containerId={dsid}></PieGraph>
+                    <div style={{display: 'flex', justifyContent: 'center'}}>
+                      <GMSelect onChange={(e) => updateData(grafData.dsid, grafData.compname, e)} options={peers.find(p => p.compname === grafData.compname).periods}></GMSelect>
+                    </div>
+                    <PieGraph series={grafData.series} containerId={dsid} opts={grafData.rule}></PieGraph>
+                  </React.Fragment>
+                } if (grafData.status === 'ok' && grafData.dsid === dsid && grafData.gtype === 'area') {
+                  return <React.Fragment key={j}>
+                    <GMTitle color={theme.fontColor}>{grafData.compname.label}</GMTitle>
+                    <div style={{ fontSize: '1.5rem', display: 'flex', justifyContent: 'flex-start', alignItems: 'center', flexWrap: 'column wrap' }}>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="y50" style={intra === 'y50' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>Max</AGMButton>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="y5" style={intra === 'y5' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>5yr</AGMButton>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="y1" style={intra === 'y1' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>1yr</AGMButton>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="m6" style={intra === 'm6' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>6mon</AGMButton>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="m1" style={intra === 'm1' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>1mon</AGMButton>
+                      <AGMButton fcolor ={theme.fontColor} bcolor={theme.graphColor} value="d5" style={intra === 'd5' ? {color: 'red', fontWeight: 'bold', borderBottom: `2px solid ${theme.swbrColor}`}: {color: theme.fontColor}} onClick={(e) => onChangeIntra(grafData.dsid, grafData.compname, e)}>Latest</AGMButton>
+                    </div>
+                    <AreaGraph series={grafData.series} from={grafData.from} compname={grafData.compname} containerId={dsid}></AreaGraph>
                   </React.Fragment>
                 } return null;
               })}
