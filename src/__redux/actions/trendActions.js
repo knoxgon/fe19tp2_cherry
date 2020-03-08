@@ -2,7 +2,7 @@ import { FETCH_RECOMMENTATION_TRENDS_SUCCESS, FETCH_RECOMMENTATION_TRENDS_UPDATE
 import { containerCreate } from './containerActions';
 import Axios from 'axios';
 import { firePieModal } from './modalActions';
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+import { months } from '../../__misc/dt';
 
 export const trendsPrefetch = (symbol) => {
   return (dispatch, getState) => {
@@ -51,7 +51,7 @@ export const trends = (period, compname) => {
         else if((totalbuy > totalsell) && (totalbuy > totalhold)) recommendation = {act: 'Buy', color: "#1998F9"}
         else if((totalsell > totalbuy) && (totalsell > totalhold)) recommendation = {act: 'Sell', color: "#19E49F"}
         const data = Array.of(totalbuy, totalsell, totalhold)
-        const parsedate = months[parseInt(period.slice(5, 7)) - 1] + '/' + period.slice(0, 4);
+        const parsedate = months[parseInt(period.slice(5, 7)) - 1] + '/' + period.slice(2, 4);
         dispatch(containerCreate('p', 300, 350, 400, 450, 250, 330))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(firePieModal())
