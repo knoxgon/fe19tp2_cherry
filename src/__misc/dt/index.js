@@ -9,3 +9,4 @@ export const day5 = () => parseInt(new Date().setDate(new Date().getDate() - 5) 
 export const day2 = () => parseInt(new Date().setDate(new Date().getDate() - 2) / 1000);
 export const day1 = () => parseInt(new Date().setDate(new Date().getDate() - 1) / 1000);
 export const currentTime = () => parseInt(Date.now() / 1000);
+export const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
