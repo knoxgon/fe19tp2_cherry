@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Theme from '../../__config/theme';
 import { Resizable } from 're-resizable';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Select from 'react-select';
 
 export const GraphFeature = styled(FontAwesomeIcon)`
   cursor: pointer;
@@ -33,6 +34,13 @@ export const GMCircle = styled.div`
   margin-left: 2rem;
   margin-top: 2rem;
   height: fit-content;
+
+  @media screen and (max-width: ${Theme.screenSize.small}){
+    &:first-child {
+      margin-left: 0rem;
+    }
+    margin-left: 0.25rem;
+  }
 `;
 
 export const GMArea = styled(Resizable)`
@@ -48,13 +56,30 @@ export const GMArea = styled(Resizable)`
   }
 `;
 
+export const AGMButton = styled.button`
+  border: none;
+  outline: none;
+  background-color: ${props => props.bcolor};
+  margin-right: 1rem;
+`;
+
 export const GMTitle = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
   text-align: center;
   padding-bottom: 0.75rem;
   color: ${props => props.color};
-  transition: 0.6s ease; // change color slower when toggling dark mode
+  transition: 0.75s ease;
+`;
+
+export const GMSelect = styled(Select)`
+  font-weight: 700;
+  font-size: 1.5rem;
+  text-align: center;
+  width: 17rem;
+  padding-bottom: 0.75rem;
+  outline: none;
+  transition: 0.75s ease;
 `;
 
 export const GMTop = styled.div`
