@@ -31,6 +31,7 @@ export const containerCreate = (t, w, h, mw, mh, lw, lh) => {
     dispatch({
       type: CONTAINER_ADD,
       payload: {
+        gwtype: t,
         dsid: random.generate(20),
         bsw: w,
         bsh: h,
