@@ -15,6 +15,7 @@ import { pieModalReducer } from './pieModalReducer';
 import { prefetchReducer } from './prefetchReducer';
 import { darkModeReducer } from './darkModeReducer';
 import { qTriggerReducer } from './qtriggerReducer';
+import { postfetchReducer } from './postfetchReducer';
 
 export const rootReducer = combineReducers({
   auth: authReducer,
@@ -25,6 +26,7 @@ export const rootReducer = combineReducers({
   firestore: firestoreReducer,
   central: centralReducer,
   predata: prefetchReducer,
+  postdata: postfetchReducer,
   exchangeSymbolGroup: exchangeTypeSymGrpReducer,
   exchangeSymbol: exchangeSymReducer,
   containers: containerReducer,
