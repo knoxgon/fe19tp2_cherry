@@ -1,7 +1,8 @@
-import { FETCH_RECOMMENTATION_TRENDS_SUCCESS, FETCH_RECOMMENTATION_TRENDS_FAILURE, PREFETCH_RECOMMENTATION_TRENDS_SUCCESS, PREFETCH_RECOMMENTATION_TRENDS_FAILURE } from './types';
+import { FETCH_RECOMMENTATION_TRENDS_SUCCESS, FETCH_RECOMMENTATION_TRENDS_UPDATE, FETCH_RECOMMENTATION_TRENDS_FAILURE, PREFETCH_RECOMMENTATION_TRENDS_SUCCESS, PREFETCH_RECOMMENTATION_TRENDS_FAILURE } from './types';
 import { containerCreate } from './containerActions';
 import Axios from 'axios';
 import { firePieModal } from './modalActions';
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 export const trendsPrefetch = (symbol) => {
   return (dispatch, getState) => {
@@ -10,7 +11,7 @@ export const trendsPrefetch = (symbol) => {
       if(result.data.length === 0) {
         throw new Error('No company records were found')
       }
-      const prepPeriods = result.data.map(el => ({value: el.period, label: el.period}));
+      const prepPeriods = result.data.map(el => ({value: el.period, label: months[parseInt(el.period.slice(5, 7)) - 1] + '/' + el.period.slice(0, 4)}));
       dispatch({
         type: PREFETCH_RECOMMENTATION_TRENDS_SUCCESS,
         payload: {
@@ -42,8 +43,16 @@ export const trends = (period, compname) => {
           errMsg: `No records found for ${period}`
         })
       } else {
-        const data = Array.of(procItem.buy, procItem.hold, procItem.sell, procItem.strongBuy, procItem.strongSell)
-        dispatch(containerCreate('p', 200, 220, 300, 300, 200, 220))
+        let recommendation = {act: 'Indecisive', color: "#A79289"}
+        const totalbuy = procItem.buy + procItem.strongBuy
+        const totalsell = procItem.sell + procItem.strongSell
+        const totalhold = procItem.hold
+        if((totalhold > totalbuy) && (totalhold > totalsell)) recommendation = {act: 'Hold', color: "#FDB62E"}
+        else if((totalbuy > totalsell) && (totalbuy > totalhold)) recommendation = {act: 'Buy', color: "#1998F9"}
+        else if((totalsell > totalbuy) && (totalsell > totalhold)) recommendation = {act: 'Sell', color: "#19E49F"}
+        const data = Array.of(totalbuy, totalsell, totalhold)
+        const parsedate = months[parseInt(period.slice(5, 7)) - 1] + '/' + period.slice(0, 4);
+        dispatch(containerCreate('p', 300, 350, 400, 450, 250, 330))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(firePieModal())
         dispatch({
@@ -51,8 +60,9 @@ export const trends = (period, compname) => {
           payload: {
             dsid: containerId,
             data,
-            period,
-            compname
+            period: parsedate,
+            compname,
+            recommendation
           }
         })
       }
