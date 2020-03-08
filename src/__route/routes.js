@@ -5,6 +5,7 @@ import Login from  '../components/Login/login'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { connect } from 'react-redux';
 import AddClient from '../components/AddClient/addClient'
+import ForgotPassword from '../components/Login/forgotPassword';
 
 const Routes = ({auth}) => {
   return (
@@ -12,6 +13,7 @@ const Routes = ({auth}) => {
       <PrivateRoute exact path="/account" component={Account} authenticated={auth.uid} />
       <Route exact path="/solutions" />
       <Route exact path="/login" component={Login} />
+      <Route path="/recovery" component={ForgotPassword} />
       <Route exact path="/about" />
       <Route exact path="/client" component={AddClient} />
       <Redirect to="/login"></Redirect>

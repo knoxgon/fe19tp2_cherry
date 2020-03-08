@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
-import { switchQTC, switchQTL, switchQTP, falsifyAll } from "../../../__redux/actions/qtriggerAction";
-import { TutorBox, TutorButtonCaps, TutorCont } from "./styled";
+import { switchQTC, switchQTL, switchQTP, falsifyAll, HQToggler } from "../../../__redux/actions/qtriggerAction";
+import { TutorBox, TutorButtonCaps, TutorCont, TutorClose } from "./styled";
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
-const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql}) => {
+const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql, hqSwitch}) => {
   const fireToggNext = (e) => {
     const trg = e.target.id;
     switch(trg) {
@@ -34,17 +35,21 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql}) => {
     }
   }
 
+  const onClickCloser = (e) => {
+    hqSwitch()
+  }
+
   return (
     <React.Fragment>
       {qc ?
         <TutorBox id="cid">
           <TutorCont>
+            <TutorClose icon={faTimes} onClick={onClickCloser}/>
             <h2>Candle chart</h2>
-            <br/>
-            <p>Illustrates movements in the price between comparable currencies from Forex or Crypto markets.</p>
+            <p>This graph illustrates the movement of the realtime exchange rate for any comparable pair of digital currency (e.g., Zcash (ZEC) to BTC (Bitcoin)) and physical currency (e.g., USD/SEK) from chosen broker/platform.</p>
             <br/>
             <TutorButtonCaps>
-              <button disabled>Prev</button>
+              <button disabled style={{'visibility': 'hidden'}}>Prev</button>
               <button id="ccn" onClick={fireToggNext}>Next</button>
             </TutorButtonCaps>
           </TutorCont>
@@ -52,6 +57,7 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql}) => {
         : qp ?
           <TutorBox id="pid">
             <TutorCont>
+              <TutorClose icon={faTimes} onClick={onClickCloser}/>
               <h2>Pie chart</h2>
               <br/>
               <p>Displays historical buy rates for each company.</p>
@@ -65,8 +71,8 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql}) => {
         : ql ? 
           <TutorBox id="lid">
             <TutorCont>
+              <TutorClose icon={faTimes} onClick={onClickCloser}/>
               <h2>Earning surprises - Line chart</h2>
-              <br/>
               <p>
                 Visualizes earnings surprises from as early as 2000. Earning
                 surprise in an unexpected difference between a company's actual
@@ -75,7 +81,7 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql}) => {
                 better than expected over the last quarter. Many times,
                 a positive earning surprise is followed by a jump in the company's
                 share price as soon as the market opens following the announcement.
-              </p><br/>
+              </p>
               <TutorButtonCaps>
                 <button id="lcp" onClick={fireToggPrev}>Prev</button>
                 <button id="lcn" onClick={fireToggNext}>OK</button>
@@ -100,7 +106,8 @@ const mapDispatchToProps = (dispatch) => {
     toggleQC: () => dispatch(switchQTC()),
     toggleQP: () => dispatch(switchQTP()),
     toggleQL: () => dispatch(switchQTL()),
-    toggleOff: () => dispatch(falsifyAll())
+    toggleOff: () => dispatch(falsifyAll()),
+    hqSwitch: () => dispatch(HQToggler())
   }
 }
 

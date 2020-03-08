@@ -17,7 +17,7 @@ export const getInfo = () => {
       .doc(userid)
       .get()
       .then(res => {
-        const { logo, role, companyLightSpecBg, companyLightSpecBord, companyDarkSpecBg, companyDarkSpecBord, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor, firstname, lastname } = res.data();
+        const { logo, role, companyLightSpecBg, companyDarkGraphColor, companyLightGraphColor, companyLightSpecBord, companyDarkSpecBg, companyDarkSpecBord, companyDarkContainerColor, companyDarkFontColor, companyDarkNavbarColor, companyLightContainerColor, companyLightFontColor, companyLightNavbarColor, firstname, lastname } = res.data();
         firebase
           .storage()
           .ref(logo)
@@ -31,13 +31,15 @@ export const getInfo = () => {
                 companyLightContainerColor,
                 companyLightFontColor,
                 companyLightNavbarColor,
+                companyLightSpecBg,
+                companyLightSpecBord,
+                companyLightGraphColor,
                 companyDarkContainerColor,
                 companyDarkFontColor,
                 companyDarkNavbarColor,
-                companyLightSpecBg,
-                companyLightSpecBord,
                 companyDarkSpecBg,
                 companyDarkSpecBord,
+                companyDarkGraphColor,
                 fullName: firstname[0] + ". " + lastname
               }
             })
@@ -47,13 +49,15 @@ export const getInfo = () => {
                 companyLightContainerColor,
                 companyLightFontColor,
                 companyLightNavbarColor,
+                companyLightSpecBg,
+                companyLightSpecBord,
+                companyLightGraphColor,
                 companyDarkContainerColor,
                 companyDarkFontColor,
                 companyDarkNavbarColor,
-                companyLightSpecBg,
-                companyLightSpecBord,
                 companyDarkSpecBg,
-                companyDarkSpecBord
+                companyDarkSpecBord,
+                companyDarkGraphColor
               }
             })
           })

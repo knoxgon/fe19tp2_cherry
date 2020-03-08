@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { signout } from "../../../__redux/actions/authActions";
 import { fireCandleModal, fireLineModal, firePieModal } from "../../../__redux/actions/modalActions";
-import { Wrapper, ClientMenu, UserElement, TopMenu, MainArea, GraphContainer, TopMenuGroupArea, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
+import { Wrapper, ClientMenu, HelperWizard, UserElement, TopMenu, MainArea, GraphContainer, TopMenuGroupArea, MenuImage, MenuGroupArea, MenuDescription, BodyWrapper, StyledImgLogo } from "./styledEmployeeAccount";
 import ContainerGraphView from "../../View/containerGraphView";
-import { faSignOutAlt, faChartLine, faChartPie, faChartBar } from "@fortawesome/free-solid-svg-icons";
+import { faSignOutAlt, faChartLine, faChartPie, faChartBar, faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import CandleModal from '../../ModalGroup/candleModal';
 import LineModal from '../../ModalGroup/lineModal';
 import PieModal from '../../ModalGroup/pieModal';
@@ -15,6 +15,7 @@ import { Droppable, DragDropContext } from "react-beautiful-dnd";
 import { bmwhen } from "../../../__redux/actions/containerActions";
 import QTogg from "../../../__misc/js/qt";
 import { HQToggler } from "../../../__redux/actions/qtriggerAction";
+
 
 const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleModal, fireLineModal, firePieModal, candTogg, lineTogg, pieTogg, bmteffect, dmToggler }) => {
   const darkModeBtn = (e) => {
@@ -51,7 +52,7 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleM
             <StyledImgLogo comptype={comp} src={userInfo.logo} alt="website logo" />
           </TopMenuGroupArea>
           <TopMenuGroupArea onClick={toggleTutor}>
-            <img style={{'cursor': 'pointer'}} width="35" height="35" src={require('../../../assets/question.svg')} alt="questionmark" />
+            <HelperWizard icon={faQuestionCircle} fcolor={theme.fontColor} />
           </TopMenuGroupArea>
           <TopMenuGroupArea>
             <Toggle ocl={darkModeBtn} />
@@ -103,7 +104,6 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleM
 };
 
 const mapStateToProps = (state) => {
-  console.log(state.darkModeToggler.activeTheme);
   return {
     userInfo: state.userinfo.info,
     theme: state.darkModeToggler.activeTheme,

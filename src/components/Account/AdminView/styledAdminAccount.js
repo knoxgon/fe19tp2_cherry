@@ -74,6 +74,8 @@ const FeatureArea = styled.div`
 const FeatureContainer = styled.div`
   display: flex;
 
+  background: ${props => props.bcolor};
+
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
     padding: 0;
