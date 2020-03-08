@@ -69,3 +69,43 @@ export const trends = (period, compname) => {
     }
   }
 }
+
+export const trendspec = (dsid, compname, period) => {
+  return (dispatch, getState) => {
+    if(!period) {
+      dispatch({
+        type: FETCH_RECOMMENTATION_TRENDS_FAILURE,
+        errMsg: 'Please select a period'
+      })
+    } else {
+      const procItem = getState().postdata.find(el => el.compname === compname).series.find(ec => ec.period === period)
+      if(!procItem) {
+        dispatch({
+          type: FETCH_RECOMMENTATION_TRENDS_FAILURE,
+          errMsg: `No records found for ${period}`
+        })
+      } else {
+        let recommendation = {act: 'Indecisive', color: "#A79289"};
+        const totalbuy = procItem.buy + procItem.strongBuy
+        const totalsell = procItem.sell + procItem.strongSell
+        const totalhold = procItem.hold
+        if((totalhold > totalbuy) && (totalhold > totalsell)) recommendation = {act: 'Hold', color: "#FDB62E"}
+        else if((totalbuy > totalsell) && (totalbuy > totalhold)) recommendation = {act: 'Buy', color: "#1998F9"}
+        else if((totalsell > totalbuy) && (totalsell > totalhold)) recommendation = {act: 'Sell', color: "#19E49F"}
+        const data = Array.of(totalbuy, totalsell, totalhold)
+        const parsedate = months[parseInt(period.slice(5, 7)) - 1] + '/' + period.slice(0, 4);
+        dispatch({
+          type: FETCH_RECOMMENTATION_TRENDS_UPDATE,
+          payload: {
+            dsid,
+            data,
+            period: parsedate,
+            compname,
+            recommendation
+          }
+        })
+      }
+    }
+  }
+}
+
