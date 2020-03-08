@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { containerClose, brewsend } from '../../__redux/actions/containerActions';
 import random from 'randomstring';
-import { GMArea, GraphFeature, GMTitle, GMTop, GMRH, GMCircle, GraphFeatureHold } from "./styled"
+import { GMArea, AGMButton, GraphFeature, GMTitle, GMSelect, GMTop, GMRH, GMCircle, GraphFeatureHold } from "./styled"
 import CandleGraph from '../Graph/Candle/candle'
 import LineGraph from '../Graph/Line/line'
 import PieGraph from '../Graph/Pie/pie'
+import AreaGraph from '../Graph/Area/area'
 import { Draggable } from 'react-beautiful-dnd';
 import { faTrashAlt, faSave, faGripLines } from '@fortawesome/free-solid-svg-icons';
+import { trendspec } from '../../__redux/actions/trendActions';
+import { tickUpdate } from '../../__redux/actions/tickrate';
+import { getactAction } from '../../__redux/actions/getact';
 
-const ContainerGraphView = ({ brewort, central, eraseContainer, containers, theme }) => {
+const ContainerGraphView = ({ getcmp, dyntick, peers, brewort, central, eraseContainer, containers, theme, dyntrend }) => {
+  const [intra, setIntra] = useState('d5')
+  useEffect(() => {
+    getcmp();
+  },[getcmp])
   const containerOnDel = (dsid) => eraseContainer(dsid)
+  const updateData = (id, cmp, e) => dyntrend(id, cmp, e.value)
+  const onChangeIntra = (id, cmp, e) => {
+    e.preventDefault();
+    setIntra(e.target.value)
+    dyntick(id, cmp, e.target.value)
+  }
+
   const renderContainers = () => (
     containers.map(({ dsid, bsw, bsh, bsmw, bsmh, bslw, bslh }, i) => (
       <Draggable draggableId={dsid} key={dsid} index={i}>
