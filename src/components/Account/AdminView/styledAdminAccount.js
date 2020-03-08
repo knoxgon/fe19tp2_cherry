@@ -73,15 +73,28 @@ const FeatureArea = styled.div`
 
 const FeatureContainer = styled.div`
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: fit-content;
+  flex-grow: 1;
+  align-content: flex-start;
+  overflow: scroll;
+  background-color: ${props => props.compContColor};
+  transition: all 0.75s linear;
+  width: calc(100vw - 10rem);
+  height: calc(100vh - 8rem);
+  
+  &::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+  }
 
-  background: ${props => props.bcolor};
-
-  @media screen and (max-width: ${Theme.screenSize.xsmall}){
+  @media screen and (max-width: ${Theme.screenSize.small}){
     margin: 0;
     padding: 0;
-    padding-bottom: 10rem;
-    margin-bottom: 7.5rem;
-    width: 100%;
+    width: 100vw;
+    flex-flow: row wrap;
+    height: calc(100vh - 10.1rem);
   }
 `;
 const MenuImage = styled(FontAwesomeIcon)`
