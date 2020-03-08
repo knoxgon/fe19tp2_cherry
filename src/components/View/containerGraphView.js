@@ -89,14 +89,19 @@ const mapStateToProps = (state) => {
   return {
     central: state.central,
     containers: state.containers,
-    theme: state.darkModeToggler.activeTheme
+    theme: state.darkModeToggler.activeTheme,
+    oldpeers: state.predata,
+    peers: state.postdata
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     eraseContainer: (id) => dispatch(containerClose(id)),
-    brewort: (i, a, b) => dispatch(brewsend(i, a, b))
+    brewort: (i, a, b) => dispatch(brewsend(i, a, b)),
+    dyntrend: (ds, comp, dt) => dispatch(trendspec(ds, comp, dt)),
+    dyntick: (ds, comp, int) => dispatch(tickUpdate(ds, comp, int)),
+    getcmp: () => dispatch(getactAction())
   }
 }
 
