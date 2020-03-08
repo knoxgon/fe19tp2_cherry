@@ -8,7 +8,7 @@ import { fireCandleModal } from './modalActions';
 export const exchangeCandleAction = (input) => {
   return (dispatch, getState) => {
     const { selectedPlatform, selectedSymbol, selectedSymbolGroup, selectedResolution, intervalFrom, intervalTo } = input;
-    Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bp3cl47rh5r9d7scmmd0`)
+    Axios(`https://cors-anywhere.herokuapp.com/https://finnhub.io/api/v1/${selectedPlatform}/candle?symbol=${selectedSymbol.value}&resolution=${selectedResolution}&from=${intervalFrom}&to=${intervalTo}&token=bpib37nrh5rbgl0l9l70`)
       .then((result) => {
         if(result.data == null) {
         }
@@ -50,18 +50,9 @@ export const exchangeCandleAction = (input) => {
             alternateBatch.push(mappedData.v_v[i])
           }
         });
-        dispatch(containerCreate('c', 400, 500, 1000, 750, 400, 500))
+        dispatch(containerCreate('c', 400, 580, 2000, 750, 400, 580))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(fireCandleModal())
-
-        // let containerId;
-        // if(getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid) === -1) {
-        //   dispatch(containerCreate())
-        //   containerId = getState().containers[getState().containers.length - 1].dsid
-        // } else {
-        //   const index = getState().containers.findIndex((e, ix) => e.dsid === getState().exchange[ix].dsid);
-        //   containerId = getState().exchange[index].dsid
-        // }
         dispatch({
           type: FETCH_CANDLE_EXCHANGE_SUCCESS,
           payload: {

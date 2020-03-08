@@ -190,9 +190,9 @@ export const GraphContainer = styled.div`
   @media screen and (max-width: ${Theme.screenSize.small}){
     margin: 0;
     padding: 0;
-    width: 100vw;
     flex-flow: row wrap;
     height: calc(100vh - 10.1rem);
+    width: unset;
   }
 `;
 

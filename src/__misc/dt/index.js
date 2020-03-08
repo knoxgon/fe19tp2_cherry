@@ -1,0 +1,12 @@
+export const year50 = () => parseInt(new Date().setFullYear(new Date().getFullYear() - 50) / 1000);
+export const year25 = () => parseInt(new Date().setFullYear(new Date().getFullYear() - 25) / 1000);
+export const year10 = () => parseInt(new Date().setFullYear(new Date().getFullYear() - 10) / 1000);
+export const year5 = () => parseInt(new Date().setFullYear(new Date().getFullYear() - 5) / 1000);
+export const year1 = () => parseInt(new Date().setFullYear(new Date().getFullYear() - 1) / 1000);
+export const month6 = () => parseInt(new Date().setMonth(new Date().getMonth() - 6) / 1000);
+export const month1 = () => parseInt(new Date().setMonth(new Date().getMonth() - 1) / 1000);
+export const day5 = () => parseInt(new Date().setDate(new Date().getDate() - 5) / 1000);
+export const day2 = () => parseInt(new Date().setDate(new Date().getDate() - 2) / 1000);
+export const day1 = () => parseInt(new Date().setDate(new Date().getDate() - 1) / 1000);
+export const currentTime = () => parseInt(Date.now() / 1000);
+export const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];

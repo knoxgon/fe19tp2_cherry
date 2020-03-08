@@ -49,7 +49,7 @@ export const CRModal = styled(RMConnector).attrs({
 `
 
 export const CMSelect = styled(Select)`
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   width: 25rem;
 `;
 

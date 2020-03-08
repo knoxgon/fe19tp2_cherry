@@ -47,7 +47,6 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql, hqSwitch}) 
             <TutorClose icon={faTimes} onClick={onClickCloser}/>
             <h2>Candle chart</h2>
             <p>This graph illustrates the movement of the realtime exchange rate for any comparable pair of digital currency (e.g., Zcash (ZEC) to BTC (Bitcoin)) and physical currency (e.g., USD/SEK) from chosen broker/platform.</p>
-            <br/>
             <TutorButtonCaps>
               <button disabled style={{'visibility': 'hidden'}}>Prev</button>
               <button id="ccn" onClick={fireToggNext}>Next</button>
@@ -59,9 +58,9 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql, hqSwitch}) 
             <TutorCont>
               <TutorClose icon={faTimes} onClick={onClickCloser}/>
               <h2>Pie chart</h2>
-              <br/>
-              <p>Displays historical buy rates for each company.</p>
-              <br/>
+              <p>Displays historical buy/sell/hold rates for the selected company within the selected month period.
+                 Buy/sell/hold are the investment analyst’s recommendations. Higher ratings indicates whether the
+                 stock should be bought/sold/held during the month.</p>
               <TutorButtonCaps>
                 <button id="pcp" onClick={fireToggPrev}>Prev</button>
                 <button id="pcn" onClick={fireToggNext}>Next</button>

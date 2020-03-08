@@ -7,15 +7,4 @@ import icmtrader from './forex-icmtrader-sym-dat';
 import oanda from './forex-oanda-sym-dat';
 import octafx from './forex-octafx-sym-dat';
 import pepperstone from './forex-pepperstone-sym-dat';
-
-export {
-  forexcom,
-  fxcm,
-  fxpig,
-  fxpro,
-  icmarkets,
-  icmtrader,
-  oanda,
-  octafx,
-  pepperstone
-}
+export { forexcom, fxcm, fxpig, fxpro, icmarkets, icmtrader, oanda, octafx, pepperstone}
