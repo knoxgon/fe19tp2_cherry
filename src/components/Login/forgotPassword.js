@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { LoginArea, LoginLogo, LoginButtonWrapper, InputArea, InputImage, Input, LoginButton, ErrorArea, LoginContainerArea, RecoverPasswordFieldWrapper, RecoverPasswordField } from './styledLogin';
+import { LoginArea, LoginLogo, LoginButtonWrapper, InputArea, InputImage, Input, LoginButton, ErrorArea, LoginContainerArea } from './styledLogin';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { faUserAlt, faKey } from '@fortawesome/free-solid-svg-icons';
+import { faUserAlt } from '@fortawesome/free-solid-svg-icons';
 import { recoverPassword, resetFeedback } from '../../__redux/actions/authActions';
 import { BackToSignInWrapper, BackToSignIn } from './styledForgotPassword';
 

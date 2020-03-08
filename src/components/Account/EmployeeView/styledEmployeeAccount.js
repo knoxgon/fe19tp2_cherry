@@ -175,6 +175,7 @@ export const GraphContainer = styled.div`
   flex-wrap: wrap;
   height: fit-content;
   flex-grow: 1;
+  align-content: flex-start;
   overflow: scroll;
   background-color: ${props => props.compContColor};
   transition: all 0.75s linear;
@@ -193,4 +194,11 @@ export const GraphContainer = styled.div`
     flex-flow: row wrap;
     height: calc(100vh - 10.1rem);
   }
+`;
+
+export const HelperWizard = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  cursor: pointer;
+  color: ${props => props.fcolor};
+  transition: all 0.75s linear;
 `;

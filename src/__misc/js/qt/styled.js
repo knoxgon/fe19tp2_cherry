@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import Theme from '../../../__config/theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const collmat = keyframes`{
   0% {
@@ -47,10 +48,28 @@ export const TutorButtonCaps = styled.div`
   }
 `;
 
+export const TutorClose = styled(FontAwesomeIcon)`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-right: 1.5rem;
+  font-size: 3.5rem;
+  color: ${props => props.xcolor};
+
+  &:hover {
+    transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      transform: scale(1);
+    }
+  }
+`;
+
 export const TutorBox = styled.div`
 	position: fixed;
 	background: #88b7d5;
-  width: 30rem;
+  width: 33rem;
   left: 14rem;
   top: 15rem;
   border: 4px solid #c2e1f5;
