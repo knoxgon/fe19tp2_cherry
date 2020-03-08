@@ -84,6 +84,32 @@ export const centralReducer = (state = initState, action) => {
       }
     case FETCH_CANDLE_EXCHANGE_FAILURE:
       return state;
+    case FETCH_TICKRATE_SUCCESS:
+      return [
+        ...state, {
+        gtype: 'area',
+        dsid: action.payload.dsid,
+        status: action.payload.status,
+        series: [{data: [...action.payload.data], name: action.payload.compname.label}],
+        compname: action.payload.compname
+      }]
+    case FETCH_TICKRATE_UPDATE_SUCCESS:
+      const tux = state.findIndex(obj => obj.dsid === action.payload.dsid);
+      const optobj = {
+        ...state[tux],
+        series: [{data: [...action.payload.data], name: action.payload.compname.label}],
+        status: action.payload.status,
+        compname: action.payload.compname
+      };
+      return [
+        ...state.slice(0, tux),
+        optobj,
+        ...state.slice(tux + 1),
+      ]
+    case FETCH_TICKRATE_UPDATE_FAILURE:
+      return state;
+    case FETCH_TICKRATE_FAILURE:
+      return state;
     case CONTAINER_REMOVE:
       if(action.payload.dsid == null)
         return state;
