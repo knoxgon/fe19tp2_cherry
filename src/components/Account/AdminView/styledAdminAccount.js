@@ -66,6 +66,8 @@ const FeatureContainer = styled.div`
   margin-left: 5rem;
   width: 50rem;
 
+  background: ${props => props.bcolor};
+
   @media screen and (max-width: ${Theme.screenSize.xsmall}){
     margin: 0;
     padding: 0;
