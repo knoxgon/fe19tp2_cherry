@@ -6,7 +6,7 @@ import { months } from '../../__misc/dt';
 
 export const surpriseEarnings = (symbol) => {
   return (dispatch, getState) => {
-    Axios(`https://finnhub.io/api/v1/stock/earnings?symbol=${symbol.value}&token=bp3cl47rh5r9d7scmmd0`)
+    Axios(`https://finnhub.io/api/v1/stock/earnings?symbol=${symbol.value}&token=bpib37nrh5rbgl0l9l70`)
     .then(result => {
       if(result.data.length === 0) {
         throw new Error('No company records were found')
