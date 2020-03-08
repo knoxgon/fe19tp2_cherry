@@ -7,6 +7,7 @@ export const containerReducer = (state = initState, action) => {
     case CONTAINER_ADD:
       return [
         ...state, {
+        gwtype: action.payload.gwtype,
         dsid: action.payload.dsid,
         bsw: action.payload.bsw,
         bsh: action.payload.bsh,
