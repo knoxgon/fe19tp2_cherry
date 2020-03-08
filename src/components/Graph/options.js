@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 export const options = (id, fcolor, bcolor) => {
   return {
-    chart: { 
+    chart: {
       id: id,
       type: 'candlestick',
       foreColor: fcolor,
@@ -16,15 +16,14 @@ export const options = (id, fcolor, bcolor) => {
           zoomin: true,
           zoomout: true,
           pan: true,
-          reset: true,
-          customIcons: []
+          reset: true
         },
       }
     },
     xaxis: {
       type: 'category',
       labels: {
-        formatter: function(val) {
+        formatter: function (val) {
           return dayjs(val).format('MMM DD HH:mm')
         }
       }
