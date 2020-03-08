@@ -1,23 +1,28 @@
 import React, { useState } from 'react';
-import IconAddUser from "../../../assets/account/adduser.svg";
-import IconListUsers from "../../../assets/account/listusers.svg";
-import IconLogout from '../../../assets/account/logout.svg';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
-import { FeatureContainer,FeatureArea,FeatureWrapper } from './styledAdminAccount';
-
-import {
-  MainArea,BorderUnderline,Wrapper,FeatureDescription,FeatureImage} from '../styledAccount'
+import { faUserPlus, faUsers,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { BodyWrapper, Wrapper, TopMenu, StyledImgLogo, TopMenuGroupArea, MainArea,
+        MenuGroupArea, MenuDescription, MenuImage, ClientMenu, UserElement } from '../EmployeeView/styledEmployeeAccount';
+import { ToggleDarkMode } from '../../../__config/theme';
+import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
+import Toggle from '../../../__misc/js/ts/tcom';
+import { FeatureContainer } from './styledAdminAccount';
 import AddEmployee from '../../AddEmployee/addEmployee';
 
 
-const AdminAccount = ({ signout }) => {
+const AdminAccount = ({ comp, theme, userInfo, signout, dmToggler }) => {
   const [stateAddUser, setStateAddUser] = useState(false)
   const [stateDisplayUser, setStateDisplayUser] = useState(false)
 
-  const logutBtn = () => {
-    signout()
-  }
+  const darkModeBtn = (e) => {
+    dmToggler();
+    ToggleDarkMode();
+  };
+
+  const logoutBtn = () => {
+    signout();
+  };
 
   const toggleStateAddUser = () => {
     setStateDisplayUser(false)
@@ -29,41 +34,57 @@ const AdminAccount = ({ signout }) => {
   }
 
   return (
+  <BodyWrapper>
     <Wrapper>
-      <BorderUnderline></BorderUnderline>
-
+      <TopMenu navColor={theme.navColor}>
+        <TopMenuGroupArea>
+          <StyledImgLogo comptype={comp} src={userInfo.logo} alt="website logo" />
+        </TopMenuGroupArea>
+        <TopMenuGroupArea>
+            <Toggle ocl={darkModeBtn} />
+          </TopMenuGroupArea>
+        <TopMenuGroupArea>
+          <UserElement fcolor={theme.fontColor}> {userInfo.fullname} ></UserElement>
+        </TopMenuGroupArea>
+      </TopMenu>
       <MainArea>
-        <FeatureWrapper>
-          <FeatureArea onClick={toggleStateAddUser}>
-            <FeatureImage src={IconAddUser} />
-            <FeatureDescription>Add user</FeatureDescription>
-          </FeatureArea>
-
-          <FeatureArea onClick={toggleStateDisplayUser}>
-            <FeatureImage src={IconListUsers} />
-            <FeatureDescription>Show users</FeatureDescription>
-          </FeatureArea>
-          
-          <FeatureArea onClick={logutBtn}>
-            <FeatureImage src={IconLogout} />
-            <FeatureDescription>Sign out</FeatureDescription>
-          </FeatureArea>
-        </FeatureWrapper>
-
-        <FeatureContainer>
+        <ClientMenu navColor={theme.navColor}>
+          <MenuGroupArea onClick={toggleStateAddUser}>
+            <MenuImage fcolor={theme.fontColor} icon={faUserPlus}></MenuImage>
+            <MenuDescription fcolor={theme.fontColor}>Add User</MenuDescription>
+          </MenuGroupArea>
+          <MenuGroupArea onClick={toggleStateDisplayUser}>
+            <MenuImage fcolor={theme.fontColor} icon={faUsers}></MenuImage>
+            <MenuDescription fcolor={theme.fontColor}>Show Users</MenuDescription>
+          </MenuGroupArea>
+          <MenuGroupArea onClick={logoutBtn}>
+              <MenuImage fcolor={theme.fontColor} icon={faSignOutAlt} />
+              <MenuDescription fcolor={theme.fontColor}>Logout</MenuDescription>
+            </MenuGroupArea>
+        </ClientMenu>
+        <FeatureContainer bcolor={theme.contColor}>
           {stateAddUser ? <AddEmployee></AddEmployee> : null}
         </FeatureContainer>
       </MainArea>
-
     </Wrapper>
+  </BodyWrapper>
   );
+};
+
+const mapStateToProps = (state) => {
+  return {
+    userInfo: state.userinfo.info,
+    theme: state.darkModeToggler.activeTheme,
+    comp: state.firebase.profile.company
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signout: () => dispatch(signout())
-  }
-}
+    signout: () => dispatch(signout()),
+    dmToggler: () => dispatch(darkModeToggler())
+  };
+};
 
 
-export default connect(null, mapDispatchToProps)(AdminAccount);
+export default connect(mapStateToProps, mapDispatchToProps)(AdminAccount);
