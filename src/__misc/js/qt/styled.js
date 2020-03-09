@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import Theme from '../../../__config/theme';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export const collmat = keyframes`{
   0% {
@@ -47,18 +48,36 @@ export const TutorButtonCaps = styled.div`
   }
 `;
 
+export const TutorClose = styled(FontAwesomeIcon)`
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  margin-right: 1.5rem;
+  font-size: 3.5rem;
+  color: ${props => props.xcolor};
+
+  &:hover {
+    transform: scale(1.1);
+
+    @media screen and (max-width: ${Theme.screenSize.xsmall}) {
+      transform: scale(1);
+    }
+  }
+`;
+
 export const TutorBox = styled.div`
 	position: fixed;
 	background: #88b7d5;
-  width: 30rem;
+  width: 33rem;
   left: 14rem;
   top: 15rem;
   border: 4px solid #c2e1f5;
-  animation: ${collmat} 5s ease-out infinite normal;
+  animation: ${collmat} 5s ease-out forwards normal;
   z-index: 2;
 
   &#cid {
-    top: 8.1rem;
+    top: 4.1rem;
   }
   &#pid {
     top: 23rem;
@@ -66,11 +85,11 @@ export const TutorBox = styled.div`
   }
   &#lid {
     top: 28.2rem;
-    width: 50rem;
+    /* width: 50rem; */
   }
 
   @media screen and (min-width: ${Theme.deviceSize.iph5SE.w}) and (max-width: ${Theme.deviceSize.ipad.w}) {
-    width: 23rem;
+    /* width: 30rem; */
     bottom: 8.5rem;
     &#cid{
       top: unset;
@@ -83,18 +102,17 @@ export const TutorBox = styled.div`
       p { padding: 1rem; }
     }
     &#lid{
-      width: auto;
       top: unset;
       p { padding: 1.3rem; padding-bottom: 0rem; }
-      h2 { margin: 2rem 0 -2rem 0; }
+      h2 { margin: 3rem 0 -2rem 0; }
     }
   }
   @media screen and (min-width: ${Theme.deviceSize.iph5SE.w}) and (max-width: ${Theme.deviceSize.iph5SE.offsetw}) {&#cid{left:   0rem;} &#pid{left:    0rem}}
   @media screen and (min-width: ${Theme.deviceSize.galaxy.w})  and (max-width: ${Theme.deviceSize.galaxy.offsetw}) {&#cid{left: 0.5rem;} &#pid{left:  1.4rem}}
   @media screen and (min-width: ${Theme.deviceSize.iph678X.w}) and (max-width: ${Theme.deviceSize.iph678X.offsetw}) {&#cid{left: 0.5rem;} &#pid{left:    2rem}}
-  @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.iph678P.offsetw}) {&#cid{left: 0.9rem;} &#pid{left:  3.4rem}}
-  @media screen and (min-width: ${Theme.deviceSize.nokia.w}) and (max-width: ${Theme.deviceSize.nokia.offsetw}) {&#cid{left: 1.9rem;} &#pid{left:  5.8rem}}
-  @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.nexus.offsetw}) {&#cid{left: 3.4rem;} &#pid{left: 10.3rem}}
+  @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.iph678P.offsetw}) {&#cid{left: 0.9rem;} &#pid{left:  0rem}}
+  @media screen and (min-width: ${Theme.deviceSize.nokia.w}) and (max-width: ${Theme.deviceSize.nokia.offsetw}) {&#cid{left: 1.9rem;} &#pid{left:  1.8rem}}
+  @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.nexus.offsetw}) {&#cid{left: 3.4rem;} &#pid{left: 4.3rem}}
 
   @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.ipad.w}){
     &#lid, &#cid, &#pid{
@@ -162,13 +180,13 @@ export const TutorBox = styled.div`
     }
     &#cid{
       left: 0rem;
-      width: auto;
+      /* width: auto; */
       &::before { left: 6.2rem; }
       &::after { left: 6.2rem; }
     }
     &#pid{
       left: 0rem;
-      width: auto;
+      /* width: auto; */
       &::before { left: 27.9rem; }
       &::after { left: 27.9rem; }
     }
@@ -219,15 +237,8 @@ export const TutorBox = styled.div`
   }
 
   h2 {
-    margin: 0;
+    margin: 3rem 0 -2rem 0;
     text-align: center;
-  }
-
-  @media screen and (min-width: ${Theme.screenSize.small}) {
-    h2 {
-      padding-top: 1rem;
-      margin-bottom: -1rem;
-    }
   }
   
   p {
@@ -245,5 +256,4 @@ export const TutorCont = styled.div`
   text-align: center;
   font-size: 1.5rem;
   font-weight: bold;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 `;

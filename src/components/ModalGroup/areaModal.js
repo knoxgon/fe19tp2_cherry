@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { surpriseEarnings } from '../../__redux/actions/earningActions';
 import { AreaWrap, ModalContainer, FormModal, ModalCloser, ModalSubmitButton, ModalTitle, CandleLabel, CRModal, CMSelect, ButtonAreaWrap } from './styledModal'
-import { fireLineModal } from '../../__redux/actions/modalActions';
-import { darkModeToggler } from "../../__redux/actions/darkModeAction";
+import { fireAreaModal } from '../../__redux/actions/modalActions';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { tick } from '../../__redux/actions/tickrate';
 
-const LineModal = ({ comps, getLinfo, lineModalTogg, fireLineModal, theme }) => {
+const AreaModal = ({ comps, getAinfo, areaModalTogg, fireAreaModal, theme }) => {
   const [sym, setSym] = useState({label: '', value: ''})
 
   const submitForm = (e) => {
     e.preventDefault();
-    getLinfo(sym)
+    getAinfo(sym)
   }
 
   const onChangeSymbol = (e) => {
@@ -19,18 +18,18 @@ const LineModal = ({ comps, getLinfo, lineModalTogg, fireLineModal, theme }) => 
   }
 
   const onClickModalCloser = () => {
-    fireLineModal();
+    fireAreaModal();
   }
 
   return (
     <ModalContainer>
-      <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={lineModalTogg} ariaHideApp={false}>
+      <CRModal themeColor={theme.contColor} shouldCloseOnOverlayClick={false} isOpen={areaModalTogg} ariaHideApp={false}>
         <FormModal onSubmit={submitForm}>
-          <ModalTitle fcolor={theme.fontColor}>Earnings Surprises</ModalTitle>
+          <ModalTitle fcolor={theme.fontColor}>Stock Movement</ModalTitle>
           <ModalCloser icon={faTimes} xcolor={theme.fontColor} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
-            <CandleLabel fcolor={theme.fontColor} htmlFor="secsym">Company</CandleLabel>
-            <CMSelect name="secsym" onChange={onChangeSymbol} options={comps}></CMSelect>
+            <CandleLabel fcolor={theme.fontColor} htmlFor="stocksym">Company</CandleLabel>
+            <CMSelect name="stocksym" onChange={onChangeSymbol} options={comps}></CMSelect>
           </AreaWrap>
           <ButtonAreaWrap>
             <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor} type="submit">Graph</ModalSubmitButton>
@@ -43,7 +42,7 @@ const LineModal = ({ comps, getLinfo, lineModalTogg, fireLineModal, theme }) => 
 
 const mapStateToProps = (state) => {
   return {
-    lineModalTogg: state.lineModalToggler.toggle,
+    areaModalTogg: state.areaModalToggler.toggle,
     theme: state.darkModeToggler.activeTheme,
     comps: state.comps[0].cmp
   }
@@ -51,10 +50,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getLinfo : (sym) => dispatch(surpriseEarnings(sym)),
-    fireLineModal: () => dispatch(fireLineModal()),
-    dmToggler: () => dispatch(darkModeToggler())
+    getAinfo : (sym) => dispatch(tick(sym)),
+    fireAreaModal: () => dispatch(fireAreaModal())
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LineModal);
+export default connect(mapStateToProps, mapDispatchToProps)(AreaModal);

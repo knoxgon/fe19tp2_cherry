@@ -10,13 +10,15 @@ const initialState = {
     companyLightContainerColor: null,
     companyLightFontColor: null,
     companyLightNavbarColor: null,
+    companyLightSpecBg: null,
+    companyLightSpecBord: null,
+    companyLightGraphColor: null,
     companyDarkContainerColor: null,
     companyDarkFontColor: null,
     companyDarkNavbarColor: null,
-    companyLightSpecBg: null,
-    companyLightSpecBord: null,
     companyDarkSpecBg: null,
     companyDarkSpecBord: null,
+    companyDarkGraphColor: null,
     fullName: null
   }
 };
@@ -31,13 +33,15 @@ export const userInfoReducer = (state = initialState, action) => {
           companyLightContainerColor: action.payload.companyLightContainerColor,
           companyLightFontColor: action.payload.companyLightFontColor,
           companyLightNavbarColor: action.payload.companyLightNavbarColor,
+          companyLightSpecBg: action.payload.companyLightSpecBg,
+          companyLightSpecBord: action.payload.companyLightSpecBord,
+          companyLightGraphColor: action.payload.companyLightGraphColor,
           companyDarkContainerColor: action.payload.companyDarkContainerColor,
           companyDarkFontColor: action.payload.companyDarkFontColor,
           companyDarkNavbarColor: action.payload.companyDarkNavbarColor,
-          companyLightSpecBg: action.payload.companyLightSpecBg,
-          companyLightSpecBord: action.payload.companyLightSpecBord,
           companyDarkSpecBg: action.payload.companyDarkSpecBg,
           companyDarkSpecBord: action.payload.companyDarkSpecBord,
+          companyDarkGraphColor: action.payload.companyDarkGraphColor,
           fullName: action.payload.fullName
         }
       };

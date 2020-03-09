@@ -1,10 +1,12 @@
 import dayjs from 'dayjs';
 
-export const options = (id) => {
+export const options = (id, fcolor, bcolor) => {
   return {
-    chart: { 
+    chart: {
       id: id,
       type: 'candlestick',
+      foreColor: fcolor,
+      background: bcolor,
       toolbar: {
         show: true,
         tools: {
@@ -14,15 +16,14 @@ export const options = (id) => {
           zoomin: true,
           zoomout: true,
           pan: true,
-          reset: true,
-          customIcons: []
+          reset: true
         },
       }
     },
     xaxis: {
       type: 'category',
       labels: {
-        formatter: function(val) {
+        formatter: function (val) {
           return dayjs(val).format('MMM DD HH:mm')
         }
       }
@@ -45,11 +46,13 @@ export const options = (id) => {
   }
 }
 
-export const optionsBar = (trgId, id) => {
+export const optionsBar = (trgId, id, fcolor, bcolor) => {
   return {
     chart: {
       type: 'bar',
       id: id,
+      foreColor: fcolor,
+      background: bcolor,
       brush: {
         enabled: true,
         target: trgId,
@@ -91,11 +94,15 @@ export const optionsBar = (trgId, id) => {
   }
 }
 
-export const optionsLine = (dsid, catry) => {
+export const optionsLine = (dsid, catry, fcolor, bcolor) => {
   return {
     chart: {
       id: dsid,
       type: 'line',
+      color: "#61afe8",
+      foreColor: fcolor,
+      stacked: false,
+      background: bcolor,
       toolbar: {
         show: true,
         tools: {
@@ -107,65 +114,159 @@ export const optionsLine = (dsid, catry) => {
           pan: true,
           reset: true
         },
-      }
-    },
-    stroke: {
-      curve: 'smooth'
+      },
     },
     xaxis: {
       categories: catry,
       title: {
-        text: 'Timeline'
+        text: 'Quarter'
       }
     },
     yaxis: {
       title: {
         text: 'Earning estimation'
+      },
+      labels: {
+        formatter: function (y) {
+          return y.toFixed(2) + "%";
+        }
       }
     },
     legend: {
       position: 'top',
       horizontalAlign: 'center',
-      floating: true,
-      offsetY: -25,
-      offsetX: -5
+      floating: true
     },
-    responsive: [
-      {
-        breakpoint: 768,
-        options: {
-          legend: {
-            position: "bottom"
-          }
-        }
+    plotOptions: {
+      bar: {
+        colors: {
+          ranges: [{
+            from: -45,
+            to: 0,
+            color: '#F15B46'
+          }]
+        },
+        columnWidth: '75%',
       }
-    ]
+    }
   }
 }
 
-export const optionsPie = (dsid) => {
+export const optionsPie = (dsid, bcolor, opt) => {
   return {
+    colors: ["#1998F9", "#19E49F", "#FDB62E"],
     chart: {
-      type: 'pie',
-      id: dsid
+      type: 'donut',
+      id: dsid,
+      background: bcolor
     },
-    labels: ['Buy', 'Hold', 'Sell', 'Strong buy', 'Strong sell'],
+    labels: ['Buy', 'Sell', 'Hold'],
     responsive: [{
-      breakpoint: 768,
+      breakpoint: 700,
       options: {
         legend: {
           position: 'bottom'
+        },
+        plotOptions: {
+          pie: {
+            donut: {
+              labels: {
+                total: {
+                  fontWeight: 700,
+                  fontSize: '1.5rem'
+                }
+              }
+            }
+          }
         }
       }
     }],
-    dataLabels: {
-      formatter: function (val, opts) {
-          return opts.w.config.series[opts.seriesIndex]
-      },
-    },
     legend: {
       position: 'bottom',
-      horizontalAlign: 'center'
+      fontSize: 16,
+    },
+    plotOptions: {
+      pie: {
+        donut: {
+          labels: {
+            show: true,
+            name: {
+              show: true,
+            },
+            value: {
+              show: true,
+            },
+            total: {
+              fontWeight: 700,
+              fontSize: '2.5rem',
+              show: true,
+              color: opt.color,
+              formatter: () => '',
+              showAlways: true,
+              label: opt.act
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+export const optionsArea = (dsid, bcolor, fcolor) => {
+  return {
+    chart: {
+      type: 'area',
+      id: dsid,
+      background: bcolor,
+      foreColor: fcolor,
+      toolbar: {
+        show: true,
+        tools: {
+          download: true,
+          selection: false,
+          zoom: true,
+          zoomin: true,
+          zoomout: false,
+          pan: true
+        },
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    xaxis: {
+      type: 'category',
+      labels: {
+        formatter: function (val) {
+          return dayjs(val).format('MMM DD YY')
+        }
+      }
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+          shadeIntensity: 0,
+          inverseColors: false,
+          opacityFrom: 0,
+          opacityTo: 0
+        },
+    },
+    stroke: {
+      curve: 'straight',
+    },
+    grid: {
+      padding: {
+        left: 30,
+        right: 30
+      }
+    },
+    labels: {
+      type: 'datetime',
+      labels: {
+        formatter: function (val) {
+          return dayjs(val).format('MMM DD YYYY')
+        }
+      }
     }
   }
 }

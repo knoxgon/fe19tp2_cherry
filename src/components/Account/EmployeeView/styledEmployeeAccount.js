@@ -65,7 +65,7 @@ export const MenuImage = styled(FontAwesomeIcon)`
   color: ${props => props.fcolor};
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
-    font-size: 2.25rem
+    font-size: 2.25rem;
   }
 `;
 
@@ -74,13 +74,14 @@ export const MenuGroupArea = styled.div`
   flex-direction: column;
   align-items: center;
   width: 10rem;
-  margin-top: 2.5rem;
-  margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   cursor: pointer;
 
   &:first-child {
-    margin-top: 15rem;
-    @media screen and (max-width: ${Theme.screenSize.small}) {
+    margin-top: 10rem;
+    @media screen and (max-width: ${Theme.screenSize.small}), screen and (max-height: ${Theme.deviceSize.iph5SE.h}) {
+      margin-top: 5rem;
       margin-top: initial;
     }
   }
@@ -140,7 +141,7 @@ export const ClientMenu = styled.div`
   transition: all 0.75s linear;
   background: ${props => props.navColor};
 
-  @media screen and (max-width: ${Theme.screenSize.small}){
+  @media screen and (max-width: ${Theme.screenSize.small}) {
     flex-flow: wrap;
     justify-content: flex-start;
     width: 100vw;
@@ -175,6 +176,7 @@ export const GraphContainer = styled.div`
   flex-wrap: wrap;
   height: fit-content;
   flex-grow: 1;
+  align-content: flex-start;
   overflow: scroll;
   background-color: ${props => props.compContColor};
   transition: all 0.75s linear;
@@ -189,8 +191,15 @@ export const GraphContainer = styled.div`
   @media screen and (max-width: ${Theme.screenSize.small}){
     margin: 0;
     padding: 0;
-    width: 100vw;
     flex-flow: row wrap;
     height: calc(100vh - 10.1rem);
+    width: unset;
   }
+`;
+
+export const HelperWizard = styled(FontAwesomeIcon)`
+  font-size: 3rem;
+  cursor: pointer;
+  color: ${props => props.fcolor};
+  transition: all 0.75s linear;
 `;

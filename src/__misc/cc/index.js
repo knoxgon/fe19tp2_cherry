@@ -11,19 +11,4 @@ import kucoin from './crypto-kucoin-sym-dat';
 import okex from './crypto-okex-sym-dat';
 import poloniex from './crypto-poloniex-sym-dat';
 import zb from './crypto-zb-sym-dat';
-
-export {
-  binance,
-  bitfinex,
-  bitmex,
-  bittrex,
-  coinbase,
-  gemini,
-  hitbtc,
-  huobi,
-  kraken,
-  kucoin,
-  okex,
-  poloniex,
-  zb
-}
+export { binance, bitfinex, bitmex, bittrex, coinbase, gemini, hitbtc, huobi, kraken, kucoin, okex, poloniex, zb}
