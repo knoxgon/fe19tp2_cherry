@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 import styled from "styled-components";
+import { connect } from "react-redux";
 
 const Wrapper = styled.div`
   display: flex;
@@ -41,35 +42,7 @@ const Styles = styled.div`
   }
 `
 
-const UserTable = () => {
-  const [users, setUsers] = useState([
-      {name: "Eva", role: "Employee", email: "eva@bev.com", id: "a"},
-      {name: "Peter", role: "Admin", email: "peter@bev.com", id: "b"},
-      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"} 
-    ])
-  const [user, setUser] = useState({name: null, role: null, email: null})
-
-
-  const deleteUser = (e) => {
-    const filteredUsers = removeUser(e.target.id);
-    setUsers(filteredUsers);
-  }
-
-  const removeUser = (id) => {
-    return users.filter(user => user.id !== id)
-  }
-    
-  const addUser = () => {
-    users.push({name: "", role: "Employee", email: "", id: "d"});
-  }
-
-  const onChangeListener = (e) => {
-    setUser({
-      ...user, 
-      [e.target.id]: e.target.value
-    })
-  }
-
+const UserTable = ({users}) => {
   return (
     <Wrapper>
       <Styles>
@@ -77,35 +50,18 @@ const UserTable = () => {
           <thead>
             <tr>
               <th>#</th>
-              <th>Name</th>
+              <th>Fullname</th>
               <th>Role</th>
-              <th>Email</th>
-              <th>Erase</th>
             </tr>
           </thead>
           <tbody>
             {users.map((user, i) => {
               return <tr>
                   <td>{i+1}</td>
-                  <td>{user.name}</td>
+                  <td>{user.fullname}</td>
                   <td>{user.role}</td>
-                  <td>{user.email}</td>
-                  <td id={user.id} onClick={deleteUser}>X</td>
                 </tr>
             })}
-            <tr>
-              <td></td>
-              <td id="name">
-                <input type="text" onChange={onChangeListener}></input>
-              </td>
-              <td id="role">
-                <input type="text" onChange={onChangeListener}></input>
-              </td>
-              <td id="email">
-                <input type="email" onChange={onChangeListener}></input>
-              </td>
-              <td onClick={addUser}>OK</td> 
-            </tr>
           </tbody>
         </table>
       </Styles>
@@ -113,4 +69,10 @@ const UserTable = () => {
   )
 };
 
-export default UserTable;
+const mapStateToProps = (state) => {
+  return {
+    users: state.admininfo.users
+  }
+}
+
+export default connect(mapStateToProps)(UserTable);
