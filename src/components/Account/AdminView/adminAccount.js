@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
 import { faUserPlus, faUsers,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
@@ -8,11 +8,16 @@ import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Toggle from '../../../__misc/js/ts/tcom';
 import { FeatureContainer } from './styledAdminAccount';
 import AddEmployee from '../../AddEmployee/addEmployee';
+import UserTable from './UserTable/userTable';
+import { getUsers } from '../../../__redux/actions/userInfoActions';
 
-
-const AdminAccount = ({ comp, theme, userInfo, signout, dmToggler }) => {
+const AdminAccount = ({ userview, comp, theme, userInfo, signout, dmToggler }) => {
   const [stateAddUser, setStateAddUser] = useState(false)
   const [stateDisplayUser, setStateDisplayUser] = useState(false)
+
+  useEffect(() => {
+    userview()
+  }, [userview])
 
   const darkModeBtn = (e) => {
     dmToggler();
@@ -60,6 +65,7 @@ const AdminAccount = ({ comp, theme, userInfo, signout, dmToggler }) => {
         </ClientMenu>
         <FeatureContainer bcolor={theme.contColor}>
           {stateAddUser ? <AddEmployee></AddEmployee> : null}
+          {stateDisplayUser ? <UserTable></UserTable> : null}
         </FeatureContainer>
       </MainArea>
     </Wrapper>
@@ -78,9 +84,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signout: () => dispatch(signout()),
-    dmToggler: () => dispatch(darkModeToggler())
+    dmToggler: () => dispatch(darkModeToggler()),
+    userview: () => dispatch(getUsers())
   };
-};
+};  
+
+
+
+
+
+
+
+
+
+
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(AdminAccount);
