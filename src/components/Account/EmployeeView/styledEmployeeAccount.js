@@ -74,13 +74,14 @@ export const MenuGroupArea = styled.div`
   flex-direction: column;
   align-items: center;
   width: 10rem;
-  margin-top: 2.5rem;
-  margin-bottom: 5rem;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
   cursor: pointer;
 
   &:first-child {
-    margin-top: 15rem;
-    @media screen and (max-width: ${Theme.screenSize.small}) {
+    margin-top: 10rem;
+    @media screen and (max-width: ${Theme.screenSize.small}), screen and (max-height: ${Theme.deviceSize.iph5SE.h}) {
+      margin-top: 5rem;
       margin-top: initial;
     }
   }
@@ -140,7 +141,7 @@ export const ClientMenu = styled.div`
   transition: all 0.75s linear;
   background: ${props => props.navColor};
 
-  @media screen and (max-width: ${Theme.screenSize.small}){
+  @media screen and (max-width: ${Theme.screenSize.small}) {
     flex-flow: wrap;
     justify-content: flex-start;
     width: 100vw;
