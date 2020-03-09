@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addEmployee } from '../../__redux/actions/employeeActions';
-import { EmployeeForm } from '../AddEmployee/styledAddEmployee';
+import { EmployeeForm, EmployeeInput, Button } from '../AddEmployee/styledAddEmployee';
  
-const AddEmployee = (props) => {
+const AddEmployee = (props, theme) => {
   const [info, setInfo] = useState({ email: '', password: '', firstname: '', lastname: '' })
 
   const onEmployeeRegistration = (e) => {
@@ -17,25 +17,26 @@ const AddEmployee = (props) => {
   }
 
   return (
-      <EmployeeForm onSubmit = { onEmployeeRegistration }>
-        <input placeholder="Email" type="email" name="email" onChange={onInputChangeHandler} autoComplete="new-password"></input>
+      <EmployeeForm onSubmit={ onEmployeeRegistration }>
+        <EmployeeInput placeholder="Email" type="email" name="email" onChange={onInputChangeHandler} autoComplete="new-password"></EmployeeInput>
         <br/>
-        <input placeholder="Password" type="password" name="password" onChange={onInputChangeHandler}></input>
+        <EmployeeInput placeholder="Password" type="password" name="password" onChange={onInputChangeHandler}></EmployeeInput>
         <br/>
-        <input placeholder="Firstname" type="text" name="firstname" onChange={onInputChangeHandler}></input>
+        <EmployeeInput placeholder="Firstname" type="text" name="firstname" onChange={onInputChangeHandler}></EmployeeInput>
         <br/>
-        <input placeholder="Lastname" type="text" name="lastname" onChange={onInputChangeHandler}></input>
+        <EmployeeInput placeholder="Lastname" type="text" name="lastname" onChange={onInputChangeHandler}></EmployeeInput>
         <br/>
         {props.feedback ? <div>Message: {props.feedback}</div> : null }
         <br/>
-        <button type="submit">Add</button>
+        <Button btcolor={theme.navColor} type="submit">Add</Button>
       </EmployeeForm>
   );
 }
 
 const mapStateToProps = (state) => {
   return {
-    feedback: state.employee.feedback
+    feedback: state.employee.feedback,
+    theme: state.darkModeToggler.activeTheme
   }
 }
 
