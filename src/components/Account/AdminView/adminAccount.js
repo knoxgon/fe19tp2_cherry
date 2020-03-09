@@ -42,9 +42,6 @@ const AdminAccount = ({ comp, theme, userInfo, signout, dmToggler }) => {
         <TopMenuGroupArea>
             <Toggle ocl={darkModeBtn} />
           </TopMenuGroupArea>
-        <TopMenuGroupArea>
-          <UserElement fcolor={theme.fontColor}> {userInfo.fullName}</UserElement>
-        </TopMenuGroupArea>
       </TopMenu>
       <MainArea>
         <ClientMenu navColor={theme.navColor}>
