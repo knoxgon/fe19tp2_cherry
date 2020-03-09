@@ -23,7 +23,7 @@ const Theme = {
   },
   screenSize: {
     xsmall: '600px',
-    small: '800px',
+    small: '1070px',
     medium: '992px',
     large: '1200px'
   }
