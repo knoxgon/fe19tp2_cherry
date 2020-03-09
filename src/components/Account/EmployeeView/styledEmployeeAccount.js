@@ -65,7 +65,7 @@ export const MenuImage = styled(FontAwesomeIcon)`
   color: ${props => props.fcolor};
 
   @media screen and (max-width: ${Theme.screenSize.small}) {
-    font-size: 2.25rem
+    font-size: 2.25rem;
   }
 `;
 
