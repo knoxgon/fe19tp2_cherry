@@ -6,9 +6,8 @@ import { fireLineModal } from '../../__redux/actions/modalActions';
 import { darkModeToggler } from "../../__redux/actions/darkModeAction";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
+const LineModal = ({ comps, getLinfo, lineModalTogg, fireLineModal, theme }) => {
   const [sym, setSym] = useState({label: '', value: ''})
-  const symset = [{label: 'Asbury Automotive Group Inc', value: 'ABG'}, {label: 'Agree Reality Corp', value: 'ADC'}, {label: 'ABM Industries Incorporated', value: 'ABM'}, {label: 'GAIN Capital Holdings', value: 'GCAP'}, {label: 'Genesis Energy LP', value: 'GEL'}, {label: 'Microsoft Corporation', value: 'MSFT'}, {label: 'Apple Inc', value: 'AAPL'}]
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -31,7 +30,7 @@ const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
           <ModalCloser icon={faTimes} xcolor={theme.fontColor} onClick={onClickModalCloser}></ModalCloser>
           <AreaWrap>
             <CandleLabel fcolor={theme.fontColor} htmlFor="secsym">Company</CandleLabel>
-            <CMSelect name="secsym" onChange={onChangeSymbol} options={symset}></CMSelect>
+            <CMSelect name="secsym" onChange={onChangeSymbol} options={comps}></CMSelect>
           </AreaWrap>
           <ButtonAreaWrap>
             <ModalSubmitButton bgcolor={theme.fontColor} fcolor={theme.contColor} type="submit">Graph</ModalSubmitButton>
@@ -45,7 +44,8 @@ const LineModal = ({ getLinfo, lineModalTogg, fireLineModal, theme }) => {
 const mapStateToProps = (state) => {
   return {
     lineModalTogg: state.lineModalToggler.toggle,
-    theme: state.darkModeToggler.activeTheme
+    theme: state.darkModeToggler.activeTheme,
+    comps: state.comps[0].cmp
   }
 }
 
