@@ -14,11 +14,6 @@ export const SwitchWrapper = styled.button`
   border: 2px solid ${props => props.brcol};
   overflow: hidden;
 
-  @media screen and (max-width: ${Theme.screenSize.small}) {
-    height: 2rem;
-    width: 4rem;
-  }
-
   img {
     min-width: 1.5rem;
     max-width: 2rem;
