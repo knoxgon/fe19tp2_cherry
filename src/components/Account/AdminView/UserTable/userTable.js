@@ -1,18 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Wrapper, Styles, TableHead, TableCell} from './styledUserTable';
+import {Wrapper, Styles, TableHead, TableCaption, TableCell} from './styledUserTable';
+import { removeUser } from "../../../../__redux/actions/userInfoActions";
 
 
-const UserTable = ({users, theme}) => {
+const UserTable = ({users, theme, removeuser}) => {
+  const onClickRemoveUser = (name, id) => {
+    if(window.confirm(`Are you sure to delete ${name}?`)) {
+      removeuser(id)
+    }
+  }
   return (
     <Wrapper>
       <Styles>
-        <table style={{border: '1px solid black'}}>
+        <table>
+          <TableCaption>Users</TableCaption>
           <thead>
             <tr>
               <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>#</TableHead>
               <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Fullname</TableHead>
               <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Role</TableHead>
+              <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Remove</TableHead>
             </tr>
           </thead>
           <tbody>
@@ -21,6 +29,7 @@ const UserTable = ({users, theme}) => {
                   <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{i+1}</TableCell>
                   <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{user.fullname}</TableCell>
                   <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{user.role}</TableCell>
+                  <TableCell bcolor={theme.navColor} fcolor={theme.fontColor} onClick={() => onClickRemoveUser(user.fullname, user.id)}>X</TableCell>
                 </tr>
             })}
           </tbody>
@@ -37,4 +46,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(UserTable);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeuser: (id) => dispatch(removeUser(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserTable);
