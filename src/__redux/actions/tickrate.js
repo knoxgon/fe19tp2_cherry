@@ -11,8 +11,9 @@ export const tick = (compname) => {
     } else {
       Axios(`https://finnhub.io/api/v1/stock/candle?symbol=${compname.value}&resolution=60&from=${month1()}&to=${currentTime()}&token=bpib37nrh5rbgl0l9l70`)
       .then(result => {
+        const latestPrice = result.data.h[result.data.h.length - 1];
         const data = result.data.c.map((a, i) => Array.of(result.data.t[i] * 1000, a))
-        dispatch(containerCreate('t', 300, 336, 1200, 350, 300, 336))
+        dispatch(containerCreate('t', 300, 400, 1200, 400, 300, 365))
         let containerId = getState().containers[getState().containers.length - 1].dsid
         dispatch(fireAreaModal())
         dispatch({
@@ -21,6 +22,7 @@ export const tick = (compname) => {
             dsid: containerId,
             data,
             status: 'ok',
+            latestPrice,
             compname: compname
           }
         })
