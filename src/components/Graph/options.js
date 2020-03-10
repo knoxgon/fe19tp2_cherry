@@ -242,7 +242,7 @@ export const optionsArea = (dsid, bcolor, fcolor) => {
             enabled: true,
             speed: 1250
         }
-    }
+      }
     },
     dataLabels: {
       enabled: false
