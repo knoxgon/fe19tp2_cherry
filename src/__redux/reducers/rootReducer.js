@@ -15,6 +15,7 @@ import { pieModalReducer } from './pieModalReducer';
 import { prefetchReducer } from './prefetchReducer';
 import { darkModeReducer } from './darkModeReducer';
 import { qTriggerReducer } from './qtriggerReducer';
+import { adminReducer } from './adminReducer';
 import { postfetchReducer } from './postfetchReducer';
 import { areaModalReducer } from './areaModalReducer';
 import { compsReducer } from './compsReducer';
@@ -38,5 +39,6 @@ export const rootReducer = combineReducers({
   pieModalToggler: pieModalReducer,
   areaModalToggler: areaModalReducer,
   darkModeToggler: darkModeReducer,
-  qgtrigger: qTriggerReducer
+  qgtrigger: qTriggerReducer,
+  admininfo: adminReducer
 });

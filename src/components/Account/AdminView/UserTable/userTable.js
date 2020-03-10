@@ -1,105 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from "react-redux";
+import {Wrapper, Styles, TableHead, TableCaption, TableCell} from './styledUserTable';
+import { removeUser } from "../../../../__redux/actions/userInfoActions";
 
-import styled from "styled-components";
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  font-size: 2.5rem;
-`;
-
-const Styles = styled.div`
-  padding: 1rem;
-  table {
-    border-spacing: 0;
-    border: 1px solid black;
-
-    tr {
-      :last-child {
-        td {
-          border-bottom: 0;
-        }
-      }
-    }
-
-    th,
-    /* {
-      th:nth-last-child(3) {
-        text-align: center;
-        border-right: 0;
-        color: purple;
-        font-weight: 1000;
-        cursor: pointer;
-      }
-    } */
-    td {
-      margin: 0;
-      padding: 1.5rem;
-      border-bottom: 1px solid black;
-      border-right: 1px solid black;
-    }
-    td {
-      :last-child:not(:first-child) {
-        text-align: center;
-        border-right: 0;
-        color: red;
-        font-weight: 1000;
-        cursor: pointer;
-      }
+const UserTable = ({users, theme, removeuser}) => {
+  const onClickRemoveUser = (name, id) => {
+    if(window.confirm(`Are you sure to delete ${name}?`)) {
+      removeuser(id)
     }
   }
-`
-
-const UserTable = () => {
-  const [users, setUsers] = useState(
-    [
-      {name: "Eva", role: "Employee", email: "eva@bev.com", id: "a"},
-      {name: "Peter", role: "Admin", email: "peter@bev.com", id: "b"},
-      {name: "Rasmus", role: "Employee", email: "rasmus@bev.com", id: "c"},
-      {name: "", role: "Employee", email: "", id: "d"}    
-    ])
-
-    const deleteUser = (e) => {
-      const filteredUsers = removeUser(e.target.id);
-      setUsers(filteredUsers);
-    }
-
-    const removeUser = (id) => {
-      return users.filter(user => user.id !== id)
-    }
-
-    const addUser = (id) => {
-      return users.push()
-    }
-
-    const newUser = (e) => {
-      const addedUser = addUser(e.target.id);
-      setUsers(addedUser)
-    }
-
-  
-  
   return (
     <Wrapper>
       <Styles>
         <table>
+          <TableCaption>Users</TableCaption>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Role</th>
-              <th>Email</th>
-              <th>Erase</th>
+              <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>#</TableHead>
+              <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Fullname</TableHead>
+              <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Role</TableHead>
+              <TableHead bcolor={theme.navColor} fcolor={theme.fontColor}>Remove</TableHead>
             </tr>
           </thead>
           <tbody>
             {users.map((user, i) => {
-              return <tr>
-                  <td>{i+1}</td>
-                  <td>{user.name}</td>
-                  <td>{user.role}</td>
-                  <td>{user.email}</td>
-                  <td id={user.id} onClick={deleteUser}>X</td>
+              return <tr key={i}>
+                  <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{i+1}</TableCell>
+                  <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{user.fullname}</TableCell>
+                  <TableCell bcolor={theme.navColor} fcolor={theme.fontColor}>{user.role}</TableCell>
+                  <TableCell bcolor={theme.navColor} fcolor={theme.fontColor} onClick={() => onClickRemoveUser(user.fullname, user.id)}>X</TableCell>
                 </tr>
             })}
           </tbody>
@@ -109,4 +39,17 @@ const UserTable = () => {
   )
 };
 
-export default UserTable;
+const mapStateToProps = (state) => {
+  return {
+    users: state.admininfo.users,
+    theme: state.darkModeToggler.activeTheme
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    removeuser: (id) => dispatch(removeUser(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserTable);
