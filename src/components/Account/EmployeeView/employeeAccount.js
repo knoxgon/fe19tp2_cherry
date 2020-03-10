@@ -17,13 +17,11 @@ import { bmwhen } from "../../../__redux/actions/containerActions";
 import QTogg from "../../../__misc/js/qt";
 import { HQToggler } from "../../../__redux/actions/qtriggerAction";
 
-
 const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleModal, fireLineModal, firePieModal, fireAreaModal, areaTogg, candTogg, lineTogg, pieTogg, bmteffect, dmToggler }) => {
   const darkModeBtn = (e) => {
     dmToggler();
     ToggleDarkMode();
   };
-
   const logoutBtn = () => {
     signout();
   };
@@ -47,7 +45,6 @@ const EmployeeAccount = ({ comp, theme, userInfo, signout, hqSwitch, fireCandleM
   const toggleTutor = () => {
     hqSwitch();
   }
-  
   return (
     <BodyWrapper>
       <Wrapper>
