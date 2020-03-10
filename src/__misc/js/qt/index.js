@@ -37,8 +37,10 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleQA, toggleOff, qc, qp, ql, q
         <TutorBox id="cid">
           <TutorCont>
             <TutorClose icon={faTimes} onClick={onClickCloser}/>
-            <h2>Candle chart</h2>
-            <p>This graph illustrates the movement of the realtime exchange rate for any comparable pair of digital currency (e.g., Zcash (ZEC) to BTC (Bitcoin)) and physical currency (e.g., USD/SEK) from chosen broker/platform.</p>
+            <h2>Currency screener</h2>
+            <p>This graph illustrates the movement of the realtime exchange rate for any comparable pair of
+              digital currency (e.g., Zcash (ZEC) to BTC (Bitcoin)) and physical currency (e.g., USD/SEK)
+              from chosen broker/platform.</p>
             <TutorButtonCaps>
               <button disabled style={{'visibility': 'hidden'}}>Prev</button>
               <button id="ccn" onClick={fireToggNext}>Next</button>
@@ -49,7 +51,7 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleQA, toggleOff, qc, qp, ql, q
           <TutorBox id="pid">
             <TutorCont>
               <TutorClose icon={faTimes} onClick={onClickCloser}/>
-              <h2>Pie chart</h2>
+              <h2>Investment recommendations</h2>
               <p>Displays historical buy/sell/hold rates for the selected company within the selected month period.
                  Buy/sell/hold are the investment analyst’s recommendations. Higher ratings indicates whether the
                  stock should be bought/sold/held during the month.</p>
@@ -59,20 +61,33 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleQA, toggleOff, qc, qp, ql, q
               </TutorButtonCaps>
             </TutorCont>
           </TutorBox>
+        : qa ?
+        <TutorBox id="aid">
+            <TutorCont>
+              <TutorClose icon={faTimes} onClick={onClickCloser}/>
+              <h2>Stock market</h2>
+              <p>Stock charts allow traders to view in order to make educated predictions
+                about a stock's future price action. For most day traders, stock charts are
+                the primary source of data used in their strategy. Day traders will look for
+                chart patterns, analyze volume, and pinpoint significant price areas.</p>
+              <TutorButtonCaps>
+                <button id="acp" onClick={fireToggPrev}>Prev</button>
+                <button id="acn" onClick={fireToggNext}>Next</button>
+              </TutorButtonCaps>
+            </TutorCont>
+          </TutorBox>
         : ql ? 
           <TutorBox id="lid">
             <TutorCont>
               <TutorClose icon={faTimes} onClick={onClickCloser}/>
-              <h2>Earning surprises - Line chart</h2>
-              <p>
-                Visualizes earnings surprises from as early as 2000. Earning
+              <h2>Earning surprises</h2>
+              <p>Visualizes earnings surprises from as early as 2000. Earning
                 surprise in an unexpected difference between a company's actual
                 earnings per share and analysts' expected earnings per share.
                 A higher earnings surprise generally means that a company did
                 better than expected over the last quarter. Many times,
                 a positive earning surprise is followed by a jump in the company's
-                share price as soon as the market opens following the announcement.
-              </p>
+                share price as soon as the market opens following the announcement.</p>
               <TutorButtonCaps>
                 <button id="lcp" onClick={fireToggPrev}>Prev</button>
                 <button id="lcn" onClick={fireToggNext}>OK</button>
