@@ -32,18 +32,16 @@ export const TutorButtonCaps = styled.div`
     cursor: pointer;
     border: 1px solid #3cc8b4;
     background: #3cc8b4;
-    color: #fff;
-    border: 1px solid #3cc8b4;
+    color: #6f2407;
     font-size: 2rem;
     margin: 2rem;
     width: 15rem;
     height: 5rem;
-    @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.galaxy.w}){
-      font-size: 1.8rem;
-      line-height: 3.5rem;
-      width: 10rem;
-      height: 3.5rem;
-      margin: 1rem;
+    @media screen and (min-width: ${Theme.screenSize.cronicOff12}) and (max-width: ${Theme.screenSize.cronicOffMax12}) {
+      font-size: 2rem;
+      margin: 1.5rem;
+      width: 11rem;
+      height: 3rem;
     }
   }
 `;
