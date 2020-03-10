@@ -63,6 +63,15 @@ export const AGMButton = styled.button`
   margin-right: 1rem;
 `;
 
+export const StockPrice = styled.div`
+  position: absolute;
+  font-size: 2.25rem;
+  left: 0.5rem;
+  top: 1rem;
+  font-weight: 700;
+  color: ${props => props.isDark ? '#00ff1f' : '#218228'};
+`;
+
 export const GMTitle = styled.div`
   font-weight: 700;
   font-size: 1.5rem;
