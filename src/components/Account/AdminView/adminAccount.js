@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { signout } from '../../../__redux/actions/authActions';
 import { faUserPlus, faUsers,faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import { BodyWrapper, Wrapper, TopMenu, StyledImgLogo, TopMenuGroupArea, MainArea, MenuGroupArea, MenuDescription, MenuImage, ClientMenu, UserElement } from '../EmployeeView/styledEmployeeAccount';
+import { BodyWrapper, Wrapper, TopMenu, StyledImgLogo, TopMenuGroupArea, MainArea, MenuGroupArea, MenuDescription, MenuImage, ClientMenu } from '../EmployeeView/styledEmployeeAccount';
 import { ToggleDarkMode } from '../../../__config/theme';
 import { darkModeToggler } from "../../../__redux/actions/darkModeAction";
 import Toggle from '../../../__misc/js/ts/tcom';
