@@ -91,6 +91,7 @@ export const centralReducer = (state = initState, action) => {
         dsid: action.payload.dsid,
         status: action.payload.status,
         series: [{data: [...action.payload.data], name: action.payload.compname.label}],
+        latestPrice: action.payload.latestPrice,
         compname: action.payload.compname
       }]
     case FETCH_TICKRATE_UPDATE_SUCCESS:
