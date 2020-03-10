@@ -1,23 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { switchQTC, switchQTL, switchQTP, falsifyAll, HQToggler } from "../../../__redux/actions/qtriggerAction";
+import { switchQTC, switchQTL, switchQTA, switchQTP, falsifyAll, HQToggler } from "../../../__redux/actions/qtriggerAction";
 import { TutorBox, TutorButtonCaps, TutorCont, TutorClose } from "./styled";
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 
-const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql, hqSwitch}) => {
+const QTogg = ({toggleQC, toggleQP, toggleQL, toggleQA, toggleOff, qc, qp, ql, qa, hqSwitch}) => {
   const fireToggNext = (e) => {
     const trg = e.target.id;
     switch(trg) {
-      case 'ccn':
-        toggleQP();
-        break;
-      case 'pcn':
-        toggleQL();
-        break;
-      case 'lcn':
-        toggleOff();
-        break;
+      case 'ccn':toggleQP();break;
+      case 'pcn':toggleQA();break;
+      case 'acn':toggleQL();break;
+      case 'lcn':toggleOff();break;
       default: break;
     }
   }
@@ -25,12 +20,9 @@ const QTogg = ({toggleQC, toggleQP, toggleQL, toggleOff, qc, qp, ql, hqSwitch}) 
   const fireToggPrev = (e) => {
     const trg = e.target.id;
     switch(trg) {
-      case 'pcp':
-        toggleQC();
-        break;
-      case 'lcp':
-        toggleQP();
-        break;
+      case 'pcp':toggleQC();break;
+      case 'acp':toggleQP();break;
+      case 'lcp':toggleQA();break;
       default: break;
     }
   }
@@ -96,7 +88,8 @@ const mapStateToProps = (state) => {
   return {
     qc: state.qgtrigger.ctrigger,
     qp: state.qgtrigger.ptrigger,
-    ql: state.qgtrigger.ltrigger
+    ql: state.qgtrigger.ltrigger,
+    qa: state.qgtrigger.atrigger,
   }
 }
 
@@ -105,6 +98,7 @@ const mapDispatchToProps = (dispatch) => {
     toggleQC: () => dispatch(switchQTC()),
     toggleQP: () => dispatch(switchQTP()),
     toggleQL: () => dispatch(switchQTL()),
+    toggleQA: () => dispatch(switchQTA()),
     toggleOff: () => dispatch(falsifyAll()),
     hqSwitch: () => dispatch(HQToggler())
   }
