@@ -16,8 +16,8 @@ const Toggle = ({dark, ocl, theme}) => {
 
   return (
     <SwitchWrapper bgcol={theme.swbgColor} brcol={theme.swbrColor} dark={dark} onClick={ocl}>
-      <img src={require('../../../assets/account/sun.svg')} alt="s"/>
-      <img src={require('../../../assets/account/moon.svg')} alt="m"/>
+      <img src={require('../../../assets/sun.svg')} alt="s"/>
+      <img src={require('../../../assets/moon.svg')} alt="m"/>
     </SwitchWrapper>
   )
 }
