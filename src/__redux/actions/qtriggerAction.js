@@ -1,4 +1,4 @@
-import { QT, QTC, QTP, QTL } from './types'
+import { QT, QTC, QTP, QTL, QTA } from './types'
 
 export const falsifyAll = () => {
   return (dispatch, getState) => {
@@ -28,6 +28,14 @@ export const switchQTL = () => {
   return (dispatch, getState) => {
     dispatch({
       type: QTL
+    })
+  }
+}
+
+export const switchQTA = () => {
+  return (dispatch, getState) => {
+    dispatch({
+      type: QTA
     })
   }
 }
