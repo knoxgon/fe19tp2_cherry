@@ -32,18 +32,16 @@ export const TutorButtonCaps = styled.div`
     cursor: pointer;
     border: 1px solid #3cc8b4;
     background: #3cc8b4;
-    color: #fff;
-    border: 1px solid #3cc8b4;
+    color: #6f2407;
     font-size: 2rem;
     margin: 2rem;
     width: 15rem;
     height: 5rem;
-    @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.galaxy.w}){
-      font-size: 1.8rem;
-      line-height: 3.5rem;
-      width: 10rem;
-      height: 3.5rem;
-      margin: 1rem;
+    @media screen and (min-width: ${Theme.screenSize.cronicOff12}) and (max-width: ${Theme.screenSize.cronicOffMax12}) {
+      font-size: 2rem;
+      margin: 1.5rem;
+      width: 11rem;
+      height: 3rem;
     }
   }
 `;
@@ -72,124 +70,346 @@ export const TutorBox = styled.div`
   width: 33rem;
   left: 14rem;
   top: 15rem;
+  height: fit-content;
   border: 4px solid #c2e1f5;
   animation: ${collmat} 5s ease-out forwards normal;
   z-index: 2;
 
-  &#cid {
-    top: 4.1rem;
-  }
-  &#pid {
-    top: 23rem;
-    left: 13.5rem;
-  }
-  &#lid {
-    top: 28.2rem;
-    /* width: 50rem; */
+  &#cid { top: 1.1rem;}
+  &#pid { top: 10rem;}
+  &#aid { top: 20rem;}
+  &#lid { top: 26rem;}
+
+  @media screen and (max-width: ${Theme.screenSize.small}) {
+    bottom: 8.5rem;
+    &#cid {
+      top: unset;
+    }
+    &#pid {
+      top: unset;
+      left: 0rem;
+    }
+    &#aid {
+      top: unset;
+      left: 0rem;
+    }
+    &#lid {
+      top: unset;
+    }
   }
 
-  @media screen and (min-width: ${Theme.deviceSize.iph5SE.w}) and (max-width: ${Theme.deviceSize.ipad.w}) {
-    /* width: 30rem; */
-    bottom: 8.5rem;
-    &#cid{
-      top: unset;
+  @media screen and (min-width: ${Theme.screenSize.medium}) and (max-width: ${Theme.screenSize.small}) {
+    &#cid{ top: unset; left: 5rem;
       &::before { left: 3rem; }
       &::after { left: 3rem; }
-      p { padding: 1rem; }
-    }
-    &#pid{
-      top: unset;
-      p { padding: 1rem; }
-    }
-    &#lid{
-      top: unset;
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 13rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 33rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 53rem;
       p { padding: 1.3rem; padding-bottom: 0rem; }
-      h2 { margin: 3rem 0 -2rem 0; }
-    }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.iph5SE.w}) and (max-width: ${Theme.deviceSize.iph5SE.offsetw}) {&#cid{left:   0rem;} &#pid{left:    0rem}}
-  @media screen and (min-width: ${Theme.deviceSize.galaxy.w})  and (max-width: ${Theme.deviceSize.galaxy.offsetw}) {&#cid{left: 0.5rem;} &#pid{left:  1.4rem}}
-  @media screen and (min-width: ${Theme.deviceSize.iph678X.w}) and (max-width: ${Theme.deviceSize.iph678X.offsetw}) {&#cid{left: 0.5rem;} &#pid{left:    2rem}}
-  @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.iph678P.offsetw}) {&#cid{left: 0.9rem;} &#pid{left:  0rem}}
-  @media screen and (min-width: ${Theme.deviceSize.nokia.w}) and (max-width: ${Theme.deviceSize.nokia.offsetw}) {&#cid{left: 1.9rem;} &#pid{left:  1.8rem}}
-  @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.nexus.offsetw}) {&#cid{left: 3.4rem;} &#pid{left: 4.3rem}}
-
-  @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.ipad.w}){
-    &#lid, &#cid, &#pid{
-      p {
-        font-size: 2.25rem;
-        line-height: 3.5rem;
-        font-weight: 600;
-      }
-      h2 {
-        font-size: 3rem;
-      }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed}) and (max-width: ${Theme.screenSize.offMedMax}) {
+    &#cid{ top: unset; left: 5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 11rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 30rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 49.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-
-  @media screen and (min-width: ${Theme.deviceSize.iph5SE.w}) and (max-width: ${Theme.deviceSize.iph5SE.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 19.7rem; }
-      &::after { left: 19.7rem; }
-      p {
-        margin-bottom: -1.5rem;
-      }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed2}) and (max-width: ${Theme.screenSize.offMedMax2}) {
+    &#cid{ top: unset; left: 5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 10rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 27.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 46rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.galaxy.w}) and (max-width: ${Theme.deviceSize.galaxy.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 22rem; }
-      &::after { left: 22rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed3}) and (max-width: ${Theme.screenSize.offMedMax3}) {
+    &#cid{ top: unset; left: 3.5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 8.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 25rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 42rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.iph678X.w}) and (max-width: ${Theme.deviceSize.iph678X.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 23.1rem; }
-      &::after { left: 23.1rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed4}) and (max-width: ${Theme.screenSize.offMedMax4}) {
+    &#cid{ top: unset; left: 2.5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 7rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 23rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 39rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.iph678P.w}) and (max-width: ${Theme.deviceSize.iph678P.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 25.4rem; }
-      &::after { left: 25.4rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed5}) and (max-width: ${Theme.screenSize.offMedMax5}) {
+    &#cid{ top: unset; left: 2rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 5.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 21rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 36.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.nokia.w}) and (max-width: ${Theme.deviceSize.nokia.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 29.5rem; }
-      &::after { left: 29.5rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed6}) and (max-width: ${Theme.screenSize.offMedMax6}) {
+    &#cid{ top: unset; left: 2rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 4.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 19rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 33.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.nexus.w}) and (max-width: ${Theme.deviceSize.nexus.offsetw}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 37.1rem; }
-      &::after { left: 37.1rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed7}) and (max-width: ${Theme.screenSize.offMedMax7}) {
+    &#cid{ top: unset; left: 2rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 2.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 16rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 29.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
   }
-  @media screen and (min-width: ${Theme.deviceSize.ipad.offsetw}) and (max-width: ${Theme.deviceSize.ipad.w}){
-    &#lid{
-      left: 0rem;
-      &::before { left: 47.7rem; }
-      &::after { left: 47.7rem; }
-    }
-    &#cid{
-      left: 0rem;
-      /* width: auto; */
-      &::before { left: 6.2rem; }
-      &::after { left: 6.2rem; }
-    }
-    &#pid{
-      left: 0rem;
-      /* width: auto; */
-      &::before { left: 27.9rem; }
-      &::after { left: 27.9rem; }
-    }
+  @media screen and (min-width: ${Theme.screenSize.offMed8}) and (max-width: ${Theme.screenSize.offMedMax8}) {
+    &#cid{ top: unset; left: 2rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 1.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 14.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 27.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff}) and (max-width: ${Theme.screenSize.cronicOffMax}) {
+    &#cid{ top: unset; left: 2rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0.5rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 11.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 23.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff2}) and (max-width: ${Theme.screenSize.cronicOffMax2}) {
+    &#cid{ top: unset; left: 1rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 11rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 22rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff3}) and (max-width: ${Theme.screenSize.cronicOffMax3}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -4.6rem; }
+      &::after  { margin-left: -4rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 9.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 20rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff4}) and (max-width: ${Theme.screenSize.cronicOffMax4}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -5.6rem; }
+      &::after  { margin-left: -5rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 8rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 18.5rem;
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff5}) and (max-width: ${Theme.screenSize.cronicOffMax5}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -6.6rem; }
+      &::after  { margin-left: -6rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 6.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: auto;
+      &::before { margin-left: 6.8rem; }
+      &::after  { margin-left: 7.4rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff6}) and (max-width: ${Theme.screenSize.cronicOffMax6}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -7.6rem; }
+      &::after  { margin-left: -7rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 5.5rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: auto;
+      &::before { margin-left: 6rem; }
+      &::after  { margin-left: 6.6rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff7}) and (max-width: ${Theme.screenSize.cronicOffMax7}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -7.6rem; }
+      &::after  { margin-left: -7rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 4rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: auto;
+      &::before { margin-left: 5.4rem; }
+      &::after  { margin-left: 6rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff8}) and (max-width: ${Theme.screenSize.cronicOffMax8}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -8.6rem; }
+      &::after  { margin-left: -8rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 3rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: auto;
+      &::before { margin-left: 4.8rem; }
+      &::after  { margin-left: 5.4rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff9}) and (max-width: ${Theme.screenSize.cronicOffMax9}) {
+    &#cid{ top: unset; left: 0rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem;
+      &::before { margin-left: -9.6rem; }
+      &::after  { margin-left: -9rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 2rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: auto;
+      &::before { margin-left: 3.8rem; }
+      &::after  { margin-left: 4.4rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff10}) and (max-width: ${Theme.screenSize.cronicOffMax10}) {
+    &#cid{ top: unset; left: 0rem; width: 34.5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem; width: 34.5rem;
+      &::before { margin-left: -11.2rem; }
+      &::after  { margin-left: -10.6rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 1rem; width: 34.5rem;
+      &::before { margin-left: -4.6rem; }
+      &::after  { margin-left: -4rem; }
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: 34.5rem;
+      &::before { margin-left: 4.8rem; }
+      &::after  { margin-left: 5.4rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff11}) and (max-width: ${Theme.screenSize.cronicOffMax11}) {
+    &#cid{ top: unset; left: 0rem; width: 32rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; }}
+    &#pid{top: unset; left: 0rem; width: 32rem;
+      &::before { margin-left: -10.6rem; }
+      &::after  { margin-left: -10rem; }
+      p { padding: 1rem; }}
+    &#aid{ top: unset; left: 0rem; width: 32rem;
+      p { padding: 1rem; }}
+    &#lid{ top: unset; left: 0rem; width: 32rem;
+      &::before { margin-left: 4.2rem; }
+      &::after  { margin-left: 4.8rem; }
+      p { padding: 1.3rem; padding-bottom: 0rem; }
+      h2 { margin: 3rem 0 -2rem 0; }}
+  }
+  @media screen and (min-width: ${Theme.screenSize.cronicOff12}) and (max-width: ${Theme.screenSize.cronicOffMax12}) {
+    &#cid{ top: unset; left: 0rem; width: 27.5rem;
+      &::before { left: 3rem; }
+      &::after { left: 3rem; }
+      p { padding: 1rem; font-size: 1.5rem; }}
+    &#pid{top: unset; left: 0rem; width: 27.5rem;
+      &::before { margin-left: -8.6rem; }
+      &::after  { margin-left: -8rem; }
+      p { padding: 1rem; font-size: 1.5rem; }}
+    &#aid{ top: unset; left: 0rem; width: 27.5rem;
+      &::before { margin-left: -1.6rem; }
+      &::after  { margin-left: -1rem; }
+      p { padding: 1rem; font-size: 1.5rem; }}
+    &#lid{ top: unset; left: 0rem; width: 29.5rem;
+      &::before { margin-left: 4.2rem; }
+      &::after  { margin-left: 4.8rem; }
+      p { padding: 1.3rem; font-size: 1.5rem; padding-bottom: 0rem; line-height: 2rem; }
+      h2 { margin: 1rem 0 -2rem 0; }}
   }
 
   &::after, &::before {

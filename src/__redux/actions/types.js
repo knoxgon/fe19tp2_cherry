@@ -47,4 +47,5 @@ export const ROLE = 'ROLE';
 export const QTC = 'QTC';
 export const QTP = 'QTP';
 export const QTL = 'QTL';
+export const QTA = 'QTA';
 export const QT = 'QT';
