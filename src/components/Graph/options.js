@@ -229,6 +229,19 @@ export const optionsArea = (dsid, bcolor, fcolor) => {
           zoomout: false,
           pan: true
         },
+      },
+      animations: {
+        enabled: true,
+        easing: 'easeinout',
+        speed: 650,
+        animateGradually: {
+            enabled: true,
+            delay: 150
+        },
+        dynamicAnimation: {
+            enabled: true,
+            speed: 1250
+        }
       }
     },
     dataLabels: {
