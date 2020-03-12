@@ -1,7 +1,6 @@
 
 ## B-E-V stock market dashboard
 
-
 ![B-E-V](/src/assets/B-E-V.png)
 
 
@@ -24,17 +23,17 @@ B-E-V provides you with a comprehensive insight into companies of your choice. F
 
 
 
-### Trello
+### Collaboration tool
 
-[This is the link to our trello!](https://trello.com/b/xnMTBNLI/fe19tp2cherry)
+[Trello](https://trello.com/b/xnMTBNLI/fe19tp2cherry)
 
 
 ### The team that developed the B-E-V app
 
-Volkan Güven
+[Volkan Güven](https://github.com/knoxgon)
 
-Elina Larsson
+[Elina Larsson](https://github.com/Klippdocka)
 
-Josefine Brorson
+[Josefine Brorson](https://github.com/jbrorson)
 
-Fabian Thoma
+[Fabian Thoma](https://github.com/fabbethoma)
