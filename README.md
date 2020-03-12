@@ -1,22 +1,27 @@
 
 ## B-E-V stock market dashboard
 
+
 ![B-E-V](/src/assets/B-E-V.png)
 
+
 *About the app B-E-V*
-In order to minimize any question marks when it comes to investing on the stock exchange, we have chosen to develop this service.
 
-What shall I buy? When should I buy? When is the right timing to sell?
+During the investment approach, there are many questions that rises whether to sell, buy, or hold stocks.
+- What stocks do I purchase to make profit?
+- When is it the right time to buy?
+- When is the right time to sell?
 
-B-E-V gives you a deeper insight into companies of your choice. Follow the companys development in the last few years or months before investing
+Under those circumstances, the investor visits multiple pages and gathers information from many sources.
 
 
-## How to run
 
-To run this project you have to install the latest node version. 
-[Get node](https://nodejs.org/en/)
-Then you have to run **npm install** in your terminal to install all the dependencies. 
-After that you can continue with **npm start** and the project will run in your browser.
+With the enhanced realtime data polling, the results are processed, serviced and rendered for the user. With the fast-phased graphical analyse, it becomes easier to get the current recommended action (whether to buy, sell or hold stocks), earning estimation analyse dating back to as early as year 2000, and the latest stock prices for the chosen company thus all the previous stock prices dating back to year 1970.
+
+
+B-E-V provides you with a comprehensive insight into companies of your choice. Follow the company's development.
+
+
 
 
 ### Trello
@@ -27,6 +32,9 @@ After that you can continue with **npm start** and the project will run in your 
 ### The team that developed the B-E-V app
 
 Volkan Güven
+
 Elina Larsson
+
 Josefine Brorson
+
 Fabian Thoma
